@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoCursoPagina07" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isSummaryNewPage="true" uuid="666abdab-7fed-446b-9feb-6a84b646f03c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="16"/>
+	<parameter name="idvendas" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select distinct
+   vendas.dataVenda, vendas.valor as valorVenda,
+   aupair.idaupair,
+aupair.dataInscricao,
+aupair.possuiAmigosPais,
+aupair.nomeAmigo,
+aupair.foneAmigo,
+aupair.endercoAmigo,
+aupair.relacaoAmigo,
+aupair.nivelEstudo,
+aupair.ocupacao,
+aupair.inituicaoEstuda,
+aupair.curso,
+aupair.duracaoCurso,
+aupair.cursandoPeriodo,
+aupair.idioma01,
+aupair.nivelIdioma01,
+aupair.idioma02,
+aupair.nivelIdioma02,
+aupair.idioma03,
+aupair.nivelIdioma03,
+aupair.dataInicioPretendida01,
+aupair.dataInicioPretendida02,
+aupair.dataTerminoPretendida01,
+aupair.dataTerminoPretendida02,
+aupair.tipoPassagem,
+aupair.observacaoPassagem,
+aupair.tipoSolicitacaoVisto,
+aupair.cartaoVTM,
+aupair.numeroCartao,
+aupair.moedaCartao,
+aupair.nomeContatoEmergencia,
+aupair.foneContatoEmergencia,
+aupair.emailContatoEmergencia,
+aupair.relacaoContatoEmergencia,
+aupair.eua,
+aupair.alemanha,
+aupair.franca,
+aupair.holanda,
+aupair.demi,
+aupair.vendas_idvendas, unidadeNegocio.razaoSocial, unidadeNegocio.nomeFantasia, unidadeNegocio.tipologradouro as tipologradourounidadeNegocio, unidadeNegocio.logradouro as logradourounidadeNegocio, unidadeNegocio.numero as nuemrounidadeNegocio, unidadeNegocio.complemento as complementounidadeNegocio, unidadeNegocio.bairro as bairrounidadeNegocio, unidadeNegocio.cidade as cidadeunidadeNegocio, unidadeNegocio.estado as estadounidadeNegocio, unidadeNegocio.cep as cepunidadeNegocio, unidadeNegocio.cnpj as cnpjunidadeNegocio,
+cliente.nome, cliente.dataNascimento, cliente.paisnascimento, cliente.cidadenascimento, cliente.rg,
+cliente.cpf, cliente.sexo, cliente.numeropassaporte, cliente.dataExpedicaoPassaporte,
+cliente.validadePassaporte, cliente.tipologradouro, cliente.logradouro, cliente.numero,
+cliente.bairro, cliente.cidade as cidadeendereco, cliente.estado, cliente.cep, cliente.pais as paisenderco, cliente.foneresidencial,
+cliente.fonecelular, cliente.fonecomercial, cliente.profissao,
+cliente.email,cliente.escolaridade,
+usuario.nome as nomeUsuario,
+unidadeNegocio.nomeFantasia, orcamento.dataCambio, orcamento.valorCambio, orcamento.totalMoedaEstrangeira,
+orcamento.totalmoedanacional, orcamento.TaxaTm, formapagamento.condicao, formapagamento.valortotal,
+formapagamento.valorjuros,
+moedas.descricao as descricaoMoedas, cambio.idcambio, moedas.sigla,parcelamentopagamento.idparcemlamentoPagamento,
+parcelamentopagamento.formaPagamento,
+parcelamentopagamento.tipoParcelmaneto,
+parcelamentopagamento.valorParcelamento,
+parcelamentopagamento.diaVencimento,
+parcelamentopagamento.numeroParcelas,
+parcelamentopagamento.valorParcela,
+parcelamentopagamento.formaPagamento_idformaPagamento
+from
+     vendas join aupair on vendas.idvendas = aupair.vendas_idvendas
+     join usuario on vendas.usuario_idusuario = usuario.idusuario
+     join cliente on vendas.cliente_idcliente = cliente.idcliente
+     join unidadeNegocio on vendas.unidadeNegocio_idunidadeNegocio = unidadeNegocio.idunidadeNegocio
+     join orcamento on vendas.idvendas = orcamento.vendas_idvendas
+     join formaPagamento on vendas.idvendas = formapagamento.vendas_idvendas
+     join cambio on orcamento.cambio_idcambio = cambio.idcambio
+     join moedas on cambio.moedas_idmoedas = moedas.idmoedas
+join parcelamentopagamento on formapagamento.idformapagamento = parcelamentopagamento.formapagamento_idformaPagamento
+where
+    vendas.idvendas =  $P{idvendas}]]>
+	</queryString>
+	<field name="dataVenda" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorVenda" class="java.lang.Float"/>
+	<field name="idaupair" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataInscricao" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="possuiAmigosPais" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeAmigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="foneAmigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="endercoAmigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="relacaoAmigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivelEstudo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ocupacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="inituicaoEstuda" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="curso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="duracaoCurso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cursandoPeriodo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idioma01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivelIdioma01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idioma02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivelIdioma02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idioma03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivelIdioma03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataInicioPretendida01" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataInicioPretendida02" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataTerminoPretendida01" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataTerminoPretendida02" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoPassagem" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="observacaoPassagem" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoSolicitacaoVisto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cartaoVTM" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroCartao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="moedaCartao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeContatoEmergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="foneContatoEmergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="emailContatoEmergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="relacaoContatoEmergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="eua" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alemanha" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="franca" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="holanda" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="demi" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vendas_idvendas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="razaoSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipologradourounidadeNegocio" class="java.lang.String"/>
+	<field name="logradourounidadeNegocio" class="java.lang.String"/>
+	<field name="nuemrounidadeNegocio" class="java.lang.String"/>
+	<field name="complementounidadeNegocio" class="java.lang.String"/>
+	<field name="bairrounidadeNegocio" class="java.lang.String"/>
+	<field name="cidadeunidadeNegocio" class="java.lang.String"/>
+	<field name="estadounidadeNegocio" class="java.lang.String"/>
+	<field name="cepunidadeNegocio" class="java.lang.String"/>
+	<field name="cnpjunidadeNegocio" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataNascimento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paisnascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidadenascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeropassaporte" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataExpedicaoPassaporte" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="validadePassaporte" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipologradouro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="logradouro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bairro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidadeendereco" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paisenderco" class="java.lang.String"/>
+	<field name="foneresidencial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonecelular" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonecomercial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="profissao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="escolaridade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeUsuario" class="java.lang.String"/>
+	<field name="dataCambio" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorCambio" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalMoedaEstrangeira" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalmoedanacional" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TaxaTm" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="condicao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valortotal" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorjuros" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricaoMoedas" class="java.lang.String"/>
+	<field name="idcambio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sigla" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idparcemlamentoPagamento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formaPagamento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoParcelmaneto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorParcelamento" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diaVencimento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroParcelas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorParcela" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formaPagamento_idformaPagamento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="78" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="68" width="555" height="8" backcolor="#808080" uuid="411faa41-289b-4da6-ae0b-eddb0ee55234"/>
+			</rectangle>
+			<image>
+				<reportElement x="348" y="6" width="196" height="54" uuid="c5e768cc-340c-4e56-8e55-e963a7337ae8"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="194" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="93" width="555" height="74" uuid="5cbcfed8-77e5-4d31-820a-6d6e76d4e090"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="26" width="555" height="55" uuid="7eb2d118-bac1-4568-a3f4-3ec36a42a4a4"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[16.1 O custo do programa é fixado na moeda do local de destino (Dólares Americanos nos EUA ou Euros nos países de Europa) e o pagamento do mesmo deve ser feito em Reais de acordo com o câmbio turismo da moeda (flutuante ou venda) do dia de pagamento.
+16.2 O pagamento do Valor Total do Programa deverá ser quitado conforme plano de pagamento abaixo:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="5" width="281" height="18" uuid="8abf019e-9dce-4329-837d-d3133e2887d8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[16. PAGAMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="172" width="125" height="14" uuid="21e784a7-1d38-4cc2-b5ff-6bc3f6fb9d46"/>
+				<text><![CDATA[Parcelamento]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="145" y="97" width="100" height="14" uuid="0cd79619-fd55-4f0f-b070-d3d0c65a3877"/>
+				<textFieldExpression><![CDATA[$F{condicao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="14" y="97" width="125" height="14" uuid="5980571c-e7ca-4576-be0a-66dabc4652a3"/>
+				<text><![CDATA[Condição de Pagamento :]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement x="438" y="118" width="105" height="14" uuid="7652fe98-5c3f-482c-bd5d-bfe104a62b69"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{valorjuros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="143" width="88" height="14" uuid="5b6e69ac-ffb7-4be2-9c63-3459a3f01fd1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{sigla} + "   R$ "]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement x="80" y="118" width="84" height="14" uuid="fbd30aea-8b25-4e65-9f70-31bbc53e18ad"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{valortotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="143" width="326" height="13" uuid="bdc8b84b-bdf6-48d8-88c3-9383e5f75269"/>
+				<text><![CDATA[Câmbio da data da inscrição, utilizado para conversão em REAIS :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="118" width="67" height="14" uuid="f17713d6-02bf-4e09-9819-fc4f783718f5"/>
+				<text><![CDATA[Valor Juros :]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement x="440" y="143" width="103" height="14" uuid="a5221057-c821-456f-88b2-cf40c49b76ca"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{valorCambio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="118" width="57" height="14" uuid="e8b5ae73-9255-47ac-93cd-55ebc598519a"/>
+				<text><![CDATA[Valor R$ :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="64">
+			<rectangle>
+				<reportElement x="1" y="1" width="555" height="55" uuid="d183dddc-cdc8-4ea0-aaa6-fb3ce0c752d5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="12" y="12" width="85" height="14" uuid="1610ae94-84a2-4529-9905-692eaee196f4"/>
+				<text><![CDATA[Forma de Pagto :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="102" y="12" width="116" height="14" uuid="5ff4248d-0ff6-4f8d-8e50-f7c35c4db3e8"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{formaPagamento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement x="448" y="12" width="95" height="14" uuid="53072ec8-9f48-44e5-ab02-a8e4186cf9e7"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{valorParcelamento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="32" width="105" height="14" uuid="91a23555-b4cf-4a45-aaac-be95a8e4742e"/>
+				<text><![CDATA[Data de Vencimento :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="117" y="32" width="72" height="14" uuid="c62c4d5c-fe7f-4cc6-91fd-640601f86e50"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{diaVencimento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement x="454" y="32" width="91" height="14" uuid="bda2e444-c8ab-4999-9f90-cc09b8bace0d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{valorParcela}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="365" y="12" width="83" height="14" uuid="d16d2dd7-a3f0-4eb5-badf-abd197884c87"/>
+				<text><![CDATA[Saldo Parcelar :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="280" y="32" width="54" height="14" uuid="4a0dc854-ed47-4651-a0ae-c902b0dc666a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{numeroParcelas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="377" y="32" width="77" height="14" uuid="f1ccfaa5-caff-4cbe-b800-ad6d6f81dc37"/>
+				<text><![CDATA[Valor Parcela :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="32" width="64" height="14" uuid="6b25dd8d-f152-4c19-bc73-e62ed4e77d44"/>
+				<text><![CDATA[Nº Parcelas :]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="24">
+			<break>
+				<reportElement x="0" y="2" width="100" height="1" uuid="e84f3d42-13aa-4e07-8196-3eb559ec21d5"/>
+			</break>
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="200" height="10" uuid="dce2da39-8294-4ec8-9cb3-cfd3733b253e"/>
+				<subreportParameter name="idvendas">
+					<subreportParameterExpression><![CDATA[$P{idvendas}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "contratoAupairPagina08.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

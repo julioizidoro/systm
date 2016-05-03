@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportSir" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="47546795-4524-47dc-b7dc-8b1dd083541b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<title>
+		<band height="112" splitType="Stretch">
+			<image>
+				<reportElement x="6" y="5" width="255" height="94" uuid="6512490a-4584-4363-92cf-cd5beb7c49f0"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="690" splitType="Stretch">
+			<rectangle>
+				<reportElement x="302" y="252" width="118" height="23" uuid="17ffcee9-a062-478d-8a73-9b478a6d10d9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="252" width="200" height="23" uuid="de75cbb9-baf1-4659-b239-a0334f6d69db"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="109" y="256" width="179" height="16" uuid="c82c6df2-0a7a-4e11-afab-f7d532173604"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="37" width="533" height="186" uuid="70a2e078-ec61-422f-bab3-9a25290f09cf"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Veja como é fácil ganhar dinheiro indicando pessoas a viajar pela TravelMate.
+
+1.    Divulgue sempre que possível a TravelMate para seus amigos, conhecidos e familiares, por e-mail, telefone e redes sociais;
+2.    Ligue ou mande um e-mail para a TravelMate com o nome da sua indicação, antes que ele venha até uma de nossas lojas, só assim saberemos que foi do seu esforço;
+3.    Após a confirmação da matrícula você já estará apto a receber seu bônus em reais, o mesmo deverá ser retirado na agência;
+4.    Você ganhará em todo o processo da pessoa que indicou;
+a.    Ex: Curso + passagem + visto + seguro
+5.    Sua comissão será paga integralmente mesmo que a pessoa parcele a viagem.
+6.     Você tem até 60 dias para receber o valor após a confirmação da venda.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="256" width="100" height="16" uuid="7b2579f2-2689-43f9-b549-b2939d3d36e2"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="227" width="262" height="20" uuid="e3abf2f7-808e-4c73-a3a7-9356b0079ee3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Programas / Unidade                             S.I.R.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="12" width="533" height="20" uuid="d092d416-bebb-4927-80aa-f73146435e5e"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S.I.R. – SISTEMA DE INDICAÇÕES REMUNERADAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="670" width="448" height="20" uuid="4f154e25-d45f-48f8-b11e-1e3687352f0e"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comece hoje mesmo a ganhar dinheiro com a TravelMate ! ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="302" y="277" width="118" height="23" uuid="4da3507a-eda0-4646-8964-6e363688d238"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="277" width="200" height="23" uuid="2e179737-d0ce-4752-aefb-1a26a24da144"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="309" y="281" width="100" height="16" uuid="3e95ac72-9a30-4dc3-9f8d-d5d94594927c"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="281" width="179" height="16" uuid="b49548f4-05f3-4cec-951b-49bd6cf9493a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="302" y="302" width="118" height="23" uuid="609da671-a1d8-4669-8617-48bfbb642192"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="302" width="200" height="23" uuid="94d7be18-873c-498d-9bc8-715d713ee2a6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="309" y="306" width="100" height="16" uuid="6cf5dd23-1520-4679-8d92-3de17690ecf9"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="306" width="179" height="16" uuid="3acfb89e-bfe8-4255-99cc-3a577034a51f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="302" y="327" width="118" height="23" uuid="4d131484-34b3-4703-b4ea-7c26e1f33433"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="327" width="200" height="23" uuid="b7110666-3f38-498b-8c2c-0ad17468e088"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="309" y="331" width="100" height="16" uuid="6f824492-eb3f-44a6-88b8-00910f06deb0"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="331" width="179" height="16" uuid="5caa9e22-b4b7-4482-af40-e0adfc59ac99"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="302" y="354" width="118" height="23" uuid="037d3726-df62-40cc-941c-ea6ef9569763"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="354" width="200" height="23" uuid="a4799438-4575-4032-9161-f786dfcf48cb"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="309" y="358" width="100" height="16" uuid="f448958d-9e3d-45d9-b336-6a01d48023be"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="358" width="179" height="16" uuid="8c87d46b-7be6-49ba-b89d-fa246165841b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="302" y="380" width="118" height="23" uuid="388d247a-bdf9-4130-a9ff-35fd51a171b8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="380" width="200" height="23" uuid="21f874c8-001e-4534-bfb6-a2b38f7635d0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="309" y="384" width="100" height="16" uuid="968182a8-37d5-4e93-b4bc-119ee2a7cabd"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="384" width="179" height="16" uuid="fa67d886-fb28-4e8e-97be-1e0549ea4be9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="303" y="406" width="118" height="23" uuid="4d007002-7f54-4c17-9581-5e9e9e77cf9c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="103" y="406" width="200" height="23" uuid="1f71a54b-9563-495e-86cf-f12a849a8438"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="310" y="410" width="100" height="16" uuid="14829699-118a-416c-9a8e-86954cd7f695"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="410" width="179" height="16" uuid="3b78a7ec-f4eb-4626-aec3-2e5fb8021339"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="303" y="432" width="118" height="23" uuid="b48b1afc-da1d-491d-9209-1808af02bbbd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="103" y="432" width="200" height="23" uuid="b8c0918c-f3e7-4642-9c83-78977aeca85a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="310" y="436" width="100" height="16" uuid="a51ffacf-dade-494c-b1e6-22ce8d44cdd4"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="436" width="179" height="16" uuid="a9da6b1a-9a8d-4177-9607-ded2bb76831b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="302" y="459" width="118" height="23" uuid="19e5b20f-1bbc-4e2d-9a30-4f63684c1c2d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="459" width="200" height="23" uuid="9791bd87-38a5-4b2b-861e-30faf8d95e60"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="309" y="463" width="100" height="16" uuid="cdc96b41-1f5d-40b6-b35d-114514ae73c3"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="463" width="179" height="16" uuid="17bf40f2-553f-44a0-9ef5-c46d00ba5022"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="302" y="486" width="118" height="23" uuid="1ad8287f-1b38-40cd-9161-1924b097183d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="486" width="200" height="23" uuid="3cfb884a-26c4-4d2c-a778-0d4848fdb01b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="309" y="490" width="100" height="16" uuid="b8a3569c-6067-4c4e-a165-07e754c007cf"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="490" width="179" height="16" uuid="531c1738-8e31-4875-91b3-f744c8075395"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="302" y="512" width="118" height="23" uuid="cdd847a9-8be9-4889-a294-209e355e83f4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="512" width="200" height="23" uuid="0f235ceb-96ac-47b0-be91-feb66308005c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="309" y="516" width="100" height="16" uuid="340cb083-7a38-4cd9-b37e-0ec9d1b884f1"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="516" width="179" height="16" uuid="49dfe745-aa8f-488d-b85e-165bfeaaf027"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="302" y="538" width="118" height="23" uuid="cca544f1-0b92-4c98-9575-6357996b2a1a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="538" width="200" height="23" uuid="a019fbfa-136c-4add-893c-be53b131090b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="309" y="542" width="100" height="16" uuid="5a5ba758-63af-4592-9f98-35e4d29cd219"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="542" width="179" height="16" uuid="ae6d52c9-d583-497c-be3d-2472f516fc6d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="302" y="564" width="118" height="23" uuid="a0680a2e-94e7-4f29-9375-eb2c9f14155b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="564" width="200" height="23" uuid="eeaf6c04-134e-474d-95a2-2ce82cc87b0f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="309" y="568" width="100" height="16" uuid="7fe7003a-cf9c-409d-9337-ba527d1bd15e"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R$ 200,00
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="109" y="568" width="179" height="16" uuid="97d38e6d-01cc-4742-a802-ccfaa5c919f2"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work and Travel Placement
+]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+</jasperReport>

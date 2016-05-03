@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoCursoPagina04" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isSummaryNewPage="true" uuid="666abdab-7fed-446b-9feb-6a84b646f03c">
+	<property name="ireport.zoom" value="0.6198347107438017"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idvendas" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select distinct
+unidadeNegocio.razaoSocial, unidadeNegocio.nomeFantasia, unidadeNegocio.tipologradouro as tipologradourounidadeNegocio, unidadeNegocio.logradouro as logradourounidadeNegocio, unidadeNegocio.numero as nuemrounidadeNegocio, unidadeNegocio.complemento as complementounidadeNegocio, unidadeNegocio.bairro as bairrounidadeNegocio, unidadeNegocio.cidade as cidadeunidadeNegocio, unidadeNegocio.estado as estadounidadeNegocio, unidadeNegocio.cep as cepunidadeNegocio, unidadeNegocio.cnpj as cnpjunidadeNegocio,
+unidadeNegocio.nomeFantasia from unidadeNegocio
+where
+    unidadeNegocio.idUnidadeNegocio=1]]>
+	</queryString>
+	<field name="razaoSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipologradourounidadeNegocio" class="java.lang.String"/>
+	<field name="logradourounidadeNegocio" class="java.lang.String"/>
+	<field name="nuemrounidadeNegocio" class="java.lang.String"/>
+	<field name="complementounidadeNegocio" class="java.lang.String"/>
+	<field name="bairrounidadeNegocio" class="java.lang.String"/>
+	<field name="cidadeunidadeNegocio" class="java.lang.String"/>
+	<field name="estadounidadeNegocio" class="java.lang.String"/>
+	<field name="cepunidadeNegocio" class="java.lang.String"/>
+	<field name="cnpjunidadeNegocio" class="java.lang.String"/>
+	<title>
+		<band height="78" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="68" width="555" height="8" backcolor="#808080" uuid="411faa41-289b-4da6-ae0b-eddb0ee55234"/>
+			</rectangle>
+			<image>
+				<reportElement x="348" y="6" width="196" height="54" uuid="c5e768cc-340c-4e56-8e55-e963a7337ae8"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="704" splitType="Stretch">
+			<staticText>
+				<reportElement x="-1" y="520" width="410" height="16" uuid="b7ac9e44-3c07-4d7a-bead-f8be133fa039"/>
+				<text><![CDATA[11.3  Custos ou despesas para despesas pessoais diárias são de responsabilidade do]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="160" width="526" height="40" uuid="e8b0bd2f-b58b-4227-b867-d8977ad1410f"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[parceiro internacional, no tocante a horários, saídas sem consentimentos, desrespeito com terceiros e aos próprios familiares ou colegas de acomodação, bem como tomar atitudes contrárias a um convívio harmonioso junto à família hospedeira, colegas de acomodação e colegas de classe;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="292" width="74" height="16" uuid="68701b75-9254-4f3f-832e-dc5795aff38a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="409" width="543" height="66" uuid="aec37953-5c12-45f1-ac89-af384b474f47"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[11.1 A despesa de obtenção do visto consular, seguros outros (além do seguro saúde incluído pelo parceiro internacional contratado, quando houver), passagens aéreas (outras não inclusas no valor do programa, quando houver), taxas de aeroportos, custos de embarque e desembarque, excesso de bagagem, alfândega e o transfer entre o aeroporto e a acomodação (ida e volta) não estão incluídos no valor do programa/pacote pago à Travelmate, salvo quando especificado no programa/pacote.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="475" width="74" height="16" uuid="962e6867-5806-4693-a707-8edef976a690"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="144" width="74" height="16" uuid="1910f68a-2352-4336-8946-739b7d7a1ffb"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="620" width="237" height="16" uuid="9f69847e-3631-4e42-b666-ae8252bf5a22"/>
+				<text><![CDATA[de acordo com o câmbio da moeda obtido com à ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="200" width="44" height="16" uuid="8355beee-ff2e-4333-9553-8fd18cc59277"/>
+				<text><![CDATA[b) O(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="604" width="564" height="16" uuid="c093d5fd-3943-4ad0-8967-2e523ac96226"/>
+				<text><![CDATA[12.1 O custo do programa é fixado na moeda local do país em questão e o pagamento do mesmo deve ser feito em reais]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="620" width="22" height="16" uuid="88beee9c-d027-4b67-b3ba-f7931929c382"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="383" width="237" height="26" uuid="27764c73-637f-4896-b4fd-2fcb7e4bf75e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[11. DISPOSIÇÕES FINAIS E OBSERVAÇÕES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="128" width="381" height="16" uuid="740611b4-f882-4917-8b61-69bd5c52e896"/>
+				<text><![CDATA[ quando:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="636" width="543" height="48" uuid="2928ddbc-b703-48a8-a538-75a76ef4951a"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[12.2 O pagamento da inscrição deve ser efetivado no momento do preenchimento da ficha de inscrição, documento anexo a este contrato e que discrimina os valores do programa/pacote contratado.
+12.3 O pagamento do pacote/programa deverá ser quitado conforme plano de pagamento abaixo:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="244" width="446" height="16" uuid="7a774c82-9ed0-4742-b3fe-5477c96f94ba"/>
+				<text><![CDATA[abandonar a acomodação ou família hospededeira original sem autorização do parceiro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="113" width="74" height="16" uuid="c0a79751-27b0-4e17-9d75-c54b8f215db0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="308" width="564" height="16" uuid="0a11caa0-b1f9-4cc9-94d8-f33fef971a47"/>
+				<text><![CDATA[chegada ,parceiro internacional, ou “check-in”, por exemplo) estabelecidas pelo programa em questão. Neste caso, o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="144" width="44" height="16" uuid="6f772d65-ef0d-41b0-8d5f-841eb4e9bc29"/>
+				<text><![CDATA[a) O(A)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="580" width="237" height="24" uuid="1c62ef9d-06d6-4541-ac97-fd77939178a3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[12. PAGAMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="289" y="292" width="275" height="16" uuid="758db2c4-f20a-475a-8a4a-2de3b2a594d1"/>
+				<text><![CDATA[deixar de cumprir as regras de chegada (orientação de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="113" width="67" height="16" uuid="a4e2fd4e-fa3f-4623-8df7-d068afe5cdda"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[, sem direito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="113" width="429" height="16" uuid="5ca32eef-fde7-4de3-9b11-46a4d6581f36"/>
+				<text><![CDATA[10.1 O presente contrato será rescindido por justa causa, mediante simples notificação ao(à) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="230" width="564" height="14" uuid="2d51e554-a0e7-4233-a488-14f28a8ff771"/>
+				<text><![CDATA[c)  Cometer qualquer tipo de ato ilícito penal sob as normas do direito do país em questão;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="260" width="215" height="16" uuid="3d39ea33-68a0-481e-9b7f-ef0b8eed46f5"/>
+				<text><![CDATA[ internacional em questão. Neste caso, o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="200" width="74" height="16" uuid="a938aca2-06ec-4b49-a03a-b91974aedc2f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="87" width="237" height="26" uuid="aa3bab8e-f569-4936-9068-5e8781962988"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[10.  DA RESCISÃO POR JUSTA CAUSA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="403" y="520" width="140" height="16" uuid="674a8ece-ddf5-413e-89d4-8656b8adb170"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="324" width="78" height="16" uuid="8f9e7bba-3344-4373-933d-9e1ce2d8d6f6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="216" width="564" height="14" uuid="d5bd18b3-1e4d-44be-ab61-c0080f1b6779"/>
+				<text><![CDATA[analisada pelo parceiro internacional responsável pelo curso/programa;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="620" width="317" height="16" uuid="e926bbd7-4757-4fdc-be34-ff434b88bdde"/>
+				<text><![CDATA[no dia de pagamento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="260" width="74" height="16" uuid="afaf9b0b-865b-41a0-b127-967d040b61e5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="13" width="527" height="40" uuid="72ba7ddc-7757-43a8-9aff-a0bf97a4066b"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[9.5 Após o embarque do(a) PARTICIPANTE para realização do programa/curso, não há reembolso ou devolução de qualquer valor pago a TM ou parceiro internacional referente ao curso, acomodação, taxas consulares e demais serviços contratados.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="340" width="526" height="27" uuid="49333d2d-387d-42e3-9296-ae22d542325a"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[será desligado(a) do programa e terá seu visto cancelado, devendo deixar o país dentro de 10 (dez) dias da data do seu desligamento. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="535" width="526" height="30" uuid="0d81cbb6-080b-461f-99bd-00a66c31b747"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[11.4 Custos de transporte diário durante a realização do programa/pacote, alimentação e uniformes exigidos para realização do programa não estão incluídos no valor do programa/pacote;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="475" width="44" height="16" uuid="a8beb706-1413-421c-aae5-eee647cb7f4d"/>
+				<text><![CDATA[11.2 O(A) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="244" width="44" height="16" uuid="dc2b7a9e-204b-467b-87fe-82eacef00699"/>
+				<text><![CDATA[d) O(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="292" width="215" height="16" uuid="8c171163-400a-43dc-a337-246ece83cc23"/>
+				<text><![CDATA[e) Após sua chegada no país de destino, o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="53" width="527" height="28" uuid="6b2a7804-c1b8-4a81-8226-01c573d3b931"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[9.6 A devolução de qualquer quantia, por parte da Travelmate, será efetuada em Reais, de acordo com o câmbio utilizado no dia do pagamento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="475" width="446" height="16" uuid="e9272842-b0a8-4797-8f5e-fd09f6fed05e"/>
+				<text><![CDATA[deverá levar quantia de dinheiro suficiente para cobrir suas despesas no país de destino (custo ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="200" width="446" height="16" uuid="588c8038-2cac-4f86-b754-e04e57640c0b"/>
+				<text><![CDATA[receber reclamações comportamentais no ambiente escolar/acadêmico, cuja gravidade será ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="244" width="74" height="16" uuid="8d8797ac-24be-4403-907f-44a3df2b0567"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="144" width="446" height="16" uuid="9635b338-b9d1-4397-ac61-dae27cefdb73"/>
+				<text><![CDATA[desrespeitar as regras estipuladas pela administração da acomodação ou família hospedeira, e ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="276" width="564" height="16" uuid="3972a29b-eb45-4116-8341-c6bbae5d71f9"/>
+				<text><![CDATA[devendo deixar o país dentro de 10 (dez) dias da data do seu desligamento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="260" width="288" height="16" uuid="47a80346-f3d4-4233-bb04-7433b805d713"/>
+				<text><![CDATA[será desligado(a) do programa e terá seu visto cancelado, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="128" width="183" height="16" uuid="90fc4abd-6718-4d51-8f30-8a59805a2a74"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[a qualquer reembolso ou indenização, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="491" width="543" height="29" uuid="938251e4-1e64-476a-aa16-9ed43cd51434"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[com transporte local, materiais, livros, alimentação que não esteja inclusa no programa/pacote, moradia que não esteja inclusa no programa/pacote, etc..), mesmo quando exista a possibilidade de trabalho legal no país em questão;]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="30">
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="10" uuid="ae20cba2-635c-4e33-849d-d7ea9f8a4bb4"/>
+				<subreportParameter name="idvendas">
+					<subreportParameterExpression><![CDATA[$P{idvendas}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "modelocontratoCursoPagina06.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

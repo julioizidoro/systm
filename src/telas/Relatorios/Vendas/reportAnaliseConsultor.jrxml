@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Análise Atendimento / Fechamento" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="320dd56b-4281-455e-becf-bdbfae77892b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="dataInicial" class="java.util.Date"/>
+	<parameter name="dataFinal" class="java.util.Date"/>
+	<parameter name="sql" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[$P!{sql}]]>
+	</queryString>
+	<field name="nomeconsultor" class="java.lang.String"/>
+	<field name="nomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechou" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="atendeu" class="java.lang.Long"/>
+	<field name="resultdado" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="170" splitType="Stretch">
+			<textField>
+				<reportElement style="Detail" x="3" y="108" width="553" height="33" uuid="8b407713-f5f1-44b0-9223-250f03a69f01"/>
+				<textElement textAlignment="Center">
+					<font size="26" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Análise Atendimento / Fechamento"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="90" y="147" width="90" height="20" uuid="9adce713-8e13-4466-8f00-23d351c3aef0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dataInicial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="147" width="71" height="20" uuid="6fd811b8-10d0-443a-ac2e-a687af719c6a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Período : "]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="222" y="147" width="90" height="20" uuid="1cce3309-e1d1-44a9-a918-d658b1e915d2"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dataFinal}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="10" y="10" width="255" height="94" uuid="4e2916c0-3c7e-4cbb-b349-67c7cfc09527"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="6" y="18" width="78" height="15" uuid="20675a62-e27f-43d2-952c-43166abf1d2d"/>
+				<text><![CDATA[Consultor ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="144" y="18" width="105" height="15" uuid="315b305d-476b-41fd-9c5d-af8c628b570f"/>
+				<text><![CDATA[Unidade Negócio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="322" y="3" width="88" height="33" uuid="ca145b00-b653-4579-8cb8-36d22ce41438"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Número Atendimentos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="416" y="3" width="61" height="30" uuid="199083ce-d575-4d23-85b3-74f8e0201994"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Número Fechados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="479" y="6" width="74" height="30" uuid="a391740d-ada8-4ede-8f66-9f609c7ec8f7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Taxa Conversão]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="18" uuid="ee86d585-c7cb-4176-b6d0-71932d13f089"/>
+			</rectangle>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement style="Detail" x="421" y="1" width="58" height="15" uuid="c36a30c7-fd0d-4ecf-b077-2641c70925a0"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechou}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="4" y="2" width="133" height="15" uuid="e0df543e-f9a3-4983-8b5f-111cc992c08b"/>
+				<textElement textAlignment="Left">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeconsultor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="Detail" x="332" y="2" width="78" height="15" uuid="4c0b5781-b7bb-4213-a971-00ea0f01211d"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{atendeu}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement style="Detail" x="144" y="2" width="178" height="15" uuid="a66bf26c-c7c1-4b10-9c9b-ea3888af6ade"/>
+				<textElement textAlignment="Left">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeFantasia}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement style="Detail" x="491" y="1" width="58" height="15" uuid="44fc0354-ddf9-45cd-8129-f33278798fa1"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{resultdado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="8a70a895-efc0-4d2d-a0d3-c0da62bc00ea"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="e7648991-7629-46f3-8634-3e60c0e83f52"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="7af47d2a-817a-4af2-ba07-32ba475ab194"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

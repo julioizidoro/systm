@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="modelocontratoHighSchoolPagina01" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" isSummaryNewPage="true" uuid="666abdab-7fed-446b-9feb-6a84b646f03c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="453"/>
+	<parameter name="idvendas" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select distinct
+unidadeNegocio.razaoSocial, unidadeNegocio.nomeFantasia, unidadeNegocio.tipologradouro as tipologradourounidadeNegocio, unidadeNegocio.logradouro as logradourounidadeNegocio, unidadeNegocio.numero as nuemrounidadeNegocio, unidadeNegocio.complemento as complementounidadeNegocio, unidadeNegocio.bairro as bairrounidadeNegocio, unidadeNegocio.cidade as cidadeunidadeNegocio, unidadeNegocio.estado as estadounidadeNegocio, unidadeNegocio.cep as cepunidadeNegocio, unidadeNegocio.cnpj as cnpjunidadeNegocio,
+unidadeNegocio.nomeFantasia
+from unidadeNegocio
+where
+    unidadeNegocio.idUnidadeNegocio=1]]>
+	</queryString>
+	<field name="razaoSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipologradourounidadeNegocio" class="java.lang.String"/>
+	<field name="logradourounidadeNegocio" class="java.lang.String"/>
+	<field name="nuemrounidadeNegocio" class="java.lang.String"/>
+	<field name="complementounidadeNegocio" class="java.lang.String"/>
+	<field name="bairrounidadeNegocio" class="java.lang.String"/>
+	<field name="cidadeunidadeNegocio" class="java.lang.String"/>
+	<field name="estadounidadeNegocio" class="java.lang.String"/>
+	<field name="cepunidadeNegocio" class="java.lang.String"/>
+	<field name="cnpjunidadeNegocio" class="java.lang.String"/>
+	<title>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="81" width="555" height="15" uuid="ed75f004-f9a7-498c-b84f-777a7971fba2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="9" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE PRESTAÇÃO DE SERVIÇOS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="68" width="555" height="8" backcolor="#808080" uuid="411faa41-289b-4da6-ae0b-eddb0ee55234"/>
+			</rectangle>
+			<image>
+				<reportElement x="348" y="6" width="196" height="54" uuid="c5e768cc-340c-4e56-8e55-e963a7337ae8"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="0" y="96" width="555" height="16" uuid="56dbbfe4-a04f-4549-b66d-6f04d27e253c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["High School nº 000(MODELO)"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="662" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="251" height="14" uuid="f77d7e49-a773-4b26-a342-ca94166582d9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTES:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="21" width="100" height="18" uuid="fcd9c636-d3b6-4816-9d84-a68d26dce398"/>
+				<text><![CDATA[, adiante apenas ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="438" y="21" width="118" height="18" uuid="2bddb612-d471-423c-90b0-0e42a1f859cc"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[   TRAVELMATE ou TM]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="120" width="486" height="68" uuid="f2878c01-fb54-433f-9fea-e88b241aad47"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["DADOS DO PARTICIPANTE, têm entre si justos e acertados a celebração de contrato de prestação de serviços de intercâmbio cultural, nos termos e condições estabelecidas neste contrato."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="21" width="282" height="18" uuid="3f1a474f-49d4-46ec-8ad8-ab643a47e49f"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razaoSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="36" width="485" height="69" uuid="34854fe2-4fcd-4e53-b71d-f6f7c7b48cc2"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[",pessoa jurídica de direito privado com sede social na " + $F{tipologradourounidadeNegocio} + " " + $F{logradourounidadeNegocio} + ", " + $F{nuemrounidadeNegocio} + ", " + $F{complementounidadeNegocio}
++ ", " + $F{bairrounidadeNegocio} + ", " + $F{cidadeunidadeNegocio} + ", " + $F{estadounidadeNegocio} + ", CEP : " + $F{cepunidadeNegocio} + ", inscrita no CNPJ/MF sob nº " + $F{cnpjunidadeNegocio} + ", neste ato representada pelo consultor."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="551" width="316" height="13" uuid="a649e017-ab31-42a5-9dea-4d8e121f5de6"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[hospedeira local, a qual fornecerá acomodação e alimentação ao(à)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="317" y="499" width="75" height="13" uuid="428545ef-651d-46bf-8860-5967de02b8dd"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="316" width="332" height="20" uuid="87fc22f6-ad44-4939-a582-ccddd0ca5bc5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2. OBRIGAÇÕES DA TRAVELMATE INTERCÂMBIO E TURISMO - TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="622" width="555" height="16" uuid="e5948708-167d-49c0-a35e-fe7953fe54f3"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[nos termos do presente contrato, devendo ainda constar o seguinte:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="385" width="75" height="13" uuid="1e66506e-5dc7-4019-a0b1-5a293dd93ebc"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="410" width="75" height="13" uuid="558af9e7-91f6-42c3-8619-c7f674c32f12"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="474" width="65" height="13" uuid="8acd113b-20cd-48d7-8079-e9106212fb02"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[seguro este]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="486" width="155" height="13" uuid="d1da5013-aa10-4f49-9448-24b0942788df"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[com o parceiro internacional da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="638" width="239" height="13" uuid="b50074d2-522f-4333-b382-1aea3f032b9c"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[que venha(m) a impedir a realização do presente  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="385" width="152" height="13" uuid="40863252-9125-425a-a4bb-1c1a048899f5"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[b) Providenciar e fornecer ao(à) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="594" width="151" height="14" uuid="1e4a48d0-df73-40f4-a39a-15ca2871c195"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[destina-se meramente a viabilizar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="538" width="75" height="13" uuid="396a02d5-e483-46b7-8352-6956a1c0151b"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="608" width="322" height="14" uuid="503c2e71-b7c5-479d-bac1-a05a5b73fc82"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ dando orientações pertinentes ao mesmo conforme disposto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="512" width="544" height="26" uuid="40e3b401-650e-4399-b1a2-0a4361d9bb6b"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[convivência com a família estrangeira, desempenho acadêmico, cumprimento das regras do programa e adaptação às diferenças culturais.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="538" width="27" height="13" uuid="289c0b67-d6cc-4bc7-83d3-ecd4939ff1a5"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[g) A ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="594" width="252" height="14" uuid="a4a6943b-4bce-4515-947e-5267fef75eb6"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[desde já advertido e ciente que o serviço prestado pela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="448" width="509" height="13" uuid="32a5a427-4262-4ac9-8bbe-4914e41e8e4c"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[prestará serviço de assessoria na obtenção da passagem aérea de ida e volta, passagem aérea esta que não ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="410" width="326" height="13" uuid="534399d2-77ce-4596-b7d1-9a772b0c8374"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[desde a saída do aeroporto de origem até o aeroporto indicado pela ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="538" width="286" height="13" uuid="d42b7581-b213-4e8d-9865-efff021517f7"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[por meio de seu parceiro internacional, providenciará para o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="410" width="152" height="13" uuid="19736b84-1041-423d-b70a-5dcf3259a34a"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[c) Planejar a viagem de ida do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="336" width="75" height="13" uuid="3cc05c1f-8c50-4f07-8637-220147e239ff"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="593" width="90" height="15" uuid="af9a92c0-e6d8-4f5a-95f0-4dc853289162"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="448" width="27" height="13" uuid="b72e1434-faaa-4269-beba-8e130b107bf8"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[d) A ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="574" width="332" height="20" uuid="14f7dfae-c684-4ff6-8e44-68afd81ec3c4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.1. OBSERVAÇÕES QUANTO AS OBRIGAÇÕES DA TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="594" width="25" height="15" uuid="4a50e59b-361b-4297-a094-c3f5f6a26dc8"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="482" y="248" width="74" height="15" uuid="d35ea32f-f208-4ab2-85b6-dd70d4441e5d"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="474" width="21" height="13" uuid="747f9e41-367f-453d-bbab-ff8e9257bd46"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="461" width="553" height="13" uuid="0ab79bc9-08ac-4021-93af-c325be66698b"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[está inclusa no valor do programa contratado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="212" width="251" height="22" uuid="255f5ef3-9d4d-4400-b47c-dac36729f345"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1. OBJETO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="336" width="404" height="13" uuid="24c43a21-0977-4c4e-9360-720677427cc4"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[no programa internacional para o qual se candidatou, desde este atenda aos ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="499" width="317" height="13" uuid="0f74e924-b3c7-4355-9ccf-9006da831c7d"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[f) Organizar reuniões de preparação para o intercâmbio no qual o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="638" width="189" height="13" uuid="c573ddd0-7234-473a-b535-b2e3a4bd8d22"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[não se responsabilizará por ato(s) do(a) próprio(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="638" width="74" height="13" uuid="77ad7a3e-20b8-4729-a28e-d07ef2362111"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="593" width="48" height="14" uuid="3f20c1a2-acb5-4e05-b8ed-6c5c0b7c4a75"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fica o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="233" width="556" height="15" uuid="88d833a3-865b-4b83-b347-ab19a1c9f883"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[O presente contrato tem como objeto a intermediação da prestação de serviços educacionais de intercâmbio cultural pela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="347" width="555" height="38" uuid="a63a81e8-0256-45e9-b628-63ba6fa295a1"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[pré-requisitos para participação (vide informativo do programa), bem como desde que recebida a ficha de inscrição completa, o contrato assinado, os documentos solicitados e o valor estipulado como mandatório para inscrição no referido programa/pacote;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="638" width="23" height="13" uuid="7e30fe38-b9f6-44b4-8f6a-22250185de90"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[a) A ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="247" width="426" height="15" uuid="9f03cf3e-d4ee-4046-9b08-0b83d61d5998"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[(intermediadora) e seu parceiro internacional, North Broward Preparatory School, em favor do(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="423" width="554" height="13" uuid="84bb2d3b-8ae0-4dff-bcab-315ebd404fc6"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[família hospedeira ou organização do programa, assim como a viagem de retorno, ratificada pelo parceiro internacional ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="385" width="333" height="13" uuid="28ed1bbf-6148-4b1a-ac10-585738b03b29"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[os documentos comprovantes de sua inscrição junto à organização ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="457" y="486" width="21" height="13" uuid="7671eb88-4bf9-4d3a-a34d-7d65065525bd"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="436" width="33" height="13" uuid="56790e38-13a1-4fb9-ba63-202b630e404e"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ TM.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="398" width="554" height="13" uuid="eb31d8d3-6eaf-4c17-809d-19d6901b73dd"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[internacional citada no Objeto deste Contrato, bem como documento necessário para a solicitação do visto adequado;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="474" width="470" height="13" uuid="2f9aba41-1fed-4277-8d1c-23a74ae76a70"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[e) Providenciar e verificar a efetivação do seguro médico a ser contratado pelo parceiro internacional da]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="486" width="75" height="13" uuid="95049107-d786-4e1f-ae3f-f22f6062a44f"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="538" width="24" height="13" uuid="4f3637c2-d425-4b37-8fbe-3ccf1db4ee32"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="538" width="147" height="13" uuid="90fe445b-71bc-44d3-9960-9cec8a3ea7b4"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[uma colocação em uma familia ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="608" width="232" height="14" uuid="dfc7ac37-7e87-4f55-b3d8-fc6715035592"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[sua inscrição no programa de intercâmbio cultural, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="246" width="70" height="15" uuid="3a6fb7e3-50ff-4336-a870-22e8a126f885"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRAVELMATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="336" width="81" height="13" uuid="1f28e72e-c6af-4c5d-8c20-547c29a27338"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[a) Inscrever o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="448" width="24" height="13" uuid="ebe4b82b-619d-497d-a9ca-7028ef94d194"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="317" y="551" width="85" height="13" uuid="0faaf3db-e24a-419a-9e6b-3c8f621c9012"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="392" y="499" width="162" height="13" uuid="f256e243-4266-4fe3-adfd-f88ec51cfb9d"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[será orientado a respeito da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="436" width="14" height="13" uuid="4ffa0f6d-5cfb-4cab-9c90-c0ce96f27b48"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[da]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="486" width="231" height="13" uuid="ae1524af-086f-4a0a-8d96-318e1b8ff72c"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[com validade durante todo o período de vínculo do]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="638" width="19" height="13" uuid="42cf65ec-3aaa-4ddd-8217-a5a848b38b28"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="261" width="544" height="43" uuid="deea34fb-06b2-4a0b-a015-41df7bba0e4e"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[visando sua inscrição no programa de intercâmbio High School,  com duração de 01 semestre(s) letivo(s)/escolar(es), em Coconut Creek, FL, EUA, com início previsto para o mês de Agosto/2015, incluindo todas as atividades descritas neste instrumento.]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="22">
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="10" uuid="77119fda-80f4-49f9-ae1e-eb32917f559d"/>
+				<subreportParameter name="idvendas">
+					<subreportParameterExpression><![CDATA[$P{idvendas}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "modelocontratoHighSchoolPagina02.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

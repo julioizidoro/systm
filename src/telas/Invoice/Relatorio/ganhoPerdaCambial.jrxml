@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Invoices a Pagar" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="320dd56b-4281-455e-becf-bdbfae77892b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="dataInicial" class="java.util.Date"/>
+	<parameter name="dataFinal" class="java.util.Date"/>
+	<parameter name="sql" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[$P!{sql}]]>
+	</queryString>
+	<field name="idVendas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataVenda" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricaoProduto" class="java.lang.String"/>
+	<field name="nomeCliente" class="java.lang.String"/>
+	<field name="consultor" class="java.lang.String"/>
+	<field name="nomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricaoMoeda" class="java.lang.String"/>
+	<field name="sigla" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorCambio" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeFornecedor" class="java.lang.String"/>
+	<variable name="valorBruto" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<variable name="numeropacotes" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{idVendas}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="170" splitType="Stretch">
+			<textField>
+				<reportElement style="Detail" x="3" y="108" width="553" height="33" uuid="8b407713-f5f1-44b0-9223-250f03a69f01"/>
+				<textElement textAlignment="Center">
+					<font size="26" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ganho e perda câmbial"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="10" y="10" width="255" height="94" uuid="4e2916c0-3c7e-4cbb-b349-67c7cfc09527"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="194" y="150" width="90" height="20" uuid="26a4d0d1-1283-4cb4-b784-b49b0a3a8156"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$$$P{}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="150" width="71" height="20" uuid="a2eabdc1-bb45-46a6-9162-6cfd962d6d3b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Período : "]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="80" y="150" width="90" height="20" uuid="222b0fb2-1aea-4598-9351-76e4ba358cd6"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$$$P{}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="313" y="150" width="52" height="15" uuid="b9546c63-4d96-4a17-b742-d7e3255aef13"/>
+				<text><![CDATA[Moeda:]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="378" y="150" width="52" height="15" uuid="73cfaa49-f872-432f-a092-811f2a7bf36b"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorCambio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="42" width="555" height="1" uuid="b19ecc7b-3fa3-4530-9128-2103a4136dbc"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="3" y="22" width="41" height="15" uuid="f83b7b17-5eba-4c43-805d-17acb1a896aa"/>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="62" y="22" width="63" height="15" uuid="009cae10-9ad6-4f2a-bf43-958a7a0b2db2"/>
+				<text><![CDATA[Programa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="133" y="22" width="77" height="15" uuid="f79e8f0c-7979-48ef-8cc1-eb27e8f07d29"/>
+				<text><![CDATA[Fornecedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="221" y="22" width="54" height="15" uuid="0bc69482-0cb3-4609-9a5d-dff5b216f5a5"/>
+				<text><![CDATA[Valor Net]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="418" y="22" width="77" height="15" uuid="a1202fea-9298-406f-98ee-90d0859a2833"/>
+				<text><![CDATA[Câmbio Pagamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="284" y="22" width="54" height="15" uuid="81efd9de-7cc0-4059-8368-acfde3f2144c"/>
+				<text><![CDATA[Câmbio Venda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="501" y="22" width="54" height="15" uuid="2c495298-7b30-4e98-93b4-92c182aab857"/>
+				<text><![CDATA[Ganho/Perda Câmbial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="353" y="22" width="52" height="15" uuid="0f1c31da-623f-46a3-8cd5-ab9b9a945742"/>
+				<text><![CDATA[Data Pagamento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="353" y="2" width="52" height="15" uuid="f4d31be6-853e-4383-9472-c032ac3433ad"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorCambio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="430" y="2" width="52" height="15" uuid="82da4801-a355-486c-b844-f961173ea704"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorCambio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="503" y="2" width="52" height="15" uuid="58859841-c0cc-4ca4-9e34-8c7ce5e9df37"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorCambio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="221" y="0" width="52" height="15" uuid="a66bf26c-c7c1-4b10-9c9b-ea3888af6ade"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorCambio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="284" y="2" width="52" height="15" uuid="3aa4c320-f6da-4822-9893-639cdd043a9b"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorCambio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="66" y="0" width="52" height="15" uuid="a3f31c64-28d8-41e3-8319-06e4051e322e"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorCambio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="147" y="2" width="52" height="15" uuid="3a7aa7bd-4911-4676-a69d-a24f8b77420b"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorCambio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="Detail" x="3" y="0" width="52" height="15" uuid="eb0f8e95-415a-44db-ac08-152a29117ba9"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorCambio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="58">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="2" y="34" width="197" height="20" uuid="e7648991-7629-46f3-8634-3e60c0e83f52"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>

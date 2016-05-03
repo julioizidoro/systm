@@ -1,0 +1,4937 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package telas.Voluntariado;
+
+
+import com.toedter.calendar.JTextFieldDateEditor;
+import controller.CambioController;
+import controller.ClienteController;
+import controller.FollowupController;
+import controller.FormaPagamentoController;
+import controller.InvoicesController;
+import controller.OrcamentoController;
+import controller.ParcelamentoPagamentoController;
+import controller.ProdutoOrcamentoController;
+import controller.ProdutoRemessaController;
+import controller.SeguroViagemController;
+import controller.VendasController;
+import controller.VoluntariadoController;
+import controller.ValorSeguroController;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import model.Acesso;
+import model.Cambio;
+import model.Cliente;
+import model.Controlevoluntariado;
+import model.Formapagamento;
+import model.Fornecedorcidade;
+import model.Invoices;
+import model.Moedas;
+import model.Orcamento;
+import model.Orcamentocurso;
+import model.Orcamentoprodutosorcamento;
+import model.Parcelamentopagamento;
+import model.Produtoremessa;
+import model.Produtos;
+import model.Produtosorcamento;
+import model.Seguroviagem;
+import model.Valoresseguro;
+import model.Vendas;
+import model.Voluntariado;
+import model.view.Viewprodutosfiltro;
+import telas.Cliente.FrmConsultaCliente;
+import telas.Fornecedor.FrmConsultaFornecedor;
+import telas.SeguroViagem.Valores.FrmConsultaValoresSeguro;
+import telas.Usuarios.UsuarioLogadoBean;
+import telas.cambio.FrmAlterarValorCambio;
+import util.EnviarEmailBean;
+import util.Formatacao;
+import util.FrmCalculoJuros;
+import util.LimiteTextoJedit;
+
+/**
+ *
+ * @author Wolverine
+ */
+public class FrmFichaVoluntariado01 extends javax.swing.JFrame implements IVoluntariado{
+    
+    private String datePattern;
+    private String maskPattern;
+    private char placeHolder;
+    private Vendas venda;
+    private Vendas vendaAlterada;
+    private Formapagamento formaPagamento;
+    private Produtos produto;
+    private Cliente cliente;
+    private Seguroviagem seguroViagem;
+    private Seguroviagem seguroViagemAlterado;
+    private Orcamento orcamento;
+    private List<ProdutoOrcamentoBean> listaProdutoOrcamentoBean;
+    private Voluntariado voluntariado;
+    private Voluntariado voluntariadoAlterado;
+    private UsuarioLogadoBean usuarioLogadoBean;
+    private OrcamentoProdutoTableModel modelOrcamentoProduto;
+    private String  cambioAlterado = "Não";
+    private float valorSeguro=0;
+    private float valorVistos=0;
+    private float valorCambio=0;
+    private float subTotal=0;
+    private float valorTotal=0;
+    private float valorJuros=0;
+    private float totalPagar=0;
+    private float valorEntrada=0;
+    private float valorParcelar=0;
+    private float valorParcela=0;
+    private float totalMoedaEstrangeira=0;
+    private float totalMoedaReal = 0;
+    private Cambio cambio;
+    private boolean consultaCambio=false;
+    private IConsultaVoluntariado telaConsulta;
+    private Fornecedorcidade fornecedorcidade;
+    private Fornecedorcidade fornecedorAlteradocidade;
+    private Fornecedorcidade fornecedorSeguro;
+    private Date dataCambio;
+    private ConsultaParcelamentoPagamentoTableModel modelParcelamento;
+    private List<Parcelamentopagamento> listaParcelamento;
+    private boolean novaFicha = false;
+    private Orcamentocurso orcamentoCurso;
+    private String caracteres = "0987654321-()";
+    private String dadosAlterado;
+    private String situacao= "PROCESSO";
+    private Valoresseguro valoresSeguro;
+    private float valorVendaAlterar=0.0f;
+    
+    
+
+    /**
+     * Creates new form FrmFichaCursos
+     */
+    public FrmFichaVoluntariado01(int idVenda, UsuarioLogadoBean usuarioLogado,IConsultaVoluntariado telaConsulta, Date dataCambio) {
+        this.telaConsulta = telaConsulta;
+        this.dataCambio = dataCambio;
+        this.usuarioLogadoBean = usuarioLogado;
+        datePattern = "dd/MM/yyyy";
+        maskPattern = "##/##/##";
+        placeHolder = '_';
+        initComponents();
+        URL url = this.getClass().getResource("/imagens/logo/logotela.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
+        this.setLocationRelativeTo(null);
+        limitarJText();
+        carregarInicializacao(idVenda);
+        carregarModelParcelamento();
+        this.setVisible(true);
+
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        temAlergiabuttonGroup = new javax.swing.ButtonGroup();
+        cartaoVTMbuttonGroup = new javax.swing.ButtonGroup();
+        TranferbuttonGroup = new javax.swing.ButtonGroup();
+        passagemAereabuttonGroup = new javax.swing.ButtonGroup();
+        solicitacaoVistobuttonGroup = new javax.swing.ButtonGroup();
+        seguroPrivadobuttonGroup = new javax.swing.ButtonGroup();
+        jLabel66 = new javax.swing.JLabel();
+        transferinbuttonGroup = new javax.swing.ButtonGroup();
+        transferoutbuttonGroup = new javax.swing.ButtonGroup();
+        seguroGovernamentealbuttonGroup = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        cursosjTabbedPane = new javax.swing.JTabbedPane();
+        cursojPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        nomeClientejTextField = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        jLabel79 = new javax.swing.JLabel();
+        fornecedorjTextField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        instituicaoEstudajTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        cursoEstudajTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        duracaoCursoEstudajTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        periodoCursoEstudajTextField = new javax.swing.JTextField();
+        dataMatriculaCursoEstudajDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+            maskPattern, placeHolder));
+    jLabel6 = new javax.swing.JLabel();
+    jLabel7 = new javax.swing.JLabel();
+    dataEstimadaTerminoCursoEstudajDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+        maskPattern, placeHolder));
+profissaojTextField = new javax.swing.JTextField();
+cargojTextField = new javax.swing.JTextField();
+jLabel9 = new javax.swing.JLabel();
+jLabel10 = new javax.swing.JLabel();
+jLabel11 = new javax.swing.JLabel();
+descricaoCargojTextField = new javax.swing.JTextField();
+jLabel21 = new javax.swing.JLabel();
+outrasHabilidadejTextField = new javax.swing.JTextField();
+acomodacaojPanel = new javax.swing.JPanel();
+jLabel12 = new javax.swing.JLabel();
+tipoAcomodacaojComboBox = new javax.swing.JComboBox();
+jLabel13 = new javax.swing.JLabel();
+numeroSemanasAcomodacaojTextField = new javax.swing.JTextField();
+tipoQuartojComboBox = new javax.swing.JComboBox();
+jLabel14 = new javax.swing.JLabel();
+jLabel15 = new javax.swing.JLabel();
+refeicoesjComboBox = new javax.swing.JComboBox();
+jLabel16 = new javax.swing.JLabel();
+adicionaisjTextField = new javax.swing.JTextField();
+dataChegadaAcomodacaojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+    maskPattern, placeHolder));
+    dataPartidaAcomodacaojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+        maskPattern, placeHolder));
+jLabel17 = new javax.swing.JLabel();
+jLabel18 = new javax.swing.JLabel();
+jLabel19 = new javax.swing.JLabel();
+familiacriancajComboBox = new javax.swing.JComboBox();
+familiaanimaisestimacaojComboBox = new javax.swing.JComboBox();
+jLabel20 = new javax.swing.JLabel();
+jPanel26 = new javax.swing.JPanel();
+dataIniciojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+    maskPattern, placeHolder));
+    jLabel22 = new javax.swing.JLabel();
+    dataTerminojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+        maskPattern, placeHolder));
+jLabel23 = new javax.swing.JLabel();
+jLabel24 = new javax.swing.JLabel();
+cursojTextField = new javax.swing.JTextField();
+jLabel25 = new javax.swing.JLabel();
+jLabel28 = new javax.swing.JLabel();
+aulasporSemanajTextField = new javax.swing.JTextField();
+numeroSemanasjTextField = new javax.swing.JTextField();
+jPanel29 = new javax.swing.JPanel();
+dataInicioVoluntariadojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+    maskPattern, placeHolder));
+    dataTerminoVoluntariadojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+        maskPattern, placeHolder));
+jLabel31 = new javax.swing.JLabel();
+projetoVoluntariadojTextField = new javax.swing.JTextField();
+jLabel40 = new javax.swing.JLabel();
+experienciaVoluntariadojTextField = new javax.swing.JTextField();
+jLabel41 = new javax.swing.JLabel();
+motivoVoluntariadojTextField = new javax.swing.JTextField();
+jLabel71 = new javax.swing.JLabel();
+jLabel72 = new javax.swing.JLabel();
+jLabel8 = new javax.swing.JLabel();
+infoSaudejPanel = new javax.swing.JPanel();
+fumantejComboBox = new javax.swing.JComboBox();
+jLabel80 = new javax.swing.JLabel();
+vegetarianojComboBox = new javax.swing.JComboBox();
+jLabel81 = new javax.swing.JLabel();
+jLabel84 = new javax.swing.JLabel();
+hobbiesjTextField = new javax.swing.JTextField();
+jLabel85 = new javax.swing.JLabel();
+jLabel86 = new javax.swing.JLabel();
+solicitacoesEspeciaisjTextField = new javax.swing.JTextField();
+jLabel44 = new javax.swing.JLabel();
+deficienciaFisicajComboBox = new javax.swing.JComboBox();
+jLabel50 = new javax.swing.JLabel();
+jLabel51 = new javax.swing.JLabel();
+jLabel57 = new javax.swing.JLabel();
+jLabel67 = new javax.swing.JLabel();
+jLabel69 = new javax.swing.JLabel();
+nivelFitnessjTextField = new javax.swing.JTextField();
+jLabel70 = new javax.swing.JLabel();
+dietaEspecificajTextField = new javax.swing.JTextField();
+descricaoCirurgiajTextField = new javax.swing.JTextField();
+quaisalergiasjTextField = new javax.swing.JTextField();
+descricaoDrogasjTextField = new javax.swing.JTextField();
+descricaoMedicojTextField = new javax.swing.JTextField();
+probelamSaudajComboBox = new javax.swing.JComboBox();
+tratamentoEspecificojComboBox = new javax.swing.JComboBox();
+usoDrogajComboBox = new javax.swing.JComboBox();
+cirurgiajComboBox = new javax.swing.JComboBox();
+temAlergiajComboBox = new javax.swing.JComboBox();
+descricaoproblemaSaudejTextField = new javax.swing.JTextField();
+cartaojPanel = new javax.swing.JPanel();
+jPanel5 = new javax.swing.JPanel();
+numeroCartaoVTMjTextField = new javax.swing.JTextField();
+jLabel26 = new javax.swing.JLabel();
+moedaCartaoVTMjComboBox = new javax.swing.JComboBox();
+jLabel27 = new javax.swing.JLabel();
+cartaoVTMjComboBox = new javax.swing.JComboBox();
+jPanel6 = new javax.swing.JPanel();
+jPanel22 = new javax.swing.JPanel();
+transferOutjComboBox = new javax.swing.JComboBox();
+jPanel23 = new javax.swing.JPanel();
+transferInjComboBox = new javax.swing.JComboBox();
+jLabel73 = new javax.swing.JLabel();
+diachegadavoojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+    maskPattern, placeHolder));
+    voojTextField = new javax.swing.JTextField();
+    jLabel74 = new javax.swing.JLabel();
+    ciajTextField = new javax.swing.JTextField();
+    jLabel75 = new javax.swing.JLabel();
+    jLabel78 = new javax.swing.JLabel();
+    horariojFormattedTextField = new javax.swing.JFormattedTextField();
+    jPanel7 = new javax.swing.JPanel();
+    jLabel33 = new javax.swing.JLabel();
+    observacaoPassagemjTextField = new javax.swing.JTextField();
+    passagemjComboBox = new javax.swing.JComboBox();
+    jPanel27 = new javax.swing.JPanel();
+    jLabel76 = new javax.swing.JLabel();
+    jLabel77 = new javax.swing.JLabel();
+    observacaoVistojTextField = new javax.swing.JTextField();
+    dataEntregaDocumentosjDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+        maskPattern, placeHolder));
+vistojComboBox = new javax.swing.JComboBox();
+segurojPanel = new javax.swing.JPanel();
+jPanel11 = new javax.swing.JPanel();
+jLabel42 = new javax.swing.JLabel();
+nomeContatoEmergenciajTextField = new javax.swing.JTextField();
+jLabel43 = new javax.swing.JLabel();
+emailConatoEmergenciajTextField = new javax.swing.JTextField();
+jLabel45 = new javax.swing.JLabel();
+relacaoEmergenciajTextField = new javax.swing.JTextField();
+telefoneEmergenciajTextField = new javax.swing.JTextField();
+telefoneEmergenciajCheckBox = new javax.swing.JCheckBox();
+jPanel9 = new javax.swing.JPanel();
+jLabel34 = new javax.swing.JLabel();
+selecionarSeguradorajButton = new javax.swing.JButton();
+jLabel37 = new javax.swing.JLabel();
+dataInicioSegurojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+    maskPattern, placeHolder));
+    numeroSemanaSegurosjTextField = new javax.swing.JTextField();
+    jLabel39 = new javax.swing.JLabel();
+    dataTerminoSegurojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+        maskPattern, placeHolder));
+jLabel38 = new javax.swing.JLabel();
+valorSegurojTextField = new javax.swing.JTextField();
+jLabel65 = new javax.swing.JLabel();
+jLabel36 = new javax.swing.JLabel();
+planosegurojTextField = new javax.swing.JTextField();
+jLabel35 = new javax.swing.JLabel();
+seguradorajTextField = new javax.swing.JTextField();
+seguroViagemjComboBox = new javax.swing.JComboBox();
+jPanel12 = new javax.swing.JPanel();
+jLabel46 = new javax.swing.JLabel();
+produtoOrcaemntojComboBox = new javax.swing.JComboBox();
+jLabel47 = new javax.swing.JLabel();
+valorProdutosMoedaEstrangeirajTextField = new javax.swing.JTextField();
+jScrollPane1 = new javax.swing.JScrollPane();
+produtoOrcamentojTable = new javax.swing.JTable();
+jPanel13 = new javax.swing.JPanel();
+jButton2 = new javax.swing.JButton();
+jButton3 = new javax.swing.JButton();
+produtojPanel = new javax.swing.JPanel();
+jLabel48 = new javax.swing.JLabel();
+jLabel49 = new javax.swing.JLabel();
+valorCambiojTextField = new javax.swing.JTextField();
+valorTotalOrcamentojTextField = new javax.swing.JTextField();
+jLabel52 = new javax.swing.JLabel();
+buscaBancojButton3 = new javax.swing.JButton();
+moedaCambiojComboBox = new javax.swing.JComboBox();
+valorProdutosMoedaRealjTextField = new javax.swing.JTextField();
+jLabel55 = new javax.swing.JLabel();
+formaPagamentojPanel = new javax.swing.JPanel();
+jPanel16 = new javax.swing.JPanel();
+jLabel61 = new javax.swing.JLabel();
+tipoParcelamentojComboBox = new javax.swing.JComboBox();
+jLabel62 = new javax.swing.JLabel();
+meioPagamentojComboBox = new javax.swing.JComboBox();
+jLabel63 = new javax.swing.JLabel();
+valorParcelamentojTextField = new javax.swing.JTextField();
+jLabel58 = new javax.swing.JLabel();
+jLabel59 = new javax.swing.JLabel();
+numeroParcelasjComboBox = new javax.swing.JComboBox();
+valorParcelajTextField = new javax.swing.JTextField();
+jLabel60 = new javax.swing.JLabel();
+dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
+    maskPattern, placeHolder));
+    jPanel18 = new javax.swing.JPanel();
+    condicaoPagamentojComboBox = new javax.swing.JComboBox();
+    jLabel53 = new javax.swing.JLabel();
+    valorOrcamentoFormajTextField = new javax.swing.JTextField();
+    jLabel54 = new javax.swing.JLabel();
+    possuiJurosjComboBox = new javax.swing.JComboBox();
+    jLabel64 = new javax.swing.JLabel();
+    valorJurosjTextField = new javax.swing.JTextField();
+    jLabel56 = new javax.swing.JLabel();
+    totalPagarjTextField = new javax.swing.JTextField();
+    jLabel68 = new javax.swing.JLabel();
+    jLabel29 = new javax.swing.JLabel();
+    saldoReceberjTextField = new javax.swing.JTextField();
+    jLabel30 = new javax.swing.JLabel();
+    saldoParcelarjTextField = new javax.swing.JTextField();
+    buscaBancojButton4 = new javax.swing.JButton();
+    jPanel20 = new javax.swing.JPanel();
+    jButton7 = new javax.swing.JButton();
+    jButton8 = new javax.swing.JButton();
+    jScrollPane2 = new javax.swing.JScrollPane();
+    parcelamentojTable = new javax.swing.JTable();
+    obsjPanel = new javax.swing.JPanel();
+    jScrollPane3 = new javax.swing.JScrollPane();
+    observacoesjTextArea = new javax.swing.JTextArea();
+    obstmjPanel = new javax.swing.JPanel();
+    jScrollPane4 = new javax.swing.JScrollPane();
+    obsTMjTextArea = new javax.swing.JTextArea();
+    jLabel32 = new javax.swing.JLabel();
+
+    jLabel66.setText("jLabel66");
+
+    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+    setTitle("Ficha de Voluntariado");
+
+    jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+    jPanel17.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+    jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botozinhos/confirmar.png"))); // NOI18N
+    jButton5.setText("Confirmar");
+    jButton5.setToolTipText("Confirma Cadastro da Ficha de Curso");
+    jButton5.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton5ActionPerformed(evt);
+        }
+    });
+
+    jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botozinhos/cancel.png"))); // NOI18N
+    jButton6.setText("Cancelar");
+    jButton6.setToolTipText("Cancela Ficha de Curso");
+    jButton6.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton6ActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+    jPanel17.setLayout(jPanel17Layout);
+    jPanel17Layout.setHorizontalGroup(
+        jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel17Layout.createSequentialGroup()
+            .addContainerGap(85, Short.MAX_VALUE)
+            .addComponent(jButton5)
+            .addGap(37, 37, 37)
+            .addComponent(jButton6)
+            .addGap(86, 86, 86))
+    );
+    jPanel17Layout.setVerticalGroup(
+        jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel17Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jButton5)
+                .addComponent(jButton6))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+    jPanel1.setLayout(jPanel1Layout);
+    jPanel1Layout.setHorizontalGroup(
+        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addContainerGap(126, Short.MAX_VALUE)
+            .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(149, 149, 149))
+    );
+    jPanel1Layout.setVerticalGroup(
+        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap())
+    );
+
+    cursosjTabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            cursosjTabbedPaneMouseClicked(evt);
+        }
+    });
+    cursosjTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
+        public void stateChanged(javax.swing.event.ChangeEvent evt) {
+            cursosjTabbedPaneStateChanged(evt);
+        }
+    });
+
+    cursojPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+    jLabel1.setText("Selecionar Cliente");
+
+    nomeClientejTextField.setEditable(false);
+
+    jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botozinhos/selecionar.png"))); // NOI18N
+    jButton4.setText("Selecionar");
+    jButton4.setToolTipText("Selecionar Cliente");
+    jButton4.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton4ActionPerformed(evt);
+        }
+    });
+
+    jLabel79.setText("Fornecedor");
+
+    fornecedorjTextField.setEditable(false);
+
+    jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botozinhos/selecionar.png"))); // NOI18N
+    jButton1.setText("Selecionar");
+    jButton1.setToolTipText("Selecionar Escola");
+    jButton1.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton1ActionPerformed(evt);
+        }
+    });
+
+    jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Escolaridade / Profissão"));
+
+    jLabel2.setText("Instituição onde estuda");
+
+    jLabel3.setText("Curso");
+
+    jLabel4.setText("Duração do Curso");
+
+    jLabel5.setText("Cursando atualmente qual período/ano? ");
+
+    dataMatriculaCursoEstudajDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataMatriculaCursoEstudajDateChooserFocusGained(evt);
+        }
+    });
+
+    jLabel6.setText("Data de Matrícula");
+
+    jLabel7.setText("Data estimada para término ");
+
+    dataEstimadaTerminoCursoEstudajDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataEstimadaTerminoCursoEstudajDateChooserFocusGained(evt);
+        }
+    });
+
+    jLabel9.setText("Profissão");
+
+    jLabel10.setText("Cargo");
+
+    jLabel11.setText("Descrição do Cargo");
+
+    jLabel21.setText("Outras Habilidades");
+
+    javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+    jPanel3.setLayout(jPanel3Layout);
+    jPanel3Layout.setHorizontalGroup(
+        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel3Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addComponent(cursoEstudajTextField)
+                .addComponent(instituicaoEstudajTextField)
+                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4)
+                        .addComponent(duracaoCursoEstudajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(33, 33, 33)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(periodoCursoEstudajTextField)))
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                            .addComponent(dataMatriculaCursoEstudajDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dataEstimadaTerminoCursoEstudajDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addGap(57, 57, 57)
+                            .addComponent(jLabel7)))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(profissaojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(cargojTextField)))
+                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(descricaoCargojTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(outrasHabilidadejTextField, javax.swing.GroupLayout.Alignment.LEADING))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    jPanel3Layout.setVerticalGroup(
+        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel3Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jLabel2)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(instituicaoEstudajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel3)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(cursoEstudajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel5))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(duracaoCursoEstudajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(periodoCursoEstudajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel9))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(dataMatriculaCursoEstudajDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(profissaojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cargojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addComponent(dataEstimadaTerminoCursoEstudajDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel11)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(descricaoCargojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel21)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(outrasHabilidadejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(53, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout cursojPanelLayout = new javax.swing.GroupLayout(cursojPanel);
+    cursojPanel.setLayout(cursojPanelLayout);
+    cursojPanelLayout.setHorizontalGroup(
+        cursojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(cursojPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(cursojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jLabel79)
+                .addGroup(cursojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(cursojPanelLayout.createSequentialGroup()
+                        .addComponent(fornecedorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cursojPanelLayout.createSequentialGroup()
+                        .addComponent(nomeClientejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    cursojPanelLayout.setVerticalGroup(
+        cursojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(cursojPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jLabel1)
+            .addGap(6, 6, 6)
+            .addGroup(cursojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(nomeClientejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton4))
+            .addGap(3, 3, 3)
+            .addComponent(jLabel79)
+            .addGap(4, 4, 4)
+            .addGroup(cursojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(fornecedorjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+
+    cursosjTabbedPane.addTab("Voluntáriado", cursojPanel);
+
+    jLabel12.setText("Tipo Acomodação");
+
+    tipoAcomodacaojComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sem acomodação", "Casa de família", "Residência", "Alojamento", "Outro", "Studio" }));
+    tipoAcomodacaojComboBox.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            tipoAcomodacaojComboBoxItemStateChanged(evt);
+        }
+    });
+
+    jLabel13.setText("Nº Semanas (Somente Números)");
+
+    numeroSemanasAcomodacaojTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    numeroSemanasAcomodacaojTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            numeroSemanasAcomodacaojTextFieldFocusGained(evt);
+        }
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            numeroSemanasAcomodacaojTextFieldFocusLost(evt);
+        }
+    });
+    numeroSemanasAcomodacaojTextField.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            numeroSemanasAcomodacaojTextFieldActionPerformed(evt);
+        }
+    });
+    numeroSemanasAcomodacaojTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            numeroSemanasAcomodacaojTextFieldKeyTyped(evt);
+        }
+    });
+
+    tipoQuartojComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sem quarto", "Quarto individual", "Quarto duplo", "Quarto triplo", "Compartilhado" }));
+    tipoQuartojComboBox.setEnabled(false);
+    tipoQuartojComboBox.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            tipoQuartojComboBoxActionPerformed(evt);
+        }
+    });
+
+    jLabel14.setText("Quarto");
+
+    jLabel15.setText("Refeição");
+
+    refeicoesjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sem Refeição", "Café da Manhã", "Meia Pensão (2 Refeições)", "Pensão Completa (3 Refeições)" }));
+    refeicoesjComboBox.setEnabled(false);
+    refeicoesjComboBox.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            refeicoesjComboBoxActionPerformed(evt);
+        }
+    });
+
+    jLabel16.setText("Adicionais");
+
+    dataChegadaAcomodacaojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataChegadaAcomodacaojDateChooserFocusGained(evt);
+        }
+    });
+
+    dataPartidaAcomodacaojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataPartidaAcomodacaojDateChooserFocusGained(evt);
+        }
+    });
+
+    jLabel18.setText("Data Partida");
+
+    jLabel19.setText("Prefere família com criança");
+
+    familiacriancajComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Indiferente", "Sim", "Não" }));
+    familiacriancajComboBox.setEnabled(false);
+
+    familiaanimaisestimacaojComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Indiferente", "Sim", "Não" }));
+    familiaanimaisestimacaojComboBox.setEnabled(false);
+
+    jLabel20.setText("Com animais de estimação");
+
+    jPanel26.setBorder(javax.swing.BorderFactory.createTitledBorder("Curso"));
+
+    dataIniciojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataIniciojDateChooserFocusGained(evt);
+        }
+    });
+
+    jLabel22.setText("Data início");
+
+    dataTerminojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataTerminojDateChooserFocusGained(evt);
+        }
+    });
+
+    jLabel23.setText("Data término");
+
+    jLabel24.setText("Curso");
+
+    jLabel25.setText("Aulas por semana");
+
+    jLabel28.setText("N° de semanas (Somente Números)");
+
+    numeroSemanasjTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            numeroSemanasjTextFieldFocusLost(evt);
+        }
+    });
+    numeroSemanasjTextField.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            numeroSemanasjTextFieldActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
+    jPanel26.setLayout(jPanel26Layout);
+    jPanel26Layout.setHorizontalGroup(
+        jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel26Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel26Layout.createSequentialGroup()
+                    .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel24)
+                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cursojTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel26Layout.createSequentialGroup()
+                                .addComponent(dataIniciojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel23)
+                                    .addComponent(dataTerminojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGap(0, 94, Short.MAX_VALUE))
+                .addGroup(jPanel26Layout.createSequentialGroup()
+                    .addComponent(jLabel22)
+                    .addGap(134, 134, 134)
+                    .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel25)
+                        .addComponent(aulasporSemanajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(56, 56, 56)
+                    .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel28)
+                        .addComponent(numeroSemanasjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+    );
+    jPanel26Layout.setVerticalGroup(
+        jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel26Layout.createSequentialGroup()
+            .addComponent(jLabel24)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(cursojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
+                    .addGap(26, 26, 26)
+                    .addComponent(aulasporSemanajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel26Layout.createSequentialGroup()
+                    .addGap(6, 6, 6)
+                    .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel26Layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(numeroSemanasjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dataTerminojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel26Layout.createSequentialGroup()
+                            .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel22)
+                                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel25)
+                                    .addComponent(jLabel28)
+                                    .addComponent(jLabel23)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(dataIniciojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+    );
+
+    jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder("Voluntariado / Programa"));
+
+    dataInicioVoluntariadojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataInicioVoluntariadojDateChooserFocusGained(evt);
+        }
+    });
+
+    dataTerminoVoluntariadojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataTerminoVoluntariadojDateChooserFocusGained(evt);
+        }
+    });
+
+    jLabel31.setText("Projeto Voluntariado");
+
+    jLabel40.setText("Experiência e habilidades relevantes ao projeto escolhido");
+
+    jLabel41.setText("Qual o motivo que o levou a decidir ser voluntário? (exemplifique a sua motivação)");
+
+    jLabel71.setText("Data início");
+
+    jLabel72.setText("Data término");
+
+    javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
+    jPanel29.setLayout(jPanel29Layout);
+    jPanel29Layout.setHorizontalGroup(
+        jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel29Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel29Layout.createSequentialGroup()
+                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel41)
+                        .addComponent(jLabel40)
+                        .addComponent(jLabel31)
+                        .addComponent(experienciaVoluntariadojTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
+                        .addComponent(motivoVoluntariadojTextField))
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel29Layout.createSequentialGroup()
+                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(projetoVoluntariadojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel29Layout.createSequentialGroup()
+                            .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(dataInicioVoluntariadojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel71))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel72)
+                                .addComponent(dataTerminoVoluntariadojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+    );
+    jPanel29Layout.setVerticalGroup(
+        jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel29Layout.createSequentialGroup()
+            .addComponent(jLabel31)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(projetoVoluntariadojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel71)
+                .addComponent(jLabel72))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(dataInicioVoluntariadojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dataTerminoVoluntariadojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel40)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(experienciaVoluntariadojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel41)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(motivoVoluntariadojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(41, Short.MAX_VALUE))
+    );
+
+    jLabel8.setText("Data início");
+
+    javax.swing.GroupLayout acomodacaojPanelLayout = new javax.swing.GroupLayout(acomodacaojPanel);
+    acomodacaojPanel.setLayout(acomodacaojPanelLayout);
+    acomodacaojPanelLayout.setHorizontalGroup(
+        acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(adicionaisjTextField)
+                .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+                    .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+                            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tipoAcomodacaojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12))
+                            .addGap(430, 430, 430)
+                            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(refeicoesjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel15)))
+                        .addComponent(jLabel16))
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+                    .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+                            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(dataChegadaAcomodacaojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel17)
+                                .addComponent(jLabel8))
+                            .addGap(18, 18, 18)
+                            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel13)
+                                .addComponent(numeroSemanasAcomodacaojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel18)
+                                .addComponent(dataPartidaAcomodacaojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(tipoQuartojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(familiacriancajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel19))
+                    .addGap(18, 18, 18)
+                    .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(familiaanimaisestimacaojComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel20)
+                            .addGap(0, 0, Short.MAX_VALUE)))))
+            .addContainerGap())
+    );
+    acomodacaojPanelLayout.setVerticalGroup(
+        acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+                    .addGap(12, 12, 12)
+                    .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel15))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tipoAcomodacaojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, acomodacaojPanelLayout.createSequentialGroup()
+                            .addComponent(refeicoesjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(5, 5, 5))))
+                .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+                    .addGap(31, 31, 31)
+                    .addComponent(tipoQuartojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+                    .addComponent(jLabel17)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel8)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(dataChegadaAcomodacaojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+                    .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel18)
+                                .addComponent(jLabel20)))
+                        .addComponent(jLabel13))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(numeroSemanasAcomodacaojTextField)
+                        .addComponent(dataPartidaAcomodacaojDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(familiacriancajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(familiaanimaisestimacaojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel16)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(adicionaisjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+
+    cursosjTabbedPane.addTab("Acomodação", acomodacaojPanel);
+
+    fumantejComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+
+    jLabel80.setText("Você é fumante");
+
+    vegetarianojComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+
+    jLabel81.setText("Você é vegetariano");
+
+    jLabel84.setText("Quais seus interesses e  hobbies");
+
+    jLabel85.setText("Tem alergia a algum medicamento ou alimento? Se sim, especifique");
+
+    jLabel86.setText("Solicitações Especiais");
+
+    jLabel44.setText("Você tem alguma deficiência física?");
+
+    deficienciaFisicajComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+
+    jLabel50.setText("Você tem algum problema de saúde que possa prejudicar seu desempenho em funções do emprego pretendido?");
+
+    jLabel51.setText("Você necessita de algum tratamento específico ou utiliza algum medicamento controlado? Em caso positivo , especifique");
+
+    jLabel57.setText("Você já esteve em tratamento devido ao uso de drogas ou utilizou algum medicamento para distúrbios pscológicos? Em caso positivo, especifique");
+
+    jLabel67.setText("Você fez alguma cirurgia nos últimos 3 anos? Em caso positivo , especifique");
+
+    jLabel69.setText("Descreva o seu nível de fitness");
+
+    jLabel70.setText("Liste por favor alguma dieta especial caso tenha");
+
+    probelamSaudajComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+
+    tratamentoEspecificojComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+
+    usoDrogajComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+
+    cirurgiajComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+
+    temAlergiajComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+
+    javax.swing.GroupLayout infoSaudejPanelLayout = new javax.swing.GroupLayout(infoSaudejPanel);
+    infoSaudejPanel.setLayout(infoSaudejPanelLayout);
+    infoSaudejPanelLayout.setHorizontalGroup(
+        infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(infoSaudejPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(infoSaudejPanelLayout.createSequentialGroup()
+                    .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel44)
+                        .addComponent(deficienciaFisicajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(fumantejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel80))
+                    .addGap(123, 123, 123)
+                    .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel81, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(vegetarianojComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel57, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, infoSaudejPanelLayout.createSequentialGroup()
+                        .addComponent(probelamSaudajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(descricaoproblemaSaudejTextField))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, infoSaudejPanelLayout.createSequentialGroup()
+                        .addComponent(tratamentoEspecificojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(descricaoMedicojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(infoSaudejPanelLayout.createSequentialGroup()
+                    .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(solicitacoesEspeciaisjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nivelFitnessjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(hobbiesjTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(dietaEspecificajTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel86)
+                            .addComponent(jLabel67)
+                            .addComponent(jLabel85)
+                            .addComponent(jLabel70)
+                            .addComponent(jLabel84)
+                            .addComponent(jLabel69)
+                            .addGroup(infoSaudejPanelLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(infoSaudejPanelLayout.createSequentialGroup()
+                                        .addComponent(cirurgiajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(descricaoCirurgiajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(infoSaudejPanelLayout.createSequentialGroup()
+                                        .addComponent(temAlergiajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(quaisalergiasjTextField))))
+                            .addGroup(infoSaudejPanelLayout.createSequentialGroup()
+                                .addComponent(usoDrogajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17)
+                                .addComponent(descricaoDrogasjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(infoSaudejPanelLayout.createSequentialGroup()
+                    .addComponent(jLabel50)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addContainerGap())
+    );
+    infoSaudejPanelLayout.setVerticalGroup(
+        infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSaudejPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(infoSaudejPanelLayout.createSequentialGroup()
+                    .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel80)
+                        .addComponent(jLabel81))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(fumantejComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(vegetarianojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoSaudejPanelLayout.createSequentialGroup()
+                    .addComponent(jLabel44)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(deficienciaFisicajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel50)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(probelamSaudajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(descricaoproblemaSaudejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel51)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(descricaoMedicojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tratamentoEspecificojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(descricaoDrogasjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usoDrogajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel67)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(descricaoCirurgiajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cirurgiajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jLabel85)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(infoSaudejPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(quaisalergiasjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(temAlergiajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel70)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(dietaEspecificajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(1, 1, 1)
+            .addComponent(jLabel84)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(hobbiesjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel69)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(nivelFitnessjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel86)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(solicitacoesEspeciaisjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(103, 103, 103))
+    );
+
+    cursosjTabbedPane.addTab("Info de Saúde", infoSaudejPanel);
+
+    jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Cartão VTM"));
+
+    numeroCartaoVTMjTextField.setEnabled(false);
+
+    jLabel26.setText("Número do Cartão");
+
+    moedaCartaoVTMjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "   ", "Euro", "Dólar Americano", "Dólar Canadense", "Dolár Australiano", "Libra" }));
+    moedaCartaoVTMjComboBox.setEnabled(false);
+
+    jLabel27.setText("Moeda Cartão VTM");
+
+    cartaoVTMjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+    cartaoVTMjComboBox.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            cartaoVTMjComboBoxItemStateChanged(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+    jPanel5.setLayout(jPanel5Layout);
+    jPanel5Layout.setHorizontalGroup(
+        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel5Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(numeroCartaoVTMjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel26))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addComponent(jLabel27)
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(moedaCartaoVTMjComboBox, 0, 452, Short.MAX_VALUE)))
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addComponent(cartaoVTMjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addContainerGap())
+    );
+    jPanel5Layout.setVerticalGroup(
+        jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGap(4, 4, 4)
+            .addComponent(cartaoVTMjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel26)
+                .addComponent(jLabel27))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(numeroCartaoVTMjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(moedaCartaoVTMjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+
+    jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Chegada ao Destino (Transfer Aeroporto)"));
+
+    jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder("Transfer Out (Partida)"));
+
+    transferOutjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+
+    javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+    jPanel22.setLayout(jPanel22Layout);
+    jPanel22Layout.setHorizontalGroup(
+        jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel22Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(transferOutjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(108, Short.MAX_VALUE))
+    );
+    jPanel22Layout.setVerticalGroup(
+        jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(transferOutjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap())
+    );
+
+    jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder("Transfer In (Chegada)"));
+
+    transferInjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+
+    javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+    jPanel23.setLayout(jPanel23Layout);
+    jPanel23Layout.setHorizontalGroup(
+        jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel23Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(transferInjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(108, Short.MAX_VALUE))
+    );
+    jPanel23Layout.setVerticalGroup(
+        jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(transferInjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap())
+    );
+
+    jLabel73.setText("Dia de Chegada");
+
+    diachegadavoojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            diachegadavoojDateChooserFocusGained(evt);
+        }
+    });
+
+    jLabel74.setText("Voo");
+
+    jLabel75.setText("Cia Aérea");
+
+    jLabel78.setText("Horário");
+
+    horariojFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+
+    javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+    jPanel6.setLayout(jPanel6Layout);
+    jPanel6Layout.setHorizontalGroup(
+        jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel6Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(diachegadavoojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel73))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel74)
+                        .addComponent(voojTextField))))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ciajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel75))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel78)
+                        .addComponent(horariojFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    jPanel6Layout.setVerticalGroup(
+        jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel6Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+            .addGap(12, 12, 12)
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel73)
+                .addComponent(jLabel74)
+                .addComponent(jLabel75)
+                .addComponent(jLabel78))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(diachegadavoojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(voojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ciajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(horariojFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap())
+    );
+
+    jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Passagem Aérea quando não inclusa no programa"));
+
+    jLabel33.setText("Observação");
+
+    passagemjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cliente providenciará", "Atráves da TavelMate", " " }));
+
+    javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+    jPanel7.setLayout(jPanel7Layout);
+    jPanel7Layout.setHorizontalGroup(
+        jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel7Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addComponent(observacaoPassagemjTextField)
+                    .addGap(14, 14, 14))
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel33)
+                        .addComponent(passagemjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE))))
+    );
+    jPanel7Layout.setVerticalGroup(
+        jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel7Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(passagemjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel33)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(observacaoPassagemjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+
+    jPanel27.setBorder(javax.swing.BorderFactory.createTitledBorder("Solicitação de Visto Consular"));
+
+    jLabel76.setText("Data Entrega Documentos");
+
+    jLabel77.setText("Observação");
+
+    dataEntregaDocumentosjDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataEntregaDocumentosjDateChooserFocusGained(evt);
+        }
+    });
+
+    vistojComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cliente providenciará", "Atráves da TavelMate", " " }));
+
+    javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+    jPanel27.setLayout(jPanel27Layout);
+    jPanel27Layout.setHorizontalGroup(
+        jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel27Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel27Layout.createSequentialGroup()
+                    .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel76)
+                        .addComponent(dataEntregaDocumentosjDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(27, 27, 27)
+                    .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(observacaoVistojTextField)
+                        .addGroup(jPanel27Layout.createSequentialGroup()
+                            .addComponent(jLabel77)
+                            .addContainerGap(519, Short.MAX_VALUE))))
+                .addGroup(jPanel27Layout.createSequentialGroup()
+                    .addComponent(vistojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))))
+    );
+    jPanel27Layout.setVerticalGroup(
+        jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel27Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(vistojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel76)
+                .addComponent(jLabel77))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(observacaoVistojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dataEntregaDocumentosjDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap())
+    );
+
+    javax.swing.GroupLayout cartaojPanelLayout = new javax.swing.GroupLayout(cartaojPanel);
+    cartaojPanel.setLayout(cartaojPanelLayout);
+    cartaojPanelLayout.setHorizontalGroup(
+        cartaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(cartaojPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(cartaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap())
+    );
+    cartaojPanelLayout.setVerticalGroup(
+        cartaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(cartaojPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(16, 16, 16))
+    );
+
+    cursosjTabbedPane.addTab("VTM/Transfer/Passagem/Visto", cartaojPanel);
+
+    jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Contato de Emergência no Brasil"));
+
+    jLabel42.setText("Nome");
+
+    jLabel43.setText("E-mail");
+
+    jLabel45.setText("Relação");
+
+    telefoneEmergenciajTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            telefoneEmergenciajTextFieldFocusLost(evt);
+        }
+    });
+    telefoneEmergenciajTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            telefoneEmergenciajTextFieldKeyPressed(evt);
+        }
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            telefoneEmergenciajTextFieldKeyReleased(evt);
+        }
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            telefoneEmergenciajTextFieldKeyTyped(evt);
+        }
+    });
+
+    telefoneEmergenciajCheckBox.setText("9-Telefone");
+    telefoneEmergenciajCheckBox.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            telefoneEmergenciajCheckBoxItemStateChanged(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+    jPanel11.setLayout(jPanel11Layout);
+    jPanel11Layout.setHorizontalGroup(
+        jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel11Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel11Layout.createSequentialGroup()
+                    .addComponent(emailConatoEmergenciajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(relacaoEmergenciajTextField))
+                .addGroup(jPanel11Layout.createSequentialGroup()
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nomeContatoEmergenciajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel43)
+                        .addComponent(jLabel42))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(telefoneEmergenciajTextField)
+                        .addGroup(jPanel11Layout.createSequentialGroup()
+                            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel45)
+                                .addComponent(telefoneEmergenciajCheckBox))
+                            .addGap(0, 0, Short.MAX_VALUE)))))
+            .addContainerGap())
+    );
+    jPanel11Layout.setVerticalGroup(
+        jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel11Layout.createSequentialGroup()
+            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel42)
+                .addComponent(telefoneEmergenciajCheckBox))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(nomeContatoEmergenciajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(telefoneEmergenciajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel43)
+                .addComponent(jLabel45))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(emailConatoEmergenciajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(relacaoEmergenciajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(20, Short.MAX_VALUE))
+    );
+
+    jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Seguro Viagem"));
+
+    jLabel34.setText("Seguro Viagem");
+
+    selecionarSeguradorajButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botozinhos/selecionar.png"))); // NOI18N
+    selecionarSeguradorajButton.setText("Selecionar");
+    selecionarSeguradorajButton.setEnabled(false);
+    selecionarSeguradorajButton.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            selecionarSeguradorajButtonActionPerformed(evt);
+        }
+    });
+
+    jLabel37.setText("Data do início");
+
+    dataInicioSegurojDateChooser.setEnabled(false);
+    dataInicioSegurojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataInicioSegurojDateChooserFocusGained(evt);
+        }
+    });
+
+    numeroSemanaSegurosjTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    numeroSemanaSegurosjTextField.setEnabled(false);
+    numeroSemanaSegurosjTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            numeroSemanaSegurosjTextFieldFocusGained(evt);
+        }
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            numeroSemanaSegurosjTextFieldFocusLost(evt);
+        }
+    });
+    numeroSemanaSegurosjTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            numeroSemanaSegurosjTextFieldKeyTyped(evt);
+        }
+    });
+
+    jLabel39.setText("Nº Semanas (Somente Números)");
+
+    dataTerminoSegurojDateChooser.setEnabled(false);
+    dataTerminoSegurojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataTerminoSegurojDateChooserFocusGained(evt);
+        }
+    });
+
+    jLabel38.setText("Data do término");
+
+    valorSegurojTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    valorSegurojTextField.setEnabled(false);
+    valorSegurojTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            valorSegurojTextFieldFocusLost(evt);
+        }
+    });
+    valorSegurojTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            valorSegurojTextFieldKeyTyped(evt);
+        }
+    });
+
+    jLabel65.setText("Valor do Seguro");
+
+    jLabel36.setText("Plano");
+
+    planosegurojTextField.setEnabled(false);
+
+    jLabel35.setText("Seguradora");
+
+    seguradorajTextField.setEditable(false);
+    seguradorajTextField.setEnabled(false);
+
+    seguroViagemjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+    seguroViagemjComboBox.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            seguroViagemjComboBoxItemStateChanged(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+    jPanel9.setLayout(jPanel9Layout);
+    jPanel9Layout.setHorizontalGroup(
+        jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel9Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(planosegurojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel36)
+                .addComponent(seguroViagemjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel34))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(seguradorajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel35))
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(valorSegurojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(selecionarSeguradorajButton))
+                        .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addGap(13, 13, 13)
+                            .addComponent(jLabel65)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel37)
+                        .addComponent(dataInicioSegurojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel39)
+                        .addComponent(numeroSemanaSegurosjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addGap(19, 19, 19)
+                            .addComponent(jLabel38))
+                        .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(dataTerminoSegurojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(121, 121, 121))))
+    );
+    jPanel9Layout.setVerticalGroup(
+        jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel9Layout.createSequentialGroup()
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel39)
+                        .addComponent(jLabel38))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(numeroSemanaSegurosjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dataTerminoSegurojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel37))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(dataInicioSegurojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(seguroViagemjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGap(12, 12, 12)
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel35)
+                        .addComponent(jLabel65))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(seguradorajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(valorSegurojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(selecionarSeguradorajButton)))
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addComponent(jLabel36)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(planosegurojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout segurojPanelLayout = new javax.swing.GroupLayout(segurojPanel);
+    segurojPanel.setLayout(segurojPanelLayout);
+    segurojPanelLayout.setHorizontalGroup(
+        segurojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(segurojPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(segurojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap(54, Short.MAX_VALUE))
+    );
+    segurojPanelLayout.setVerticalGroup(
+        segurojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(segurojPanelLayout.createSequentialGroup()
+            .addGap(16, 16, 16)
+            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(220, Short.MAX_VALUE))
+    );
+
+    cursosjTabbedPane.addTab("Seguro/Contato", segurojPanel);
+
+    jLabel46.setText("Produtos");
+
+    jLabel47.setText("Valor (Moeda Estrangeira)");
+
+    valorProdutosMoedaEstrangeirajTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    valorProdutosMoedaEstrangeirajTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            valorProdutosMoedaEstrangeirajTextFieldKeyTyped(evt);
+        }
+    });
+
+    produtoOrcamentojTable.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {null, null, null},
+            {null, null, null},
+            {null, null, null},
+            {null, null, null},
+            {null, null, null},
+            {null, null, null},
+            {null, null, null},
+            {null, null, null},
+            {null, null, null},
+            {null, null, null}
+        },
+        new String [] {
+            "Produtos Orçamento", "Moeda Estrangeira", "Valor R$"
+        }
+    ) {
+        boolean[] canEdit = new boolean [] {
+            false, false, false
+        };
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return canEdit [columnIndex];
+        }
+    });
+    jScrollPane1.setViewportView(produtoOrcamentojTable);
+    if (produtoOrcamentojTable.getColumnModel().getColumnCount() > 0) {
+        produtoOrcamentojTable.getColumnModel().getColumn(0).setResizable(false);
+        produtoOrcamentojTable.getColumnModel().getColumn(0).setPreferredWidth(290);
+        produtoOrcamentojTable.getColumnModel().getColumn(1).setResizable(false);
+        produtoOrcamentojTable.getColumnModel().getColumn(1).setPreferredWidth(80);
+        produtoOrcamentojTable.getColumnModel().getColumn(2).setResizable(false);
+        produtoOrcamentojTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+    }
+
+    jPanel13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+    jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botozinhos/adicionar.png"))); // NOI18N
+    jButton2.setText("Adicionar");
+    jButton2.setToolTipText("Adicionar novo produtos no orçamento");
+    jButton2.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton2ActionPerformed(evt);
+        }
+    });
+
+    jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botozinhos/excluir.png"))); // NOI18N
+    jButton3.setText("Excluir");
+    jButton3.setToolTipText("Excluir produto no orçamento");
+    jButton3.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton3ActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+    jPanel13.setLayout(jPanel13Layout);
+    jPanel13Layout.setHorizontalGroup(
+        jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(53, 53, 53))
+    );
+    jPanel13Layout.setVerticalGroup(
+        jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel13Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jButton2)
+                .addComponent(jButton3))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+
+    produtojPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+    jLabel48.setText("Moeda");
+
+    jLabel49.setText("Valor do câmbio ");
+
+    valorCambiojTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    valorCambiojTextField.setEnabled(false);
+
+    valorTotalOrcamentojTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    valorTotalOrcamentojTextField.setEnabled(false);
+
+    jLabel52.setText("Valor Total R$");
+
+    buscaBancojButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/cambio.png"))); // NOI18N
+    buscaBancojButton3.setToolTipText("Alterar Câmbio");
+    buscaBancojButton3.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buscaBancojButton3ActionPerformed(evt);
+        }
+    });
+
+    moedaCambiojComboBox.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            moedaCambiojComboBoxItemStateChanged(evt);
+        }
+    });
+
+    javax.swing.GroupLayout produtojPanelLayout = new javax.swing.GroupLayout(produtojPanel);
+    produtojPanel.setLayout(produtojPanelLayout);
+    produtojPanelLayout.setHorizontalGroup(
+        produtojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(produtojPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(produtojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel48)
+                .addComponent(moedaCambiojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(produtojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel49)
+                .addGroup(produtojPanelLayout.createSequentialGroup()
+                    .addComponent(valorCambiojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(buscaBancojButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(produtojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(valorTotalOrcamentojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel52))
+            .addContainerGap())
+    );
+    produtojPanelLayout.setVerticalGroup(
+        produtojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(produtojPanelLayout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(produtojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel48)
+                .addComponent(jLabel49)
+                .addComponent(jLabel52))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(produtojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(produtojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valorTotalOrcamentojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valorCambiojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(moedaCambiojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(buscaBancojButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap())
+    );
+
+    valorProdutosMoedaRealjTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    valorProdutosMoedaRealjTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            valorProdutosMoedaRealjTextFieldKeyTyped(evt);
+        }
+    });
+
+    jLabel55.setText("Valor R$");
+
+    javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+    jPanel12.setLayout(jPanel12Layout);
+    jPanel12Layout.setHorizontalGroup(
+        jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel12Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
+                .addGroup(jPanel12Layout.createSequentialGroup()
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel12Layout.createSequentialGroup()
+                            .addComponent(jLabel46)
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(produtoOrcaemntojComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(valorProdutosMoedaEstrangeirajTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGap(10, 10, 10)
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel55)
+                        .addComponent(valorProdutosMoedaRealjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(produtojPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap())
+        .addGroup(jPanel12Layout.createSequentialGroup()
+            .addGap(269, 269, 269)
+            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    jPanel12Layout.setVerticalGroup(
+        jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel12Layout.createSequentialGroup()
+            .addComponent(produtojPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel46)
+                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel55))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(produtoOrcaemntojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(valorProdutosMoedaEstrangeirajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(valorProdutosMoedaRealjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18))
+    );
+
+    cursosjTabbedPane.addTab("Produtos", jPanel12);
+
+    jPanel16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+    jLabel61.setText("Tipo de Parcelamento");
+
+    tipoParcelamentojComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Matriz", "Loja", "Fornecedor" }));
+
+    jLabel62.setText("Forma de Pagamento");
+
+    meioPagamentojComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Dinheiro", "Boleto", "Cartão de crédito", "Cartão de crédito autorizado", "Cartão débito", "Cheque", "Déposito", "Financiamento banco" }));
+    meioPagamentojComboBox.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            meioPagamentojComboBoxItemStateChanged(evt);
+        }
+    });
+
+    jLabel63.setText("Data Primeiro Vencimento");
+
+    valorParcelamentojTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    valorParcelamentojTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            valorParcelamentojTextFieldFocusGained(evt);
+        }
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            valorParcelamentojTextFieldFocusLost(evt);
+        }
+    });
+    valorParcelamentojTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            valorParcelamentojTextFieldKeyTyped(evt);
+        }
+    });
+
+    jLabel58.setText("Valor a Parcelar ");
+
+    jLabel59.setText("Nº Parcelas");
+
+    numeroParcelasjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" }));
+    numeroParcelasjComboBox.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            numeroParcelasjComboBoxItemStateChanged(evt);
+        }
+    });
+
+    valorParcelajTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    valorParcelajTextField.setEnabled(false);
+    valorParcelajTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            valorParcelajTextFieldFocusGained(evt);
+        }
+    });
+    valorParcelajTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            valorParcelajTextFieldKeyPressed(evt);
+        }
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            valorParcelajTextFieldKeyTyped(evt);
+        }
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            valorParcelajTextFieldKeyReleased(evt);
+        }
+    });
+
+    jLabel60.setText("Valor Parcela");
+
+    dataVencimentojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            dataVencimentojDateChooserFocusGained(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+    jPanel16.setLayout(jPanel16Layout);
+    jPanel16Layout.setHorizontalGroup(
+        jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel16Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel16Layout.createSequentialGroup()
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel62)
+                        .addComponent(meioPagamentojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(52, 52, 52)
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tipoParcelamentojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel61))
+                    .addGap(155, 155, 155)
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(dataVencimentojDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel16Layout.createSequentialGroup()
+                            .addComponent(jLabel63)
+                            .addGap(0, 3, Short.MAX_VALUE))))
+                .addGroup(jPanel16Layout.createSequentialGroup()
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel58)
+                        .addComponent(valorParcelamentojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(109, 109, 109)
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel59)
+                        .addComponent(numeroParcelasjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(204, 204, 204)
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel16Layout.createSequentialGroup()
+                            .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(valorParcelajTextField))))
+            .addContainerGap())
+    );
+    jPanel16Layout.setVerticalGroup(
+        jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel16Layout.createSequentialGroup()
+            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel16Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel62)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(meioPagamentojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(tipoParcelamentojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel16Layout.createSequentialGroup()
+                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel63)
+                                .addComponent(jLabel61))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(dataVencimentojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel16Layout.createSequentialGroup()
+                    .addComponent(jLabel59)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(numeroParcelasjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel16Layout.createSequentialGroup()
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel58)
+                        .addComponent(jLabel60))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(valorParcelajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(valorParcelamentojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addContainerGap())
+    );
+
+    jPanel18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+    condicaoPagamentojComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "À Vista", "Parcelado" }));
+    condicaoPagamentojComboBox.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            condicaoPagamentojComboBoxItemStateChanged(evt);
+        }
+    });
+
+    jLabel53.setText("Forma de Pagamento");
+
+    valorOrcamentoFormajTextField.setEditable(false);
+    valorOrcamentoFormajTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    valorOrcamentoFormajTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            valorOrcamentoFormajTextFieldKeyTyped(evt);
+        }
+    });
+
+    jLabel54.setText("Valor Orçamento");
+
+    possuiJurosjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
+    possuiJurosjComboBox.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            possuiJurosjComboBoxItemStateChanged(evt);
+        }
+    });
+
+    jLabel64.setText("Acrescentar Juros");
+
+    valorJurosjTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    valorJurosjTextField.setEnabled(false);
+    valorJurosjTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            valorJurosjTextFieldFocusLost(evt);
+        }
+    });
+    valorJurosjTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            valorJurosjTextFieldKeyReleased(evt);
+        }
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            valorJurosjTextFieldKeyTyped(evt);
+        }
+    });
+
+    jLabel56.setText("Valor Juros");
+
+    totalPagarjTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    totalPagarjTextField.setEnabled(false);
+
+    jLabel68.setText("Total a Pagar");
+
+    jLabel29.setText("Saldo a Receber");
+
+    saldoReceberjTextField.setEditable(false);
+    saldoReceberjTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    saldoReceberjTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            saldoReceberjTextFieldKeyTyped(evt);
+        }
+    });
+
+    jLabel30.setText("Saldo a Parcelar");
+
+    saldoParcelarjTextField.setEditable(false);
+    saldoParcelarjTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+    saldoParcelarjTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            saldoParcelarjTextFieldKeyTyped(evt);
+        }
+    });
+
+    buscaBancojButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icones/cambio.png"))); // NOI18N
+    buscaBancojButton4.setToolTipText("Calculo de Juros");
+    buscaBancojButton4.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            buscaBancojButton4ActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+    jPanel18.setLayout(jPanel18Layout);
+    jPanel18Layout.setHorizontalGroup(
+        jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel18Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(condicaoPagamentojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel53))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(valorOrcamentoFormajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel54))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel18Layout.createSequentialGroup()
+                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(possuiJurosjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel64))
+                    .addGap(50, 50, 50)
+                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel18Layout.createSequentialGroup()
+                            .addComponent(valorJurosjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(buscaBancojButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel56))
+                    .addGap(82, 82, 82)
+                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(totalPagarjTextField)
+                        .addGroup(jPanel18Layout.createSequentialGroup()
+                            .addComponent(jLabel68)
+                            .addGap(0, 47, Short.MAX_VALUE))))
+                .addGroup(jPanel18Layout.createSequentialGroup()
+                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel29)
+                        .addComponent(saldoReceberjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(saldoParcelarjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel30))))
+            .addContainerGap())
+    );
+    jPanel18Layout.setVerticalGroup(
+        jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(jPanel18Layout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel18Layout.createSequentialGroup()
+                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel53)
+                        .addComponent(jLabel54)
+                        .addComponent(jLabel64)
+                        .addComponent(jLabel68))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(condicaoPagamentojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(valorOrcamentoFormajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(possuiJurosjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(totalPagarjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel18Layout.createSequentialGroup()
+                    .addComponent(jLabel56)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(valorJurosjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buscaBancojButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel18Layout.createSequentialGroup()
+                    .addComponent(jLabel30)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(saldoParcelarjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel18Layout.createSequentialGroup()
+                    .addComponent(jLabel29)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(saldoReceberjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+
+    jPanel20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+    jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botozinhos/adicionar.png"))); // NOI18N
+    jButton7.setText("Adicionar");
+    jButton7.setToolTipText("Adicionar forma de pagamento");
+    jButton7.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton7ActionPerformed(evt);
+        }
+    });
+
+    jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botozinhos/excluir.png"))); // NOI18N
+    jButton8.setText("Excluir");
+    jButton8.setToolTipText("Excluir forma de pagamento");
+    jButton8.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jButton8ActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+    jPanel20.setLayout(jPanel20Layout);
+    jPanel20Layout.setHorizontalGroup(
+        jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton7)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(24, 24, 24))
+    );
+    jPanel20Layout.setVerticalGroup(
+        jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jButton7)
+                .addComponent(jButton8))
+            .addContainerGap())
+    );
+
+    parcelamentojTable.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null},
+            {null, null, null, null, null}
+        },
+        new String [] {
+            "Forma Pagamento", "Tipo Parcelmaneto", "Valor a Parcelar", "Nº Parcelas", "Valor Parcela"
+        }
+    ) {
+        boolean[] canEdit = new boolean [] {
+            false, false, false, false, false
+        };
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return canEdit [columnIndex];
+        }
+    });
+    jScrollPane2.setViewportView(parcelamentojTable);
+    if (parcelamentojTable.getColumnModel().getColumnCount() > 0) {
+        parcelamentojTable.getColumnModel().getColumn(0).setResizable(false);
+        parcelamentojTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        parcelamentojTable.getColumnModel().getColumn(1).setResizable(false);
+        parcelamentojTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        parcelamentojTable.getColumnModel().getColumn(2).setResizable(false);
+        parcelamentojTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        parcelamentojTable.getColumnModel().getColumn(3).setResizable(false);
+        parcelamentojTable.getColumnModel().getColumn(3).setPreferredWidth(20);
+        parcelamentojTable.getColumnModel().getColumn(4).setResizable(false);
+        parcelamentojTable.getColumnModel().getColumn(4).setPreferredWidth(50);
+    }
+
+    javax.swing.GroupLayout formaPagamentojPanelLayout = new javax.swing.GroupLayout(formaPagamentojPanel);
+    formaPagamentojPanel.setLayout(formaPagamentojPanelLayout);
+    formaPagamentojPanelLayout.setHorizontalGroup(
+        formaPagamentojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formaPagamentojPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(formaPagamentojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jScrollPane2)
+                .addComponent(jPanel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(95, 95, 95))
+        .addGroup(formaPagamentojPanelLayout.createSequentialGroup()
+            .addGap(281, 281, 281)
+            .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    formaPagamentojPanelLayout.setVerticalGroup(
+        formaPagamentojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(formaPagamentojPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(306, 306, 306))
+    );
+
+    cursosjTabbedPane.addTab("Forma Pagto", formaPagamentojPanel);
+
+    observacoesjTextArea.setColumns(20);
+    observacoesjTextArea.setLineWrap(true);
+    observacoesjTextArea.setRows(5);
+    observacoesjTextArea.setWrapStyleWord(true);
+    jScrollPane3.setViewportView(observacoesjTextArea);
+
+    javax.swing.GroupLayout obsjPanelLayout = new javax.swing.GroupLayout(obsjPanel);
+    obsjPanel.setLayout(obsjPanelLayout);
+    obsjPanelLayout.setHorizontalGroup(
+        obsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(obsjPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+    obsjPanelLayout.setVerticalGroup(
+        obsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(obsjPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+
+    cursosjTabbedPane.addTab("Obs", obsjPanel);
+
+    obsTMjTextArea.setColumns(20);
+    obsTMjTextArea.setRows(5);
+    jScrollPane4.setViewportView(obsTMjTextArea);
+
+    jLabel32.setText("Observações que serão enviadas ao Departamento Responsável e ao Departamento Financeiro da TravelMate");
+
+    javax.swing.GroupLayout obstmjPanelLayout = new javax.swing.GroupLayout(obstmjPanel);
+    obstmjPanel.setLayout(obstmjPanelLayout);
+    obstmjPanelLayout.setHorizontalGroup(
+        obstmjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(obstmjPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addGroup(obstmjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+                .addGroup(obstmjPanelLayout.createSequentialGroup()
+                    .addComponent(jLabel32)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addContainerGap())
+    );
+    obstmjPanelLayout.setVerticalGroup(
+        obstmjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obstmjPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jLabel32)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+
+    cursosjTabbedPane.addTab("Obs TM", obstmjPanel);
+
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+    getContentPane().setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+            .addComponent(cursosjTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 0, Short.MAX_VALUE))
+        .addGroup(layout.createSequentialGroup()
+            .addGap(62, 62, 62)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(cursosjTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(6, 6, 6))
+    );
+
+    pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void dataChegadaAcomodacaojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataChegadaAcomodacaojDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataChegadaAcomodacaojDateChooserFocusGained
+
+    private void dataPartidaAcomodacaojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataPartidaAcomodacaojDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataPartidaAcomodacaojDateChooserFocusGained
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (valorCambio > 0) {
+            float valorEstrangeira = 0.0f;
+            float valorReal = 0.0f;
+            if (valorProdutosMoedaEstrangeirajTextField.getText().length() > 0) {
+                valorEstrangeira = Formatacao.formatarStringfloat(valorProdutosMoedaEstrangeirajTextField.getText());
+            } else {
+                if (valorProdutosMoedaRealjTextField.getText().length() > 0) {
+                    valorReal = Formatacao.formatarStringfloat(valorProdutosMoedaRealjTextField.getText());
+                }
+            }
+            Viewprodutosfiltro produtosorcamento = (Viewprodutosfiltro) produtoOrcaemntojComboBox.getSelectedItem();
+            int idProdTx = usuarioLogadoBean.getParametrosprodutos().getPassagemTaxaTM();
+            if (produtosorcamento.getIdProdutosOrcamento() != idProdTx) {
+                if (produtosorcamento != null) {
+                    ProdutoOrcamentoBean pob = new ProdutoOrcamentoBean();
+                    pob.setIdOrcamentoProdutoOrcamento(0);
+                    pob.setDescricaoProdutoOrcamento(produtosorcamento.getDescricaoProdutosOrcamento());
+                    pob.setIdProdutoOrcamento(produtosorcamento.getIdProdutosOrcamento());
+                    if ((valorEstrangeira != 0) && (valorCambio > 0)) {
+                        valorReal = valorEstrangeira * valorCambio;
+                    } else {
+                        if ((valorReal != 0) && (valorCambio > 0)) {
+                            valorEstrangeira = valorReal / valorCambio;
+                            String valor = Formatacao.formatarFloatString(valorEstrangeira);
+                            valorEstrangeira = Formatacao.formatarStringfloat(valor);
+                        }
+                    }
+                    pob.setValorMoedaEstrangeira(valorEstrangeira);
+                    pob.setValorMoedaReal(valorReal);
+                    pob.setApagar(false);
+                    pob.setVisto(false);
+                    pob.setSeguro(false);
+                    pob.setNovo(true);
+                    pob.setTipo("A");
+                    listaProdutoOrcamentoBean.add(pob);
+                    calcularValorTotalOrcamento();
+                    carregarModelOrcamentoProduto();
+                    valorProdutosMoedaEstrangeirajTextField.setText("");
+                    valorProdutosMoedaRealjTextField.setText("");
+                }
+            }else JOptionPane.showMessageDialog(rootPane, "Taxa TM já esta inclusa");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Cambio não selecionado");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void possuiJurosjComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_possuiJurosjComboBoxItemStateChanged
+        if (possuiJurosjComboBox.getSelectedItem().toString().equalsIgnoreCase("Sim")){
+            valorJurosjTextField.setEnabled(true);
+            valorJurosjTextField.setText("");
+            valorJurosjTextField.selectAll();
+        }else {
+            valorJurosjTextField.setText("");
+            valorJurosjTextField.setEnabled(false);
+            totalPagar = valorTotal;
+            totalPagarjTextField.setText(Formatacao.formatarFloatString(totalPagar));
+        }
+    }//GEN-LAST:event_possuiJurosjComboBoxItemStateChanged
+
+    private void numeroSemanasAcomodacaojTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroSemanasAcomodacaojTextFieldFocusGained
+        if (dataChegadaAcomodacaojDateChooser.getDate()!=null){
+            if (dataPartidaAcomodacaojDateChooser.getDate()!=null){
+                Integer dias =  Formatacao.calcularNumeroSemanas(dataChegadaAcomodacaojDateChooser.getDate(), dataPartidaAcomodacaojDateChooser.getDate());
+                numeroSemanasAcomodacaojTextField.setText(dias.toString());
+            }
+        }
+    }//GEN-LAST:event_numeroSemanasAcomodacaojTextFieldFocusGained
+
+    private void valorParcelajTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_valorParcelajTextFieldFocusGained
+        float saldoParcelas =0.0f;
+        int numeroParcelas =0;
+        float valorParcela = 0.0f;
+        numeroParcelas = Integer.parseInt(numeroParcelasjComboBox.getSelectedItem().toString());
+        if (valorParcelamentojTextField.getText().length()>0){
+            saldoParcelas = Formatacao.formatarStringfloat(valorParcelamentojTextField.getText());
+        }
+        if ((saldoParcelas>0) && (numeroParcelas>0)){
+            valorParcela = saldoParcelas / numeroParcelas;
+            valorParcelajTextField.setText(Formatacao.formatarFloatString(valorParcela));
+            this.valorParcela = valorParcela;
+        }
+    }//GEN-LAST:event_valorParcelajTextFieldFocusGained
+
+    private void valorParcelamentojTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_valorParcelamentojTextFieldFocusGained
+       
+    }//GEN-LAST:event_valorParcelamentojTextFieldFocusGained
+
+    private void valorParcelajTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorParcelajTextFieldKeyTyped
+        if (evt.getKeyChar()=='.'){
+            evt.setKeyChar(',');
+        }
+        String caracteres = "0987654321,-";
+        if (evt.getKeyChar() != '\b') {
+            if (!caracteres.contains(evt.getKeyChar() + "")) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_valorParcelajTextFieldKeyTyped
+
+    private void valorParcelajTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorParcelajTextFieldKeyPressed
+         if (evt.getKeyChar()=='.'){
+          evt.setKeyChar(',');
+       }
+    }//GEN-LAST:event_valorParcelajTextFieldKeyPressed
+
+    private void valorParcelajTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorParcelajTextFieldKeyReleased
+      
+    }//GEN-LAST:event_valorParcelajTextFieldKeyReleased
+
+    private void valorOrcamentoFormajTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorOrcamentoFormajTextFieldKeyTyped
+        if (evt.getKeyChar()=='.'){
+            evt.setKeyChar(',');
+        }
+        String caracteres = "0987654321,-";
+        if (evt.getKeyChar() != '\b') {
+            if (!caracteres.contains(evt.getKeyChar() + "")) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_valorOrcamentoFormajTextFieldKeyTyped
+
+    private void valorParcelamentojTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorParcelamentojTextFieldKeyTyped
+        if (evt.getKeyChar()=='.'){
+            evt.setKeyChar(',');
+        }
+        String caracteres = "0987654321,-";
+        if (evt.getKeyChar() != '\b') {
+            if (!caracteres.contains(evt.getKeyChar() + "")) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_valorParcelamentojTextFieldKeyTyped
+
+    private void valorProdutosMoedaEstrangeirajTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorProdutosMoedaEstrangeirajTextFieldKeyTyped
+        if (evt.getKeyChar()=='.'){
+            evt.setKeyChar(',');
+        }
+        String caracteres = "0987654321,-";
+        if (evt.getKeyChar() != '\b') {
+            if (!caracteres.contains(evt.getKeyChar() + "")) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_valorProdutosMoedaEstrangeirajTextFieldKeyTyped
+
+    private void valorProdutosMoedaRealjTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorProdutosMoedaRealjTextFieldKeyTyped
+        if (evt.getKeyChar()=='.'){
+            evt.setKeyChar(',');
+        }
+        String caracteres = "0987654321,-";
+        if (evt.getKeyChar() != '\b') {
+            if (!caracteres.contains(evt.getKeyChar() + "")) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_valorProdutosMoedaRealjTextFieldKeyTyped
+
+    private void numeroSemanasAcomodacaojTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numeroSemanasAcomodacaojTextFieldKeyTyped
+            String caracteres = "0987654321";
+        if (evt.getKeyChar() != '\b') {
+            if (!caracteres.contains(evt.getKeyChar() + "")) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_numeroSemanasAcomodacaojTextFieldKeyTyped
+
+    private void buscaBancojButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaBancojButton3ActionPerformed
+        Object obj = moedaCambiojComboBox.getSelectedItem();
+        Moedas moeda = null;
+        if (obj instanceof Moedas) {
+            moeda = (Moedas) obj;
+        }
+        if (moeda!=null){
+            if (moeda.getDescricao().equalsIgnoreCase("Outras")){
+                usuarioLogadoBean.getAcesso().setEmissaoCambio(1);
+            }
+        }
+        liberarAltercaoCambio(usuarioLogadoBean.getAcesso());
+    }//GEN-LAST:event_buscaBancojButton3ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int linha = produtoOrcamentojTable.getSelectedRow();
+        int tx = usuarioLogadoBean.getParametrosprodutos().getPassagemTaxaTM();
+        if (listaProdutoOrcamentoBean.get(linha).getIdProdutoOrcamento() == tx) {
+            boolean resultado = JOptionPane.showConfirmDialog(null, "Taxa TM não pode ser Excluída. Alterar o valor da Taxa TM?", "Alteração", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0;
+            if (resultado){
+                String novaTxTM = JOptionPane.showInputDialog("Novo valor da Taxa TM");
+                Float novaValorTxTM = Formatacao.formatarStringfloat(novaTxTM);
+                if (novaValorTxTM> listaProdutoOrcamentoBean.get(linha).getValorMoedaReal()){
+                    listaProdutoOrcamentoBean.get(linha).setValorMoedaReal(novaValorTxTM);
+                    calcularValorTotalOrcamento();
+                    carregarModelOrcamentoProduto();
+                }else JOptionPane.showMessageDialog(rootPane, "Valor da Taxa TM não pode ser inferior ao valor definido pela Matriz");
+            }
+        } else {
+            if (linha >= 0) {
+                listaProdutoOrcamentoBean.get(linha).setApagar(true);
+                if (listaProdutoOrcamentoBean.get(linha).isSeguro()) {
+                    seguroViagemjComboBox.setSelectedItem("Sim");
+                }
+                if (listaProdutoOrcamentoBean.get(linha).isVisto()) {
+                    vistojComboBox.setSelectedItem("Não");
+                }
+                listaProdutoOrcamentoBean.remove(linha);
+                calcularValorTotalOrcamento();
+                carregarModelOrcamentoProduto();
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void condicaoPagamentojComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_condicaoPagamentojComboBoxItemStateChanged
+    }//GEN-LAST:event_condicaoPagamentojComboBoxItemStateChanged
+
+    private void valorJurosjTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_valorJurosjTextFieldFocusLost
+        if (possuiJurosjComboBox.getSelectedItem().toString().equalsIgnoreCase("sim")){
+            if (valorJurosjTextField.getText().length()>0){
+                valorJuros = Formatacao.formatarStringfloat(valorJurosjTextField.getText());
+                totalPagar = valorTotal + valorJuros;
+                totalPagarjTextField.setText(Formatacao.formatarFloatString(totalPagar));
+                saldoReceberjTextField.setText(Formatacao.formatarFloatString(totalPagar));
+                saldoParcelarjTextField.setText(Formatacao.formatarFloatString(totalPagar));
+            }
+        }
+         if (valorJurosjTextField.getText().length()>0){
+            float valor = Formatacao.formatarStringfloat(valorJurosjTextField.getText());
+            valorJurosjTextField.setText(Formatacao.formatarFloatString(valor));
+        }
+    }//GEN-LAST:event_valorJurosjTextFieldFocusLost
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String msg = validarDados();
+        String nsituacao;
+        if (msg.length() < 5) {
+            boolean resultado = false;
+            if (situacao.equalsIgnoreCase("PROCESSO")) {
+                resultado = JOptionPane.showConfirmDialog(null, "FINALIZAR FICHA? Ficha será enviada para Gerência", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == 0;
+                if (resultado){
+                    novaFicha=true;
+                }
+            }else {
+                resultado = true;
+            }
+            if (resultado) {
+                nsituacao="FINALIZADA";
+            } else {
+                nsituacao="PROCESSO";
+            }
+            salvarVendas(nsituacao);
+            salvarVoluntariado();
+            salvarSeguroViagem();
+            salvarFormaPagamento();
+            salvarOrcamento();
+            salvarFollowup();
+            salvarCliente();
+            if (novaFicha){
+                //ContasReceberBean contasReceberBean = new ContasReceberBean(venda, listaParcelamento, usuarioLogadoBean);
+            }
+            if (resultado){
+                salvarControle();
+                if (this.voluntariado.getIdvoluntariado()!=null){
+                    if (vendaAlterada!=null){
+                        verificarDadosAlterado();
+                    }
+                }
+                emitirEmailGerencial();
+                verificarAlteracaoCambio();
+                float valorVendaatual = venda.getValor();
+                if (valorVendaAlterar!=valorVendaatual){
+                    //calcularComissao();
+                }
+            }
+            JOptionPane.showMessageDialog(rootPane, "Voluntáriado Salvo com Sucesso");
+            telaConsulta.setModel();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, msg);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void valorJurosjTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorJurosjTextFieldKeyTyped
+         if (evt.getKeyChar()=='.'){
+            evt.setKeyChar(',');
+        }
+        String caracteres = "0987654321,";
+        if (evt.getKeyChar() != '\b') {
+            if (!caracteres.contains(evt.getKeyChar() + "")) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_valorJurosjTextFieldKeyTyped
+
+    private void valorJurosjTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorJurosjTextFieldKeyReleased
+       
+    }//GEN-LAST:event_valorJurosjTextFieldKeyReleased
+
+    private void moedaCambiojComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_moedaCambiojComboBoxItemStateChanged
+        if (consultaCambio) {
+            Object obj = moedaCambiojComboBox.getSelectedItem();
+            Moedas moeda = null;
+            if (obj instanceof Moedas) {
+                moeda = (Moedas) obj;
+            }
+            if (moeda != null) {
+                CambioController cambioController = new CambioController();
+                cambio = cambioController.consultarCambioMoeda(Formatacao.ConvercaoDataSql(dataCambio), moeda.getIdmoedas());
+                if (cambio != null) {
+                    setCambio(cambio.getValor());
+                    atualizarValoresProduto();
+                } else {
+                    if (!moeda.getDescricao().equalsIgnoreCase("Outras")){
+                        JOptionPane.showMessageDialog(rootPane, "Câmbio não Cadastrado");
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_moedaCambiojComboBoxItemStateChanged
+
+    private void numeroSemanasAcomodacaojTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroSemanasAcomodacaojTextFieldFocusLost
+         if (dataChegadaAcomodacaojDateChooser.getDate()!=null){
+            if (numeroSemanasAcomodacaojTextField.getText().length()>0){
+                dataPartidaAcomodacaojDateChooser.setDate(Formatacao.calcularDataFinal(dataChegadaAcomodacaojDateChooser.getDate(), Integer.parseInt(numeroSemanasAcomodacaojTextField.getText())));
+            }
+        }
+        if ((dataPartidaAcomodacaojDateChooser.getDate()==null) && (numeroSemanasAcomodacaojTextField.getText().length()==0)){
+            JOptionPane.showMessageDialog(rootPane, "Preencha numero de Semanas e/ou data término");
+            numeroSemanasAcomodacaojTextField.requestFocus();
+        }
+    }//GEN-LAST:event_numeroSemanasAcomodacaojTextFieldFocusLost
+
+    private void cursosjTabbedPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursosjTabbedPaneMouseClicked
+    }//GEN-LAST:event_cursosjTabbedPaneMouseClicked
+
+    private void meioPagamentojComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_meioPagamentojComboBoxItemStateChanged
+    }//GEN-LAST:event_meioPagamentojComboBoxItemStateChanged
+
+    private void saldoReceberjTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_saldoReceberjTextFieldKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saldoReceberjTextFieldKeyTyped
+
+    private void saldoParcelarjTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_saldoParcelarjTextFieldKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saldoParcelarjTextFieldKeyTyped
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        String msg = validarFormaPagamento();
+        if (msg.length() < 5) {
+            float saldoParcelar = Formatacao.formatarStringfloat(saldoParcelarjTextField.getText());
+            float valorParcela = Formatacao.formatarStringfloat(valorParcelamentojTextField.getText());
+            if (valorParcela > saldoParcelar) {
+                JOptionPane.showMessageDialog(rootPane, "Valor a Parcelar maior que saldo a parcelar");
+                valorParcelajTextField.selectAll();
+                valorParcelajTextField.requestFocus();
+            } else {
+                Parcelamentopagamento parcelamento = new Parcelamentopagamento();
+                parcelamento.setDiaVencimento(dataVencimentojDateChooser.getDate());
+                parcelamento.setFormaPagamento(meioPagamentojComboBox.getSelectedItem().toString());
+                int numeroParcelas = Integer.parseInt(numeroParcelasjComboBox.getSelectedItem().toString());
+                parcelamento.setNumeroParcelas(numeroParcelas);
+                parcelamento.setTipoParcelmaneto(tipoParcelamentojComboBox.getSelectedItem().toString());
+                parcelamento.setValorParcela(Formatacao.formatarStringfloat(valorParcelajTextField.getText()));
+                parcelamento.setValorParcelamento(Formatacao.formatarStringfloat(valorParcelamentojTextField.getText()));
+                if (listaParcelamento == null) {
+                    listaParcelamento = new ArrayList<Parcelamentopagamento>();
+                }
+                listaParcelamento.add(parcelamento);
+                carregarModelParcelamento();
+                calcularParcelamentoPagamento();
+                valorParcelajTextField.setText("");
+                valorParcelamentojTextField.setText("");
+                numeroParcelasjComboBox.setSelectedItem("01");
+                dataVencimentojDateChooser.setDate(new Date());
+            }
+        }else JOptionPane.showMessageDialog(rootPane, msg);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        int linha = parcelamentojTable.getSelectedRow();
+        if (linha>=0){
+            if (listaParcelamento.get(linha).getIdparcemlamentoPagamento()!=null){
+                ParcelamentoPagamentoController parcelamentoPagamentoController = new ParcelamentoPagamentoController();
+                parcelamentoPagamentoController.excluir(listaParcelamento.get(linha).getIdparcemlamentoPagamento());
+            }else {
+                listaParcelamento.remove(linha);
+            }
+            carregarModelParcelamento();
+            calcularParcelamentoPagamento();
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void valorParcelamentojTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_valorParcelamentojTextFieldFocusLost
+        if (valorParcelamentojTextField.getText().length()>0){
+            float valor = Formatacao.formatarStringfloat(valorParcelamentojTextField.getText());
+            valorParcelamentojTextField.setText(Formatacao.formatarFloatString(valor));
+            int numero = Integer.parseInt(numeroParcelasjComboBox.getSelectedItem().toString());
+            float vParcela = valor / numero;
+            valorParcelajTextField.setText(Formatacao.formatarFloatString(vParcela));
+        }
+    }//GEN-LAST:event_valorParcelamentojTextFieldFocusLost
+
+    private void numeroParcelasjComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_numeroParcelasjComboBoxItemStateChanged
+        if (valorParcelamentojTextField.getText().length()>0){
+            float valor = Formatacao.formatarStringfloat(valorParcelamentojTextField.getText());
+            valorParcelamentojTextField.setText(Formatacao.formatarFloatString(valor));
+            int numero = Integer.parseInt(numeroParcelasjComboBox.getSelectedItem().toString());
+            float vParcela = valor / numero;
+            valorParcelajTextField.setText(Formatacao.formatarFloatString(vParcela));
+        }
+    }//GEN-LAST:event_numeroParcelasjComboBoxItemStateChanged
+
+    private void cursosjTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cursosjTabbedPaneStateChanged
+        if (cursosjTabbedPane.getSelectedIndex() == 4) {
+            if (listaProdutoOrcamentoBean == null) {
+                listaProdutoOrcamentoBean = new ArrayList<ProdutoOrcamentoBean>();
+            }
+            int codSeguroPrivado = usuarioLogadoBean.getParametrosprodutos().getSeguroOrcamento();
+            int codSeguroGov = usuarioLogadoBean.getParametrosprodutos().getSeguroGovernamental();
+            for (int i=0;i<listaProdutoOrcamentoBean.size();i++){
+                int codigoLista = listaProdutoOrcamentoBean.get(i).getIdProdutoOrcamento();
+                if (codSeguroPrivado==codigoLista){
+                    listaProdutoOrcamentoBean.remove(i);
+                }
+                if (codSeguroGov==codigoLista){
+                    listaProdutoOrcamentoBean.remove(i);
+                }
+            }
+//            List<ProdutoOrcamentoBean> novaLista = new ArrayList<ProdutoOrcamentoBean>();
+//            for (int i = 0; i < listaProdutoOrcamentoBean.size(); i++) {
+//                if (!listaProdutoOrcamentoBean.get(i).getTipo().equalsIgnoreCase("S")
+//                        && !listaProdutoOrcamentoBean.get(i).getTipo().equalsIgnoreCase("V")) {
+//                    novaLista.add(listaProdutoOrcamentoBean.get(i));
+//                }
+//            }
+//            listaProdutoOrcamentoBean = new ArrayList<ProdutoOrcamentoBean>();
+//            listaProdutoOrcamentoBean = novaLista;
+            float valorEstrangeira = 0.0f;
+            float valorReal = 0.0f;
+            
+            valorEstrangeira = 0.0f;
+            valorReal = 0.0f;
+            if (seguroViagem != null) {
+                ProdutoOrcamentoController produtoOrcamentoController = new ProdutoOrcamentoController();
+                Produtosorcamento produto = produtoOrcamentoController.consultar(usuarioLogadoBean.getParametrosprodutos().getSeguroOrcamento());
+                ProdutoOrcamentoBean pob = new ProdutoOrcamentoBean();
+                pob.setIdOrcamentoProdutoOrcamento(0);
+                pob.setDescricaoProdutoOrcamento(produto.getDescricao());
+                pob.setIdProdutoOrcamento(produto.getIdprodutosOrcamento());
+                if (valorSegurojTextField.getText().length()>0){
+                    pob.setValorMoedaEstrangeira(0.0f);
+                    valorEstrangeira = pob.getValorMoedaEstrangeira();
+                    valorReal = Formatacao.formatarStringfloat(valorSegurojTextField.getText());
+                }else {
+                    pob.setValorMoedaEstrangeira(0.0f);
+                    valorReal =0;
+                    valorEstrangeira=0;
+                }
+                pob.setValorMoedaReal(valorReal);
+                pob.setApagar(false);
+                pob.setVisto(false);
+                pob.setSeguro(false);
+                pob.setTipo("S");
+                pob.setAdicionado(1);
+                pob.setNovo(true);
+                listaProdutoOrcamentoBean.add(pob);
+            }
+            carregarModelOrcamentoProduto();
+            calcularValorTotalOrcamento();
+        }
+    }//GEN-LAST:event_cursosjTabbedPaneStateChanged
+
+    private void tipoAcomodacaojComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tipoAcomodacaojComboBoxItemStateChanged
+        if (tipoAcomodacaojComboBox.getSelectedItem().toString().equalsIgnoreCase("Casa de família")){
+            familiacriancajComboBox.setEnabled(true);
+            familiaanimaisestimacaojComboBox.setEnabled(true);
+            refeicoesjComboBox.setEnabled(true);
+                    
+        }else {
+            familiacriancajComboBox.setEnabled(false);
+            familiaanimaisestimacaojComboBox.setEnabled(false);
+            refeicoesjComboBox.setEditable(false);
+        }
+        if (tipoAcomodacaojComboBox.getSelectedItem().toString().equalsIgnoreCase("Sem acomodação")){
+            tipoQuartojComboBox.setEnabled(false);
+        }else tipoQuartojComboBox.setEnabled(true);
+        
+    }//GEN-LAST:event_tipoAcomodacaojComboBoxItemStateChanged
+
+    private void buscaBancojButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscaBancojButton4ActionPerformed
+        new FrmCalculoJuros(this, valorTotal);
+    }//GEN-LAST:event_buscaBancojButton4ActionPerformed
+
+    private void telefoneEmergenciajTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefoneEmergenciajTextFieldKeyTyped
+        if (evt.getKeyChar()=='.'){
+            evt.setKeyChar(',');
+        }
+        if (evt.getKeyChar() != '\b') {
+            if (!caracteres.contains(evt.getKeyChar() + "")) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_telefoneEmergenciajTextFieldKeyTyped
+
+    private void telefoneEmergenciajTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefoneEmergenciajTextFieldKeyReleased
+        
+    }//GEN-LAST:event_telefoneEmergenciajTextFieldKeyReleased
+
+    private void telefoneEmergenciajTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefoneEmergenciajTextFieldKeyPressed
+        if ((evt.getKeyCode() != KeyEvent.VK_DELETE) && (evt.getKeyCode() != KeyEvent.VK_BACK_SPACE)) {
+            String texto = telefoneEmergenciajTextField.getText();
+            if (telefoneEmergenciajTextField.getText().length() == 0) {
+                telefoneEmergenciajTextField.setText("(");
+            } else if (telefoneEmergenciajTextField.getText().length() == 3) {
+                telefoneEmergenciajTextField.setText(telefoneEmergenciajTextField.getText() + ")");
+            }
+            if (telefoneEmergenciajCheckBox.isSelected()) {
+                if (usuarioLogadoBean.getUnidadeNegocio().getDigitosTelefone() == 9) {
+                    if (telefoneEmergenciajTextField.getText().length() == 8) {
+                        telefoneEmergenciajTextField.setText(telefoneEmergenciajTextField.getText() + '-');
+                    }
+                } else {
+                    if (usuarioLogadoBean.getUnidadeNegocio().getDigitosTelefone() == 8) {
+                        if (telefoneEmergenciajTextField.getText().length() == 9) {
+                            telefoneEmergenciajTextField.setText(telefoneEmergenciajTextField.getText() + '-');
+                        }
+                    }
+                }
+            } else {
+                if (usuarioLogadoBean.getUnidadeNegocio().getDigitosTelefone() == 9) {
+                    if (telefoneEmergenciajTextField.getText().length() == 9) {
+                        telefoneEmergenciajTextField.setText(telefoneEmergenciajTextField.getText() + '-');
+                    }
+                } else {
+                    if (usuarioLogadoBean.getUnidadeNegocio().getDigitosTelefone() == 8) {
+                        if (telefoneEmergenciajTextField.getText().length() == 8) {
+                            telefoneEmergenciajTextField.setText(telefoneEmergenciajTextField.getText() + '-');
+                        }
+                    }
+                }
+            }
+            if (telefoneEmergenciajCheckBox.isSelected()) {
+                if (usuarioLogadoBean.getUnidadeNegocio().getDigitosTelefone() == 9) {
+                    if (telefoneEmergenciajTextField.getText().length() > 12) {
+                        caracteres = "";
+                    }
+                } else {
+                    if (usuarioLogadoBean.getUnidadeNegocio().getDigitosTelefone() == 8) {
+                        if (telefoneEmergenciajTextField.getText().length() > 13) {
+                            caracteres = "";
+                        }
+                    }
+                }
+
+            } else {
+                if (usuarioLogadoBean.getUnidadeNegocio().getDigitosTelefone() == 9) {
+                    if (telefoneEmergenciajTextField.getText().length() > 13) {
+                        caracteres = "";
+                    }
+                } else {
+                    if (usuarioLogadoBean.getUnidadeNegocio().getDigitosTelefone() == 8) {
+                        if (telefoneEmergenciajTextField.getText().length() > 12) {
+                            caracteres = "";
+                        }
+                    }
+                }
+            }
+        }else {
+            telefoneEmergenciajTextField.setText("");
+        }
+
+    }//GEN-LAST:event_telefoneEmergenciajTextFieldKeyPressed
+
+    private void telefoneEmergenciajCheckBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_telefoneEmergenciajCheckBoxItemStateChanged
+        telefoneEmergenciajTextField.setText("");
+        telefoneEmergenciajTextField.requestFocus();
+    }//GEN-LAST:event_telefoneEmergenciajCheckBoxItemStateChanged
+
+    private void telefoneEmergenciajTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_telefoneEmergenciajTextFieldFocusLost
+        caracteres = "0987654321-()";
+    }//GEN-LAST:event_telefoneEmergenciajTextFieldFocusLost
+
+    private void dataVencimentojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataVencimentojDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataVencimentojDateChooserFocusGained
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        new FrmConsultaCliente(usuarioLogadoBean, this);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void dataInicioVoluntariadojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataInicioVoluntariadojDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataInicioVoluntariadojDateChooserFocusGained
+
+    private void dataTerminoVoluntariadojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataTerminoVoluntariadojDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataTerminoVoluntariadojDateChooserFocusGained
+
+    private void dataEntregaDocumentosjDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataEntregaDocumentosjDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataEntregaDocumentosjDateChooserFocusGained
+
+    private void dataTerminojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataTerminojDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataTerminojDateChooserFocusGained
+
+    private void dataIniciojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataIniciojDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataIniciojDateChooserFocusGained
+
+    private void diachegadavoojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_diachegadavoojDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_diachegadavoojDateChooserFocusGained
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new FrmConsultaFornecedor(usuarioLogadoBean, this, "C", usuarioLogadoBean.getParametrosprodutos().getVoluntariado());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cartaoVTMjComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cartaoVTMjComboBoxItemStateChanged
+        if (cartaoVTMjComboBox.getSelectedItem().toString().equalsIgnoreCase("Sim")){
+            numeroCartaoVTMjTextField.setEnabled(true);
+            moedaCartaoVTMjComboBox.setEnabled(true);
+            numeroCartaoVTMjTextField.requestFocus();
+        }else {
+            numeroCartaoVTMjTextField.setEnabled(false);
+            moedaCartaoVTMjComboBox.setEnabled(false);
+            numeroCartaoVTMjTextField.setText("");
+            moedaCartaoVTMjComboBox.setSelectedItem("   ");
+        }
+    }//GEN-LAST:event_cartaoVTMjComboBoxItemStateChanged
+
+    private void dataMatriculaCursoEstudajDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataMatriculaCursoEstudajDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataMatriculaCursoEstudajDateChooserFocusGained
+
+    private void dataEstimadaTerminoCursoEstudajDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataEstimadaTerminoCursoEstudajDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataEstimadaTerminoCursoEstudajDateChooserFocusGained
+
+    private void selecionarSeguradorajButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarSeguradorajButtonActionPerformed
+        if (numeroSemanaSegurosjTextField.getText().length()>0){
+            new FrmConsultaValoresSeguro(usuarioLogadoBean, this);
+        }else {
+            JOptionPane.showMessageDialog(cartaojPanel, "Informe o número de semanas para o seguro");
+            dataInicioSegurojDateChooser.requestFocus();
+        }
+    }//GEN-LAST:event_selecionarSeguradorajButtonActionPerformed
+
+    private void dataInicioSegurojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataInicioSegurojDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataInicioSegurojDateChooserFocusGained
+
+    private void numeroSemanaSegurosjTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroSemanaSegurosjTextFieldFocusGained
+        if (numeroSemanaSegurosjTextField.isEnabled()){
+            if (dataInicioSegurojDateChooser.getDate()!=null){
+                if (dataTerminoSegurojDateChooser.getDate()!=null){
+                    Integer dias = Formatacao.calcularNumeroSemanas(dataInicioSegurojDateChooser.getDate(),dataTerminoSegurojDateChooser.getDate());
+                    numeroSemanaSegurosjTextField.setText(dias.toString());
+                }
+            }else {
+                JOptionPane.showMessageDialog(rootPane, "Data Inicio do Seguro Inválida");
+            }
+        }
+    }//GEN-LAST:event_numeroSemanaSegurosjTextFieldFocusGained
+
+    private void numeroSemanaSegurosjTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroSemanaSegurosjTextFieldFocusLost
+        if (dataInicioSegurojDateChooser.getDate()!=null){
+            if (numeroSemanaSegurosjTextField.getText().length()>0){
+                dataTerminoSegurojDateChooser.setDate(Formatacao.calcularDataFinal(dataInicioSegurojDateChooser.getDate(), Integer.parseInt(numeroSemanaSegurosjTextField.getText())));
+            }
+        }
+        if ((dataTerminoSegurojDateChooser.getDate()==null) && (numeroSemanaSegurosjTextField.getText().length()==0)){
+            JOptionPane.showMessageDialog(rootPane, "Preencha numero de Semanas e/ou data término");
+            numeroSemanaSegurosjTextField.requestFocus();
+        }
+    }//GEN-LAST:event_numeroSemanaSegurosjTextFieldFocusLost
+
+    private void numeroSemanaSegurosjTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numeroSemanaSegurosjTextFieldKeyTyped
+
+        String caracteres = "0987654321";
+        if (evt.getKeyChar() != '\b') {
+            if (!caracteres.contains(evt.getKeyChar() + "")) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_numeroSemanaSegurosjTextFieldKeyTyped
+
+    private void dataTerminoSegurojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataTerminoSegurojDateChooserFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataTerminoSegurojDateChooserFocusGained
+
+    private void valorSegurojTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_valorSegurojTextFieldFocusLost
+        if (valorSegurojTextField.getText().length()>0){
+            valorSeguro = Formatacao.formatarStringfloat(valorSegurojTextField.getText());
+        }
+    }//GEN-LAST:event_valorSegurojTextFieldFocusLost
+
+    private void valorSegurojTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorSegurojTextFieldKeyTyped
+        if (evt.getKeyChar()=='.'){
+            evt.setKeyChar(',');
+        }
+        String caracteres = "0987654321,";
+        if (evt.getKeyChar() != '\b') {
+            if (!caracteres.contains(evt.getKeyChar() + "")) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_valorSegurojTextFieldKeyTyped
+
+    private void seguroViagemjComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_seguroViagemjComboBoxItemStateChanged
+        if (seguroViagemjComboBox.getSelectedItem().toString().equalsIgnoreCase("Sim")){
+            if (seguroViagem==null){
+                this.seguroViagem = new Seguroviagem();
+            }
+            selecionarSeguradorajButton.setEnabled(true);
+            dataInicioSegurojDateChooser.setEnabled(true);
+            dataTerminoSegurojDateChooser.setEnabled(true);
+            numeroSemanaSegurosjTextField.setEnabled(true);
+            dataInicioSegurojDateChooser.requestFocus();
+        } else {
+            seguradorajTextField.setEnabled(false);
+            planosegurojTextField.setEnabled(false);
+            dataInicioSegurojDateChooser.setEnabled(false);
+            dataTerminoSegurojDateChooser.setEnabled(false);
+            numeroSemanaSegurosjTextField.setEnabled(false);
+            valorSegurojTextField.setEnabled(false);
+            selecionarSeguradorajButton.setEnabled(false);
+            seguradorajTextField.setText("");
+            seguroViagem = null;
+            valoresSeguro = null;
+        }
+    }//GEN-LAST:event_seguroViagemjComboBoxItemStateChanged
+
+    private void tipoQuartojComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoQuartojComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoQuartojComboBoxActionPerformed
+
+    private void refeicoesjComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refeicoesjComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refeicoesjComboBoxActionPerformed
+
+    private void numeroSemanasjTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroSemanasjTextFieldFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numeroSemanasjTextFieldFocusLost
+
+    private void numeroSemanasjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroSemanasjTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numeroSemanasjTextFieldActionPerformed
+
+    private void numeroSemanasAcomodacaojTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroSemanasAcomodacaojTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numeroSemanasAcomodacaojTextFieldActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+   
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup TranferbuttonGroup;
+    private javax.swing.JPanel acomodacaojPanel;
+    private javax.swing.JTextField adicionaisjTextField;
+    private javax.swing.JTextField aulasporSemanajTextField;
+    private javax.swing.JButton buscaBancojButton3;
+    private javax.swing.JButton buscaBancojButton4;
+    private javax.swing.JTextField cargojTextField;
+    private javax.swing.ButtonGroup cartaoVTMbuttonGroup;
+    private javax.swing.JComboBox cartaoVTMjComboBox;
+    private javax.swing.JPanel cartaojPanel;
+    private javax.swing.JTextField ciajTextField;
+    private javax.swing.JComboBox cirurgiajComboBox;
+    private javax.swing.JComboBox condicaoPagamentojComboBox;
+    private javax.swing.JTextField cursoEstudajTextField;
+    private javax.swing.JPanel cursojPanel;
+    private javax.swing.JTextField cursojTextField;
+    private javax.swing.JTabbedPane cursosjTabbedPane;
+    private com.toedter.calendar.JDateChooser dataChegadaAcomodacaojDateChooser;
+    private com.toedter.calendar.JDateChooser dataEntregaDocumentosjDateChooser;
+    private com.toedter.calendar.JDateChooser dataEstimadaTerminoCursoEstudajDateChooser;
+    private com.toedter.calendar.JDateChooser dataInicioSegurojDateChooser;
+    private com.toedter.calendar.JDateChooser dataInicioVoluntariadojDateChooser;
+    private com.toedter.calendar.JDateChooser dataIniciojDateChooser;
+    private com.toedter.calendar.JDateChooser dataMatriculaCursoEstudajDateChooser;
+    private com.toedter.calendar.JDateChooser dataPartidaAcomodacaojDateChooser;
+    private com.toedter.calendar.JDateChooser dataTerminoSegurojDateChooser;
+    private com.toedter.calendar.JDateChooser dataTerminoVoluntariadojDateChooser;
+    private com.toedter.calendar.JDateChooser dataTerminojDateChooser;
+    private com.toedter.calendar.JDateChooser dataVencimentojDateChooser;
+    private javax.swing.JComboBox deficienciaFisicajComboBox;
+    private javax.swing.JTextField descricaoCargojTextField;
+    private javax.swing.JTextField descricaoCirurgiajTextField;
+    private javax.swing.JTextField descricaoDrogasjTextField;
+    private javax.swing.JTextField descricaoMedicojTextField;
+    private javax.swing.JTextField descricaoproblemaSaudejTextField;
+    private com.toedter.calendar.JDateChooser diachegadavoojDateChooser;
+    private javax.swing.JTextField dietaEspecificajTextField;
+    private javax.swing.JTextField duracaoCursoEstudajTextField;
+    private javax.swing.JTextField emailConatoEmergenciajTextField;
+    private javax.swing.JTextField experienciaVoluntariadojTextField;
+    private javax.swing.JComboBox familiaanimaisestimacaojComboBox;
+    private javax.swing.JComboBox familiacriancajComboBox;
+    private javax.swing.JPanel formaPagamentojPanel;
+    private javax.swing.JTextField fornecedorjTextField;
+    private javax.swing.JComboBox fumantejComboBox;
+    private javax.swing.JTextField hobbiesjTextField;
+    private javax.swing.JFormattedTextField horariojFormattedTextField;
+    private javax.swing.JPanel infoSaudejPanel;
+    private javax.swing.JTextField instituicaoEstudajTextField;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel29;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JComboBox meioPagamentojComboBox;
+    private javax.swing.JComboBox moedaCambiojComboBox;
+    private javax.swing.JComboBox moedaCartaoVTMjComboBox;
+    private javax.swing.JTextField motivoVoluntariadojTextField;
+    private javax.swing.JTextField nivelFitnessjTextField;
+    private javax.swing.JTextField nomeClientejTextField;
+    private javax.swing.JTextField nomeContatoEmergenciajTextField;
+    private javax.swing.JTextField numeroCartaoVTMjTextField;
+    private javax.swing.JComboBox numeroParcelasjComboBox;
+    private javax.swing.JTextField numeroSemanaSegurosjTextField;
+    private javax.swing.JTextField numeroSemanasAcomodacaojTextField;
+    private javax.swing.JTextField numeroSemanasjTextField;
+    private javax.swing.JTextArea obsTMjTextArea;
+    private javax.swing.JTextField observacaoPassagemjTextField;
+    private javax.swing.JTextField observacaoVistojTextField;
+    private javax.swing.JTextArea observacoesjTextArea;
+    private javax.swing.JPanel obsjPanel;
+    private javax.swing.JPanel obstmjPanel;
+    private javax.swing.JTextField outrasHabilidadejTextField;
+    private javax.swing.JTable parcelamentojTable;
+    private javax.swing.ButtonGroup passagemAereabuttonGroup;
+    private javax.swing.JComboBox passagemjComboBox;
+    private javax.swing.JTextField periodoCursoEstudajTextField;
+    private javax.swing.JTextField planosegurojTextField;
+    private javax.swing.JComboBox possuiJurosjComboBox;
+    private javax.swing.JComboBox probelamSaudajComboBox;
+    private javax.swing.JComboBox produtoOrcaemntojComboBox;
+    private javax.swing.JTable produtoOrcamentojTable;
+    private javax.swing.JPanel produtojPanel;
+    private javax.swing.JTextField profissaojTextField;
+    private javax.swing.JTextField projetoVoluntariadojTextField;
+    private javax.swing.JTextField quaisalergiasjTextField;
+    private javax.swing.JComboBox refeicoesjComboBox;
+    private javax.swing.JTextField relacaoEmergenciajTextField;
+    private javax.swing.JTextField saldoParcelarjTextField;
+    private javax.swing.JTextField saldoReceberjTextField;
+    private javax.swing.JTextField seguradorajTextField;
+    private javax.swing.ButtonGroup seguroGovernamentealbuttonGroup;
+    private javax.swing.ButtonGroup seguroPrivadobuttonGroup;
+    private javax.swing.JComboBox seguroViagemjComboBox;
+    private javax.swing.JPanel segurojPanel;
+    private javax.swing.JButton selecionarSeguradorajButton;
+    private javax.swing.ButtonGroup solicitacaoVistobuttonGroup;
+    private javax.swing.JTextField solicitacoesEspeciaisjTextField;
+    private javax.swing.JCheckBox telefoneEmergenciajCheckBox;
+    private javax.swing.JTextField telefoneEmergenciajTextField;
+    private javax.swing.ButtonGroup temAlergiabuttonGroup;
+    private javax.swing.JComboBox temAlergiajComboBox;
+    private javax.swing.JComboBox tipoAcomodacaojComboBox;
+    private javax.swing.JComboBox tipoParcelamentojComboBox;
+    private javax.swing.JComboBox tipoQuartojComboBox;
+    private javax.swing.JTextField totalPagarjTextField;
+    private javax.swing.JComboBox transferInjComboBox;
+    private javax.swing.JComboBox transferOutjComboBox;
+    private javax.swing.ButtonGroup transferinbuttonGroup;
+    private javax.swing.ButtonGroup transferoutbuttonGroup;
+    private javax.swing.JComboBox tratamentoEspecificojComboBox;
+    private javax.swing.JComboBox usoDrogajComboBox;
+    private javax.swing.JTextField valorCambiojTextField;
+    private javax.swing.JTextField valorJurosjTextField;
+    private javax.swing.JTextField valorOrcamentoFormajTextField;
+    private javax.swing.JTextField valorParcelajTextField;
+    private javax.swing.JTextField valorParcelamentojTextField;
+    private javax.swing.JTextField valorProdutosMoedaEstrangeirajTextField;
+    private javax.swing.JTextField valorProdutosMoedaRealjTextField;
+    private javax.swing.JTextField valorSegurojTextField;
+    private javax.swing.JTextField valorTotalOrcamentojTextField;
+    private javax.swing.JComboBox vegetarianojComboBox;
+    private javax.swing.JComboBox vistojComboBox;
+    private javax.swing.JTextField voojTextField;
+    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void setCliente(Cliente cliente) {
+        if (cliente!=null){
+            this.cliente = cliente;
+            nomeClientejTextField.setText(cliente.getNome());
+        }
+    }
+    
+    public void carregarInicializacao(int idVenda){
+        carregarModelOrcamentoProduto();
+        carregarListaProdutos();
+        carregarComboMoedas();
+        if (usuarioLogadoBean.getUnidadeNegocio().getDigitosTelefone()==9){
+            telefoneEmergenciajCheckBox.setText("8-Telefone");
+        }else {
+            telefoneEmergenciajCheckBox.setText("9-Telefone");
+        }
+        if (idVenda>0){
+            carregarObjetos(idVenda);
+        }else{
+            ProdutoOrcamentoController produtoorcamentoController = new ProdutoOrcamentoController();
+            Produtosorcamento produtosorcamento = produtoorcamentoController.consultar(usuarioLogadoBean.getParametrosprodutos().getPassagemTaxaTM());
+            ProdutoOrcamentoBean pob = new ProdutoOrcamentoBean();
+            pob.setIdOrcamentoProdutoOrcamento(0);
+            pob.setDescricaoProdutoOrcamento(produtosorcamento.getDescricao());
+            pob.setIdProdutoOrcamento(produtosorcamento.getIdprodutosOrcamento());
+            pob.setValorMoedaEstrangeira(0.0f);
+            pob.setValorMoedaReal(usuarioLogadoBean.getParametrosprodutos().getValorTaxaTM());
+            pob.setApagar(false);
+            pob.setVisto(false);
+            pob.setSeguro(false);
+            pob.setNovo(true);
+            pob.setTipo("A");
+            consultaCambio=true;
+        }
+    }
+    
+    public void carregarListaProdutos(){
+        ProdutoOrcamentoController produtoOrcamentoController = new ProdutoOrcamentoController();
+        List<Viewprodutosfiltro> lista = produtoOrcamentoController.listarFiltroProdutosOrcamento(usuarioLogadoBean.getParametrosprodutos().getCursos());
+        if (lista==null){
+            lista = new ArrayList<Viewprodutosfiltro>();
+        }
+        produtoOrcaemntojComboBox = Formatacao.preencherComobox(lista, produtoOrcaemntojComboBox, false, null);
+    }
+    
+    
+    public void carregarModelOrcamentoProduto(){
+        if (listaProdutoOrcamentoBean==null){
+            listaProdutoOrcamentoBean = new ArrayList<ProdutoOrcamentoBean>();
+        }
+        modelOrcamentoProduto = new OrcamentoProdutoTableModel(listaProdutoOrcamentoBean);
+        produtoOrcamentojTable.setModel(modelOrcamentoProduto);
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(SwingConstants.RIGHT);
+        produtoOrcamentojTable.getColumnModel().getColumn(0).setPreferredWidth(290);
+        produtoOrcamentojTable.getColumnModel().getColumn(1).setCellRenderer(renderer);
+        produtoOrcamentojTable.getColumnModel().getColumn(1).setPreferredWidth(80);
+        produtoOrcamentojTable.getColumnModel().getColumn(2).setCellRenderer(renderer);
+        produtoOrcamentojTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        produtoOrcamentojTable.repaint();
+    }
+    
+   public void calcularValorTotalOrcamento(){
+           if (usuarioLogadoBean.getParametrosprodutos().isRemessaativa()){
+           calcularImpostoRemessa();
+       }
+       if(listaProdutoOrcamentoBean!=null){
+           valorTotal=0.0f;
+           totalMoedaEstrangeira=0.0f;
+           totalMoedaReal=0.0f;
+           for(int i=0;i<listaProdutoOrcamentoBean.size();i++){
+               valorTotal = valorTotal + listaProdutoOrcamentoBean.get(i).getValorMoedaReal();
+               totalMoedaEstrangeira = totalMoedaEstrangeira + listaProdutoOrcamentoBean.get(i).getValorMoedaEstrangeira();
+               totalMoedaReal = totalMoedaReal + listaProdutoOrcamentoBean.get(i).getValorMoedaReal();
+           }
+           
+          // Calcular todo o produto da taxa de remessa para o exterior
+//            if (produto.isTodos()) {
+//                float valorRemessa = 0.0f;
+//                valorRemessa = valorTotal * (usuarioLogadoBean.getParametrosprodutos().getPercentualremessa()/100);
+//                valorTotal = valorTotal + valorRemessa;
+//            }
+           
+           subTotal = valorTotal;
+           valorTotalOrcamentojTextField.setText(Formatacao.formatarFloatString(valorTotal));
+           valorOrcamentoFormajTextField.setText(valorTotalOrcamentojTextField.getText());
+           totalPagar = valorTotal + valorJuros;
+           totalPagarjTextField.setText(Formatacao.formatarFloatString(totalPagar));
+           saldoReceberjTextField.setText(Formatacao.formatarFloatString(totalPagar));
+           calcularParcelamentoPagamento();
+       }
+   }
+   
+   private void calcularImpostoRemessa() {
+        ProdutoRemessaController produtoRemessaController = new ProdutoRemessaController();
+        List<Produtoremessa> listaProdutoRemessa = produtoRemessaController.listar(usuarioLogadoBean.getParametrosprodutos().getVoluntariado());
+        float valorremessa = 0.0f;
+        if (listaProdutoRemessa != null) {
+            for (int i = 0; i < listaProdutoOrcamentoBean.size(); i++) {
+                int idProduto = listaProdutoOrcamentoBean.get(i).getIdProdutoOrcamento();
+                for (int n = 0; n < listaProdutoRemessa.size(); n++) {
+                    int idRemessa = listaProdutoRemessa.get(n).getProdutosorcamento().getIdprodutosOrcamento();
+                    if (idProduto == idRemessa) {
+                        valorremessa = valorremessa + listaProdutoOrcamentoBean.get(i).getValorMoedaReal();
+                    }
+                }
+            }
+        } 
+        if (valorremessa>0){
+            boolean achou = false;
+            valorremessa = valorremessa * (usuarioLogadoBean.getParametrosprodutos().getPercentualremessa()/100);
+            int idRemessa = usuarioLogadoBean.getParametrosprodutos().getProdutoremessa();
+            for(int i=0;i<listaProdutoOrcamentoBean.size();i++){
+                int idProduto = listaProdutoOrcamentoBean.get(i).getIdProdutoOrcamento();
+                if (idRemessa==idProduto){
+                    listaProdutoOrcamentoBean.get(i).setValorMoedaReal(valorremessa);
+                    listaProdutoOrcamentoBean.get(i).setValorMoedaEstrangeira(valorremessa/cambio.getValor());
+                    achou=true;
+                    i=1000;
+                }
+            }
+            if (!achou) {
+                ProdutoOrcamentoController produtoOrcamentoController = new ProdutoOrcamentoController();
+                Produtosorcamento produtosorcamento = produtoOrcamentoController.consultar(usuarioLogadoBean.getParametrosprodutos().getProdutoremessa());
+                telas.Voluntariado.ProdutoOrcamentoBean pob = new telas.Voluntariado.ProdutoOrcamentoBean();
+                pob.setIdOrcamentoProdutoOrcamento(0);
+                pob.setDescricaoProdutoOrcamento(produtosorcamento.getDescricao());
+                pob.setIdProdutoOrcamento(produtosorcamento.getIdprodutosOrcamento());
+                pob.setValorMoedaEstrangeira(valorremessa/cambio.getValor());
+                pob.setValorMoedaReal(valorremessa);
+                pob.setApagar(false);
+                pob.setVisto(false);
+                pob.setSeguro(false);
+                pob.setNovo(true);
+                pob.setTipo("A"); 
+                listaProdutoOrcamentoBean.add(pob); 
+            }
+        }
+    }
+
+    @Override
+    public void setCambio(Float valorCambio) {
+        valorCambiojTextField.setText(Formatacao.formatarFloatString(valorCambio));
+        this.valorCambio = valorCambio;
+        cambioAlterado = "Não";
+    }
+    
+    public void salvarVendas(String situacao){
+        if (venda==null){
+            venda = new Vendas();
+            this.novaFicha = true;
+            venda.setDataVenda(new Date());
+            venda.setUsuario(usuarioLogadoBean.getUsuario().getIdusuario());
+            venda.setUnidadenegocio(usuarioLogadoBean.getUnidadeNegocio().getIdunidadeNegocio());
+        }else {
+            if (venda.getSituacao().equalsIgnoreCase("PROCESSO")){
+                venda.setDataVenda(new Date());
+            }
+        }
+        venda.setSituacao(situacao);
+        venda.setCambio(cambio.getIdcambio());
+        VendasController vendasController = new VendasController();       
+        venda.setCliente(cliente.getIdcliente());
+        venda.setObstm(obsTMjTextArea.getText());
+        venda.setVendasMatriz("S");
+        venda.setProdutos(usuarioLogadoBean.getParametrosprodutos().getVoluntariado());
+        venda.setValor(Formatacao.formatarStringfloat(valorTotalOrcamentojTextField.getText()));
+        venda.setFornecedor(fornecedorcidade.getFornecedor().getIdfornecedor());
+        venda.setFornecedorcidade(fornecedorcidade);
+        venda = vendasController.salvar(venda);
+    }
+    
+    public void salvarFormaPagamento(){
+        if (formaPagamento==null){
+            formaPagamento = new Formapagamento();
+        }
+        formaPagamento.setCondicao(condicaoPagamentojComboBox.getSelectedItem().toString());
+        formaPagamento.setPossuiJuros(possuiJurosjComboBox.getSelectedItem().toString());
+        formaPagamento.setValorJutos(valorJuros);
+        formaPagamento.setValorOrcamento(Formatacao.formatarStringfloat(valorOrcamentoFormajTextField.getText()));
+        formaPagamento.setValorTotal(formaPagamento.getValorJutos() + formaPagamento.getValorOrcamento());
+        formaPagamento.setObservacoes(observacoesjTextArea.getText());
+        formaPagamento.setVendas(this.venda.getIdvendas());
+        FormaPagamentoController formaPagamentoController = new FormaPagamentoController();
+        formaPagamento = formaPagamentoController.salvar(formaPagamento);
+        ParcelamentoPagamentoController parcelamentoPagamentoController = new ParcelamentoPagamentoController();
+        for(int i=0;i<listaParcelamento.size();i++){
+            Parcelamentopagamento parcelamento = listaParcelamento.get(i);
+            parcelamento.setIdformapagamento(formaPagamento.getIdformaPagamento());
+            parcelamento = parcelamentoPagamentoController.salvar(parcelamento);
+        }
+    }
+    
+    
+    public void salvarSeguroViagem() {
+        if (seguroViagem == null) {
+            seguroViagem = new Seguroviagem();
+        }
+        if (seguroViagemjComboBox.getSelectedItem().toString().equalsIgnoreCase("Sim")) {
+            
+            seguroViagem.setDataInicio(dataInicioSegurojDateChooser.getDate());
+            seguroViagem.setDataTermino(dataTerminoSegurojDateChooser.getDate());
+            Integer numero = Integer.parseInt(numeroSemanaSegurosjTextField.getText());
+            seguroViagem.setNumeroSemanas(numero);
+            seguroViagem.setPlano(planosegurojTextField.getText());
+            seguroViagem.setSeguradora(seguradorajTextField.getText());
+            seguroViagem.setPossuiSeguro("Sim");
+            seguroViagem.setValoresseguro(valoresSeguro);
+            if (valorSegurojTextField.getText().length() > 0) {
+                valorSeguro = Formatacao.formatarStringfloat(valorSegurojTextField.getText());
+            }
+            seguroViagem.setValorSeguro(valorSeguro);
+            seguroViagem.setFoneContatoEmergencia(telefoneEmergenciajTextField.getText());
+            seguroViagem.setNomeContatoEmergencia(nomeContatoEmergenciajTextField.getText());
+            seguroViagem.setValoresseguro(valoresSeguro);
+            seguroViagem.setFornecedor(valoresSeguro.getFornecedorcidade().getFornecedor().getIdfornecedor());
+        } else {
+            seguroViagem.setValorSeguro(0.0f);
+            seguroViagem.setPossuiSeguro("Não");
+            seguroViagem.setVendas(venda.getIdvendas());
+            seguroViagem.setFornecedor(5);
+            seguroViagem.setValorSeguro(valorSeguro);
+            seguroViagem.setDataInicio(null);
+            seguroViagem.setDataTermino(null);
+            seguroViagem.setNumeroSemanas(0);
+            seguroViagem.setPlano(" ");
+            seguroViagem.setSeguradora("");
+            seguroViagem.setPossuiSeguro("Não");
+            seguroViagem.setValorSeguro(0.0f);
+            seguroViagem.setFoneContatoEmergencia("");
+            seguroViagem.setNomeContatoEmergencia("");
+            seguroViagem.setPaisDestino("");
+            ValorSeguroController valorSeguroController = new ValorSeguroController();
+            valoresSeguro = valorSeguroController.consultar(1);
+            seguroViagem.setFornecedor(valoresSeguro.getFornecedorcidade().getFornecedor().getIdfornecedor());
+            seguroViagem.setValoresseguro(valoresSeguro);
+        }
+        
+        seguroViagem.setVendas(venda.getIdvendas());
+        SeguroViagemController seguroViagemController = new SeguroViagemController();
+        seguroViagem = seguroViagemController.salvar(seguroViagem);
+    }
+    
+    
+    
+    public void salvarVoluntariado(){
+        if (voluntariado==null){
+            voluntariado = new Voluntariado();
+        }
+        voluntariado.setInstituicaoEstuda(instituicaoEstudajTextField.getText());
+        voluntariado.setCursoEstuda(cursoEstudajTextField.getText());
+        voluntariado.setDuracaoCursoEstuda(duracaoCursoEstudajTextField.getText());
+        voluntariado.setPeriodoCursoEstuda(periodoCursoEstudajTextField.getText());
+        voluntariado.setDataMatriculaCursoEstuda(dataMatriculaCursoEstudajDateChooser.getDate());
+        voluntariado.setDataEstimadaTerminoCursoEstuda(dataEstimadaTerminoCursoEstudajDateChooser.getDate());
+        voluntariado.setProfissao(profissaojTextField.getText());
+        voluntariado.setCargo(cargojTextField.getText());
+        voluntariado.setDescricaoCargo(descricaoCargojTextField.getText());
+        voluntariado.setOutrasHabilidade(outrasHabilidadejTextField.getText());
+        voluntariado.setTipoAcomodacao(tipoAcomodacaojComboBox.getSelectedItem().toString());
+        if (voluntariado.getTipoAcomodacao().equalsIgnoreCase("sem acomodação")) {
+            voluntariado.setTipoQuarto("");
+            voluntariado.setRefeicoes("");
+            voluntariado.setNumeroSemanasAcomodacao(0);
+            voluntariado.setFamiliaCrianca("Não");
+            voluntariado.setFamiliaAnimais("Não");
+            voluntariado.setAdicionais(adicionaisjTextField.getText());
+        } else {
+            voluntariado.setTipoQuarto(tipoQuartojComboBox.getSelectedItem().toString());
+            voluntariado.setRefeicoes(refeicoesjComboBox.getSelectedItem().toString());
+            voluntariado.setDataChegadaAcomodacao(dataChegadaAcomodacaojDateChooser.getDate());
+            voluntariado.setNumeroSemanasAcomodacao(Integer.parseInt(numeroSemanasAcomodacaojTextField.getText()));
+            voluntariado.setDataPartidaAcomodacao(dataPartidaAcomodacaojDateChooser.getDate());
+            voluntariado.setFamiliaCrianca(familiacriancajComboBox.getSelectedItem().toString());
+            voluntariado.setFamiliaAnimais(familiaanimaisestimacaojComboBox.getSelectedItem().toString());
+            voluntariado.setAdicionais(adicionaisjTextField.getText());
+        }
+        voluntariado.setCurso(cursojTextField.getText());
+        voluntariado.setDataInicio(dataIniciojDateChooser.getDate());
+        if(aulasporSemanajTextField.getText().length()>0){
+            voluntariado.setAulasporSemana(Integer.parseInt(aulasporSemanajTextField.getText()));
+        }else{
+            voluntariado.setAulasporSemana(0);
+        }
+        if(numeroSemanasjTextField.getText().length()>0){
+            voluntariado.setNumeroSemanas(Integer.parseInt(numeroSemanasjTextField.getText()));
+        }else{
+            voluntariado.setNumeroSemanas(0);
+        }
+        voluntariado.setDataTermino(dataTerminojDateChooser.getDate());
+        voluntariado.setProjetoVoluntariado(projetoVoluntariadojTextField.getText());
+        voluntariado.setDataInicioVoluntariado(dataInicioVoluntariadojDateChooser.getDate());
+        voluntariado.setDataTerminoVoluntariado(dataTerminoVoluntariadojDateChooser.getDate());
+        voluntariado.setExperienciaVoluntariado(experienciaVoluntariadojTextField.getText());
+        voluntariado.setMotivoVoluntariado(motivoVoluntariadojTextField.getText());
+        voluntariado.setDeficienciaFisica(deficienciaFisicajComboBox.getSelectedItem().toString());
+        voluntariado.setFumante(fumantejComboBox.getSelectedItem().toString());
+        voluntariado.setVegetariano(vegetarianojComboBox.getSelectedItem().toString());
+        voluntariado.setPossuiProblemaSaude(probelamSaudajComboBox.getSelectedItem().toString());
+        voluntariado.setFezCirurgia(cirurgiajComboBox.getSelectedItem().toString());
+        voluntariado.setPossuiAlergia(temAlergiajComboBox.getSelectedItem().toString());
+        voluntariado.setTratamentoMedico(tratamentoEspecificojComboBox.getSelectedItem().toString());
+        voluntariado.setTratamentoDrogas(usoDrogajComboBox.getSelectedItem().toString());
+        voluntariado.setDescricaoProblemaSaude(descricaoproblemaSaudejTextField.getText());
+        voluntariado.setDescricaoMedico(descricaoMedicojTextField.getText());
+        voluntariado.setDescricaoDrogas(descricaoDrogasjTextField.getText());
+        voluntariado.setDescricaoCirurgia(descricaoCirurgiajTextField.getText());
+        voluntariado.setQuaisAlergias(quaisalergiasjTextField.getText());
+        voluntariado.setDietaEspecifica(dietaEspecificajTextField.getText());
+        voluntariado.setHobbies(hobbiesjTextField.getText());
+        voluntariado.setNivelFitness(nivelFitnessjTextField.getText());
+        voluntariado.setSolicitacoesEspeciais(solicitacoesEspeciaisjTextField.getText());
+        voluntariado.setCartaoVTM(cartaoVTMjComboBox.getSelectedItem().toString());
+        voluntariado.setNumerocartaoVTM(numeroCartaoVTMjTextField.getText());
+        voluntariado.setMeodaCartaoVTM(moedaCartaoVTMjComboBox.getSelectedItem().toString());
+        voluntariado.setTransferin(transferInjComboBox.getSelectedItem().toString());
+        voluntariado.setTransferout(transferOutjComboBox.getSelectedItem().toString());
+        voluntariado.setDataChegadaTransfer(diachegadavoojDateChooser.getDate());
+        voluntariado.setVoo(voojTextField.getText());
+        voluntariado.setCiaerea(ciajTextField.getText());
+        voluntariado.setHorario(horariojFormattedTextField.getText());
+        voluntariado.setPassagemAerea(passagemjComboBox.getSelectedItem().toString());
+        voluntariado.setObservacaoPassagem(observacaoPassagemjTextField.getText());
+        voluntariado.setVistoConsular(vistojComboBox.getSelectedItem().toString());
+        voluntariado.setDataEntregaDocumentoVisto(dataEntregaDocumentosjDateChooser.getDate());
+        voluntariado.setObservacaoVistoConsultar(observacaoVistojTextField.getText());
+        voluntariado.setSeguroViagem(seguroViagemjComboBox.getSelectedItem().toString());
+        if (voluntariado.getSeguroViagem().equalsIgnoreCase("Sim")){
+            voluntariado.setSeguradora(seguradorajTextField.getText());
+            voluntariado.setPlanoSeguro(planosegurojTextField.getText());
+            voluntariado.setDataInicioSeguro(dataInicioSegurojDateChooser.getDate());
+            voluntariado.setNumeroSemanasSeguro(Integer.parseInt(numeroSemanaSegurosjTextField.getText()));
+            voluntariado.setDataTerminoSeguro(dataTerminoSegurojDateChooser.getDate());
+        }
+        voluntariado.setNomeContatoEmergencia(nomeContatoEmergenciajTextField.getText());
+        voluntariado.setFoneContatoEmergencia(telefoneEmergenciajTextField.getText());
+        voluntariado.setEmailContatoEmergencia(emailConatoEmergenciajTextField.getText());
+        voluntariado.setRelacaoContatoEmergencia(relacaoEmergenciajTextField.getText());
+        voluntariado.setControle("Processo");
+        voluntariado.setVendas(venda.getIdvendas());
+        VoluntariadoController voluntariadoController = new VoluntariadoController();
+        voluntariado = voluntariadoController.salvar(voluntariado);
+    }
+    
+    public void salvarOrcamento(){
+        if (orcamento==null){
+            orcamento = new Orcamento();
+        }
+        orcamento.setDataCambio(cambio.getData());
+        orcamento.setValorCambio(valorCambio);
+        orcamento.setTotalMoedaEstrangeira(totalMoedaEstrangeira);
+        orcamento.setTotalMoedaNacional(totalMoedaReal);
+        orcamento.setVendas(venda.getIdvendas());
+        orcamento.setCambioAlterado(cambioAlterado);
+        orcamento.setCambio(cambio.getIdcambio());
+        OrcamentoController orcamentoController = new OrcamentoController();
+        orcamento = orcamentoController.salvar(orcamento);
+        salvarOrcamentoProdutoOrcamento(orcamento);
+    }
+    
+    public void salvarOrcamentoProdutoOrcamento(Orcamento orcamento) {
+        apagarOrcamentoProdutosOrcamento();
+        if (listaProdutoOrcamentoBean != null) {
+            OrcamentoController orcamentoController = new OrcamentoController();
+            for (int i = 0; i < listaProdutoOrcamentoBean.size(); i++) {
+                Orcamentoprodutosorcamento produto;
+                produto = new Orcamentoprodutosorcamento();
+                produto.setOrcamento(orcamento.getIdorcamento());
+                produto.setProdutosOrcamento(listaProdutoOrcamentoBean.get(i).getIdProdutoOrcamento());
+                produto.setTipo(listaProdutoOrcamentoBean.get(i).getTipo());
+                produto.setValorMoedaEstrangeira(listaProdutoOrcamentoBean.get(i).getValorMoedaEstrangeira());
+                produto.setValorMoedaNacional(listaProdutoOrcamentoBean.get(i).getValorMoedaReal());
+                orcamentoController.salvar(produto);
+            }
+        }
+    }
+    
+    
+    public void apagarOrcamentoProdutosOrcamento() {
+        OrcamentoController orcamentoController = new OrcamentoController();
+        List<Orcamentoprodutosorcamento> listaProdutoOrcamento = orcamentoController.listarOrcamentoProdutoOrcamento(orcamento.getIdorcamento());
+        if (listaProdutoOrcamento != null) {
+            for (int i = 0; i < listaProdutoOrcamento.size(); i++) {
+                orcamentoController.excluirOrcamentoProdutoOrcamento(listaProdutoOrcamento.get(i).getIdorcamentoProdutosOrcamento());
+            }
+        }
+    }
+
+    
+
+    @Override
+    public void alterarValorCambio(String valor) {
+        float novoValor = Formatacao.formatarStringfloat(valor);
+        if (valorCambio != novoValor) {
+            valorCambio = Formatacao.formatarStringfloat(valor);
+            valorCambiojTextField.setText(Formatacao.formatarFloatString(valorCambio));
+            cambioAlterado = "Sim";
+            atualizarValoresProduto();
+        }else JOptionPane.showMessageDialog(rootPane, "Valor não é diferente");
+    }
+    
+     public void  setMascaras(){
+//        try {
+//            if (usuarioLogadoBean.getUnidadeNegocio().getDigitosTelefone()==9){
+//                telefoneContatoEmergenciajFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+//            }else {
+//                telefoneContatoEmergenciajFormattedTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+//            }
+//            
+//        } catch (ParseException ex) {
+//            Logger.getLogger(FrmCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }
+     
+    public void adicionarSeguroOrcamento() {
+        ProdutoOrcamentoBean pob = new ProdutoOrcamentoBean();
+        pob.setDescricaoProdutoOrcamento("Seguro Viagem");
+        pob.setIdProdutoOrcamento(usuarioLogadoBean.getParametrosprodutos().getSeguroOrcamento());
+        pob.setValorMoedaEstrangeira(0.0f);
+        pob.setValorMoedaReal(valorSeguro);
+        pob.setApagar(false);
+        pob.setVisto(false);
+        pob.setSeguro(true);
+        pob.setNovo(true);
+        listaProdutoOrcamentoBean.add(pob);
+        calcularValorTotalOrcamento();
+        carregarModelOrcamentoProduto();
+    }
+    
+    public void adicionarVistoOrcamento() {
+        ProdutoOrcamentoBean pob = new ProdutoOrcamentoBean();
+        pob.setDescricaoProdutoOrcamento("Emissão de Visto");
+        pob.setIdProdutoOrcamento(usuarioLogadoBean.getParametrosprodutos().getVistoOrcamento());
+        pob.setValorMoedaEstrangeira(0.0f);
+        pob.setValorMoedaReal(valorVistos);
+        pob.setApagar(false);
+        pob.setVisto(true);
+        pob.setSeguro(false);
+        pob.setNovo(true);
+        listaProdutoOrcamentoBean.add(pob);
+        calcularValorTotalOrcamento();
+        carregarModelOrcamentoProduto();
+    }
+    
+    public boolean verificarVistoLancado(){
+        if(listaProdutoOrcamentoBean!=null){
+            for(int i=0;i<listaProdutoOrcamentoBean.size();i++){
+                if (listaProdutoOrcamentoBean.get(i).isVisto()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    public boolean verificarSeguroLancado(){
+        if(listaProdutoOrcamentoBean!=null){
+            for(int i=0;i<listaProdutoOrcamentoBean.size();i++){
+                if (listaProdutoOrcamentoBean.get(i).isSeguro()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    public void carregarObjetos(int idVenda){
+        //Vendas
+        VendasController vendasController = new VendasController();
+        this.venda = vendasController.consultarVendas(idVenda);
+        if (this.venda!=null){
+            valorVendaAlterar = venda.getValor();
+            situacao = venda.getSituacao();
+            if (venda.getSituacao().equalsIgnoreCase("FINALIZADA")){
+                vendaAlterada = venda;
+            }
+            obsTMjTextArea.setText(venda.getObstm());
+            ClienteController clienteController = new ClienteController();
+            this.cliente = clienteController.consultar(venda.getCliente());
+            
+            VoluntariadoController voluntariadoController = new VoluntariadoController();
+            this.voluntariado = voluntariadoController.consultar(idVenda);
+            if(voluntariado!=null){
+                voluntariadoAlterado = voluntariadoController.consultar(idVenda);
+                carregarVoluntariadoAlteracao();
+                carregarCampos();
+            }
+            
+            fornecedorcidade = venda.getFornecedorcidade();
+            fornecedorjTextField.setText(fornecedorcidade.getFornecedor().getNome());
+            fornecedorAlteradocidade = fornecedorcidade;
+            
+          
+            SeguroViagemController seguroViagemController = new SeguroViagemController();
+            this.seguroViagem = seguroViagemController.consultar(idVenda);
+            if (seguroViagem!=null) {
+                seguroViagemAlterado = seguroViagem;
+                if (seguroViagem.getPossuiSeguro().equalsIgnoreCase("Sim")){
+                    carregarSeguro();
+                }
+            }
+            FormaPagamentoController formaPagamentoController = new FormaPagamentoController();
+            this.formaPagamento = formaPagamentoController.consultar(idVenda);
+            if (formaPagamento!=null){
+                carregarCamposFormaPagamento();
+            }
+            
+            OrcamentoController orcamentoController = new OrcamentoController();
+            orcamento = orcamentoController.consultar(idVenda);
+            if (orcamento!=null){
+                carregarOrcamento();
+                carregarCambio();
+                List<Orcamentoprodutosorcamento> listaOrcametoProduto = orcamentoController.listarOrcamentoProdutoOrcamento(orcamento.getIdorcamento());
+                if (listaOrcametoProduto!=null){
+                    for(int i=0;i<listaOrcametoProduto.size();i++){
+                        Produtosorcamento prod = orcamentoController.consultarProdutoOrcamento(listaOrcametoProduto.get(i).getProdutosOrcamento());
+                        ProdutoOrcamentoBean pob = new ProdutoOrcamentoBean();
+                        pob.setDescricaoProdutoOrcamento(prod.getDescricao());
+                        pob.setIdProdutoOrcamento(prod.getIdprodutosOrcamento());
+                        pob.setValorMoedaEstrangeira(listaOrcametoProduto.get(i).getValorMoedaEstrangeira());
+                        pob.setValorMoedaReal(listaOrcametoProduto.get(i).getValorMoedaNacional());
+                        pob.setIdOrcamentoProdutoOrcamento(listaOrcametoProduto.get(i).getIdorcamentoProdutosOrcamento());
+                        pob.setApagar(false);
+                        pob.setVisto(false);
+                        pob.setSeguro(false);
+                        pob.setTipo(listaOrcametoProduto.get(i).getTipo());
+                        pob.setNovo(false);
+                        listaProdutoOrcamentoBean.add(pob);
+                    }
+                    carregarModelOrcamentoProduto();
+                    calcularValorTotalOrcamento();
+                }
+            }
+            consultaCambio=true;
+        }
+    }
+    
+    public void carregarCampos(){
+        obsTMjTextArea.setText(venda.getObstm());
+        nomeClientejTextField.setText(cliente.getNome());
+        instituicaoEstudajTextField.setText(voluntariado.getInstituicaoEstuda());
+        cursoEstudajTextField.setText(voluntariado.getCursoEstuda());
+        duracaoCursoEstudajTextField.setText(voluntariado.getDuracaoCursoEstuda());
+        periodoCursoEstudajTextField.setText(voluntariado.getPeriodoCursoEstuda());
+        dataMatriculaCursoEstudajDateChooser.setDate(voluntariado.getDataMatriculaCursoEstuda());
+        dataEstimadaTerminoCursoEstudajDateChooser.setDate(voluntariado.getDataEstimadaTerminoCursoEstuda());
+        profissaojTextField.setText(voluntariado.getProfissao());
+        cargojTextField.setText(voluntariado.getCargo());
+        descricaoCargojTextField.setText(voluntariado.getDescricaoCargo());
+        outrasHabilidadejTextField.setText(voluntariado.getOutrasHabilidade());
+        tipoAcomodacaojComboBox.setSelectedItem(voluntariado.getTipoAcomodacao());
+        numeroSemanasAcomodacaojTextField.setText(String.valueOf(voluntariado.getNumeroSemanasAcomodacao()));
+        tipoQuartojComboBox.setSelectedItem(voluntariado.getTipoQuarto());
+        refeicoesjComboBox.setSelectedItem(voluntariado.getRefeicoes());
+        adicionaisjTextField.setText(voluntariado.getAdicionais());
+        dataChegadaAcomodacaojDateChooser.setDate(voluntariado.getDataChegadaAcomodacao());
+        dataPartidaAcomodacaojDateChooser.setDate(voluntariado.getDataPartidaAcomodacao());
+        familiacriancajComboBox.setSelectedItem(voluntariado.getFamiliaCrianca());
+        familiaanimaisestimacaojComboBox.setSelectedItem(voluntariado.getFamiliaAnimais());
+        cursojTextField.setText(voluntariado.getCurso());
+        dataIniciojDateChooser.setDate(voluntariado.getDataInicio());
+        aulasporSemanajTextField.setText(String.valueOf(voluntariado.getAulasporSemana()));
+        numeroSemanasjTextField.setText(String.valueOf(voluntariado.getNumeroSemanas()));
+        dataTerminojDateChooser.setDate(voluntariado.getDataTermino());
+        projetoVoluntariadojTextField.setText(voluntariado.getProjetoVoluntariado());
+        dataInicioVoluntariadojDateChooser.setDate(voluntariado.getDataInicioVoluntariado());
+        dataTerminoVoluntariadojDateChooser.setDate(voluntariado.getDataTerminoVoluntariado());
+        experienciaVoluntariadojTextField.setText(voluntariado.getExperienciaVoluntariado());
+        motivoVoluntariadojTextField.setText(voluntariado.getMotivoVoluntariado());
+        deficienciaFisicajComboBox.setSelectedItem(voluntariado.getDeficienciaFisica());
+        fumantejComboBox.setSelectedItem(voluntariado.getFumante());
+        vegetarianojComboBox.setSelectedItem(voluntariado.getVegetariano());
+        descricaoproblemaSaudejTextField.setText(voluntariado.getDescricaoProblemaSaude());
+        probelamSaudajComboBox.setSelectedItem(voluntariado.getPossuiProblemaSaude());
+        descricaoMedicojTextField.setText(voluntariado.getDescricaoMedico());
+        tratamentoEspecificojComboBox.setSelectedItem(voluntariado.getTratamentoMedico());
+        descricaoDrogasjTextField.setText(voluntariado.getDescricaoDrogas());
+        usoDrogajComboBox.setSelectedItem(voluntariado.getTratamentoDrogas());
+        descricaoCirurgiajTextField.setText(voluntariado.getDescricaoCirurgia());
+        cirurgiajComboBox.setSelectedItem(voluntariado.getFezCirurgia());
+        quaisalergiasjTextField.setText(voluntariado.getQuaisAlergias());
+        temAlergiajComboBox.setSelectedItem(voluntariado.getPossuiAlergia());
+        dietaEspecificajTextField.setText(voluntariado.getDietaEspecifica());
+        hobbiesjTextField.setText(voluntariado.getHobbies());
+        nivelFitnessjTextField.setText(voluntariado.getNivelFitness());
+        solicitacoesEspeciaisjTextField.setText(voluntariado.getSolicitacoesEspeciais());
+        cartaoVTMjComboBox.setSelectedItem(voluntariado.getCartaoVTM());
+        numeroCartaoVTMjTextField.setText(voluntariado.getNumerocartaoVTM());
+        moedaCartaoVTMjComboBox.setSelectedItem(voluntariado.getMeodaCartaoVTM());
+        transferInjComboBox.setSelectedItem(voluntariado.getTransferin());
+        transferOutjComboBox.setSelectedItem(voluntariado.getTransferout());
+        passagemjComboBox.setSelectedItem(voluntariado.getPassagemAerea());
+        observacaoPassagemjTextField.setText(voluntariado.getObservacaoPassagem());
+        vistojComboBox.setSelectedItem(voluntariado.getVistoConsular());
+        dataEntregaDocumentosjDateChooser.setDate(voluntariado.getDataEntregaDocumentoVisto());
+        observacaoVistojTextField.setText(voluntariado.getObservacaoVistoConsultar());
+        nomeContatoEmergenciajTextField.setText(voluntariado.getNomeContatoEmergencia());
+        telefoneEmergenciajTextField.setText(voluntariado.getFoneContatoEmergencia());
+        emailConatoEmergenciajTextField.setText(voluntariado.getEmailContatoEmergencia());
+        relacaoEmergenciajTextField.setText(voluntariado.getRelacaoContatoEmergencia());
+        nivelFitnessjTextField.setText(voluntariado.getNivelFitness());
+        diachegadavoojDateChooser.setDate(voluntariado.getDataChegadaTransfer());
+        voojTextField.setText(voluntariado.getVoo());
+        ciajTextField.setText(voluntariado.getCiaerea());
+        horariojFormattedTextField.setText(voluntariado.getHorario());
+    }
+    
+    public void carregarCamposFormaPagamento(){
+        condicaoPagamentojComboBox.setSelectedItem(formaPagamento.getCondicao());
+        possuiJurosjComboBox.setSelectedItem(formaPagamento.getPossuiJuros());
+        valorJuros = formaPagamento.getValorJutos();
+        valorJurosjTextField.setText(Formatacao.formatarFloatString(formaPagamento.getValorJutos()));
+        observacoesjTextArea.setText(formaPagamento.getObservacoes());
+        ParcelamentoPagamentoController parcelamentoPagamentoController = new ParcelamentoPagamentoController();
+        listaParcelamento = parcelamentoPagamentoController.listar(formaPagamento.getIdformaPagamento());
+        calcularParcelamentoPagamento();
+        carregarModelParcelamento();
+    }
+    
+    public void carregarSeguro(){
+        seguroViagemjComboBox.setSelectedItem("Sim");
+        seguradorajTextField.setText(seguroViagem.getSeguradora());
+        valorSegurojTextField.setText(Formatacao.formatarFloatString(seguroViagem.getValorSeguro()));
+        valorSeguro = seguroViagem.getValorSeguro();
+        planosegurojTextField.setText(seguroViagem.getPlano());
+        dataInicioSegurojDateChooser.setDate(seguroViagem.getDataInicio());
+        dataTerminoSegurojDateChooser.setDate(seguroViagem.getDataTermino());
+        numeroSemanaSegurosjTextField.setText(String.valueOf(seguroViagem.getNumeroSemanas()));
+    }
+    
+    
+    public void carregarOrcamento(){
+        valorCambio = orcamento.getValorCambio();
+        cambioAlterado = orcamento.getCambioAlterado();
+    }
+    
+    
+    
+    public void carregarComboMoedas(){
+        CambioController cambioController = new CambioController();
+        List<Moedas> listaMoedas = cambioController.listaMoedas();
+        if (listaMoedas!=null){
+            moedaCambiojComboBox = Formatacao.preencherComobox(listaMoedas, moedaCambiojComboBox, true, "Nenhum");
+        }
+    }
+    
+    public void carregarCambio(){
+        CambioController cambioController = new CambioController();
+        cambio = cambioController.consultar(orcamento.getCambio());
+        Moedas moeda = cambio.getMoedas();
+        if (venda.getSituacao().equalsIgnoreCase("PROCESSO")){
+            int dias= Formatacao.subtrairDatas(new Date(), venda.getDataVenda());
+            if (dias>3){
+                JOptionPane.showMessageDialog(rootPane, "Câmbio alterado para o dia atual");
+                cambio = cambioController.consultarCambioMoeda(Formatacao.ConvercaoDataSql(dataCambio), moeda.getIdmoedas());
+                if (cambio != null) {
+                    setCambio(cambio.getValor());
+                    atualizarValoresProduto();
+                }
+            }else {
+                    valorCambio = orcamento.getValorCambio();
+                    cambio.setValor(valorCambio);
+                    cambioAlterado = orcamento.getCambioAlterado();
+            }
+        }else {
+                valorCambio = orcamento.getValorCambio();
+                cambio.setValor(valorCambio);
+                cambioAlterado = orcamento.getCambioAlterado();
+        }
+        moedaCambiojComboBox.setSelectedItem(moeda);
+        valorCambiojTextField.setText(Formatacao.formatarFloatString(valorCambio));
+    }
+
+    @Override
+    public void liberarAltercaoCambio(Acesso acesso) {
+        if (acesso!=null){
+           new FrmAlterarValorCambio(this, true, this, acesso, usuarioLogadoBean.getUsuario().getIdusuario(), cambio.getValor());
+        }else {
+            JOptionPane.showMessageDialog(rootPane, "Acesso Negado");
+        }
+    }
+    
+    
+    public String validarDados(){
+        String msg ="";
+        if (nomeClientejTextField.getText().length()==0){
+            msg = msg + "Campo cliente não selecionado\r\n";
+        }
+        if (cursoEstudajTextField.getText().length()==0){
+            msg = msg + "Curso não informado\r\n";
+        }
+        if (dataInicioVoluntariadojDateChooser.getDate()==null){
+            msg = msg  + "Data início inválida\r\n";
+        }
+        if (dataTerminoVoluntariadojDateChooser.getDate()==null){
+            msg = msg + "Data términio inválida\r\n";
+        }
+        if (!tipoAcomodacaojComboBox.getSelectedItem().toString().equalsIgnoreCase("sem acomodação")) {
+            if (dataChegadaAcomodacaojDateChooser.getDate() == null) {
+                msg = msg + "Data chegada na acomodação inválida\r\n";
+            }
+            if (dataPartidaAcomodacaojDateChooser.getDate() == null) {
+                msg = msg + "Data partida acomodação inválida\r\n";
+            }
+            if (numeroSemanasAcomodacaojTextField.getText().length() == 0) {
+                msg = msg + "Número de semanas de acomodação não informado\r\n";
+            }
+        }
+        if (cartaoVTMjComboBox.getSelectedItem().toString().equalsIgnoreCase("Sim")){
+            if (numeroCartaoVTMjTextField.getText().length()==0){
+                msg = msg + "Nº Cartão VTM não informado\r\n";
+            }
+        }
+        if (seguroViagemjComboBox.getSelectedItem().toString().equalsIgnoreCase("sim")){
+            if (seguradorajTextField.getText().length()==0){
+                msg = msg + "Seguradora não inforamda\r\n";
+            }
+            if (valorSeguro==0){
+                msg = msg + "Valor do seguro não informado\r\n";
+            }
+            if (planosegurojTextField.getText().length()==0){
+                msg = msg + "Plano do seguro não informado\r\n";
+            }
+            if (dataInicioSegurojDateChooser.getDate()==null){
+                msg = msg + "Data ínicio seguro inválida\r\n";
+            }
+            if (dataTerminoSegurojDateChooser.getDate()==null){
+                msg = msg + "Data término seguro inválida\r\n";
+            }
+            if (this.fornecedorcidade==null){
+                msg = msg + "Escola inválida\r\n";
+            }
+            if (numeroSemanaSegurosjTextField.getText().length() == 0) {
+                msg = msg + "Nº de semanas no seguro é obrigatório\r\n";
+            }
+        }
+        if (nomeContatoEmergenciajTextField.getText().length()==0){
+            msg = msg + "Nome do contato de emergência não informado\r\n";
+        }
+        if (telefoneEmergenciajTextField.getText().length()==0){
+            msg = msg + "No. telefone  do contato de emergência não informado\r\n";
+        }
+        if (relacaoEmergenciajTextField.getText().length()==0){
+            msg = msg + "Relação do contato de emergência não informado\r\n";
+        }
+        if (listaParcelamento==null){
+            msg = msg + "Forma de Pagamento com erro\r\n";
+        }
+        if (listaParcelamento.size()==0){
+            msg = msg + "Forma de Pagamento com erro\r\n";
+        }
+        double saldoParcelar = Formatacao.formatarStringfloat(saldoParcelarjTextField.getText());
+        if (saldoParcelar>0){
+            msg = msg + "Forma de Pagamento possui saldo a parcelar em aberto\r\n";
+        }
+        return msg;
+    }
+    
+    public void emitirEmailGerencial() {
+        EnviarEmailBean email = new EnviarEmailBean();
+        if (novaFicha) {
+            email.setTitulo("Nova Ficha de Voluntariado");
+            email.setTipoAviso("Inclusão");
+            email.setDataInclusao(Formatacao.ConvercaoDataPadrao(venda.getDataVenda()));
+            email.setValor(Formatacao.formatarFloatString(venda.getValor()));
+            Moedas moeda = (Moedas) moedaCambiojComboBox.getSelectedItem();
+            email.setCambio(Formatacao.formatarFloatString(cambio.getValor()));
+            email.setSiglaCambio(moeda.getSigla());
+        } else {
+            email.setTitulo("Ficha de Voluntariado Alterada");
+            email.setTipoAviso("Alteração");
+            email.setDataAlteracao(Formatacao.ConvercaoDataPadrao(new Date()));
+            email.setDadosAlterados(dadosAlterado);
+        }
+        if (venda.getVendasMatriz().equalsIgnoreCase("S")){
+            email.setTipoVenda("Venda pela Matriz");
+        }else email.setTipoVenda("Venda pela Loja");
+        if (venda.getFornecedorcidade().getFornecedor()!=null){
+            email.setNomeEscola(venda.getFornecedorcidade().getFornecedor().getNome());
+        }
+        email.setUnidadeNegocio(usuarioLogadoBean.getUnidadeNegocio().getNomeFantasia());
+        email.setNomeCliente(cliente.getNome());
+        email.setDatainicio(Formatacao.ConvercaoDataPadrao(voluntariado.getDataInicioVoluntariado()));
+        email.setConsultor(usuarioLogadoBean.getUsuario().getNome());
+        email.setObsTM(venda.getObstm());
+        email.setIdProduto(usuarioLogadoBean.getParametrosprodutos().getVoluntariado());
+        if (novaFicha){
+            email.criarCorpoEmailInclusao();
+        }else email.criarCorpoEmailAteracao();
+        email.enviarEmail();
+    }
+    
+    public void calcularParcelamentoPagamento() {
+        if (listaParcelamento != null) {
+            Float valorParcelado = 0.0f;
+            for (int i = 0; i < listaParcelamento.size(); i++) {
+                valorParcelado = valorParcelado + listaParcelamento.get(i).getValorParcelamento();
+            }
+            Float saldo = (valorTotal + valorJuros) - valorParcelado;
+            saldoParcelarjTextField.setText(Formatacao.formatarFloatString(saldo));
+        }
+    }
+    
+    public void carregarModelParcelamento(){
+        List<Parcelamentopagamento> listanova=null;
+        listanova = listaParcelamento;
+        if (formaPagamento != null) {
+            ParcelamentoPagamentoController parcelamentoPagamentoController = new ParcelamentoPagamentoController();
+            listaParcelamento = parcelamentoPagamentoController.listar(formaPagamento.getIdformaPagamento());
+            if (listaParcelamento == null) {
+                listaParcelamento = new ArrayList<Parcelamentopagamento>();
+            }
+        }else {
+                listaParcelamento = new ArrayList<Parcelamentopagamento>();
+        }
+        if (listanova != null) {
+            for (int i = 0; i < listanova.size(); i++) {
+                if (listanova.get(i).getIdparcemlamentoPagamento() == null) {
+                    listaParcelamento.add(listanova.get(i));
+                }
+            }
+        }
+        modelParcelamento = new ConsultaParcelamentoPagamentoTableModel(listaParcelamento);
+        parcelamentojTable.setModel(modelParcelamento);
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(SwingConstants.RIGHT);
+        parcelamentojTable.getColumnModel().getColumn(0).setPreferredWidth(100);
+        parcelamentojTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        parcelamentojTable.getColumnModel().getColumn(2).setCellRenderer(renderer);
+        parcelamentojTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        parcelamentojTable.getColumnModel().getColumn(3).setCellRenderer(renderer);
+        parcelamentojTable.getColumnModel().getColumn(3).setPreferredWidth(20);
+        parcelamentojTable.getColumnModel().getColumn(4).setCellRenderer(renderer);
+        parcelamentojTable.getColumnModel().getColumn(4).setPreferredWidth(50);
+        parcelamentojTable.repaint();
+    }
+    
+    public void salvarFollowup(){
+        FollowupController followupController = new FollowupController();
+        followupController.fecharFollowUpCliente(cliente.getIdcliente());   
+    }
+    
+    public void salvarCliente(){
+        cliente.setTipoCliente("Fechado");
+        cliente.setDataInicio(voluntariado.getDataInicio());
+        cliente.setDataTermino(voluntariado.getDataTermino());
+        ClienteController clienteController = new ClienteController();
+        cliente = clienteController.salvar(cliente);
+    }
+    
+    public void salvarControle() {
+        VoluntariadoController voluntariadoController = new VoluntariadoController();
+        List<Controlevoluntariado> listaControle  = voluntariadoController.consultarControleVoluntariado(venda.getIdvendas());
+        if (listaControle == null) {
+            Controlevoluntariado controle = new Controlevoluntariado();
+            controle.setVendas(venda);
+            controle.setProcessoenviado("Não");
+            controle.setSituacao("Processo");
+            controle = voluntariadoController.salvar(controle);
+            salvarInvoice(controle.getIdcontrolevoluntariado());
+        }
+    }
+    
+    public void salvarInvoice(int idControle) {
+        Invoices invoice = new Invoices();
+        invoice.setCambioPagamento(0.0f);
+        invoice.setGanhoCambio(0.0f);
+        invoice.setValorPago(0.0f);
+        invoice.setVendas(venda.getIdvendas());
+        invoice.setControle(idControle);
+        invoice.setProdutos(venda.getProdutos());
+        invoice.setGanhoperda(0.0f);
+        invoice.setValorPagamentoInvoice(0.0f);
+        invoice.setValorPrevistoInvoice(0.0f);
+        invoice.setValorcredito(0.0f);
+        invoice.setObscredito("");
+        InvoicesController invoicesController = new InvoicesController();
+        invoicesController.salvar(invoice);
+    }
+
+    public void verificarAlteracaoCambio(){
+        if (cambioAlterado.equalsIgnoreCase("sim")){
+            Formatacao.VerificarCambioalterado(valorCambio, "Curso",  cliente.getNome(), 
+                    usuarioLogadoBean.getUnidadeNegocio().getNomeFantasia(), usuarioLogadoBean.getUsuario().getNome(), this.venda.getProdutos(), Formatacao.formatarFloatString(this.venda.getValor()));
+        }
+    }
+    
+    
+
+    @Override
+    public void setValorJuros(Float valorJuros) {
+        valorJurosjTextField.setText(Formatacao.formatarFloatString(valorJuros));
+        valorJurosjTextField.requestFocus();
+    }
+
+    
+    
+
+    
+    public void limitarJText() {
+        instituicaoEstudajTextField.setDocument(new LimiteTextoJedit(100));
+        cursoEstudajTextField.setDocument(new LimiteTextoJedit(50));
+        duracaoCursoEstudajTextField.setDocument(new LimiteTextoJedit(50));
+        periodoCursoEstudajTextField.setDocument(new LimiteTextoJedit(50));
+        profissaojTextField.setDocument(new LimiteTextoJedit(50));
+        cargojTextField.setDocument(new LimiteTextoJedit(50));
+        descricaoCargojTextField.setDocument(new LimiteTextoJedit(200));
+        outrasHabilidadejTextField.setDocument(new LimiteTextoJedit(100));
+        adicionaisjTextField.setDocument(new LimiteTextoJedit(100));
+        hobbiesjTextField.setDocument(new LimiteTextoJedit(200));
+        quaisalergiasjTextField.setDocument(new LimiteTextoJedit(200));
+        solicitacoesEspeciaisjTextField.setDocument(new LimiteTextoJedit(100));
+        cursojTextField.setDocument(new LimiteTextoJedit(100));
+        projetoVoluntariadojTextField.setDocument(new LimiteTextoJedit(200));
+        experienciaVoluntariadojTextField.setDocument(new LimiteTextoJedit(200));
+        motivoVoluntariadojTextField.setDocument(new LimiteTextoJedit(200));
+        descricaoproblemaSaudejTextField.setDocument(new LimiteTextoJedit(100));
+        descricaoMedicojTextField.setDocument(new LimiteTextoJedit(100));
+        descricaoDrogasjTextField.setDocument(new LimiteTextoJedit(100));
+        descricaoCirurgiajTextField.setDocument(new LimiteTextoJedit(100));
+        dietaEspecificajTextField.setDocument(new LimiteTextoJedit(100));
+        numeroCartaoVTMjTextField.setDocument(new LimiteTextoJedit(45));
+        observacaoPassagemjTextField.setDocument(new LimiteTextoJedit(100));
+        observacaoVistojTextField.setDocument(new LimiteTextoJedit(200));
+        planosegurojTextField.setDocument(new LimiteTextoJedit(50));
+        seguradorajTextField.setDocument(new LimiteTextoJedit(100));
+        nomeContatoEmergenciajTextField.setDocument(new LimiteTextoJedit(100));
+        telefoneEmergenciajTextField.setDocument(new LimiteTextoJedit(14));
+        emailConatoEmergenciajTextField.setDocument(new LimiteTextoJedit(100));
+        relacaoEmergenciajTextField.setDocument(new LimiteTextoJedit(50));
+    }
+    
+    public String validarFormaPagamento(){
+        String msg = "";
+        if (dataVencimentojDateChooser.getDate()==null){
+            msg = msg + "Data primeiro vencimento obrigatória";
+        }
+        if (meioPagamentojComboBox.getSelectedItem().toString().equalsIgnoreCase("Selecione")){
+            msg = msg + "Campo forma de pagamento obrigatório";
+        }
+        return msg;
+    }
+    
+    @Override
+    public void setFornecedor(Fornecedorcidade fornecedorcidade) {
+        if (fornecedorcidade!=null){
+            this.fornecedorcidade = fornecedorcidade;
+            fornecedorjTextField.setText(fornecedorcidade.getFornecedor().getNome());
+        }
+    }
+    
+    public void atualizarValoresProduto(){
+        if (listaProdutoOrcamentoBean!=null){
+            for(int i=0;i<listaProdutoOrcamentoBean.size();i++){
+                if (listaProdutoOrcamentoBean.get(i).getValorMoedaEstrangeira()>0){
+                    listaProdutoOrcamentoBean.get(i).setValorMoedaReal(listaProdutoOrcamentoBean.get(i).getValorMoedaEstrangeira()*valorCambio);
+                }
+                calcularValorTotalOrcamento();
+            }
+            carregarModelOrcamentoProduto();
+        }
+    }
+
+    @Override
+    public void setValorSeguro(Valoresseguro valoresSeguro) {
+        if (valoresSeguro!=null){
+            planosegurojTextField.setText(valoresSeguro.getPlano());
+            seguradorajTextField.setText(valoresSeguro.getFornecedorcidade().getFornecedor().getNome());
+            int numero = Integer.parseInt(numeroSemanaSegurosjTextField.getText());
+            this.valoresSeguro = valoresSeguro;
+            valorSeguro = numero * valoresSeguro.getValorgross();
+            valorSegurojTextField.setText(Formatacao.formatarFloatString(valorSeguro));
+        }
+    }
+    
+    
+     public void carregarVoluntariadoAlteracao(){
+        voluntariadoAlterado = new Voluntariado();
+        voluntariadoAlterado.setAdicionais(voluntariado.getAdicionais());
+        voluntariadoAlterado.setAulasporSemana(voluntariado.getAulasporSemana());
+        voluntariadoAlterado.setCargo(voluntariado.getCargo());
+        voluntariadoAlterado.setCartaoVTM(voluntariado.getCartaoVTM());
+        voluntariadoAlterado.setCiaerea(voluntariado.getCiaerea());
+        voluntariadoAlterado.setControle(voluntariado.getControle());
+        voluntariadoAlterado.setCurso(voluntariado.getCurso());
+        voluntariadoAlterado.setCursoEstuda(voluntariado.getCursoEstuda());
+        voluntariadoAlterado.setDataChegadaAcomodacao(voluntariado.getDataChegadaAcomodacao());
+        voluntariadoAlterado.setDataChegadaTransfer(voluntariado.getDataChegadaTransfer());
+        voluntariadoAlterado.setDataEntregaDocumentoVisto(voluntariado.getDataEntregaDocumentoVisto());
+        voluntariadoAlterado.setDataEstimadaTerminoCursoEstuda(voluntariado.getDataEstimadaTerminoCursoEstuda());
+        voluntariadoAlterado.setDataInicio(voluntariado.getDataInicio());
+        voluntariadoAlterado.setDataInicioSeguro(voluntariado.getDataInicioSeguro());
+        voluntariadoAlterado.setDataInicioVoluntariado(voluntariado.getDataInicioVoluntariado());
+        voluntariadoAlterado.setDataMatriculaCursoEstuda(voluntariado.getDataMatriculaCursoEstuda());
+        voluntariadoAlterado.setDataPartidaAcomodacao(voluntariado.getDataPartidaAcomodacao());
+        voluntariadoAlterado.setDataTermino(voluntariado.getDataTermino());
+        voluntariadoAlterado.setDataTerminoSeguro(voluntariado.getDataTerminoSeguro());
+        voluntariadoAlterado.setDataTerminoVoluntariado(voluntariado.getDataTerminoVoluntariado());
+        voluntariadoAlterado.setDeficienciaFisica(voluntariado.getDeficienciaFisica());
+        voluntariadoAlterado.setDescricaoCargo(voluntariado.getDescricaoCargo());
+        voluntariadoAlterado.setDescricaoCirurgia(voluntariado.getDescricaoCirurgia());
+        voluntariadoAlterado.setDescricaoDrogas(voluntariado.getDescricaoDrogas());
+        voluntariadoAlterado.setDescricaoMedico(voluntariado.getDescricaoMedico());
+        voluntariadoAlterado.setDescricaoProblemaSaude(voluntariado.getDescricaoProblemaSaude());
+        voluntariadoAlterado.setDietaEspecifica(voluntariado.getDietaEspecifica());
+        voluntariadoAlterado.setDuracaoCursoEstuda(voluntariado.getDuracaoCursoEstuda());
+        voluntariadoAlterado.setEmailContatoEmergencia(voluntariado.getEmailContatoEmergencia());
+        voluntariadoAlterado.setExperienciaVoluntariado(voluntariado.getExperienciaVoluntariado());
+        voluntariadoAlterado.setFamiliaAnimais(voluntariado.getFamiliaAnimais());
+        voluntariadoAlterado.setFamiliaCrianca(voluntariado.getFamiliaCrianca());
+        voluntariadoAlterado.setFezCirurgia(voluntariado.getFezCirurgia());
+        voluntariadoAlterado.setFoneContatoEmergencia(voluntariado.getFoneContatoEmergencia());
+        voluntariadoAlterado.setFumante(voluntariado.getFumante());
+        voluntariadoAlterado.setHobbies(voluntariado.getHobbies());
+        voluntariadoAlterado.setHorario(voluntariado.getHorario());
+        voluntariadoAlterado.setIdiomaEstudar(voluntariado.getIdiomaEstudar());
+        voluntariadoAlterado.setIdvoluntariado(voluntariado.getIdvoluntariado());
+        voluntariadoAlterado.setInstituicaoEstuda(voluntariado.getInstituicaoEstuda());
+        voluntariadoAlterado.setMeodaCartaoVTM(voluntariado.getMeodaCartaoVTM());
+        voluntariadoAlterado.setMotivoVoluntariado(voluntariado.getMotivoVoluntariado());
+        voluntariadoAlterado.setNivelFitness(voluntariado.getNivelFitness());
+        voluntariadoAlterado.setNivelIdiomaEstudar(voluntariado.getNivelIdiomaEstudar());
+        voluntariadoAlterado.setNomeContatoEmergencia(voluntariado.getNomeContatoEmergencia());
+        voluntariadoAlterado.setNumeroSemanas(voluntariado.getNumeroSemanas());
+        voluntariadoAlterado.setNumeroSemanasAcomodacao(voluntariado.getNumeroSemanasAcomodacao());
+        voluntariadoAlterado.setNumeroSemanasSeguro(voluntariado.getNumeroSemanasSeguro());
+        voluntariadoAlterado.setNumerocartaoVTM(voluntariado.getNumerocartaoVTM());
+        voluntariadoAlterado.setObservacaoPassagem(voluntariado.getObservacaoPassagem());
+        voluntariadoAlterado.setObservacaoVistoConsultar(voluntariado.getObservacaoVistoConsultar());
+        voluntariadoAlterado.setOutrasHabilidade(voluntariado.getOutrasHabilidade());
+        voluntariadoAlterado.setPassagemAerea(voluntariado.getPassagemAerea());
+        voluntariadoAlterado.setPeriodoCursoEstuda(voluntariado.getPeriodoCursoEstuda());
+        voluntariadoAlterado.setPlanoSeguro(voluntariado.getPlanoSeguro());
+        voluntariadoAlterado.setPossuiAlergia(voluntariado.getPossuiAlergia());
+        voluntariadoAlterado.setPossuiProblemaSaude(voluntariado.getPossuiProblemaSaude());
+        voluntariadoAlterado.setProfissao(voluntariado.getProfissao());
+        voluntariadoAlterado.setProjetoVoluntariado(voluntariado.getProjetoVoluntariado());
+        voluntariadoAlterado.setQuaisAlergias(voluntariado.getQuaisAlergias());
+        voluntariadoAlterado.setRefeicoes(voluntariado.getRefeicoes());
+        voluntariadoAlterado.setRelacaoContatoEmergencia(voluntariado.getRelacaoContatoEmergencia());
+        voluntariadoAlterado.setSeguradora(voluntariado.getSeguradora());
+        voluntariadoAlterado.setSeguroViagem(voluntariado.getSeguroViagem());
+        voluntariadoAlterado.setSolicitacoesEspeciais(voluntariado.getSolicitacoesEspeciais());
+        voluntariadoAlterado.setTipoAcomodacao(voluntariado.getTipoAcomodacao());
+        voluntariadoAlterado.setTipoQuarto(voluntariado.getTipoQuarto());
+        voluntariadoAlterado.setTransferin(voluntariado.getTransferin());
+        voluntariadoAlterado.setTransferout(voluntariado.getTransferout());
+        voluntariadoAlterado.setTratamentoDrogas(voluntariado.getTratamentoDrogas());
+        voluntariadoAlterado.setTratamentoMedico(voluntariado.getTratamentoMedico());
+        voluntariadoAlterado.setVegetariano(voluntariado.getVegetariano());
+        voluntariadoAlterado.setVendas(voluntariado.getVendas());
+        voluntariadoAlterado.setVistoConsular(voluntariado.getVistoConsular());
+        voluntariadoAlterado.setVoo(voluntariado.getVoo());
+        
+    }
+     
+     public void verificarDadosAlterado() {
+        dadosAlterado="";
+        if (voluntariado.getAdicionais()!= null) {
+            if (!voluntariado.getAdicionais().equalsIgnoreCase(voluntariadoAlterado.getAdicionais())) {
+                dadosAlterado = "Adicionais : " + voluntariado.getAdicionais() + " | " + voluntariadoAlterado.getAdicionais() + "<br></br>";
+            }
+        }
+        if (voluntariado.getAulasporSemana()!= null) {
+            if (!voluntariado.getAulasporSemana().equals(voluntariadoAlterado.getAulasporSemana())) {
+                dadosAlterado = dadosAlterado + "Aulas por Semana : " + voluntariado.getAulasporSemana() + " | " + voluntariadoAlterado.getAulasporSemana() + "<br></br>";
+            }
+        }
+        if (voluntariado.getCargo()!= null) {
+            if (!voluntariado.getCargo().equalsIgnoreCase(voluntariadoAlterado.getCargo())) {
+                dadosAlterado = dadosAlterado + "Cargo : " + voluntariado.getCargo() + " | " + voluntariadoAlterado.getCargo() + "<br></br>";
+            }
+        }
+        
+        if (voluntariado.getCiaerea()!= null) {
+            if (!voluntariado.getCiaerea().equalsIgnoreCase(voluntariadoAlterado.getCiaerea())) {
+                dadosAlterado = dadosAlterado + "Cia Aérea : " + voluntariado.getCiaerea() + " | " + voluntariadoAlterado.getCiaerea() + "<br></br>";
+            }
+        }
+        if (voluntariado.getControle()!= null) {
+            if (!voluntariado.getControle().equalsIgnoreCase(voluntariadoAlterado.getControle())) {
+                dadosAlterado = dadosAlterado + "Controle : " + voluntariado.getControle() + " | " + voluntariadoAlterado.getControle() + "<br></br>";
+            }
+        }
+        if (voluntariado.getCurso()!= null) {
+            if (!voluntariado.getCurso().equalsIgnoreCase(voluntariadoAlterado.getCurso())) {
+                dadosAlterado = dadosAlterado + "Curso : " + voluntariado.getCurso() + " | " + voluntariadoAlterado.getCurso() + "<br></br>";
+            }
+        }
+        if (voluntariado.getCursoEstuda()!= null) {
+            if (!voluntariado.getCursoEstuda().equalsIgnoreCase(voluntariadoAlterado.getCursoEstuda())) {
+                dadosAlterado = dadosAlterado + "Curso que estuda : " + voluntariado.getCursoEstuda() + " | " + voluntariadoAlterado.getCursoEstuda() + "<br></br>";
+            }
+        }
+       
+        if (voluntariado.getDataChegadaAcomodacao()!= null) {
+            if (!voluntariado.getDataChegadaAcomodacao().equals(voluntariadoAlterado.getDataChegadaAcomodacao())) {
+                dadosAlterado = dadosAlterado + "Data Chegada Acomodação : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataChegadaAcomodacao()) + " | " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataChegadaAcomodacao()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataChegadaTransfer()!= null) {
+            if (!voluntariado.getDataChegadaTransfer().equals(voluntariadoAlterado.getDataChegadaTransfer())) {
+                dadosAlterado = dadosAlterado + "Data Chegada Transfer : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataChegadaTransfer()) + " | " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataChegadaTransfer()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataEntregaDocumentoVisto()!= null) {
+            if (!voluntariado.getDataEntregaDocumentoVisto().equals(voluntariadoAlterado.getDataEntregaDocumentoVisto())) {
+                dadosAlterado = dadosAlterado + "Data Entrega dos Documentos do Visto : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataEntregaDocumentoVisto()) + " | " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataEntregaDocumentoVisto()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataEntregaDocumentoVisto()!= null) {
+            if (!voluntariado.getDataEntregaDocumentoVisto().equals(voluntariadoAlterado.getDataEntregaDocumentoVisto())) {
+                dadosAlterado = dadosAlterado + "Data Entrega dos Documentos do Visto : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataEntregaDocumentoVisto()) + " | " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataEntregaDocumentoVisto()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataEstimadaTerminoCursoEstuda()!= null) {
+            if (!voluntariado.getDataEstimadaTerminoCursoEstuda().equals(voluntariadoAlterado.getDataEstimadaTerminoCursoEstuda())) {
+                dadosAlterado = dadosAlterado + "Data Estimada para Termino do curso : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataEstimadaTerminoCursoEstuda()) + " | " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataEstimadaTerminoCursoEstuda()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataInicio()!= null) {
+            if (!voluntariado.getDataInicio().equals(voluntariadoAlterado.getDataInicio())) {
+                dadosAlterado = dadosAlterado + "Data de Início : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataInicio()) + " | " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataInicio()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataInicioSeguro()!= null) {
+            if (!voluntariado.getDataInicioSeguro().equals(voluntariadoAlterado.getDataInicioSeguro())) {
+                dadosAlterado = dadosAlterado + "Data de Início do Seguro: " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataInicioSeguro()) + " | " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataInicioSeguro()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataInicioVoluntariado()!= null) {
+            if (!voluntariado.getDataInicioVoluntariado().equals(voluntariadoAlterado.getDataInicioVoluntariado())) {
+                dadosAlterado = dadosAlterado + "Data de Início do Voluntariado: " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataInicioVoluntariado()) + " | " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataInicioVoluntariado()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataMatriculaCursoEstuda()!= null) {
+            if (!voluntariado.getDataMatriculaCursoEstuda().equals(voluntariadoAlterado.getDataMatriculaCursoEstuda())) {
+                dadosAlterado = dadosAlterado + "Data Matricula no Curso : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataMatriculaCursoEstuda()) + " | " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataMatriculaCursoEstuda()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataPartidaAcomodacao()!= null) {
+            if (!voluntariado.getDataPartidaAcomodacao().equals(voluntariadoAlterado.getDataPartidaAcomodacao())) {
+                dadosAlterado = dadosAlterado + "Data Partida de Acomodação : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataPartidaAcomodacao()) + " | " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataPartidaAcomodacao()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataTermino()!= null) {
+            if (!voluntariado.getDataTermino().equals(voluntariadoAlterado.getDataTermino())) {
+                dadosAlterado = dadosAlterado + "Data Termino : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataTermino()) + " |  " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataTermino()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataTerminoSeguro()!= null) {
+            if (!voluntariado.getDataTerminoSeguro().equals(voluntariadoAlterado.getDataTerminoSeguro())) {
+                dadosAlterado = dadosAlterado + "Data Termino do Seguro : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataTerminoSeguro()) + " |  " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataTerminoSeguro()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataTerminoVoluntariado()!= null) {
+            if (!voluntariado.getDataTerminoVoluntariado().equals(voluntariadoAlterado.getDataTerminoVoluntariado())) {
+                dadosAlterado = dadosAlterado + "Data Termino do Voluntariado : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataTerminoVoluntariado()) + " |  " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataTerminoVoluntariado()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getDeficienciaFisica()!= null) {
+            if (!voluntariado.getDeficienciaFisica().equalsIgnoreCase(voluntariadoAlterado.getDeficienciaFisica())) {
+                dadosAlterado = dadosAlterado + "Deficiencia Física : " + voluntariado.getDeficienciaFisica() + " | " + voluntariadoAlterado.getDeficienciaFisica() + "<br></br>";
+            }
+        }
+        if (voluntariado.getDescricaoCargo()!= null) {
+            if (!voluntariado.getDescricaoCargo().equalsIgnoreCase(voluntariadoAlterado.getDescricaoCargo())) {
+                dadosAlterado = dadosAlterado + "Descrição do Cargo : " + voluntariado.getDescricaoCargo() + " | " + voluntariadoAlterado.getDescricaoCargo() + "<br></br>";
+            }
+        }
+        if (voluntariado.getDescricaoCirurgia()!= null) {
+            if (!voluntariado.getDescricaoCirurgia().equalsIgnoreCase(voluntariadoAlterado.getDescricaoCirurgia())) {
+                dadosAlterado = dadosAlterado + "Descrição de Cirugia : " + voluntariado.getDescricaoCirurgia() + " | " + voluntariadoAlterado.getDescricaoCirurgia() + "<br></br>";
+            }
+        }
+        if (voluntariado.getDescricaoDrogas()!= null) {
+            if (!voluntariado.getDescricaoDrogas().equalsIgnoreCase(voluntariadoAlterado.getDescricaoDrogas())) {
+                dadosAlterado = dadosAlterado + "Descrição de Drogas : " + voluntariado.getDescricaoDrogas() + " | " + voluntariadoAlterado.getDescricaoDrogas() + "<br></br>";
+            }
+        }
+        if (voluntariado.getDescricaoMedico()!= null) {
+            if (!voluntariado.getDescricaoMedico().equalsIgnoreCase(voluntariadoAlterado.getDescricaoMedico())) {
+                dadosAlterado = dadosAlterado + "Descrição de Médico : " + voluntariado.getDescricaoMedico() + " | " + voluntariadoAlterado.getDescricaoMedico() + "<br></br>";
+            }
+        }
+        if (voluntariado.getDescricaoProblemaSaude()!= null) {
+            if (!voluntariado.getDescricaoProblemaSaude().equalsIgnoreCase(voluntariadoAlterado.getDescricaoProblemaSaude())) {
+                dadosAlterado = dadosAlterado + "Descrição Problema de Saúde : " + voluntariado.getDescricaoProblemaSaude() + " | " + voluntariadoAlterado.getDescricaoProblemaSaude() + "<br></br>";
+            }
+        }
+        if (voluntariado.getDietaEspecifica()!= null) {
+            if (!voluntariado.getDietaEspecifica().equalsIgnoreCase(voluntariadoAlterado.getDietaEspecifica())) {
+                dadosAlterado = dadosAlterado + "Dieta Especifica : " + voluntariado.getDietaEspecifica() + " | " + voluntariadoAlterado.getDietaEspecifica() + "<br></br>";
+            }
+        }
+        if (voluntariado.getDuracaoCursoEstuda()!= null) {
+            if (!voluntariado.getDuracaoCursoEstuda().equalsIgnoreCase(voluntariadoAlterado.getDuracaoCursoEstuda())) {
+                dadosAlterado = dadosAlterado + "Duração Curso : " + voluntariado.getDuracaoCursoEstuda() + " | " + voluntariadoAlterado.getDuracaoCursoEstuda() + "<br></br>";
+            }
+        }
+        if (voluntariado.getEmailContatoEmergencia()!= null) {
+            if (!voluntariado.getEmailContatoEmergencia().equalsIgnoreCase(voluntariadoAlterado.getEmailContatoEmergencia())) {
+                dadosAlterado = dadosAlterado + "Email Contato de Emergência : " + voluntariado.getEmailContatoEmergencia() + " | " + voluntariadoAlterado.getEmailContatoEmergencia() + "<br></br>";
+            }
+        }
+        if (voluntariado.getExperienciaVoluntariado()!= null) {
+            if (!voluntariado.getExperienciaVoluntariado().equalsIgnoreCase(voluntariadoAlterado.getExperienciaVoluntariado())) {
+                dadosAlterado = dadosAlterado + "Experiencia de Voluntariado : " + voluntariado.getExperienciaVoluntariado() + " | " + voluntariadoAlterado.getExperienciaVoluntariado() + "<br></br>";
+            }
+        }
+        if (voluntariado.getFamiliaAnimais()!= null) {
+            if (!voluntariado.getFamiliaAnimais().equalsIgnoreCase(voluntariadoAlterado.getFamiliaAnimais())) {
+                dadosAlterado = dadosAlterado + "Família com Animais : " + voluntariado.getFamiliaAnimais() + " | " + voluntariadoAlterado.getFamiliaAnimais() + "<br></br>";
+            }
+        }
+        if (voluntariado.getFamiliaCrianca()!= null) {
+            if (!voluntariado.getFamiliaCrianca().equalsIgnoreCase(voluntariadoAlterado.getFamiliaCrianca())) {
+                dadosAlterado = dadosAlterado + "Família com Crianças : " + voluntariado.getFamiliaCrianca() + " | " + voluntariadoAlterado.getFamiliaCrianca() + "<br></br>";
+            }
+        }
+        if (voluntariado.getFezCirurgia()!= null) {
+            if (!voluntariado.getFezCirurgia().equalsIgnoreCase(voluntariadoAlterado.getFezCirurgia())) {
+                dadosAlterado = dadosAlterado + "Possui Cirurgia : " + voluntariado.getFezCirurgia() + " | " + voluntariadoAlterado.getFezCirurgia() + "<br></br>";
+            }
+        }
+        if (voluntariado.getFoneContatoEmergencia()!= null) {
+            if (!voluntariado.getFoneContatoEmergencia().equalsIgnoreCase(voluntariadoAlterado.getFoneContatoEmergencia())) {
+                dadosAlterado = dadosAlterado + "Telefone Contato de Emergencia : " + voluntariado.getFoneContatoEmergencia() + " | " + voluntariadoAlterado.getFoneContatoEmergencia() + "<br></br>";
+            }
+        }
+        if (voluntariado.getFumante()!= null) {
+            if (!voluntariado.getFumante().equalsIgnoreCase(voluntariadoAlterado.getFumante())) {
+                dadosAlterado = dadosAlterado + "Fumante : " + voluntariado.getFumante() + " | " + voluntariadoAlterado.getFumante() + "<br></br>";
+            }
+        }
+        if (voluntariado.getHobbies()!= null) {
+            if (!voluntariado.getHobbies().equalsIgnoreCase(voluntariadoAlterado.getHobbies())) {
+                dadosAlterado = dadosAlterado + "Hobbies : " + voluntariado.getHobbies() + " | " + voluntariadoAlterado.getHobbies() + "<br></br>";
+            }
+        }
+        if (voluntariado.getHorario()!= null) {
+            if (!voluntariado.getHorario().equalsIgnoreCase(voluntariadoAlterado.getHorario())) {
+                dadosAlterado = dadosAlterado + "Horário : " + voluntariado.getHorario() + " | " + voluntariadoAlterado.getHorario() + "<br></br>";
+            }
+        }
+        if (voluntariado.getIdiomaEstudar()!= null) {
+            if (!voluntariado.getIdiomaEstudar().equalsIgnoreCase(voluntariadoAlterado.getIdiomaEstudar())) {
+                dadosAlterado = dadosAlterado + "Idioma que irá Estudar : " + voluntariado.getIdiomaEstudar() + " | " + voluntariadoAlterado.getIdiomaEstudar() + "<br></br>";
+            }
+        }
+        if (voluntariado.getInstituicaoEstuda()!= null) {
+            if (!voluntariado.getInstituicaoEstuda().equalsIgnoreCase(voluntariadoAlterado.getInstituicaoEstuda())) {
+                dadosAlterado = dadosAlterado + "Instituição onde Estuda : " + voluntariado.getInstituicaoEstuda() + " | " + voluntariadoAlterado.getInstituicaoEstuda() + "<br></br>";
+            }
+        }
+        if (voluntariado.getMeodaCartaoVTM()!= null) {
+            if (!voluntariado.getMeodaCartaoVTM().equalsIgnoreCase(voluntariadoAlterado.getMeodaCartaoVTM())) {
+                dadosAlterado = dadosAlterado + "Moeda Cartão VTM : " + voluntariado.getMeodaCartaoVTM() + " | " + voluntariadoAlterado.getMeodaCartaoVTM() + "<br></br>";
+            }
+        }
+        if (voluntariado.getMotivoVoluntariado()!= null) {
+            if (!voluntariado.getMotivoVoluntariado().equalsIgnoreCase(voluntariadoAlterado.getMotivoVoluntariado())) {
+                dadosAlterado = dadosAlterado + "Motivo do Voluntariado : " + voluntariado.getMotivoVoluntariado() + " | " + voluntariadoAlterado.getMotivoVoluntariado() + "<br></br>";
+            }
+        }
+        if (voluntariado.getNivelFitness()!= null) {
+            if (!voluntariado.getNivelFitness().equalsIgnoreCase(voluntariadoAlterado.getNivelFitness())) {
+                dadosAlterado = dadosAlterado + "Nível Fitness : " + voluntariado.getNivelFitness() + " | " + voluntariadoAlterado.getNivelFitness() + "<br></br>";
+            }
+        }
+        if (voluntariado.getNivelIdiomaEstudar()!= null) {
+            if (!voluntariado.getNivelIdiomaEstudar().equalsIgnoreCase(voluntariadoAlterado.getNivelIdiomaEstudar())) {
+                dadosAlterado = dadosAlterado + "Nível de Idíoma que irá Estudar : " + voluntariado.getNivelIdiomaEstudar() + " | " + voluntariadoAlterado.getNivelIdiomaEstudar() + "<br></br>";
+            }
+        }
+        if (voluntariado.getNomeContatoEmergencia()!= null) {
+            if (!voluntariado.getNomeContatoEmergencia().equalsIgnoreCase(voluntariadoAlterado.getNomeContatoEmergencia())) {
+                dadosAlterado = dadosAlterado + "Nome Contato de Emergencia : " + voluntariado.getNomeContatoEmergencia() + " | " + voluntariadoAlterado.getNomeContatoEmergencia() + "<br></br>";
+            }
+        }
+        if (voluntariado.getNumeroSemanas()!= null) {
+            if (voluntariado.getNumeroSemanas()!= voluntariadoAlterado.getNumeroSemanas()) {
+                dadosAlterado = dadosAlterado + "Nº Semanas : " + String.valueOf(voluntariado.getNumeroSemanas()) + " | " + String.valueOf(voluntariadoAlterado.getNumeroSemanas()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getNumeroSemanasAcomodacao()!= null) {
+            if (voluntariado.getNumeroSemanasAcomodacao()!= voluntariadoAlterado.getNumeroSemanasAcomodacao()) {
+                dadosAlterado = dadosAlterado + "Nº Semanas Acomodação: " + String.valueOf(voluntariado.getNumeroSemanasAcomodacao()) + " | " + String.valueOf(voluntariadoAlterado.getNumeroSemanasAcomodacao()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getNumeroSemanasSeguro()!= null) {
+            if (voluntariado.getNumeroSemanasSeguro()!= voluntariadoAlterado.getNumeroSemanasSeguro()) {
+                dadosAlterado = dadosAlterado + "Nº Semanas Seguro: " + String.valueOf(voluntariado.getNumeroSemanasSeguro()) + " | " + String.valueOf(voluntariadoAlterado.getNumeroSemanasSeguro()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getNumerocartaoVTM()!= null) {
+            if (!voluntariado.getNumerocartaoVTM().equalsIgnoreCase(voluntariadoAlterado.getNumerocartaoVTM())) {
+                dadosAlterado = dadosAlterado + "Número Cartão VTM : " + voluntariado.getNumerocartaoVTM() + " | " + voluntariadoAlterado.getNumerocartaoVTM() + "<br></br>";
+            }
+        }
+        if (voluntariado.getObservacaoPassagem()!= null) {
+            if (!voluntariado.getObservacaoPassagem().equalsIgnoreCase(voluntariadoAlterado.getObservacaoPassagem())) {
+                dadosAlterado = dadosAlterado + "Observação Passagem : " + voluntariado.getObservacaoPassagem() + " | " + voluntariadoAlterado.getObservacaoPassagem() + "<br></br>";
+            }
+        }
+        if (voluntariado.getObservacaoVistoConsultar()!= null) {
+            if (!voluntariado.getObservacaoVistoConsultar().equalsIgnoreCase(voluntariadoAlterado.getObservacaoVistoConsultar())) {
+                dadosAlterado = dadosAlterado + "Observação Visto Consular : " + voluntariado.getObservacaoVistoConsultar() + " | " + voluntariadoAlterado.getObservacaoVistoConsultar() + "<br></br>";
+            }
+        }
+        if (voluntariado.getOutrasHabilidade()!= null) {
+            if (!voluntariado.getOutrasHabilidade().equalsIgnoreCase(voluntariadoAlterado.getOutrasHabilidade())) {
+                dadosAlterado = dadosAlterado + "Outras Habilidade : " + voluntariado.getOutrasHabilidade() + " | " + voluntariadoAlterado.getOutrasHabilidade() + "<br></br>";
+            }
+        }
+        if (voluntariado.getPassagemAerea()!= null) {
+            if (!voluntariado.getPassagemAerea().equalsIgnoreCase(voluntariadoAlterado.getPassagemAerea())) {
+                dadosAlterado = dadosAlterado + "Passagem Aérea : " + voluntariado.getPassagemAerea() + " | " + voluntariadoAlterado.getPassagemAerea() + "<br></br>";
+            }
+        }
+        if (voluntariado.getPeriodoCursoEstuda()!= null) {
+            if (!voluntariado.getPeriodoCursoEstuda().equalsIgnoreCase(voluntariadoAlterado.getPeriodoCursoEstuda())) {
+                dadosAlterado = dadosAlterado + "Período do Curso : " + voluntariado.getPeriodoCursoEstuda() + " | " + voluntariadoAlterado.getPeriodoCursoEstuda() + "<br></br>";
+            }
+        }
+        if (voluntariado.getPlanoSeguro()!= null) {
+            if (!voluntariado.getPlanoSeguro().equalsIgnoreCase(voluntariadoAlterado.getPlanoSeguro())) {
+                dadosAlterado = dadosAlterado + "Plano Seguro : " + voluntariado.getPlanoSeguro() + " | " + voluntariadoAlterado.getPlanoSeguro() + "<br></br>";
+            }
+        }
+        if (voluntariado.getPossuiAlergia()!= null) {
+            if (!voluntariado.getPossuiAlergia().equalsIgnoreCase(voluntariadoAlterado.getPossuiAlergia())) {
+                dadosAlterado = dadosAlterado + "Possuí Alergia : " + voluntariado.getPossuiAlergia() + " | " + voluntariadoAlterado.getPossuiAlergia() + "<br></br>";
+            }
+        }
+        if (voluntariado.getPossuiProblemaSaude()!= null) {
+            if (!voluntariado.getPossuiProblemaSaude().equalsIgnoreCase(voluntariadoAlterado.getPossuiProblemaSaude())) {
+                dadosAlterado = dadosAlterado + "Possuí Problemas de Saúde : " + voluntariado.getPossuiProblemaSaude() + " | " + voluntariadoAlterado.getPossuiProblemaSaude() + "<br></br>";
+            }
+        }
+        if (voluntariado.getProfissao()!= null) {
+            if (!voluntariado.getProfissao().equalsIgnoreCase(voluntariadoAlterado.getProfissao())) {
+                dadosAlterado = dadosAlterado + "Profissão : " + voluntariado.getProfissao() + " | " + voluntariadoAlterado.getProfissao() + "<br></br>";
+            }
+        }
+        if (voluntariado.getProjetoVoluntariado()!= null) {
+            if (!voluntariado.getProjetoVoluntariado().equalsIgnoreCase(voluntariadoAlterado.getProjetoVoluntariado())) {
+                dadosAlterado = dadosAlterado + "Projeto Voluntariado : " + voluntariado.getProjetoVoluntariado() + " | " + voluntariadoAlterado.getProjetoVoluntariado() + "<br></br>";
+            }
+        }
+        if (voluntariado.getQuaisAlergias()!= null) {
+            if (!voluntariado.getQuaisAlergias().equalsIgnoreCase(voluntariadoAlterado.getQuaisAlergias())) {
+                dadosAlterado = dadosAlterado + "Quais Alergias : " + voluntariado.getQuaisAlergias() + " | " + voluntariadoAlterado.getQuaisAlergias() + "<br></br>";
+            }
+        }
+        if (voluntariado.getRefeicoes()!= null) {
+            if (!voluntariado.getRefeicoes().equalsIgnoreCase(voluntariadoAlterado.getRefeicoes())) {
+                dadosAlterado = dadosAlterado + "Refeições da Acomodação : " + voluntariado.getRefeicoes() + " | " + voluntariadoAlterado.getRefeicoes() + "<br></br>";
+            }
+        }
+        if (voluntariado.getRelacaoContatoEmergencia()!= null) {
+            if (!voluntariado.getRelacaoContatoEmergencia().equalsIgnoreCase(voluntariadoAlterado.getRelacaoContatoEmergencia())) {
+                dadosAlterado = dadosAlterado + "Relação Contato de Emergência : " + voluntariado.getRelacaoContatoEmergencia() + " | " + voluntariadoAlterado.getRelacaoContatoEmergencia() + "<br></br>";
+            }
+        }
+        if (voluntariado.getSeguradora()!= null) {
+            if (!voluntariado.getSeguradora().equalsIgnoreCase(voluntariadoAlterado.getSeguradora())) {
+                dadosAlterado = dadosAlterado + "Seguradora : " + voluntariado.getSeguradora() + " | " + voluntariadoAlterado.getSeguradora() + "<br></br>";
+            }
+        }
+        if (voluntariado.getSeguroViagem()!= null) {
+            if (!voluntariado.getSeguroViagem().equalsIgnoreCase(voluntariadoAlterado.getSeguroViagem())) {
+                dadosAlterado = dadosAlterado + "Seguro Viagem : " + voluntariado.getSeguroViagem() + " | " + voluntariadoAlterado.getSeguroViagem() + "<br></br>";
+            }
+        }
+        if (voluntariado.getSolicitacoesEspeciais()!= null) {
+            if (!voluntariado.getSolicitacoesEspeciais().equalsIgnoreCase(voluntariadoAlterado.getSolicitacoesEspeciais())) {
+                dadosAlterado = dadosAlterado + "Solicitações Especiais : " + voluntariado.getSolicitacoesEspeciais() + " | " + voluntariadoAlterado.getSolicitacoesEspeciais() + "<br></br>";
+            }
+        }
+        if (voluntariado.getTipoAcomodacao()!= null) {
+            if (!voluntariado.getTipoAcomodacao().equalsIgnoreCase(voluntariadoAlterado.getTipoAcomodacao())) {
+                dadosAlterado = dadosAlterado + "Tipo Acomodação : " + voluntariado.getTipoAcomodacao() + " | " + voluntariadoAlterado.getTipoAcomodacao() + "<br></br>";
+            }
+        }
+        if (voluntariado.getTipoQuarto()!= null) {
+            if (!voluntariado.getTipoQuarto().equalsIgnoreCase(voluntariadoAlterado.getTipoQuarto())) {
+                dadosAlterado = dadosAlterado + "Tipo de Quarto : " + voluntariado.getTipoQuarto() + " | " + voluntariadoAlterado.getTipoQuarto() + "<br></br>";
+            }
+        }
+        if (voluntariado.getTransferin()!= null) {
+            if (!voluntariado.getTransferin().equalsIgnoreCase(voluntariadoAlterado.getTransferin())) {
+                dadosAlterado = dadosAlterado + "Transfer In : " + voluntariado.getTransferin() + " | " + voluntariadoAlterado.getTransferin() + "<br></br>";
+            }
+        }
+        if (voluntariado.getTransferout()!= null) {
+            if (!voluntariado.getTransferout().equalsIgnoreCase(voluntariadoAlterado.getTransferout())) {
+                dadosAlterado = dadosAlterado + "Transfer On : " + voluntariado.getTransferout() + " | " + voluntariadoAlterado.getTransferout() + "<br></br>";
+            }
+        }
+        if (voluntariado.getTratamentoDrogas()!= null) {
+            if (!voluntariado.getTratamentoDrogas().equalsIgnoreCase(voluntariadoAlterado.getTratamentoDrogas())) {
+                dadosAlterado = dadosAlterado + "Tratamento de Drogas : " + voluntariado.getTratamentoDrogas() + " | " + voluntariadoAlterado.getTratamentoDrogas() + "<br></br>";
+            }
+        }
+        if (voluntariado.getTratamentoMedico()!= null) {
+            if (!voluntariado.getTratamentoMedico().equalsIgnoreCase(voluntariadoAlterado.getTratamentoMedico())) {
+                dadosAlterado = dadosAlterado + "Tratamento Médico : " + voluntariado.getTratamentoMedico() + " | " + voluntariadoAlterado.getTratamentoMedico() + "<br></br>";
+            }
+        }
+        if (voluntariado.getVegetariano()!= null) {
+            if (!voluntariado.getVegetariano().equalsIgnoreCase(voluntariadoAlterado.getVegetariano())) {
+                dadosAlterado = dadosAlterado + "Vegetariano : " + voluntariado.getVegetariano() + " | " + voluntariadoAlterado.getVegetariano() + "<br></br>";
+            }
+        }
+        if (voluntariado.getVistoConsular()!= null) {
+            if (!voluntariado.getVistoConsular().equalsIgnoreCase(voluntariadoAlterado.getVistoConsular())) {
+                dadosAlterado = dadosAlterado + "Visto Consular : " + voluntariado.getVistoConsular() + " | " + voluntariadoAlterado.getVistoConsular() + "<br></br>";
+            }
+        }
+        if (voluntariado.getVoo()!= null) {
+            if (!voluntariado.getVoo().equalsIgnoreCase(voluntariadoAlterado.getVoo())) {
+                dadosAlterado = dadosAlterado + "Vôo : " + voluntariado.getVoo() + " | " + voluntariadoAlterado.getVoo() + "<br></br>";
+            }
+        }
+        if (!seguroViagem.getPossuiSeguro().equalsIgnoreCase("Não")) {
+            if (!seguroViagem.getPossuiSeguro().equalsIgnoreCase(seguroViagemAlterado.getPossuiSeguro())) {
+                dadosAlterado = dadosAlterado + "Seguro Viagem : " + seguroViagem.getPossuiSeguro() + " | " + seguroViagemAlterado.getPossuiSeguro() + "<br></br>";
+            }
+        } else {
+            if (seguroViagem.getSeguradora() != null) {
+                if (!seguroViagem.getSeguradora().equalsIgnoreCase(seguroViagemAlterado.getSeguradora())) {
+                    dadosAlterado = dadosAlterado + "Fornecedor Seguro : " + seguroViagem.getSeguradora() + " | " + seguroViagemAlterado.getSeguradora() + "<br></br>";
+                }
+            }
+            if (seguroViagem.getValorSeguro() != null) {
+                if (seguroViagem.getValorSeguro() != seguroViagemAlterado.getValorSeguro()) {
+                    dadosAlterado = dadosAlterado + "Valor Seguro : " + Formatacao.formatarFloatString(seguroViagem.getValorSeguro()) + Formatacao.formatarFloatString(seguroViagemAlterado.getValorSeguro()) + "<br></br>";
+                }
+            }
+            if (seguroViagem.getPlano() != null) {
+                if (!seguroViagem.getPlano().equalsIgnoreCase(seguroViagemAlterado.getPlano())) {
+                    dadosAlterado = dadosAlterado + "Plano : " + seguroViagem.getPlano() + " | " + seguroViagemAlterado.getPlano() + "<br></br>";
+                }
+            }
+            if (seguroViagem.getDataInicio() != null) {
+                if (!seguroViagem.getDataInicio().equals(seguroViagemAlterado.getDataInicio())) {
+                    dadosAlterado = dadosAlterado + "Data Início : " + seguroViagem.getDataInicio() + " | " + seguroViagemAlterado.getDataInicio() + "<br></br>";
+                }
+            }
+            if (seguroViagem.getNumeroSemanas() != null) {
+                if (seguroViagem.getNumeroSemanas() != seguroViagemAlterado.getNumeroSemanas()) {
+                    dadosAlterado = dadosAlterado + "No. Semanas : " + String.valueOf(seguroViagem.getNumeroSemanas()) + " | " + String.valueOf(seguroViagemAlterado.getNumeroSemanas()) + "<br></br>";
+                }
+            }
+            if (seguroViagem.getDataTermino() != null) {
+                if (!seguroViagem.getDataTermino().equals(seguroViagemAlterado.getDataTermino())) {
+                    dadosAlterado = dadosAlterado + "Data Término : " + Formatacao.ConvercaoDataPadrao(seguroViagem.getDataTermino()) + "| " + Formatacao.ConvercaoDataPadrao(seguroViagemAlterado.getDataTermino()) + "<br></br>";
+                }
+            }
+        }
+        if (voluntariado.getVistoConsular() != null) {
+            if (!voluntariado.getVistoConsular().equalsIgnoreCase(voluntariadoAlterado.getVistoConsular())) {
+                dadosAlterado = dadosAlterado + "Visto Consular : " + voluntariado.getVistoConsular() + " | " + voluntariadoAlterado.getVistoConsular() + "<br></br>";
+            }
+        }
+        if (voluntariado.getDataEntregaDocumentoVisto()!= null) {
+            if (!voluntariado.getDataEntregaDocumentoVisto().equals(voluntariadoAlterado.getDataEntregaDocumentoVisto())) {
+                dadosAlterado = dadosAlterado + "Data Entrega Documentos : " + Formatacao.ConvercaoDataPadrao(voluntariado.getDataEntregaDocumentoVisto()) + " | " + Formatacao.ConvercaoDataPadrao(voluntariadoAlterado.getDataEntregaDocumentoVisto()) + "<br></br>";
+            }
+        }
+        if (voluntariado.getObservacaoVistoConsultar()!= null) {
+            if (!voluntariado.getObservacaoVistoConsultar().equalsIgnoreCase(voluntariado.getObservacaoVistoConsultar())) {
+                dadosAlterado = dadosAlterado + "Observações Visto : " + voluntariado.getObservacaoVistoConsultar() + " | " + voluntariadoAlterado.getObservacaoVistoConsultar() + "<br></br>";
+            }
+        }
+        if (valorVendaAlterar != venda.getValor()) {
+                dadosAlterado = dadosAlterado + "Valor Total : " + Formatacao.formatarFloatString(venda.getValor()) + " | " + Formatacao.formatarFloatString(valorVendaAlterar) + "<br></br>";
+        }
+    }
+
+}

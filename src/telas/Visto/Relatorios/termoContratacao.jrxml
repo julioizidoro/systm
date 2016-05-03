@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Termo de Contratação Visto" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="666abdab-7fed-446b-9feb-6a84b646f03c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="200"/>
+	<parameter name="idvendas" class="java.lang.Integer"/>
+	<parameter name="cidade" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[SELECT distinct cliente.numeropassaporte, cliente.nome, vistos.paisDestino,
+vendas.dataVenda, vistos.tipoVisto, vendas.valor, parcelamentopagamento.formaPagamento,
+ unidadeNegocio.razaoSocial, unidadeNegocio.nomeFantasia, unidadeNegocio.tipologradouro as tipologradourounidadeNegocio,
+unidadeNegocio.logradouro as logradourounidadeNegocio,
+unidadeNegocio.numero as nuemrounidadeNegocio, unidadeNegocio.complemento as complementounidadeNegocio,
+unidadeNegocio.bairro as bairrounidadeNegocio, unidadeNegocio.cidade as cidadeunidadeNegocio,
+unidadeNegocio.estado as estadounidadeNegocio, unidadeNegocio.cep as cepunidadeNegocio,
+unidadeNegocio.cnpj as cnpjunidadeNegocio, unidadeNegocio.fone as foneunidadenegocio,
+unidadeNegocio.email as emailunudadenegocio
+From
+	vendas join cliente on vendas.cliente_idcliente = cliente.idcliente
+    join vistos on vendas.idvendas = vistos.vendas_idvendas
+	join orcamento on vendas.idvendas = orcamento.vendas_idvendas
+    join formapagamento on vendas.idvendas = formapagamento.vendas_idvendas
+    join parcelamentopagamento on formapagamento.idformaPagamento = parcelamentopagamento.formaPagamento_idformaPagamento
+join unidadeNegocio on vendas.unidadeNegocio_idunidadeNegocio = unidadeNegocio.idunidadeNegocio
+where vendas.idvendas = $P{idvendas}]]>
+	</queryString>
+	<field name="numeropassaporte" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paisDestino" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataVenda" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoVisto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formaPagamento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="razaoSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipologradourounidadeNegocio" class="java.lang.String"/>
+	<field name="logradourounidadeNegocio" class="java.lang.String"/>
+	<field name="nuemrounidadeNegocio" class="java.lang.String"/>
+	<field name="complementounidadeNegocio" class="java.lang.String"/>
+	<field name="bairrounidadeNegocio" class="java.lang.String"/>
+	<field name="cidadeunidadeNegocio" class="java.lang.String"/>
+	<field name="estadounidadeNegocio" class="java.lang.String"/>
+	<field name="cepunidadeNegocio" class="java.lang.String"/>
+	<field name="cnpjunidadeNegocio" class="java.lang.String"/>
+	<field name="foneunidadenegocio" class="java.lang.String"/>
+	<field name="emailunudadenegocio" class="java.lang.String"/>
+	<variable name="TotalTaxas" class="java.lang.Float"/>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement x="6" y="7" width="255" height="94" uuid="c5e768cc-340c-4e56-8e55-e963a7337ae8"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="267" y="7" width="276" height="15" uuid="a5765870-762c-47f0-977f-66995cc410da"/>
+				<textFieldExpression><![CDATA[$F{razaoSocial}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="267" y="40" width="276" height="26" uuid="91f94bc0-e34a-4219-9684-6e8b6320411a"/>
+				<textFieldExpression><![CDATA[$F{tipologradourounidadeNegocio} + " " +
+$F{logradourounidadeNegocio} + ", " + $F{nuemrounidadeNegocio} + ", " + $F{complementounidadeNegocio}
++ ", " + $F{bairrounidadeNegocio} + ", " + $F{cidadeunidadeNegocio}
++ ", " + $F{estadounidadeNegocio} + ", CEP : " + $F{cepunidadeNegocio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="267" y="23" width="277" height="15" uuid="01b09b79-e4b6-4fe0-9476-6af41ebc5a83"/>
+				<textFieldExpression><![CDATA[$F{cnpjunidadeNegocio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="267" y="69" width="277" height="15" uuid="4ed259a6-0b55-4669-9d0c-b7aa4be0b7dd"/>
+				<textFieldExpression><![CDATA[$F{foneunidadenegocio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="267" y="86" width="277" height="15" uuid="1292f654-7c1e-464f-a8e7-114ac637ec0f"/>
+				<textFieldExpression><![CDATA[$F{emailunudadenegocio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="740" splitType="Stretch">
+			<textField>
+				<reportElement x="83" y="7" width="373" height="41" uuid="fdeab5ca-65a3-4f10-840b-8406cb733098"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TERMO DE CIÊNCIA E CONTRATAÇÃO DE ASSESSORIA PARA SOLICITAÇÃO DE  VISTO CONSULAR"]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="1" uuid="5632f176-8c27-4268-8362-f558b1793f9c"/>
+			</rectangle>
+			<textField>
+				<reportElement x="10" y="62" width="532" height="53" uuid="c2d4296a-072a-4557-bf90-157af8565880"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Eu, " + $F{nome} + ", portador do passaporte nº " + $F{numeropassaporte} +
+", solicitante do visto consular de " + $F{tipoVisto}+ ", para " + $F{paisDestino} +
+" declaro estar ciente que: "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="38" y="122" width="504" height="28" uuid="ce54e93f-c194-4faa-8071-7ca5341f4824"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[1) É de responsabilidade exclusiva da autoridade consular a concessão ou não do visto consular por mim solicitado.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="152" width="504" height="47" uuid="8c30516c-602d-4fb0-8a19-d0a6a94f2011"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[2) Os prazos para análise de meu processo de solicitação de visto são estimados e dependem exclusivamente do Consulado/Embaixada em questão, podendo o processo demorar mais do que originalmente previsto.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="203" width="504" height="58" uuid="aa14de90-ec48-49ce-8a32-6b665192521b"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[3) É de minha exclusiva responsabilidade a autenticidade das informações contidas nos documentos resentados. Estou ciente também que devo atender prontamente a qualquer solicitação de documentação complementar feita pela autoridade consular, sob pena de atraso na análise do processo de solicitação do visto ou até indeferimento do mesmo.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="265" width="504" height="45" uuid="8fbb6004-7c52-4cb5-9d96-08dad68d820a"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[4) Em não havendo garantia da concessão do visto, é de minha exclusiva responsabilidade arcar com despesas relativas ao cancelamento ou multas no caso de troca de passagem aérea e/ou pacote de viagens, cursos no exterior e programas de intercâmbio em geral.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="314" width="504" height="15" uuid="b497983f-2f99-4c97-b771-35621f44fccc"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[5) Em caso de negativa de visto, as taxas consulares e de serviço de assessoria não serão reembolsadas.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="332" width="504" height="45" uuid="58b1c0a6-3d2b-441b-8005-6347d81b1bfc"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[6) Entendo que a responsabilidade da assessoria da Travelmate compreende apenas o processo de visto para o país solicitado. Qualquer informação referente a exigências do Departamento de Imigração de outros países de visitação, escala ou conexão, são de minha inteira responsabilidade.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="473" width="503" height="45" uuid="a565719b-ce05-402e-9d54-0cbaa2473efa"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[Declaro estar ciente que a empresa TravelMate Intercâmbio e Turismo LTDA, contratada para dar entrada e acompanhar meu processo de solicitação de visto consular, não tem nenhuma responsabilidade sobre os prazos demandados pela Embaixada/Consulado, nem pela aprovação ou negativa do mesmo.
+
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="10" y="546" width="104" height="20" uuid="68a71949-b95d-4b92-a262-c42e1877f2e7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="114" y="546" width="136" height="20" uuid="e2365ff8-e15f-4e54-a7c9-381ba1bf88d3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="342" y="546" width="104" height="20" uuid="67bc5312-0c88-4ca5-aff5-f7e6877b3838"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="238" y="546" width="104" height="20" uuid="f9b9d4b8-a536-43ab-8aff-b04a4154fc54"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="446" y="546" width="95" height="20" uuid="728480b5-a1ec-4aab-a016-425d3b85d3f5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="21" y="550" width="82" height="14" uuid="0d036183-6c13-46cc-a9b3-395a79b885e5"/>
+				<text><![CDATA[Data Solicitação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="550" width="29" height="14" uuid="0b593d4e-37bf-48cd-9dce-7e5d8facd2de"/>
+				<text><![CDATA[País]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="550" width="64" height="14" uuid="5c8991b8-e0ca-4fde-91c6-338cabd59a22"/>
+				<text><![CDATA[Tipo de Visto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="383" y="550" width="31" height="14" uuid="e1029d1b-022e-4913-b56f-83fc324d4fcd"/>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="550" width="83" height="14" uuid="59a42fea-6149-46f2-8802-b621167b2ab9"/>
+				<text><![CDATA[Forma de pagto]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="342" y="566" width="104" height="32" uuid="c063d11f-9305-4d5b-93e5-3da9d53cda27"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="114" y="566" width="124" height="32" uuid="6b9c13ab-2af0-4c90-9296-e31c256f9e7c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="446" y="566" width="95" height="32" uuid="44a8b5cd-6c47-46c3-bf8a-7764321b7ae8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="566" width="104" height="32" uuid="2fdf44d1-f03b-43f5-8556-851e9dfcb5e1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="238" y="566" width="104" height="32" uuid="4a771d3d-3e94-48d6-9c94-cb51629462cc"/>
+			</rectangle>
+			<textField>
+				<reportElement x="18" y="575" width="85" height="13" uuid="bbc273c2-b9c8-4e3a-a783-317da52e67df"/>
+				<textFieldExpression><![CDATA[$F{dataVenda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="575" width="85" height="13" uuid="c9c4b04d-46a6-4fb2-b84b-fbb7a037b4ce"/>
+				<textFieldExpression><![CDATA[$F{paisDestino}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="353" y="575" width="85" height="13" uuid="2122fb8f-6002-4b8d-a8c2-7ebf2679ab42"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="575" width="85" height="13" uuid="010ea57a-b1cb-437f-9423-f8f7b70eba20"/>
+				<textFieldExpression><![CDATA[$F{tipoVisto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="575" width="91" height="13" uuid="11b48229-a6db-4dec-ba87-50f63df686a3"/>
+				<textFieldExpression><![CDATA[$F{formaPagamento}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="114" y="694" width="324" height="1" uuid="594820c3-4b46-4e1d-aeda-cc6ecf632351"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="203" y="697" width="143" height="20" uuid="45000f0c-c009-4fe0-b028-6a4cd54e7938"/>
+				<text><![CDATA[Assinatura do Representante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="380" width="504" height="15" uuid="86ccc7ee-3b1b-4c66-a719-c36498289550"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[7) Em caso de negativa de visto, as taxas consulares e de serviço de assessoria não serão reembolsadas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="398" width="504" height="15" uuid="6a3d5193-5365-436d-8e35-62d26214c4f8"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[8) Tive a oportunidade de fazer perguntas e tirar dúvidas, as quais foram respondidas satisfatoriamente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="417" width="504" height="42" uuid="e83df74d-3eb3-428e-bd09-f02436f16447"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[9) Estou ciente de que os valores das taxas consulares estão sujeitas à alteração sem aviso prévio e, no caso de haver mudança antes da entrada do meu processo na Embaixada / Consulado competente, serei o responsável pelo pagamento da diferença.
+
+]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="78" y="613" width="184" height="13" uuid="af777fad-2ebd-43d8-9e0f-0195e63e13b4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{cidade} + ", "]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="264" y="613" width="215" height="13" uuid="b09f5ac7-4749-4076-9477-bfe40b72f696"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+</jasperReport>

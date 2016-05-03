@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoCursoPagina03" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isSummaryNewPage="true" uuid="666abdab-7fed-446b-9feb-6a84b646f03c">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idvendas" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select distinct
+   vendas.dataVenda, vendas.valor as valorVenda,
+   cursos.nomeCurso, cursos.escola,
+   cursos.cidade, cursos.pais, cursos.aulassemana, cursos.numerosenamas, cursos.dataInicio,
+   cursos.dataTermino, cursos.tipoAcomodacao, cursos.numeroSemanasAcamodacao, cursos.tipoquarto,
+   cursos.refeicoes, cursos.adicionais, cursos.datachegada, cursos.dataSaida, cursos.familiacomcrianca,
+   cursos.familiacomanimais, cursos.fumante, cursos.vegetariano, cursos.hobbies, cursos.possuiAlergia,
+   cursos.quaisalergias, cursos.solicitacoesespeciais, cursos.caratovtm, cursos.numerocartaovtm,
+   cursos.moedacartaovtm, cursos.transferin, cursos.transferouto, cursos.passagemaerea, cursos.observacaopassagemaerea,
+   cursos.vistoconsular, cursos.dataEntregadocumentosvistos, cursos.observacaovisto, cursos.nomecontatoemergencia,
+   cursos.fonecontatoemergencia, cursos.emalcontatoemergencia, cursos.relacaocontatoemergencia, cursos.datainscricao as dataInscricaCurso, unidadeNegocio.razaoSocial, unidadeNegocio.nomeFantasia, unidadeNegocio.tipologradouro as tipologradourounidadeNegocio, unidadeNegocio.logradouro as logradourounidadeNegocio, unidadeNegocio.numero as nuemrounidadeNegocio, unidadeNegocio.complemento as complementounidadeNegocio, unidadeNegocio.bairro as bairrounidadeNegocio, unidadeNegocio.cidade as cidadeunidadeNegocio, unidadeNegocio.estado as estadounidadeNegocio, unidadeNegocio.cep as cepunidadeNegocio, unidadeNegocio.cnpj as cnpjunidadeNegocio,
+cliente.nome, cliente.dataNascimento, cliente.paisnascimento, cliente.cidadenascimento, cliente.rg,
+cliente.cpf, cliente.sexo, cliente.numeropassaporte, cliente.dataExpedicaoPassaporte,
+cliente.validadePassaporte, cliente.tipologradouro, cliente.logradouro, cliente.numero,
+cliente.bairro, cliente.cidade as cidadeendereco, cliente.estado, cliente.cep, cliente.pais as paisenderco, cliente.foneresidencial,
+cliente.fonecelular, cliente.fonecomercial, cliente.profissao,
+cliente.email,cliente.escolaridade,
+usuario.nome as nomeUsuario,
+unidadeNegocio.nomeFantasia, orcamento.dataCambio, orcamento.valorCambio, orcamento.totalMoedaEstrangeira,
+orcamento.totalmoedanacional, orcamento.TaxaTm, formapagamento.condicao, formapagamento.valortotal,
+formapagamento.valorjuros, orcamentoprodutosorcamento.valormoedaestrangeira, orcamentoprodutosorcamento.valormoedanacional,
+produtosorcamento.descricao as descricaoprodutosOrcamento, moedas.descricao as descricaoMoedas, cambio.idcambio, moedas.sigla,
+parcelamentopagamento.idparcemlamentoPagamento,
+parcelamentopagamento.formaPagamento,
+parcelamentopagamento.tipoParcelmaneto,
+parcelamentopagamento.valorParcelamento,
+parcelamentopagamento.diaVencimento,
+parcelamentopagamento.numeroParcelas,
+parcelamentopagamento.valorParcela,
+parcelamentopagamento.formaPagamento_idformaPagamento
+from
+     vendas join cursos on vendas.idvendas = cursos.vendas_idvendas
+     join usuario on vendas.usuario_idusuario = usuario.idusuario
+     join cliente on vendas.cliente_idcliente = cliente.idcliente
+     join unidadeNegocio on vendas.unidadeNegocio_idunidadeNegocio = unidadeNegocio.idunidadeNegocio
+     join orcamento on vendas.idvendas = orcamento.vendas_idvendas
+     join orcamentoprodutosorcamento on orcamento.idorcamento = orcamentoprodutosorcamento.orcamento_idorcamento
+     join produtosorcamento on orcamentoprodutosorcamento.produtosorcamento_idprodutosorcamento = produtosorcamento.idprodutosorcamento
+     join formaPagamento on vendas.idvendas = formapagamento.vendas_idvendas
+     join cambio on orcamento.cambio_idcambio = cambio.idcambio
+     join moedas on cambio.moedas_idmoedas = moedas.idmoedas
+     join parcelamentopagamento on formapagamento.idformapagamento = parcelamentopagamento.formapagamento_idformaPagamento
+where
+    vendas.idvendas = $P{idvendas}
+order by orcamentoprodutosorcamento.idorcamentoprodutosorcamento]]>
+	</queryString>
+	<field name="dataVenda" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorVenda" class="java.lang.Float"/>
+	<field name="nomeCurso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="escola" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pais" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="aulassemana" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numerosenamas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataInicio" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataTermino" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoAcomodacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroSemanasAcamodacao" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoquarto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="refeicoes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="adicionais" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datachegada" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataSaida" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="familiacomcrianca" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="familiacomanimais" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fumante" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vegetariano" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hobbies" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="possuiAlergia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quaisalergias" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="solicitacoesespeciais" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="caratovtm" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numerocartaovtm" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="moedacartaovtm" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="transferin" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="transferouto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="passagemaerea" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="observacaopassagemaerea" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vistoconsular" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataEntregadocumentosvistos" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="observacaovisto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomecontatoemergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonecontatoemergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="emalcontatoemergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="relacaocontatoemergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataInscricaCurso" class="java.sql.Date"/>
+	<field name="razaoSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipologradourounidadeNegocio" class="java.lang.String"/>
+	<field name="logradourounidadeNegocio" class="java.lang.String"/>
+	<field name="nuemrounidadeNegocio" class="java.lang.String"/>
+	<field name="complementounidadeNegocio" class="java.lang.String"/>
+	<field name="bairrounidadeNegocio" class="java.lang.String"/>
+	<field name="cidadeunidadeNegocio" class="java.lang.String"/>
+	<field name="estadounidadeNegocio" class="java.lang.String"/>
+	<field name="cepunidadeNegocio" class="java.lang.String"/>
+	<field name="cnpjunidadeNegocio" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataNascimento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paisnascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidadenascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeropassaporte" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataExpedicaoPassaporte" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="validadePassaporte" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipologradouro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="logradouro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bairro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidadeendereco" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paisenderco" class="java.lang.String"/>
+	<field name="foneresidencial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonecelular" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonecomercial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="profissao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="escolaridade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeUsuario" class="java.lang.String"/>
+	<field name="dataCambio" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorCambio" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalMoedaEstrangeira" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalmoedanacional" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TaxaTm" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="condicao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valortotal" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorjuros" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valormoedaestrangeira" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valormoedanacional" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricaoprodutosOrcamento" class="java.lang.String"/>
+	<field name="descricaoMoedas" class="java.lang.String"/>
+	<field name="idcambio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sigla" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idparcemlamentoPagamento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formaPagamento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoParcelmaneto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorParcelamento" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diaVencimento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroParcelas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorParcela" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formaPagamento_idformaPagamento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="68" width="555" height="8" backcolor="#808080" uuid="411faa41-289b-4da6-ae0b-eddb0ee55234"/>
+			</rectangle>
+			<image>
+				<reportElement x="348" y="6" width="196" height="54" uuid="c5e768cc-340c-4e56-8e55-e963a7337ae8"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="760" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="125" width="71" height="18" uuid="81209130-9d97-4b47-b2be-232f76e284a5"/>
+				<text><![CDATA[d) Caso o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="125" width="82" height="18" uuid="a76f0a78-564e-4336-8bb6-b8ccc4db2d5f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="154" y="125" width="419" height="18" uuid="ae8464e8-036e-40bf-b9ce-812032c68220"/>
+				<text><![CDATA[deixe de contar, por qualquer motivo, com a cobertura do seguro saúde durante sua estada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="143" width="572" height="18" uuid="ee0c1f48-2df9-4c28-808c-7519495f67eb"/>
+				<text><![CDATA[no destino, poderá ser excluído do programa, sem direito a qualquer reembolso;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="161" width="572" height="15" uuid="5f87ed0d-33a9-42e9-ba56-93353280bee9"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[e) A decisão sobre eventual extensão do seguro cabe exclusivamente à seguradora, não podendo ser responsabilizada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="176" width="155" height="15" uuid="77f5b35f-6d6e-478d-bc55-43e3be4f229e"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ à TM em caso de sua negativa. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="175" width="417" height="17" uuid="b2f8205f-4a65-4262-a668-be07107b1460"/>
+				<text><![CDATA[Da mesma forma, cabe exclusivamente à seguradora tomar decisões sobre o alcance da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="191" width="572" height="17" uuid="071d9635-27d7-4f51-b24b-6ce31e2736e8"/>
+				<text><![CDATA[cobertura  do seguro de saúde, definição de doença ou condição pré-existente, definição sobre uso indevido da sala de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="208" width="498" height="17" uuid="fb25fc2e-69de-4d18-9d93-99bd38ea8dbe"/>
+				<text><![CDATA[emergência, dentre outras decisões inerentes ao contrato de seguro, não podendo ser responsabilizada a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="208" width="23" height="17" uuid="1069082a-3648-43ff-82e7-368bcb34d907"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="208" width="87" height="18" uuid="817109e2-689d-4a88-bb7b-538fca95aa4c"/>
+				<text><![CDATA[por tais decisões. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="234" width="220" height="22" uuid="9bcc1455-86f6-4831-b24c-ff68ce830eb7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[6. ACOMODAÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="256" width="501" height="18" uuid="3ef3b305-e384-4284-8c4d-3f9a740fe591"/>
+				<text><![CDATA[6.1 Providenciar acomodação para o período de realização do programa/pacote é de responsabilidade do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="256" width="78" height="18" uuid="3bc7004c-e375-475a-b52c-1bde806522eb"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="272" width="572" height="18" uuid="cab72fd4-d182-4dd8-98ab-38fbb61ab36c"/>
+				<text><![CDATA[salvo quando a mesma já esteja inclusa no programa/pacote e/ou contratada junto à Travelmate. O parceiro internacional ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="290" width="81" height="18" uuid="2789c65f-4bb2-4df9-ac9a-bccf690e3b13"/>
+				<text><![CDATA[contratado ou a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="290" width="23" height="17" uuid="eeb50004-17f7-486f-985a-570069eccbe3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="290" width="468" height="18" uuid="2bfb58ed-d432-4e92-9c54-bc059cdc8cd8"/>
+				<text><![CDATA[ poderão indicar e/ou auxiliar na reserva de uma acomodação (gratuitamente ou mediante pagamento ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="308" width="247" height="18" uuid="02f3704a-1ee1-44c3-a6c2-1c29ec2eae51"/>
+				<text><![CDATA[por parte do participante de uma taxa para tal serviço), ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="246" y="308" width="327" height="15" uuid="e2016851-c87d-40bb-8ef6-131f3dab24db"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[mas não se responsabilizam por isto nos casos em que esta não]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="323" width="357" height="15" uuid="8e8fc6b2-c02a-4bc8-9e4e-b37e00eac5c0"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[tenha sido inclusa no programa/pacote ou contratada junto à Travelmate. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="349" y="323" width="224" height="15" uuid="a5697bf8-d4bb-465c-a856-8b0d5443d9f0"/>
+				<text><![CDATA[Qualquer custo referente a acomodação ou ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="338" width="220" height="15" uuid="d6653ef7-cfb6-4198-84da-c3d2f95ac5a2"/>
+				<text><![CDATA[reserva dede acomodação fica a encargo do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="217" y="338" width="82" height="15" uuid="0fc60cc2-03ad-42b4-8e32-c5b47562ad9e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="353" width="572" height="15" uuid="12d1bd55-ef3c-48e2-905f-236bffd16e39"/>
+				<text><![CDATA[6.2 No caso de acomodação inclusa no programa/pacote e/ou vinculada ao parceiro internacional responsável pelo curso/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="367" width="297" height="15" uuid="2747c5b6-33ad-4ca6-a225-0233c34c120b"/>
+				<text><![CDATA[por programa/pacote ou empresa intermediadora da acomodação, o ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="298" y="368" width="82" height="15" uuid="882f9900-b792-40c8-ba4e-4545584523ee"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="368" width="193" height="15" uuid="02304c88-45f4-4d10-b196-374af1ed80e8"/>
+				<text><![CDATA[deve respeitar as regras estabelecidas ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="382" width="572" height="15" uuid="867a266f-921b-4321-a872-36bfdc65efbc"/>
+				<text><![CDATA[estes ou pelos locatários de tais acomodações referentes à acomodação oferecida, sendo estas regras regidas pela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="397" width="472" height="15" uuid="c137c424-0a1b-48e6-80ce-e6b817a6710a"/>
+				<text><![CDATA[legislaçãodo país de destino. Em caso de celebração de contrato adendo ou extra de locação entre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="443" y="397" width="80" height="15" uuid="93c2b090-7a8c-42cf-b5b5-ce94823ef937"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="412" width="334" height="15" uuid="6cfc7417-a745-439b-9e79-df3f7a130b42"/>
+				<text><![CDATA[internacional responsável pelo curso ou programa ou terceiro locador, a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="412" width="23" height="15" uuid="ae8b756e-fae0-4b5a-8b2a-b5729f2afc58"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="412" width="215" height="15" uuid="a31c5e2e-4f17-4a74-ab0e-90538bab3132"/>
+				<text><![CDATA[não tem responsabilidade sobre isso;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="427" width="555" height="104" uuid="f0fccbfd-c7d8-4881-baee-5134ce23e080"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[6.3 A acomodação a ser oferecida e indicada pelo parceiro internacional poderá representar a colocação em casa de família, residência estudantil, casa/apartamento compartilhado, alojamento ou albergues oferecidos por terceiros ou empresas especializadas, havendo na maioria dos casos a necessidade de uso de transporte coletivo local para cobrir a distância entre a moradia e o local do curso ou programa. É prática comum nestas acomodações a cobrança de taxa caução antecipada (antes da ocupação da acomodação), sendo que o reembolso deste valor dá-se somente depois desocupação da acomodação, em prazo indeterminado, mediante entrega do imóvel nas mesmas condições em que se encontrava no momento da ocupação. A avaliação do reembolso de tal taxa cabe exclusivamente ao locatário, o qual levará em consideração vários pontos, tais como cumprimento do contrato, manutenção da acomodação, limpeza, entre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="531" width="193" height="15" uuid="90f034e3-7e15-47d2-8a8a-a5a52e66a142"/>
+				<text><![CDATA[outros. Não pode ser responsabilizada a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="532" width="23" height="15" uuid="19206368-7592-4d15-83a4-2b4cb851b3e1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="531" width="356" height="15" uuid="ff3f80a6-0fe0-4414-ae3a-9a3293f68cec"/>
+				<text><![CDATA[pelo valor que será reembolsado (integral ou parcial) ou não, bem como pela ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="545" width="563" height="15" uuid="90ca2888-ba3b-4ac4-9125-56bb11b9d2aa"/>
+				<text><![CDATA[avaliação  do imóvel após desocupação;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="560" width="52" height="18" uuid="a1969c4f-2956-4d58-bc83-e6911acf8383"/>
+				<text><![CDATA[6.4 Se o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="559" width="426" height="18" uuid="3968b7ee-254c-417e-acc3-d594d3dd2d74"/>
+				<text><![CDATA[desejar mudar de acomodação após sua chegada no país de destino ou estiver insatisfeito ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="560" width="87" height="17" uuid="e9695dfb-1e2a-4d99-bdb8-24f9f9a82164"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="576" width="112" height="16" uuid="e1a6fbf1-7408-43bd-8823-32b34bf6f1e9"/>
+				<text><![CDATA[com sua acomodação, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="577" width="459" height="15" uuid="468c8f9e-d1ac-499a-8ffb-aa2bbc31d2de"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[é de sua responsabilidade tratar do assunto com o locador/prestador de serviço local e/ou ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="592" width="245" height="15" uuid="124edf3d-7065-43ef-94dd-31394ffb79ab"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[procurar uma outra opção; ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="608" width="271" height="16" uuid="1c9c8bd2-2043-4904-a6de-d416cbbde73d"/>
+				<text><![CDATA[6.5 Em caso de mudança de endereço por sua conta, o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="608" width="87" height="16" uuid="18f71c67-cdbb-4ec8-ad10-fdd25cf8d48b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="608" width="215" height="16" uuid="42044092-3d51-4979-9b5f-5786d5ae470d"/>
+				<text><![CDATA[deverá informar ao parceiro internacional o seu ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="624" width="581" height="16" uuid="42985032-6d91-411d-8463-4ac00c6ea64b"/>
+				<text><![CDATA[novo endereço dentro de 3 dias úteis. O não cumprimento desta regra poderá resultar em desligamento do curso ou programa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="640" width="42" height="16" uuid="9837d777-ae17-4c34-8517-b6cbb17661ac"/>
+				<text><![CDATA[e o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="640" width="87" height="16" uuid="70e765f7-bf99-4143-ab51-b85794ab793b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="640" width="477" height="16" uuid="bf94884c-0584-4704-ab27-f3f4130397b5"/>
+				<text><![CDATA[deverá deixar o país de destino em até 5 dias úteis, não tendo direito a reembolso de valores pagos de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="654" width="572" height="16" uuid="78c8366f-fd4b-47f7-b092-facd231f14fa"/>
+				<text><![CDATA[qualquer natureza;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="670" width="87" height="17" uuid="7a98933b-4ef9-46d4-a21e-a2751457ce89"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="670" width="42" height="18" uuid="f3e7cfa3-4982-45ad-b889-c8fdaf3e878b"/>
+				<text><![CDATA[6.6 O(A)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="670" width="443" height="16" uuid="540831ac-9cdb-44b3-8d51-30ec3f29acaa"/>
+				<text><![CDATA[desde já declara estar ciente que em razão de realizar o curso ou programa em país estrangeiro, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="685" width="555" height="27" uuid="eb9ee4f5-6ed3-488f-8eef-b7fa333539f3"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[encontrará situações culturais e estilo de vida totalmente diversos do que está acostumado, o que poderá acarretar diferenças culturais, de tratamento e postura, devendo observar e obedecer ao padrão de vida vigente no país de destino;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="711" width="87" height="17" uuid="693b977c-d694-4ce8-9677-11cc90815957"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="711" width="52" height="18" uuid="9d3baf9a-2a21-4657-b0ea-3ef4268e5991"/>
+				<text><![CDATA[6.7 Se o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="711" width="435" height="16" uuid="7be44e0a-f182-4578-92f8-fc54db127893"/>
+				<text><![CDATA[também deverá observar as regras de conduta e socialização em caso de ser acomodado em]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="727" width="555" height="29" uuid="1fe7a478-cf0b-4983-96b0-083898d9f941"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[casa familiar, assim como a estrutura da acomodação, podendo variar de acordo com a residência a ser apresentada, com a colocação em quarto individual, coletivo com outros estudantes, incluindo alimentação ou não, em casa de família ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="524" y="397" width="46" height="14" uuid="a3c1aefa-c12e-491a-a998-2d93c985a7af"/>
+				<text><![CDATA[e parceiro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="573" height="128" uuid="87eded20-051e-43c7-a261-d2e3d9b15892"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top"/>
+				<text><![CDATA[c) Deverá o(a) PARTICIPANTE obedecer todas as cláusulas referentes ao contrato de seguro, de acordo com o estabelecido  pela seguradora, incluindo, mas não limitado a:
+I) pagamento de franquia;
+II) pagamento de multa por uso indevido da sala de emergência;
+III) não cobertura de doenças ou condições pré-existentes;
+IV) fazer contato telefônico com a seguradora antes de qualquer atendimento médico;V) em caso de emergência, na impossibilidade de fazer contato prévio, fazer contato com a seguradora em no máximo 24 horas após a entrada no estabelecimento prestador de serviços de saúde;
+VI) seguir os procedimentos estabelecidos pela seguradora para pagamento e/ou reembolso das despesas médicas e hospitalares.
+]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="20">
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="10" uuid="765a1de7-aa62-47f7-8af7-ef5eb5abdce8"/>
+				<subreportParameter name="idvendas">
+					<subreportParameterExpression><![CDATA[$P{idvendas}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "contratoCursoPagina04.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

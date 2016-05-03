@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reciboTermoQuitacao" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" isSummaryNewPage="true" uuid="666abdab-7fed-446b-9feb-6a84b646f03c">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idvendas" class="java.lang.Integer"/>
+	<parameter name="agencia" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="banco" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="conta" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="titular" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="valor" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="programa" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="pais" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select distinct cliente.nome, cliente.cpf, cliente.cep, cliente.logradouro, cliente.estado, cliente.cidade
+from cliente
+where cliente.idcliente=$P{idvendas}]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="logradouro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="113" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="81" width="555" height="15" uuid="ed75f004-f9a7-498c-b84f-777a7971fba2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[RECIBO COM TERMO DE QUITAÇÃO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="351" y="12" width="196" height="54" uuid="7669a84d-9611-4a84-a930-0ccf19442106"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="478" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="13" width="20" height="17" uuid="f77d7e49-a773-4b26-a342-ca94166582d9"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Eu,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="20" y="13" width="98" height="17" uuid="61547543-0225-4b3f-a4fe-92b4e6c233e6"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="284" y="13" width="89" height="17" uuid="50a32f2b-aa98-4330-b509-d5e058f207dd"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="373" y="13" width="116" height="17" uuid="e3e63ef9-e671-4520-b1f4-dea9463667c9"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ , residente e domiciliado]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="30" width="68" height="17" uuid="5d80af06-bd1c-4d0e-86e1-fe66c8c128d7"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{logradouro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="68" y="30" width="38" height="17" uuid="e9c0cd97-0258-451b-887a-ac45181fad0e"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[, CEP:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="106" y="30" width="76" height="17" uuid="b32eb1bd-222f-4641-8f70-00f4c4986ed5"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{cep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="489" y="13" width="38" height="17" uuid="980bad84-6edf-4abb-abad-10fb1d709c80"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[na Rua]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="30" width="49" height="17" uuid="cbe35ce9-ed13-4803-98b3-f1b0fcae882b"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[, Cidade: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="231" y="30" width="80" height="17" uuid="36887f75-ceb6-4752-b327-351a3f05db83"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{cidade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="309" y="30" width="42" height="17" uuid="d02840be-c862-4b47-8076-14445ba269f1"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[, Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="47" width="555" height="17" uuid="cdd58198-adad-4041-bcbd-73cf69225c93"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[recebi da empresa  TRAVELMATE INTERCÂMBIO E TURISMO LTDA, pessoa  jurídica de direito privado, inscrita sob o]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="351" y="30" width="23" height="17" uuid="452e3b14-50c4-4fb2-9d19-225d72510d0d"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="64" width="231" height="17" uuid="2bcf563b-75e9-4e6e-a10f-6c40e23e8df6"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CNPJ/MF n.º 05.138.734/0001-55,  a quantia de R$]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="231" y="64" width="55" height="17" uuid="c4b3b58c-4c61-47f9-8441-9b42bff03366"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$P{valor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="81" width="48" height="17" uuid="8b1fdf67-3e25-4001-9538-6711d413235f"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[programa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="112" width="437" height="16" uuid="36ceb91c-fd9d-484e-ba2b-80e6c45d13ff"/>
+				<textElement>
+					<font size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Estou ciente que a partir da entrega deste termo assinado para a TravelMate, a mesma efetuará o ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="437" y="112" width="118" height="17" uuid="42ace07c-807a-4843-b724-1d70a0158eb9"/>
+				<textElement>
+					<font size="10" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[reembolso em até 45 dias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="128" width="118" height="17" uuid="f8b4bea9-8c3f-4fb2-b8d7-40bd861662c9"/>
+				<textElement>
+					<font size="10" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[úteis.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="158" width="555" height="16" uuid="54ecc9f8-1a7d-4de9-9546-5f495ecd7b90"/>
+				<textElement>
+					<font size="10" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[O valor será pago através do depósito bancário: Banco, Agência e conta abaixo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="185" width="38" height="17" uuid="a48e24ac-6b27-4dad-a609-68bb8b5442ea"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Banco:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="202" width="48" height="17" uuid="770c177d-6978-41bb-ae08-ab0537387bd7"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Agência:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="219" width="38" height="17" uuid="d64f771b-05f0-4fbd-872e-62ae6904b6a1"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Conta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="236" width="38" height="17" uuid="acd6e14b-3f78-4e89-b3ba-f76c3ab7a263"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Titular:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="253" width="38" height="17" uuid="93dc3423-5cd4-4f41-8371-c42f35db740f"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="284" width="555" height="54" uuid="4037bf0a-0f4a-4cc3-b751-bd4d91109f98"/>
+				<textElement>
+					<font size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Ademais, declaro por fim, que com o recebimento da importância acima referida, nada mais tenho a reclamar sobre a referida viagem/programa de intercâmbio, dando a mais ampla, geral e irrestrita quitação de todos os valores devidos pela empresa, inexistindo mais qualquer problema a reclamar sobre o intercâmbio realizado, seja na esfera administrativa, cível ou criminal.   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="353" width="555" height="16" uuid="8ac36cbe-c844-400c-930d-c580c0309838"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[E por ser verdade, firmo a presente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="400" width="555" height="16" uuid="e61ebf5e-2fbd-4f33-b1c9-95d2c29e8fab"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[__________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="429" width="38" height="17" uuid="2a7900e0-6d17-4cd1-abf8-8b26adb4d96c"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[NOME:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="446" width="38" height="17" uuid="dbfbad96-8d1d-42de-ad27-7f3079eca8e4"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[RG:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="38" y="185" width="124" height="17" uuid="73c37406-449f-42b2-8789-24f58839bd1a"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$P{banco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="202" width="124" height="17" uuid="f00f8cf4-868a-49c1-827a-c83968c2b55d"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$P{agencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="38" y="236" width="124" height="17" uuid="a76cabe4-4157-4b7f-b23f-ce31f7228d00"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$P{titular}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="38" y="219" width="124" height="17" uuid="ef336957-1966-4f46-beb7-93265a54690d"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$P{conta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="38" y="253" width="124" height="17" uuid="024e6fad-5635-47c5-bb4b-2bfe14875046"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="118" y="13" width="166" height="17" uuid="e77353ce-473b-448f-bece-6b2e1dbf936a"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ , brasileiro, portador do CPF/MF nº]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="64" width="269" height="17" uuid="86068c40-5eff-49f5-87ee-1cb747773537"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[, referente a  reembolso  em decorrência cancelamento  do ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="30" width="182" height="17" uuid="e5ee8914-a897-4700-8710-5c04e75d60fd"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[, declaro a quem possa interessar que ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="48" y="81" width="226" height="17" uuid="8b8b8a08-97f8-4eec-bf06-92eb6644cc56"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$P{programa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="15"/>
+	</summary>
+</jasperReport>

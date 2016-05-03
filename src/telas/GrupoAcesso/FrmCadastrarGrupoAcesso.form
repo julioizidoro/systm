@@ -1,0 +1,1378 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Cadastrar Usu&#xe1;rio"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" min="-2" pref="361" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="nomejTextField" min="-2" pref="180" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="nomejTextField" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Grupo Acesso"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="nomejTextField">
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="jPanel2">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="48" max="32767" attributes="0"/>
+                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/botozinhos/confirmar.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Confirmar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Confirmar Cadastro do Usu&#xe1;rio"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton2">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/botozinhos/cancel.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cancelar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Cancela Cadastro do Usu&#xe1;rio"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel3">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Cadastro">
+                <Property name="tabTitle" type="java.lang.String" value="Cadastro"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="unidadeNegociojCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="produtoUsuariojCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="produtojCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="produtoAdicionarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="produtoEditarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="tipoArquivojCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="tipoArquivoAdicionarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="tipoArquivoEditarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="consultorjCheckBox" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cadastroclietneadicinarjCheckBox" min="-2" pref="69" max="-2" attributes="0"/>
+                                  <Component id="cadastroclienteeditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="fornecedorAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fornecedorEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="clientesjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="fornecedorjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="produtoOrcamentojCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="produtoOrcamentoAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                          <Component id="produtoOrcamentoEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="153" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="unidadeNegociojCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="consultorjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="clientesjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fornecedorjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="cadastroclietneadicinarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fornecedorAdicionarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="cadastroclienteeditarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="fornecedorEditarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="produtojCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="produtoAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="produtoEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="produtoUsuariojCheckBox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="tipoArquivojCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="tipoArquivoAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="tipoArquivoEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="produtoOrcamentojCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="produtoOrcamentoAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="produtoOrcamentoEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="199" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JCheckBox" name="unidadeNegociojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Unidade Neg&#xf3;cio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="consultorjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consultor"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="clientesjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Clientes"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="fornecedorjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Fornecedores"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cadastroclietneadicinarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cadastroclienteeditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="fornecedorAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="fornecedorEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="produtoOrcamentojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Produto Or&#xe7;amento"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="produtoOrcamentoAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="produtoOrcamentoEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="produtojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Produto"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="produtoAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="produtoEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="produtoUsuariojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="tipoArquivojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo Arquivo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="tipoArquivoAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="tipoArquivoEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel4">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Emiss&#xe3;o">
+                <Property name="tabTitle" type="java.lang.String" value="Emiss&#xe3;o"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cursosjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cursosAdicionarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cursosEditarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cursosExcluirjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="highSchooljCheckBox" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="highSchoolAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="highSchoolEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="highSchoolExcluirjCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="programasTeensExcluirjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="programasTeensEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="programasTeensAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="programasTeensjCheckBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pacoteExcluirjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pacoteEditarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pacoteAdicionarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pacotejCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="seguroViagemExcluirjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="seguroViagemEditarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="seguroViagemAdicionarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="seguroViagemjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="28" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="passagemExcluirjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="passagemEditarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="passagemAdicionarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="passagemjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="vistoExcluirjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="vistoEditarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="vistoAdicionarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="vistojCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="ladiesExcluirjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ladiesEditarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ladiesAdicionarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ladiesjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="aupairExcluirjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="aupairEditarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="aupairAdicionarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="aupairjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="workExcluirjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="workEditarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="workAdicionarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="workjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="passagemjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="passagemAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="passagemEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="passagemExcluirjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="seguroViagemjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="seguroViagemAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="seguroViagemEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="seguroViagemExcluirjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="pacotejCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pacoteAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pacoteEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pacoteExcluirjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cursosjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="highSchooljCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="programasTeensjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="cursosAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cursosEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cursosExcluirjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="highSchoolAdicionarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="programasTeensAdicionarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="highSchoolEditarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="programasTeensEditarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="highSchoolExcluirjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="programasTeensExcluirjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="vistojCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="vistoAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="vistoEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="vistoExcluirjCheckBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="ladiesjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="ladiesAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="ladiesEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="ladiesExcluirjCheckBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="aupairjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="aupairAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="aupairEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="aupairExcluirjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="workjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="workAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="workEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="workExcluirjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="106" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JCheckBox" name="cursosjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cursos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cursosAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cursosEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cursosExcluirjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="highSchooljCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="High School"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="highSchoolAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="highSchoolEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="highSchoolExcluirjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="programasTeensjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Programas Teens"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="programasTeensAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="programasTeensEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="programasTeensExcluirjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pacotejCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pacotes Tur&#xed;sticos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pacoteAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pacoteEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pacoteExcluirjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="seguroViagemjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Seguro Viagem"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="seguroViagemAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="seguroViagemEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="seguroViagemExcluirjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="passagemjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Passagem A&#xe9;rea"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="passagemAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="passagemEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="passagemExcluirjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="vistojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Vistos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="vistoAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="vistoEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="vistoExcluirjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ladiesjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Programas Ladies"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ladiesAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ladiesEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ladiesExcluirjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="aupairjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Aupair"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="aupairAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="aupairEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="aupairExcluirjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="workjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Work &amp; Travel"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="workAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adicionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="workEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="workExcluirjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel5">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Relat&#xf3;rios">
+                <Property name="tabTitle" type="java.lang.String" value="Relat&#xf3;rios"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="678" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="333" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel6">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Financeiro">
+                <Property name="tabTitle" type="java.lang.String" value="Financeiro"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cambiojCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cambioValoresjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cambioEmissaojCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="coeficientejCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="coeficienteIncluirjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="coeficienteEditarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="invoicejCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="invoicePagarjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="valoresHighSchoolAdicionarjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="valoresHighSchooljCheckBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="invoiceLancarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="valoresHighSchoolSituacaojCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="valoresHighSchoolEditarjCheckBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="124" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="coeficientejCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="invoicejCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="valoresHighSchooljCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="coeficienteIncluirjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="invoicePagarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="valoresHighSchoolAdicionarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="coeficienteEditarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="invoiceLancarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="valoresHighSchoolEditarjCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="cambiojCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cambioValoresjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cambioEmissaojCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="valoresHighSchoolSituacaojCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="228" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JCheckBox" name="cambiojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="C&#xe2;mbio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cambioValoresjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alterar Valores"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cambioEmissaojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="C&#xe2;mbio Emiss&#xe3;o"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="coeficientejCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Coeficiente"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="coeficienteIncluirjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Incluir Coeficiente"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="coeficienteEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar Coeficiente"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="invoicejCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Invoices"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="invoicePagarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pagar Invoice"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="invoiceLancarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lan&#xe7;ar Invoice"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="valoresHighSchooljCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Valores High School"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="valoresHighSchoolAdicionarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Valores High School Adcionar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="valoresHighSchoolEditarjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Valores High School Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="valoresHighSchoolSituacaojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Valores High School Situa&#xe7;&#xe3;o"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel7">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Seguran&#xe7;a">
+                <Property name="tabTitle" type="java.lang.String" value="Seguran&#xe7;a"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="usuariojCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="605" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="usuariojCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="303" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JCheckBox" name="usuariojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Usu&#xe1;rios"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel8">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Controles">
+                <Property name="tabTitle" type="java.lang.String" value="Controles"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="followupjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="agendajCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pcafjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pcajCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pcaajCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pccfjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pccjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pccajCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pcwfjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pcwjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pcwajCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pchsfjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pchsjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pchsajCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pcpfjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pcpjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pcpajCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="pcsfjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pcsjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pcsajCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="pcvfjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pcvjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pcvajCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="pclfjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pcljCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pclajCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="pcptfjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pcptjCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pcptajCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="uploadArquivojCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="uploadArquivoNovojCheckBox" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="uploadArquivoExcluirCheckBox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="uploadArquivoExportarCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="pcljCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pclajCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pclfjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="pchsjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pchsajCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pchsfjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="agendajCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="followupjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="pccjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pccajCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pccfjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="pcptjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pcptajCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pcptfjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="pcwjCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="pcwajCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="pcwfjCheckBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="pcajCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="pcaajCheckBox" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="pcafjCheckBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="pcpjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pcpajCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pcpfjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="pcsjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pcsajCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pcsfjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="pcvjCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pcvajCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pcvfjCheckBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="uploadArquivojCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="uploadArquivoNovojCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="uploadArquivoExcluirCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="uploadArquivoExportarCheckBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JCheckBox" name="agendajCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agenda"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="followupjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="FollowUp"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pccajCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pccjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Processos Cursos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pccfjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pchsjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Processos High School"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pchsajCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pchsfjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcptjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Processo Programas Teens"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcptajCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcptfjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcljCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Processos Ladies"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pclajCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pclfjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcwjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Processos Work Travel"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcwajCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcwfjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcajCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Processos Au Pair"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pcajCheckBoxActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcaajCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcafjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcpjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Processos Pacotes"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pcpjCheckBoxActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcpajCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcpfjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcsjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Processos Seguro"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pcsjCheckBoxActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcsajCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcsfjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcvjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Processos Vistos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pcvjCheckBoxActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcvajCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="pcvfjCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Finalizar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="uploadArquivojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Upload de Arquivo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="uploadArquivojCheckBoxActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="uploadArquivoNovojCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Novo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="uploadArquivoExcluirCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="uploadArquivoExportarCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Exportar"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

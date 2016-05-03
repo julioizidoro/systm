@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Declaração de Isenção" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="666abdab-7fed-446b-9feb-6a84b646f03c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="199"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Dropbox\\Desenvolvimento\\TravelMate\\SysTM\\Relatorios\\Contratos\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idcliente" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cidade" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[Select distinct cliente.nome, cliente.numeroPassaporte, cliente.cpf, cliente.rg
+from cliente
+where cliente.idcliente=$P{idcliente}]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroPassaporte" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="108" splitType="Stretch">
+			<image>
+				<reportElement x="6" y="11" width="255" height="94" uuid="c5e768cc-340c-4e56-8e55-e963a7337ae8"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="660" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="1" uuid="5632f176-8c27-4268-8362-f558b1793f9c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="69" y="8" width="402" height="50" uuid="5e48c20c-ee7c-467b-a148-cb05625893f9"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DECLARAÇÃO DE ISENÇÃO DE RESPONSABILIDADE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="101" width="532" height="55" uuid="c1a1be96-3f7d-423e-a6ac-c70a80ea5720"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Eu, " + $F{nome} + ", portador do passaporte nº " + $F{numeroPassaporte} + ", cpf Nº " +
+$F{cpf} + " e RG nº " + $F{rg} + ","]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="173" width="532" height="33" uuid="992d29c8-1762-4361-9838-4f3cd48ab43f"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Declaro para os devidos fins que me foi oferecido o serviço de assessoria para solicitação de visto consular, mas optei por não adquiri-lo.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="274" width="532" height="24" uuid="3d2ad3d4-7f02-4cc7-b6a9-9ed9c1bbcfad"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Responsabilizo-me, portanto, por todas as informações, prazos e custos inerentes a este assunto.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="97" y="488" width="349" height="1" uuid="137f46b3-e3b2-4725-9b69-f87386c1f0e3"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="97" y="492" width="349" height="17" uuid="e34b2ff5-5611-4d19-952b-26a548a6e013"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Assinatura do Requerente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="218" width="532" height="35" uuid="f21f19e1-c142-451b-a5b2-841ebaab5100"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Isento a Travelmate Intercâmbio & Turismo Ltda de quaisquer responsabilidades relacionadas ao fornecimento de informações a respeito das regras de visto e processo de solicitação do(s) mesmo(s).]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="77" y="337" width="184" height="13" uuid="38a00547-bda9-4b3f-8ae6-abe7f17c4fee"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{cidade} + ", "]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="263" y="337" width="215" height="13" uuid="b95e6e1e-6900-441c-9425-da6f9b8d9d80"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="74">
+			<staticText>
+				<reportElement x="0" y="5" width="555" height="45" uuid="7e0187c0-e3d6-4053-a7fd-4e2909e6c0a8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[____________________________________________________________________________________________
+TRAVELMATE INTERCAMBIO & TURISMO
+www.travelmate.com.br]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

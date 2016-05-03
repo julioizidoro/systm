@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoHighSchoolPagina03" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isSummaryNewPage="true" uuid="666abdab-7fed-446b-9feb-6a84b646f03c">
+	<property name="ireport.zoom" value="1.2100000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="233"/>
+	<parameter name="idvendas" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select distinct
+   vendas.dataVenda, vendas.valor as valorVenda,
+   highschool.idhighschool, highschool.nomeIrmao01, highschool.dnIrmao01, highschool.nomeIrmao02,
+   highschool.dnirmao02, highschool.nomeIrmao03, highschool.dnIrmao03, highschool.nomeEscola,
+highschool.serie, highschool.cidadeEscola, highschool.estadoEscola, highschool.reprovadoEscola,
+highschool.quandoReprovado, highschool.idioma01, highschool.escolaidioma01, highschool.tempoidioma01, highschool.nivelidioma01,
+highschool.idioma02, highschool.escolaidioma02, highschool.tempoidioma02, highschool.nivelidioma02,
+highschool.idioma03, highschool.escolaidioma03, highschool.tempoidioma03, highschool.nivelidioma03,
+highschool.paisintercambio, highschool.escolaintercambio, highschool.duracaointercambio, highschool.datainicio,
+highschool.nomecontatoemergencia, highschool.fonecontatoemergencia, highschool.emailconatoemergencia,
+highschool.relacaocontatoemergencia, unidadeNegocio.razaoSocial, unidadeNegocio.nomeFantasia, unidadeNegocio.tipologradouro as tipologradourounidadeNegocio,
+unidadeNegocio.logradouro as logradourounidadeNegocio, unidadeNegocio.numero as nuemrounidadeNegocio, unidadeNegocio.complemento as complementounidadeNegocio, unidadeNegocio.bairro as bairrounidadeNegocio, unidadeNegocio.cidade as cidadeunidadeNegocio, unidadeNegocio.estado as estadounidadeNegocio, unidadeNegocio.cep as cepunidadeNegocio, unidadeNegocio.cnpj as cnpjunidadeNegocio, unidadeNegocio.fone as foneunidadenegocio, unidadeNegocio.email as emailunudadenegocio,
+cliente.nome, cliente.dataNascimento, cliente.paisnascimento, cliente.cidadenascimento, cliente.rg,
+cliente.cpf, cliente.sexo, cliente.numeropassaporte, cliente.dataExpedicaoPassaporte,
+cliente.validadePassaporte, cliente.tipologradouro, cliente.logradouro, cliente.numero,
+cliente.bairro, cliente.cidade as cidadeendereco, cliente.estado, cliente.cep, cliente.pais as paisenderco, cliente.foneresidencial,
+cliente.fonecelular, cliente.fonecomercial, cliente.profissao,
+cliente.email,cliente.escolaridade, cliente.nomePai, cliente.profissaopai, cliente.fonepai, cliente.nomemae,
+cliente.profissaomae, cliente.fonemae,
+usuario.nome as nomeUsuario,
+unidadeNegocio.nomeFantasia, orcamento.dataCambio, orcamento.valorCambio, orcamento.totalMoedaEstrangeira,
+orcamento.totalmoedanacional, orcamento.TaxaTm, formapagamento.condicao, formapagamento.valortotal,
+formapagamento.valorjuros,parcelamentopagamento.idparcemlamentoPagamento,
+parcelamentopagamento.formaPagamento,
+parcelamentopagamento.tipoParcelmaneto,
+parcelamentopagamento.valorParcelamento,
+parcelamentopagamento.diaVencimento,
+parcelamentopagamento.numeroParcelas,
+parcelamentopagamento.valorParcela,
+parcelamentopagamento.formaPagamento_idformaPagamento, orcamentoprodutosorcamento.valormoedaestrangeira, orcamentoprodutosorcamento.valormoedanacional,
+produtosorcamento.descricao as descricaoprodutosOrcamento, moedas.descricao as descricaoMoedas, cambio.idcambio, moedas.sigla
+from
+     vendas join highschool on vendas.idvendas = highschool.vendas_idvendas
+
+     join usuario on vendas.usuario_idusuario = usuario.idusuario
+     join cliente on vendas.cliente_idcliente = cliente.idcliente
+     join unidadeNegocio on vendas.unidadeNegocio_idunidadeNegocio = unidadeNegocio.idunidadeNegocio
+     join orcamento on vendas.idvendas = orcamento.vendas_idvendas
+     join orcamentoprodutosorcamento on orcamento.idorcamento = orcamentoprodutosorcamento.orcamento_idorcamento
+     join produtosorcamento on orcamentoprodutosorcamento.produtosorcamento_idprodutosorcamento = produtosorcamento.idprodutosorcamento
+     join formaPagamento on vendas.idvendas = formapagamento.vendas_idvendas
+     join cambio on orcamento.cambio_idcambio = cambio.idcambio
+     join moedas on cambio.moedas_idmoedas = moedas.idmoedas
+join parcelamentopagamento on formapagamento.idformapagamento = parcelamentopagamento.formapagamento_idformaPagamento
+where
+    vendas.idvendas = $P{idvendas}
+order by orcamentoprodutosorcamento.idorcamentoprodutosorcamento]]>
+	</queryString>
+	<field name="dataVenda" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorVenda" class="java.lang.Float"/>
+	<field name="idhighschool" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeIrmao01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dnIrmao01" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeIrmao02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dnirmao02" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeIrmao03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dnIrmao03" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeEscola" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="serie" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidadeEscola" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estadoEscola" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reprovadoEscola" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quandoReprovado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idioma01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="escolaidioma01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tempoidioma01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivelidioma01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idioma02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="escolaidioma02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tempoidioma02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivelidioma02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idioma03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="escolaidioma03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tempoidioma03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivelidioma03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paisintercambio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="escolaintercambio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="duracaointercambio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="datainicio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomecontatoemergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonecontatoemergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="emailconatoemergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="relacaocontatoemergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="razaoSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipologradourounidadeNegocio" class="java.lang.String"/>
+	<field name="logradourounidadeNegocio" class="java.lang.String"/>
+	<field name="nuemrounidadeNegocio" class="java.lang.String"/>
+	<field name="complementounidadeNegocio" class="java.lang.String"/>
+	<field name="bairrounidadeNegocio" class="java.lang.String"/>
+	<field name="cidadeunidadeNegocio" class="java.lang.String"/>
+	<field name="estadounidadeNegocio" class="java.lang.String"/>
+	<field name="cepunidadeNegocio" class="java.lang.String"/>
+	<field name="cnpjunidadeNegocio" class="java.lang.String"/>
+	<field name="foneunidadenegocio" class="java.lang.String"/>
+	<field name="emailunudadenegocio" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataNascimento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paisnascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidadenascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeropassaporte" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataExpedicaoPassaporte" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="validadePassaporte" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipologradouro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="logradouro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="bairro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidadeendereco" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paisenderco" class="java.lang.String"/>
+	<field name="foneresidencial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonecelular" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonecomercial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="profissao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="escolaridade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomePai" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="profissaopai" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonepai" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomemae" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="profissaomae" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonemae" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeUsuario" class="java.lang.String"/>
+	<field name="dataCambio" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorCambio" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalMoedaEstrangeira" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalmoedanacional" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TaxaTm" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="condicao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valortotal" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorjuros" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idparcemlamentoPagamento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formaPagamento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoParcelmaneto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorParcelamento" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diaVencimento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroParcelas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorParcela" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formaPagamento_idformaPagamento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valormoedaestrangeira" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valormoedanacional" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricaoprodutosOrcamento" class="java.lang.String"/>
+	<field name="descricaoMoedas" class="java.lang.String"/>
+	<field name="idcambio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sigla" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="78" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="68" width="555" height="8" backcolor="#808080" uuid="411faa41-289b-4da6-ae0b-eddb0ee55234"/>
+			</rectangle>
+			<image>
+				<reportElement x="348" y="6" width="196" height="54" uuid="c5e768cc-340c-4e56-8e55-e963a7337ae8"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="753" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="28" width="544" height="14" uuid="f77d7e49-a773-4b26-a342-ca94166582d9"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[5.1 No momento do preechimento da Ficha de Inscrição, “Application Form” do programa e demais documentos, o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="5" width="271" height="23" uuid="6ba1abcd-63c4-45a7-8501-d4762db9c10f"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[5. PROCESSO DE COLOCAÇÃO EM FAMÍLIA HOSPEDEIRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="312" width="214" height="20" uuid="caacf311-ab53-4352-9a19-c16e49737529"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[6. ACOMODAÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="561" width="241" height="20" uuid="02dfeb4f-a0d9-43d0-a117-e1d05d1b5196"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[7. VISTO CONSULAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="42" width="74" height="13" uuid="d670497c-f9c0-4704-9299-4cae77b926b5"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="-593" width="544" height="14" uuid="30838893-0dc2-4f93-b5b1-64d48aa5bea7"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[5.1 No momento do preechimento da Ficha de Inscrição, “Application Form” do programa e demais documentos, o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="41" width="491" height="14" uuid="80cfa0fa-464d-40ae-8ad5-77e8b8ba6402"/>
+				<text><![CDATA[deverá colocar todas as sua preferências em relação à família e suas características pessoais; quanto ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="-580" width="491" height="14" uuid="8658d24a-fd86-428d-be80-300bb27bbeb5"/>
+				<text><![CDATA[deverá colocar todas as sua preferências em relação à família e suas características pessoais; quanto ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="55" width="534" height="27" uuid="78a20ce6-e383-4654-8cf2-9857701189c6"/>
+				<text><![CDATA[mais solicitações específicas (em relaçao a localização, família, número e idade dos filhos) maiores serão as chances de demora no processo de colocação numa família adequada;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="82" width="565" height="14" uuid="b2ed07e7-9a21-4d23-9691-0d80ecea5626"/>
+				<text><![CDATA[5.2 O processo de colocação e embarque não tem prazo definido (geralmente leva entre 3 e 6 meses contados a partir da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="95" width="227" height="13" uuid="788610c8-1d1a-47e5-ae20-03416a5f77e0"/>
+				<text><![CDATA[entrega de todos os documentos solicitados pela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="95" width="20" height="13" uuid="f4d48528-50e7-4d11-b974-6ae4aa89d533"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="95" width="333" height="13" uuid="6ed76a0a-f296-4023-8d19-deadc1f2fe3b"/>
+				<text><![CDATA[pois este prazo depende das preferências determinadas por parte do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="108" width="74" height="13" uuid="cfff10e3-a360-4579-81c3-27fc87709267"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="108" width="491" height="13" uuid="2fc5690b-9e07-475a-9977-ae83ef2aad51"/>
+				<text><![CDATA[e de seu perfil, inexistindo um limite mínimo ou máximo de tempo para a sua colocação. As famílias podem ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="121" width="533" height="26" uuid="56687e13-e192-4262-a76a-410facbbccf5"/>
+				<text><![CDATA[ser compostas de diferentes formas, como casal sem filhos, casal com filho(a) ou filhos(as), mãe com filho(a) ou filhos(as), mãe sem filhos;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="147" width="348" height="13" uuid="98290250-dee5-43ea-9393-426bf1f705e0"/>
+				<text><![CDATA[5.3 Cabe à família hospedeira a escolha final, visto que esta receberá o (a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="146" width="74" height="14" uuid="d2abf5fe-4e05-4cd1-8fda-c8f4aca8c40f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="147" width="146" height="13" uuid="1701e1be-10e9-49dc-8253-c9a15678ec08"/>
+				<text><![CDATA[em sua residência; ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="160" width="160" height="14" uuid="470628e4-e5df-4d3c-929e-cc93781ed721"/>
+				<text><![CDATA[5.4  Após confirmação da família a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="160" width="18" height="14" uuid="12b2ffcf-f1e2-4a25-b18b-69f43571dd1d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="-461" width="160" height="14" uuid="6e3df322-88d3-488d-99e7-31c9e2a84b0f"/>
+				<text><![CDATA[5.5  Após confirmação da família a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="160" width="388" height="13" uuid="565f4567-86af-448d-bdea-0faf658d858c"/>
+				<text><![CDATA[não garante a possibilidade de alterações no programa no que se refere à mudança ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="173" width="534" height="26" uuid="51bb1a13-b847-424c-ab05-420e0a78c0b7"/>
+				<text><![CDATA[de família, data de chegada ou partida, data de início e término do programa, entre outras, estando estas sujeitas à disponibilidade do parceiro internacional responsável pelo programa em questão;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="198" width="143" height="14" uuid="426c8153-3118-4fa3-8b17-6f51ec436f57"/>
+				<text><![CDATA[5.5 Se por qualquer motivo o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="199" width="75" height="13" uuid="76271405-89b4-497a-a9f9-aa52d97560b0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="218" y="198" width="347" height="14" uuid="108c8bf7-78c2-43a0-b226-857dc5f3dc12"/>
+				<text><![CDATA[precisar mudar de família já estando no país de destino, as características ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="211" width="565" height="14" uuid="3fb13894-6e4a-433a-9ef5-b7c2be1e6744"/>
+				<text><![CDATA[da nova família, cidade e estado poderão ser diferentes daquelas originalmente confirmadas;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="224" width="75" height="13" uuid="096ec4d9-758a-4400-bd63-392875df0168"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="224" width="200" height="14" uuid="04bc6ea3-95a1-4781-a124-b5788417c9f9"/>
+				<text><![CDATA[5.6  No caso de ocorrer esta mudança o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="224" width="290" height="13" uuid="9d9ee89e-886d-49a2-8e0c-49517955ce7c"/>
+				<text><![CDATA[reconhece e aceita que:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="237" width="408" height="13" uuid="32a38fd0-64be-4b2e-aa8a-ccd6a28c88c2"/>
+				<text><![CDATA[a) Não há garantia de manutenção das características da família original, sendo que o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="237" width="75" height="13" uuid="ae2e3b14-5e17-497c-bc36-b7f0b5d21748"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="236" width="84" height="14" uuid="ead9dd01-4296-4a8f-933d-1515e475042d"/>
+				<text><![CDATA[será alocado(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="249" width="564" height="13" uuid="6d7de163-f703-4551-94f8-12c480e98c46"/>
+				<text><![CDATA[em família adequada ao seu perfil conforme as possibilidades de recolocação do parceiro internacional;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="261" width="335" height="13" uuid="fbf68154-37f2-4684-9a8c-1ff4fcc829f6"/>
+				<text><![CDATA[b) O custeio das despesas referente à tal mudança ficam a encargo do(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="261" width="230" height="13" uuid="721e24e2-18ac-49d8-af3d-0f3de3a8ef54"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="273" width="92" height="13" uuid="7fcd0291-b2e8-4070-937b-4f858b8f4533"/>
+				<text><![CDATA[c) A alocação do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="273" width="74" height="13" uuid="8e4e2460-0c12-488f-9462-3b5f138819d0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="273" width="403" height="13" uuid="18a9f9b7-c723-46c1-8e95-1b055fcb2022"/>
+				<text><![CDATA[em uma nova família ficará sujeita a disponibilidade de famílias e a uma nova colocação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="285" width="565" height="13" uuid="b4f20779-c20f-4977-ab31-19e96cb98e1c"/>
+				<text><![CDATA[realizada pelo parceiro internacional; ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="332" width="41" height="13" uuid="d9146cb6-9d75-48cc-8e11-19a49d2ef256"/>
+				<text><![CDATA[6.1 O(A)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="332" width="74" height="13" uuid="bb4b860b-145d-4a9f-b185-ff8a868dce47"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="113" y="332" width="452" height="13" uuid="88ac5859-860c-4334-bee8-dabf10505084"/>
+				<text><![CDATA[deverá respeitar as regras estabelecidas pela familia hospedeira (ou alojamento/residência ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="344" width="565" height="13" uuid="0596bb80-5490-4011-b2a6-bd977fc1b844"/>
+				<text><![CDATA[referentes à acomodação oferecida, sendo estas regras regidas pela legislação do país de destino sobre o assunto;
+6.2  A acomodação a ser oferecida/indicada pelo parceiro internacional poderá representar a colocação em casa de família]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="356" width="565" height="13" uuid="11e95761-8c81-4613-887c-56c9d9cd51a0"/>
+				<text><![CDATA[6.2  A acomodação a ser oferecida/indicada pelo parceiro internacional poderá representar a colocação em casa de família ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="369" width="124" height="13" uuid="bb801bc8-77fd-4b24-a642-56b1b935a9a9"/>
+				<text><![CDATA[ou alojamento em que o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="369" width="74" height="13" uuid="ba66d764-a3e2-4515-b424-924db69f9731"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="369" width="367" height="13" uuid="ca4c939c-a3b7-43cd-95d9-a66c89b1f158"/>
+				<text><![CDATA[não seja o(a) único(a) intercambista. Algumas famílias não se importam em]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="381" width="267" height="13" uuid="0a53c678-79c2-42d5-96d9-fc1459283717"/>
+				<text><![CDATA[receberem mais de um intercambista em sua residência.  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="381" width="50" height="13" uuid="ee02f8fd-2a1c-4d7c-aef2-17bb39fb0de7"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Caso o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="381" width="74" height="13" uuid="f7a2b3e5-58ce-49f6-a9dc-b8d60d4e0483"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="381" width="178" height="13" uuid="7e67a75e-023a-4bee-9a96-6397a0e0eb6b"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[queira exclusividade na condição de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="393" width="373" height="13" uuid="52b77b1c-ca1f-466b-909d-922f5ebd6183"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[intercambista no local, DEVERÁ comunicar expressamente esta sua preferência à ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="393" width="16" height="13" uuid="67bf6354-00c7-4156-9e3c-b280c63412cf"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="393" width="183" height="13" uuid="1b5b0538-29d4-4043-8661-4ac07424f4bc"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[no processo de inscrição no programa ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="406" width="565" height="13" uuid="66f3ec13-f4b1-4d71-9165-1d167377027d"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[e colocação em família hospedeira ou alojamento; ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="419" width="74" height="13" uuid="6de81035-5545-4491-bcf3-27209e3632a0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="419" width="41" height="13" uuid="3f8257fe-a8c6-4c99-964f-eb96cfb4d6fd"/>
+				<text><![CDATA[6.3 O(A)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="113" y="418" width="452" height="13" uuid="c1bb82bb-b451-4e0b-8095-9defd12a3c5b"/>
+				<text><![CDATA[declara que tem  consciência de que estará com pessoas, costumes, estilos, rotinas, alimentação ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="431" width="565" height="13" uuid="d23ad9f3-3164-4ef7-8e59-5e85997e37cc"/>
+				<text><![CDATA[e culturas diferentes, razão pela qual, a rescisão unilateral motivada pela desistência em face destes fatores serão de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="444" width="155" height="13" uuid="7a7de0cf-5307-4db2-9f93-7d1beeca3424"/>
+				<text><![CDATA[responsabilidade exclusiva do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="444" width="74" height="13" uuid="e935aade-e3e9-4eb9-a63f-a699a8617488"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="444" width="338" height="13" uuid="52d7e2c6-055d-4ad2-8b55-1a7176d6dd24"/>
+				<text><![CDATA[e seus responsáveis, os quais deverão preencher documento específico ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="456" width="250" height="13" uuid="e50cec54-efc2-4cf9-af96-4055a1e3b614"/>
+				<text><![CDATA[requerendo a desistência do programa sem prejuízo à ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="456" width="316" height="13" uuid="68def6a6-2729-4717-a04b-cbbdc9162faa"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TM;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="468" width="565" height="13" uuid="2b38107b-842f-4ecd-b31f-5a3688f20165"/>
+				<text><![CDATA[6.4 Todas as famílias hospedeiras são cadastradas em programa de intercâmbio do país de destino e são constantemente ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="480" width="188" height="13" uuid="1b3bc2f3-e32a-413d-af31-a94dc1d0e348"/>
+				<text><![CDATA[vistoriadas pelo parceiro internacional da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="480" width="27" height="13" uuid="9ee8bb10-4fc1-4faa-829a-23266a524cb7"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TM.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="214" y="480" width="194" height="13" uuid="ae49eec9-1085-4ce8-bb24-0e566772a6da"/>
+				<text><![CDATA[Desta forma, qualquer problema que o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="480" width="74" height="13" uuid="9acb9311-a358-4f5a-9947-b2871b271d55"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="479" width="84" height="14" uuid="18c26f2c-8e81-4c15-88e1-dce61b938e73"/>
+				<text><![CDATA[venha a ter com ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="493" width="564" height="13" uuid="4774496d-819d-4c82-940c-e0b1a631107b"/>
+				<text><![CDATA[a família hospedeira (ou alojamento estudantil caso seja esta a acomodação) deverá ser imediatamente comunicado ao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="506" width="123" height="13" uuid="00766b95-dec7-49b4-80a8-39dce2f84be7"/>
+				<text><![CDATA[parceiro internacional e à ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="505" width="16" height="13" uuid="95e53ce7-92b0-4588-a4d9-cadbff094ecf"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="505" width="427" height="13" uuid="d9348041-4633-4fbd-aee9-dda9264e0e3e"/>
+				<text><![CDATA[para ser analisado, devendo sempre observar e obedecer ao padrão de vida vigente no país ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="518" width="565" height="13" uuid="b192796f-e6e2-4149-8dca-106b1e12578f"/>
+				<text><![CDATA[de destino;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="531" width="512" height="13" uuid="ab3d9df1-bfbd-4310-a559-9e3420a405fb"/>
+				<text><![CDATA[6.5  A acomodação está inclusa no programa, porém poderão ser necessárias noites extras sob as custas do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="499" y="531" width="78" height="13" uuid="2684afd9-f4fc-4c50-ad06-54bf73ea2a99"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="580" width="16" height="13" uuid="176d1ba5-1f51-4d2e-b8db-92831b514342"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="580" width="26" height="13" uuid="80f57295-2298-4156-8321-df53d184e4b0"/>
+				<text><![CDATA[7.1 A ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="580" width="524" height="13" uuid="c21ad5c6-49b8-4770-ab09-0eeeebd50daa"/>
+				<text><![CDATA[oferece um serviço extra (com custos extras) de assessoria para aplicação de visto consular, mas mesmo no caso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="592" width="155" height="13" uuid="7278c71e-09a9-4a63-a9f0-fec16917f306"/>
+				<text><![CDATA[da prestação de tal assessoria, a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="592" width="16" height="13" uuid="9f8802d9-60c4-4ae9-8961-50659aa113e1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="592" width="397" height="13" uuid="dad2a9af-70d4-4a0b-8ab3-797516cfd4f0"/>
+				<text><![CDATA[não é responsável pela obtenção do visto de entrada no país/visto para participação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="604" width="544" height="26" uuid="43df18a1-bd5a-4785-9a1b-703f8f88a642"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[no programa, mesmo quando esta intermedeie e oriente no processo de solicitação do mesmo. A emissão do visto adequado depende em última instância, única e exclusivamente, do Consulado ou Embaixada do país de destino,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="629" width="267" height="13" uuid="1bd72668-e7cb-4caa-84da-36b927dd972f"/>
+				<text><![CDATA[órgão este que analisará o processo de solicitação do(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="630" width="74" height="13" uuid="e806c1a6-3e54-4f89-be31-ebbd72f69cc3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="629" width="239" height="13" uuid="d1de9ace-4eb0-4fa8-9e59-cfd9455d4685"/>
+				<text><![CDATA[e julgará se este deve ou não ter o visto concedido. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="642" width="227" height="13" uuid="756cc73a-2f25-4dd1-a5e0-dd35a46840f0"/>
+				<text><![CDATA[7.2   No caso do visto consular ser negado ao(à) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="223" y="642" width="74" height="13" uuid="469b9a70-ea7d-4b65-ad93-694fe4488603"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="642" width="280" height="13" uuid="91177d2b-66ce-4e81-aedf-80a581d3b305"/>
+				<text><![CDATA[por parte da autoridade consular responsável, o valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="655" width="565" height="13" uuid="f7b57492-195e-484a-9933-294f3f0d74ac"/>
+				<text><![CDATA[correspondente a US$500 (excluindo valores de taxas de visto e despesas para aplicação pedido do mesmo) será retido e]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="668" width="463" height="13" uuid="f2b2b7cf-22ac-49fb-971e-c625b21aac8e"/>
+				<text><![CDATA[não reembolsado. Para receber reembolso de demais valores pagos referentes ao visto negado, o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="668" width="74" height="13" uuid="a6e29a0c-f2d1-473c-b7ba-1e1ac3c034be"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="534" y="668" width="46" height="13" uuid="5a9ca40d-53cb-4727-9082-18bd80d741e3"/>
+				<text><![CDATA[deverá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="680" width="214" height="13" uuid="7ac0872d-e3c4-428f-b16c-60bed1c7bc3a"/>
+				<text><![CDATA[fornecer toda a documentação solicitada pela ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="680" width="16" height="13" uuid="c28a585a-d66c-48de-9595-0115a6009fb9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="680" width="340" height="13" uuid="9c531a69-9c67-4585-be2d-72b8caa51b9d"/>
+				<text><![CDATA[e pelo parceiro internacional. Qualquer valor será reembolsado nos prazos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="692" width="250" height="13" uuid="7dff2386-f225-4643-92e7-e4328e629715"/>
+				<text><![CDATA[estipulados pelo parceiro internacional contratado pela ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="692" width="314" height="13" uuid="7d907dbe-c6ee-41c1-b701-3d58f5ffdee8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="704" width="28" height="13" uuid="a6dca699-ca47-4e72-a75d-bf0ecc11c2b4"/>
+				<text><![CDATA[7.3  A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="704" width="16" height="13" uuid="3facd87e-f58f-4eaa-aaf9-14b120c9bb30"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="704" width="539" height="13" uuid="107a6cc9-d8ec-4ac5-b8bb-4977af7fb338"/>
+				<text><![CDATA[não tem responsabilidade por orientar o participante em processos de mudança, alteração ou solicitação de extensão]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="717" width="544" height="27" uuid="7ca6fe52-8c31-480b-b65e-ce60441da917"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[do visto do participante quando este já esteja no país de destino;
+7.4  As despesas de obtenção do visto (taxas de agendamento, taxas consulares, taxa SEVIS, taxa de emissão de visto,]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="20">
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="10" uuid="83293e75-3819-4d54-9e72-6a9bdf693b63"/>
+				<subreportParameter name="idvendas">
+					<subreportParameterExpression><![CDATA[$P{idvendas}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "contratoHighSchoolPagina04.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

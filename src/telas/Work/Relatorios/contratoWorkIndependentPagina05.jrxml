@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d1f4a8a7-704a-47a3-994b-d873fd9602b3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="496"/>
+	<parameter name="idvendas" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select distinct
+   vendas.dataVenda, vendas.valor as valorVenda,
+worktravel.idworkTravel, worktravel.tipo, worktravel.nomeContatoEmergencia, worktravel.foneContatoEmergencia,
+worktravel.emailContatoEmergencia, worktravel.relacaoContatoEmergencia, worktravel.intituicaoEstuda, worktravel.cursoEstuda,
+worktravel.duracaoCurso, worktravel.periodoCurso,worktravel.peirodoEstuda, worktravel.dataMatricula,
+worktravel.dataEstimadaTermino, worktravel.idioma01,worktravel.nivelidioma01,
+worktravel.tempoidioma01,worktravel.idioma02,worktravel.nivelidioma02,worktravel.tempoidioma02,
+worktravel.idioma03,worktravel.nivelidioma03,worktravel.tempoidioma03,worktravel.dataInicioPretendida01,
+worktravel.dataInicioPretendida02,worktravel.dataTerminoPretendida01,worktravel.dataTerminoPretendida02,
+worktravel.camareira,worktravel.cozinha,worktravel.salvavidas,worktravel.recepcao,worktravel.garcon,
+worktravel.trabalhosexternos,worktravel.lavaderia,worktravel.indiferenteOcupacao,worktravel.outraOcupacao,
+worktravel.especificarOutraOcupacao,worktravel.programaIdependente,worktravel.parquetematico,
+worktravel.hotel,worktravel.restaurante,worktravel.lojas,worktravel.cassino,
+worktravel.piscina,worktravel.estacaoesqui,worktravel.indiferentelocal,
+worktravel.outraLocal,worktravel.especificaroutraLocal,worktravel.programaidependente01,
+worktravel.clima,worktravel.adicionais,worktravel.sabernadar,
+worktravel.treinamentosalvavidas,worktravel.sabeesquiar,worktravel.carteiraHabilitacao,
+worktravel.dirigirEua,worktravel.nomePais01,worktravel.motivoEstadia01,worktravel.periodoEstadia01,
+worktravel.nomePais02,worktravel.motivoEstadia02,worktravel.periodoEstadia02,worktravel.nomePais03,
+worktravel.motivoEstadia03,worktravel.peirodoEstadia03,worktravel.campanheiroViagem01,worktravel.companheiroViagem02,
+worktravel.companheiroViagem03,worktravel.trabalhoVistoJ1,worktravel.quantoVistoj1,worktravel.numeroSocialSecurity,
+worktravel.tipoProgramaEua,worktravel.agenciaBrasil,worktravel.posicaoExcercida,worktravel.opcaoIndependente,
+worktravel.possuiOfertaTrabalho,worktravel.nomeEmpregador,worktravel.possicarqueiraExercer,
+worktravel.possuiDeficienciaFisica,worktravel.problemaSaude,worktravel.especifiqueProblemaSaude,
+worktravel.tratamentoMedico,worktravel.especifiqueTratamentoMedico,worktravel.tratamentoUsoDrogas,
+worktravel.especifiqueTratamentoUsoDrogas,worktravel.listaAlergias,worktravel.cartaoVTM,
+worktravel.numeroCartaoVTM,worktravel.moedaCartaoVTM,worktravel.passagemAerea,worktravel.tipoEmissaoPassagem,
+worktravel.observacaoPassagem,worktravel.tipoVisto,worktravel.tipoEmissaoVisto,worktravel.observacaoVisto,
+worktravel.dataEntragaDocumentosVisto,worktravel.fuma,worktravel.dataInscricao,worktravel.vendas_idvendas,
+unidadeNegocio.razaoSocial, unidadeNegocio.nomeFantasia, unidadeNegocio.tipologradouro as tipologradourounidadeNegocio, unidadeNegocio.logradouro as logradourounidadeNegocio, unidadeNegocio.numero as nuemrounidadeNegocio, unidadeNegocio.complemento as complementounidadeNegocio, unidadeNegocio.bairro as bairrounidadeNegocio, unidadeNegocio.cidade as cidadeunidadeNegocio, unidadeNegocio.estado as estadounidadeNegocio,
+unidadeNegocio.cep as cepunidadeNegocio, unidadeNegocio.cnpj as cnpjunidadeNegocio,
+cliente.nome, cliente.dataNascimento, cliente.paisnascimento, cliente.cidadenascimento, cliente.rg,
+cliente.cpf, cliente.sexo, cliente.numeropassaporte, cliente.dataExpedicaoPassaporte,
+cliente.validadePassaporte, cliente.tipologradouro, cliente.logradouro, cliente.numero,
+cliente.bairro, cliente.cidade as cidadeendereco, cliente.estado, cliente.cep, cliente.pais as paisenderco, cliente.foneresidencial,
+cliente.fonecelular, cliente.fonecomercial, cliente.profissao,
+cliente.email,cliente.escolaridade, cliente.nomePai, cliente.profissaopai, cliente.fonepai, cliente.nomemae,
+cliente.profissaomae, cliente.fonemae,
+usuario.nome as nomeUsuario,
+unidadeNegocio.nomeFantasia, orcamento.dataCambio, orcamento.valorCambio, orcamento.totalMoedaEstrangeira,
+orcamento.totalmoedanacional, orcamento.TaxaTm, formapagamento.condicao, formapagamento.valortotal,
+formapagamento.condicao, formapagamento.valortotal,
+formapagamento.valorjuros, orcamentoprodutosorcamento.valormoedaestrangeira, orcamentoprodutosorcamento.valormoedanacional,
+produtosorcamento.descricao as descricaoprodutosOrcamento, moedas.descricao as descricaoMoedas, cambio.idcambio, moedas.sigla, parcelamentopagamento.idparcemlamentoPagamento,
+parcelamentopagamento.formaPagamento,
+parcelamentopagamento.tipoParcelmaneto,
+parcelamentopagamento.valorParcelamento,
+parcelamentopagamento.diaVencimento,
+parcelamentopagamento.numeroParcelas,
+parcelamentopagamento.valorParcela,
+parcelamentopagamento.formaPagamento_idformaPagamento
+from
+     vendas join workTravel on vendas.idvendas = workTravel.vendas_idvendas
+     join usuario on vendas.usuario_idusuario = usuario.idusuario
+     join cliente on vendas.cliente_idcliente = cliente.idcliente
+     join unidadeNegocio on vendas.unidadeNegocio_idunidadeNegocio = unidadeNegocio.idunidadeNegocio
+     join orcamento on vendas.idvendas = orcamento.vendas_idvendas
+     join orcamentoprodutosorcamento on orcamento.idorcamento = orcamentoprodutosorcamento.orcamento_idorcamento
+     join produtosorcamento on orcamentoprodutosorcamento.produtosorcamento_idprodutosorcamento = produtosorcamento.idprodutosorcamento
+     join formaPagamento on vendas.idvendas = formapagamento.vendas_idvendas
+     join cambio on orcamento.cambio_idcambio = cambio.idcambio
+     join moedas on cambio.moedas_idmoedas = moedas.idmoedas
+join parcelamentopagamento on formapagamento.idformapagamento = parcelamentopagamento.formapagamento_idformaPagamento
+where
+    vendas.idvendas = $P{idvendas}
+order by orcamentoprodutosorcamento.idorcamentoprodutosorcamento]]>
+	</queryString>
+	<title>
+		<band height="84" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="72" width="555" height="8" backcolor="#808080" uuid="aa1b66b9-7274-4126-9238-ab52ec231449"/>
+			</rectangle>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="742" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="188" height="27" uuid="1c3e5e37-3337-4a3b-bdf5-7dc6d6842598"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[9. SOCIAL SECURITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="37" width="370" height="14" uuid="0f628055-c114-4ed5-95cf-4a715fa757b9"/>
+				<text><![CDATA[9.1  A obtenção do “Social Security Number/Card” não é de responsabilidade da]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="37" width="23" height="14" uuid="9eb8e447-d399-4090-a82a-e7b7c636175a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="37" width="179" height="14" uuid="984fcda9-61aa-4c68-b093-6d23021f0c5e"/>
+				<text><![CDATA[, parceiro internacional e ofertante do ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="51" width="567" height="14" uuid="b64ae736-2b88-4070-8d7e-ec56309eb20c"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[trabalho. O processo para obtenção do número e/ou cartão poderá levar de 2 à 12 semanas (ou mais) após o protocolo em]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="65" width="509" height="14" uuid="d1224bd0-5eb5-47e5-8cad-14370c34765b"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[um dos escritórios do “Social Security” no país de destino. Alguns ofertantes de trabalho não aceitam que o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="65" width="74" height="14" uuid="162cb81c-5034-4776-9477-b697834c1e60"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="79" width="455" height="14" uuid="0f3924a3-1e28-412b-919b-c436f04fbf1e"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[comece a trabalhar sem o número e/ou o cartão do “Social Security”. É de responsabilidade do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="443" y="79" width="74" height="14" uuid="9d638c49-906b-4f51-b183-968f7faef334"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="519" y="79" width="50" height="14" uuid="f995b1d7-cb13-41de-84a3-d8abfa7b9078"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[entrar em ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="93" width="567" height="14" uuid="c2e705b7-81c0-4023-99ab-b18c201dc9e8"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[contato com o ofertante do trabalho para se informar sobre esta questão antes da viagem e verificar se existe tal exigência]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="42" height="14" uuid="352b04c8-6684-4440-a8ff-4214aacd3b9b"/>
+				<text><![CDATA[9.2 O(A) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="120" width="74" height="14" uuid="9caaa4ad-474e-437d-8b46-37e8ce44b3ff"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="120" width="466" height="14" uuid="4f1dc08b-9ebc-4cd0-83ea-7fa5517c8f76"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[deverá ter consigo recursos suficientes para cobrir suas despesas no país de destino até que receba ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="134" width="381" height="14" uuid="7c0b5621-347f-45cc-b819-7d15bd442fee"/>
+				<text><![CDATA[o seu primeiro pagamento. Muitos empregadores não contratarão ou pagarão o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="134" width="74" height="14" uuid="81418fdd-f8c8-4b75-9826-df297bd5e285"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="453" y="134" width="120" height="14" uuid="6665cbae-d06b-4d05-9146-59679f00650c"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[enquanto este não tiver o ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="148" width="569" height="14" uuid="1638892c-fe87-4051-a68a-edf76e43bf79"/>
+				<text><![CDATA[cartão de seguridade social (social security card), que é fornecido pelo governo norte-americano e sujeito a atrasos. Cabe ao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="162" width="74" height="14" uuid="149d032e-3f29-403f-89d1-1c3e34b30882"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="76" y="162" width="493" height="14" uuid="b2a9fa63-0fec-4b52-b678-519dfc911211"/>
+				<text><![CDATA[comparecer a um escritório de seguridade social (social security office), somente após 10 (dez) dias de sua ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="176" width="151" height="14" uuid="aa8fadf5-9aaa-40cb-b6d1-4450c09c3e0b"/>
+				<text><![CDATA[chegada nos Estados Unidos. A ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="176" width="21" height="14" uuid="f9866675-3497-475b-b085-c29a583527a3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="176" width="407" height="14" uuid="cde270d1-24ef-44ce-a128-27b214d9f686"/>
+				<text><![CDATA[é proibida, por lei norte-americana, de contatar o Serviço de Seguridade Social americano]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="190" width="74" height="14" uuid="3efce201-37cb-4493-acbf-cd4e85cda5ba"/>
+				<text><![CDATA[em nome do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="190" width="74" height="14" uuid="2cbf4eaf-0cee-41bf-8808-cd02696f1489"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="190" width="422" height="14" uuid="f17d00e8-778e-4dff-a28b-f3dc34130b9d"/>
+				<text><![CDATA[, razão pela qual este é quem deverá fazer todos os contatos para a resolução do problema.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="214" width="188" height="27" uuid="385d1b5d-f2f1-450c-97ec-8b2f0ce01c8f"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[10. PASSAGEM AÉREA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="241" width="281" height="14" uuid="b255eecb-f379-4944-bf84-c3ecaa177158"/>
+				<text><![CDATA[10.1 No que se refere à passagem aérea, fica a critério do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="241" width="74" height="14" uuid="f13266bf-0dc7-4c18-a3ba-5f9257c72878"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="241" width="212" height="14" uuid="c0c55ba1-4458-4714-b053-7e6c73a9912d"/>
+				<text><![CDATA[a sua aquisição, podendo ser efetuada com a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="255" width="541" height="26" uuid="d6fc25cb-9cf6-4ca7-bfc3-2fff4c2006bf"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[Travelmate ou diretamente com a companhia aérea que melhor se adequar a seu roteiro ou ainda com qualquer empresa de turismo que disponibilize a emissão de passagens.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="281" width="53" height="14" uuid="edee03a7-fa2f-4913-a4f7-de9fdb943e8c"/>
+				<text><![CDATA[10.2 O(A)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="281" width="74" height="14" uuid="9e9543b3-94a9-4fb1-abaa-73d26c1f6bc6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="280" width="448" height="14" uuid="4a958ee1-0af6-46d6-a6c0-da6e725a2e84"/>
+				<text><![CDATA[declara, pela assinatura deste instrumento, ter ciência de que deverá obedecer a todas as normas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="293" width="541" height="27" uuid="a25286cb-f329-4876-9397-af44b037e675"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[referentes ao transporte aéreo internacional, bem como ter conhecimento de ser da Companhia Aérea contratada a responsabilidade referente à prestação deste serviço.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="321" width="61" height="14" uuid="56713a62-eabb-4278-86ef-7c61ffe7de54"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Parágrafo 1º: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="321" width="29" height="14" uuid="c1c94b47-0ccf-46c7-b0a0-262de50ea61c"/>
+				<text><![CDATA[ O(A)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="321" width="74" height="14" uuid="b5532cc3-b30c-4cf9-965a-42259327f71d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="321" width="378" height="14" uuid="7a50e635-306a-4614-be23-29829b48d50f"/>
+				<text><![CDATA[, após a emissão do bilhete, deverá observar todos os procedimentos referentes à ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="335" width="517" height="40" uuid="29b2e29f-c72a-40c0-a893-b854da4ef8b9"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[de sua passagem, de acordo com as regras do transporte aéreo e do contrato efetuado com a Companhia Aérea, observando, quando houver, cláusulas especiais referentes ao seu tipo de bilhete, especialmente no tocante ao endosso, reembolso, multas por cancelamento, remarcação, reitineração e limite de peso da bagagem;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="374" width="61" height="14" uuid="17c78b92-bfab-4310-8389-3190824c88a3"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Parágrafo 2º: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="374" width="456" height="14" uuid="9ea59869-7f47-40be-9aec-a7c1f168397f"/>
+				<text><![CDATA[Se, por qualquer motivo, tais como vistos consulares, lotação em vôos ou na classe tarifária etc., a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="526" y="374" width="40" height="14" uuid="5023b0b8-9ce9-42b7-b60a-e32f89928596"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="388" width="136" height="14" uuid="b1f73a44-4ce9-408a-b69f-8b67c839ba01"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[não conseguir embarcar o(a)  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="388" width="74" height="14" uuid="eeea95d8-f694-4877-affa-f250966d9d02"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="388" width="338" height="14" uuid="d4abfe71-6448-484e-a0a4-00e92701b75d"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[a tempo deste apresentar-se na empresa norte-americana em seu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="402" width="568" height="13" uuid="2bc5f61d-803f-46d4-9b95-15551a8a519c"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[primeiro dia de trabalho,estipulado em sua oferta de emprego,caberá a ambos comunicarem à empresa norte-americana]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="415" width="303" height="13" uuid="1c12f320-738a-40ab-9a26-552e88b7b18e"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[a nova data de início. Este fato, se e quando ocorrer, não dará ao(à) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="414" width="74" height="14" uuid="357eb257-3ae7-40ea-a76c-698dfa0b5e04"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="414" width="176" height="13" uuid="959baefa-945e-4e80-be9c-e666a13222df"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[direito a cancelamento ou desistência]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="427" width="548" height="13" uuid="bca4bdc2-4e16-4abb-912c-fbe068a553f2"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[do programa, que declara, pela assinatura deste instrumento, estar ciente desta possibilidade.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="441" width="61" height="14" uuid="e524f2be-ec0f-4292-b34c-f09aa8650233"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Parágrafo 3º: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="441" width="29" height="14" uuid="17172f57-56a3-430b-821f-bc3391fd7e44"/>
+				<text><![CDATA[ O(A)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="441" width="74" height="14" uuid="8166842e-3640-4fe2-bfc7-ba3afdf4b049"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="441" width="293" height="14" uuid="9c2c5bf0-325f-47ad-a78a-d0a3f13f9431"/>
+				<text><![CDATA[deverá seguir os procedimentos indicados oportunamente pela ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="471" y="441" width="26" height="14" uuid="52b5a1f8-c515-4128-be39-90711dca0a9f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="441" width="72" height="14" uuid="39123704-98eb-4ae5-8f5c-047a7d233284"/>
+				<text><![CDATA[para efetuar a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="455" width="528" height="34" uuid="11c1dc0c-e3e3-4938-b019-c3182e99cf02"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[marcação ou qualquer alteração em sua passagem aérea, sujeitando-se à disponibilidade na mesma classe tarifária, bem como às taxas de remarcação, cancelamento e reitineração estabelecidas pelas companhias aéreas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="491" width="188" height="27" uuid="a4baeb2f-d939-410c-9e16-03d671dcb238"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[11. SEGURO-SAÚDE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="518" width="162" height="14" uuid="d8027f07-16a9-43dd-86c9-76af40822a6b"/>
+				<text><![CDATA[11.1 Obrigatoriamente, deverá o(a)  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="518" width="74" height="14" uuid="85c75ea7-24bd-4988-a374-f91176446643"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="518" width="329" height="14" uuid="3769f1b6-9c99-4931-9af9-47453f1ab404"/>
+				<text><![CDATA[contratar seguro-saúde para que possa participar do programa escolhido, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="532" width="519" height="14" uuid="acaef82e-3300-40da-86b1-a956f547ef39"/>
+				<text><![CDATA[ escolhido, sendo que a escolha da seguradora cabe ao Sponsor (parceiro internacional da TM ) sem que a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="532" width="26" height="14" uuid="1342f658-b3f6-478c-9ac1-d90d30b575ee"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="546" width="566" height="14" uuid="cfaeeb53-8e19-40c9-9b23-350c2139fe6c"/>
+				<text><![CDATA[tenha qualquer ingerência ou participação em tal ato e, ainda, deverá obedecer aos seguintes critérios:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="560" width="534" height="15" uuid="a9bf30ef-3764-42b7-8cf6-ee7d154fcc7f"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[a) Deve ser válido em todo o território do país de destino;
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="575" width="63" height="14" uuid="986cdd1f-c46b-42f2-a2dc-384ce2013934"/>
+				<text><![CDATA[b) Caso o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="575" width="74" height="14" uuid="9cbc42fc-68cd-4322-ab72-7435444570e4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="575" width="450" height="14" uuid="8b1b78e4-f171-42b3-8c53-a44ca5b61830"/>
+				<text><![CDATA[ingresse no país de destino antes da data estabelecida no programa, ou permaneça após,deverá ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="589" width="520" height="14" uuid="a068201f-1b9f-4ec8-8ed8-733c82c01c99"/>
+				<text><![CDATA[adquirir e/ou estender o seu seguro-saúde conforme tais datas, às suas expensas, devendo ainda, comunicar a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="508" y="589" width="23" height="14" uuid="df12377a-b37b-490e-9ae3-1d50e8c6f4e3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="603" width="74" height="14" uuid="03e1d0d7-f296-4363-8a72-2560085a69d4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="603" width="63" height="14" uuid="cf337089-70f7-4bb4-9712-7e3bf656d104"/>
+				<text><![CDATA[c) Deverá o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="603" width="452" height="14" uuid="fdcd0512-4a13-4a5f-bb37-2a76a6600448"/>
+				<text><![CDATA[obedecer todas as cláusulas referentes ao contrato de seguro, de acordo com o estabelecido pela ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="618" width="535" height="117" uuid="b4f6ce05-7b6e-4097-8714-96d935e3b7b8"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[o estabelecido pela seguradora, incluindo, mas não limitado a:
+I) pagamento de franquia;
+II) pagamento de multa por uso indevido da sala de emergência;
+III) não cobertura de doenças ou condições pré-existentes;
+IV) fazer contato telefônico com a seguradora antes de qualquer atendimento médico;
+V) em caso de emergência, na impossibilidade de fazer contato prévio, fazer contato com a seguradora em no máximo 24 horas após a entrada no estabelecimento prestador de serviços de saúde;
+VI) seguir os procedimentos estabelecidos pela seguradora para pagamento e/ou reembolso das despesas médicas e hospitalares.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="107" width="566" height="14" uuid="e2e88b31-6f61-4973-a78d-a2e13066bdd6"/>
+				<text><![CDATA[ou não.]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="30">
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="23" uuid="e0793949-70b5-439e-b4cc-1d0721be8ae6"/>
+				<subreportParameter name="idvendas">
+					<subreportParameterExpression><![CDATA[$P{idvendas}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "contratoWorkIndependentPagina06.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

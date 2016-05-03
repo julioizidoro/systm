@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoCursoPagina04" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isSummaryNewPage="true" uuid="666abdab-7fed-446b-9feb-6a84b646f03c">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="319"/>
+	<parameter name="idvendas" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select distinct
+unidadeNegocio.razaoSocial, unidadeNegocio.nomeFantasia, unidadeNegocio.tipologradouro as tipologradourounidadeNegocio, unidadeNegocio.logradouro as logradourounidadeNegocio, unidadeNegocio.numero as nuemrounidadeNegocio, unidadeNegocio.complemento as complementounidadeNegocio, unidadeNegocio.bairro as bairrounidadeNegocio, unidadeNegocio.cidade as cidadeunidadeNegocio, unidadeNegocio.estado as estadounidadeNegocio, unidadeNegocio.cep as cepunidadeNegocio, unidadeNegocio.cnpj as cnpjunidadeNegocio,
+unidadeNegocio.nomeFantasia from unidadeNegocio
+where
+    unidadeNegocio.idUnidadeNegocio=1]]>
+	</queryString>
+	<field name="razaoSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipologradourounidadeNegocio" class="java.lang.String"/>
+	<field name="logradourounidadeNegocio" class="java.lang.String"/>
+	<field name="nuemrounidadeNegocio" class="java.lang.String"/>
+	<field name="complementounidadeNegocio" class="java.lang.String"/>
+	<field name="bairrounidadeNegocio" class="java.lang.String"/>
+	<field name="cidadeunidadeNegocio" class="java.lang.String"/>
+	<field name="estadounidadeNegocio" class="java.lang.String"/>
+	<field name="cepunidadeNegocio" class="java.lang.String"/>
+	<field name="cnpjunidadeNegocio" class="java.lang.String"/>
+	<title>
+		<band height="78" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="68" width="555" height="8" backcolor="#808080" uuid="411faa41-289b-4da6-ae0b-eddb0ee55234"/>
+			</rectangle>
+			<image>
+				<reportElement x="348" y="6" width="196" height="54" uuid="c5e768cc-340c-4e56-8e55-e963a7337ae8"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="764" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="676" width="277" height="14" uuid="185870cc-d58f-4e7c-856f-43b87e0b56e9"/>
+				<text><![CDATA[9.3 Em caso de cancelamento do curso/programa devido à ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="412" width="513" height="52" uuid="992382ba-c024-47a6-bd99-45d2f105bab1"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[à categoria de sua passagem, de acordo com as regras do transporte aéreo e do contrato efetuado com a Companhia Aérea, observando, quando houver, cláusulas especiais referentes ao seu tipo de bilhete, especialmente no tocante ao endosso, reembolso, multas por cancelamento, remarcação, reitineração e limite de peso da bagagem;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="565" width="137" height="14" uuid="a01e27bd-e521-473c-9f3b-c0e784a731cd"/>
+				<text><![CDATA[(não incluindo passagem ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="464" width="67" height="14" uuid="0d163520-4530-4ed4-860d-58fd9aa1ef39"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Parágrafo 2º: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="44" width="315" height="14" uuid="8c9a4991-d6b4-46e4-8908-2409184741da"/>
+				<text><![CDATA[ não tem responsabilidade por isso.   Se houver insatisfação do(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="173" width="544" height="28" uuid="f1d20371-39c7-4a15-b6bb-652771f67c90"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[ocorrência de atraso no vôo, mudança de escala ou outra situação que afete ou atrase o cronograma previamente combinado e contratado;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="145" width="555" height="14" uuid="8e6bac93-df4d-4db6-b84e-48a770fd2564"/>
+				<text><![CDATA[mesma tenha qualquer ingerência ou participação em tal ato e, ainda, deverá obedecer aos seguintes critérios:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="676" width="206" height="14" uuid="e8fdd9a4-89db-4c82-8900-22eb2830ad49"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[não obtenção do visto de entrada do país ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="635" width="570" height="14" uuid="828f0367-a89f-4b9c-99e4-933d8b86e942"/>
+				<text><![CDATA[internacional cobrará diferença de valores e multa para tal(is) mudança(s),sendo o pagamento de total responsabilidade do(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="704" width="533" height="29" uuid="b9b39c81-e207-4983-9d49-df6cc54dff2e"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[9.4 Em todos os casos de desistência antes do embarque, por quaisquer motivos e em qualquer momento do processo, a devolução do valor pago pelo programa,, excluindo os 30% de multa citados no item 10.1, segue as]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="201" width="43" height="14" uuid="24d92281-6ff3-4cc5-949c-e50407902730"/>
+				<text><![CDATA[b) O(A) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="607" width="570" height="14" uuid="7b7e34d5-7bf2-4a8e-be5e-3b1b3d80e404"/>
+				<text><![CDATA[9.2 Após a inscrição, em qualquer momento do processo, por quaisquer motivos (vistos consulares, alterações e/ou atraso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="76" y="648" width="18" height="14" uuid="0835c296-64ee-49cd-add2-fd31329d7496"/>
+				<text><![CDATA[. A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="257" width="215" height="14" uuid="15ea477d-0630-46a7-9b69-034527ed1a6d"/>
+				<text><![CDATA[7.2. A contratação do transfer por parte do(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="551" width="417" height="14" uuid="06019216-c0d6-49f2-9602-98fe72c39d5e"/>
+				<text><![CDATA[opte em desistir e/ou cancelar o programa  antes de realizar seu embarque para o país ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="464" width="370" height="14" uuid="869de8bc-e4f5-47a8-be5a-37c819e66d77"/>
+				<text><![CDATA[deverá seguir os procedimentos indicados oportunamente pela TM(caso a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="256" y="732" width="25" height="14" uuid="92df1191-80f2-4adf-8f6a-c7eaf2b4b432"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="315" width="79" height="14" uuid="90fb71c0-b2ea-4ac2-a8d6-ebead25f8077"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="72" width="555" height="14" uuid="55b5d16f-1c28-4a1e-b592-f0db93f00550"/>
+				<text><![CDATA[ na qual está hospedado(a). ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="159" width="433" height="14" uuid="d6698f78-fce8-4c23-a6a3-78a8c7e86eab"/>
+				<text><![CDATA[deverá ter em sua posse o número de emergência da empresa contratada, para o caso de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="649" width="25" height="14" uuid="12a4af5a-bbb1-4ec5-b2af-036b060fe44c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="215" width="545" height="42" uuid="87727b4f-d474-4055-a928-a56a698d8e2c"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[transfer, declarando-se ciente que em caso de ocorrência de atraso de vôo ou alguma outra modificação que acarrete na não utilização do serviço, o mesmo será considerado pela empresa contratada como serviço efetivamente prestado, oportunidade em que não há reembolso de valores;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="565" width="362" height="14" uuid="66687b1c-0a7f-4d51-9930-12ceaead1032"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[montante equivalente a 30% (trinta por cento) do valor do programa/pacote]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="113" y="649" width="457" height="14" uuid="81380f60-159e-4501-8bf8-ffad78fa0164"/>
+				<text><![CDATA[não garante a possibilidade de quaisquer alterações do curso/programa solicitadas após emissão ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="398" width="67" height="14" uuid="69a19dbb-d8f9-4d25-965a-543b4465e0e3"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Parágrafo 1º: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="118" width="48" height="14" uuid="5b08f940-e7d3-43cd-8ff3-54dd4bdecfd3"/>
+				<text><![CDATA[7.1 O(A)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="565" width="74" height="14" uuid="5fff9641-adb7-46f4-ac07-13a74d6f2287"/>
+				<text><![CDATA[de destino, o  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="96" width="185" height="22" uuid="76cfe976-6cc3-469c-99b2-c6c1f9291db0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[7. TRANSFER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="58" width="476" height="14" uuid="3b9f4f5a-c744-47d2-9f02-f656c472f724"/>
+				<text><![CDATA[quanto à alimentação, o(a) mesmo(a) deve tratar diretamente com a família hospedeira ou acomodação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="257" width="278" height="14" uuid="59670c3f-528b-4d39-83d6-60f2dbc0be72"/>
+				<text><![CDATA[deve acontecer com no mínimo 4 semanas de antecedência ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="5" width="555" height="45" uuid="dcabd502-d46e-48d8-b8d2-eb8fb0e2c02f"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[de origem de outro país que não o país de destino, dependendo da oferta que lhe fora apresentada.
+6.8 No caso de alimentação fornecida pela família hospedeira ou acomodação contratada, existe variação de refeições conforme cada família ou acomodação, cultura e costumes locais, podendo tais refeições diferirem muito da alimentação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="257" width="79" height="14" uuid="3fa46ae1-0587-45d4-818f-bee186f0616b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="44" width="48" height="14" uuid="de5c3b94-086c-4f30-b7b9-a9dd4ffe5b21"/>
+				<text><![CDATA[que o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="690" width="569" height="14" uuid="8c2c3c1b-e7a2-4855-ae83-34d7dfb12243"/>
+				<text><![CDATA[participante está sujeito às regras já mencionadas no item 10.1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="356" width="417" height="14" uuid="2fee550c-de1b-47c2-8378-54eec22e3aca"/>
+				<text><![CDATA[declara, pela assinatura deste instrumento, ter ciência de que deverá obedecer a todas as ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="293" width="185" height="22" uuid="ab281ed8-f861-4e26-83e0-99e8495114bf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[8. PASSAGEM AÉREA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="131" width="196" height="14" uuid="ee92491a-e294-447d-89b5-95ab60e71c7d"/>
+				<text><![CDATA[país de poderá fazê-lo por intermédio da ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="271" width="545" height="14" uuid="30d2e735-3dab-42d0-8d8d-9f444724e377"/>
+				<text><![CDATA[de embarque para o exterior;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="132" width="364" height="14" uuid="8b1ebc36-c951-4a93-a385-e59e7d1159b3"/>
+				<text><![CDATA[(salvo quando tal serviço não esteja incluso no pacote/programa), sem que a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="648" width="77" height="14" uuid="5ec33dde-20d0-4000-9842-77db4b39e762"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="44" width="79" height="14" uuid="48837048-2b37-4cf7-b1ff-75ad610602ec"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="579" width="462" height="14" uuid="170dfb6e-1b86-43cc-9917-ebf0b7946a86"/>
+				<text><![CDATA[aérea e serviço de assessoria para aplicação de vistos), o qual corresponde à taxa de inscrição,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="159" width="79" height="14" uuid="6543cb71-cbcc-4c7a-8c74-4c0d09232210"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="201" width="79" height="14" uuid="069c574d-4d2d-4a16-ae6d-2db22aa9b118"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="732" width="258" height="14" uuid="42ee930f-ce13-41d5-9d21-81994a2799f6"/>
+				<text><![CDATA[normas da organização internacional contratada pela ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="329" width="544" height="28" uuid="d3d73f67-ec19-4b3d-a454-223f709baf38"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[a TM ou diretamente com a companhia aérea que melhor se adequar a seu roteiro ou ainda com qualquer empresa de turismo que disponibilize a emissão de passagens.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="370" width="544" height="27" uuid="567d3ea8-660a-4ed2-ac45-5ed4daa03653"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[normas referentes ao transporte aéreo internacional, bem como ter conhecimento de ser da Companhia Aérea contratada a responsabilidade referente à prestação deste serviço.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="621" width="79" height="14" uuid="6a04c9af-c93f-4ec7-ba17-0045c742c2e2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="159" width="43" height="14" uuid="f5082c68-d001-447c-90f5-dab09fe32573"/>
+				<text><![CDATA[a) O(A) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="579" width="125" height="14" uuid="a755bb28-1c15-4994-9db0-32bb12bc60e1"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[não é reembolsável,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="398" width="102" height="14" uuid="cdc2aeec-c811-4a65-b9a4-cb9e9326959b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ O(a) PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="663" width="571" height="14" uuid="6c69e74f-f45f-431d-ae7a-8de9b07267e5"/>
+				<text><![CDATA[da carta de aceitação.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="676" width="90" height="14" uuid="b54b3c0e-2560-4a3b-959e-69c04a95e38a"/>
+				<text><![CDATA[escolhido, o]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="356" width="79" height="14" uuid="8ed764d4-90b1-472e-918a-e237506d6f91"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="621" width="231" height="14" uuid="704a7a43-3fc7-4df8-a61c-6db3fab129c3"/>
+				<text><![CDATA[tiver que alterar o curso/programa, a instituição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="551" width="79" height="14" uuid="9d1180f9-4cb3-4de4-ad75-944da5eb00f2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="315" width="278" height="14" uuid="c599fbc8-a038-4c28-a5e5-0b7186cd3cc4"/>
+				<text><![CDATA[8.1 No que se refere à passagem aérea, fica a critério do(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="398" width="373" height="14" uuid="347d2860-6693-499a-89f7-eb940863c9f6"/>
+				<text><![CDATA[, após a emissão do bilhete, deverá observar todos os procedimentos referentes ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="315" width="213" height="14" uuid="84c2ea8d-604e-4bad-a6ab-ac6a733ae526"/>
+				<text><![CDATA[a sua aquisição, podendo ser efetuada com  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="201" width="449" height="14" uuid="1aed9e37-47a0-4f61-afbd-e5a7e445e3f8"/>
+				<text><![CDATA[deverá observar as regras de conduta/adequação à cultura do país de destino sobre o serviço de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="118" width="79" height="14" uuid="193133d9-440c-492a-bdab-d30c213e9fba"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="44" width="25" height="14" uuid="bd094b39-482d-4561-97a1-caec12f57615"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="551" width="74" height="14" uuid="893be46c-7564-40c7-ab1c-61727eb03bf8"/>
+				<text><![CDATA[9.1 Caso o(a) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="118" width="428" height="14" uuid="ec6f48c1-3078-4858-8fdb-a5154b641c07"/>
+				<text><![CDATA[que optar pela contratação do serviço de transfer, com chegada ou retorno ao aeroporto, no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="621" width="266" height="14" uuid="6710847b-1654-471f-a72b-9b2c7782eb60"/>
+				<text><![CDATA[ de vôos, indisponibilidade do participante, etc), se o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="131" width="25" height="14" uuid="ec207200-202c-4a79-8111-95d02e866842"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="58" width="79" height="14" uuid="88c85091-a60b-4e2b-b27a-1db87ad6cf7c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="44" width="88" height="14" uuid="295bf919-5b44-4341-b4cc-17ea8a6bd0db"/>
+				<text><![CDATA[tem no Brasil, e a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="464" width="102" height="14" uuid="8d1e491f-ae05-40a9-b155-bb56d53f9ad2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ O(a) PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="525" width="278" height="26" uuid="c9ef6685-32c6-438c-9d48-0a4734a61ad5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[9. DESISTÊNCIA E/OU CANCELAMENTO DO PROGRAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="478" width="524" height="40" uuid="2f000a7a-174e-4d96-a693-2365ab6e9f0c"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[passagem seja adquirida por intermédio da TM) para efetuar a marcação ou qualquer alteração em sua passagem aérea, sujeitando-se à disponibilidade na mesma classe tarifária, bem como às taxas de remarcação, cancelamento e reitineração estabelecidas pelas companhias aéreas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="593" width="570" height="14" uuid="a61b309a-0273-4a3b-b3a4-663085b21e5f"/>
+				<text><![CDATA[salvo em caso da organização internacional escolhida ficar impossibilitada de receber o participante por falta de vagas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="356" width="48" height="14" uuid="9d2d9e3a-3541-4397-97e6-b251301f50af"/>
+				<text><![CDATA[8.2 O(A)]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="12">
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="10" uuid="1b577262-b8f3-4bc5-a5a8-abc06f45b255"/>
+				<subreportParameter name="idvendas">
+					<subreportParameterExpression><![CDATA[$P{idvendas}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "modelocontratoCursoPagina05.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

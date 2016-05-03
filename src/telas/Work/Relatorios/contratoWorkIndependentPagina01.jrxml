@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratoWorkIndependentPagina01" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" isSummaryNewPage="true" uuid="666abdab-7fed-446b-9feb-6a84b646f03c">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idvendas" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select distinct
+   vendas.idvendas, vendas.dataVenda, vendas.valor as valorVenda,
+worktravel.idworkTravel, worktravel.tipo, worktravel.nomeContatoEmergencia, worktravel.foneContatoEmergencia,
+worktravel.emailContatoEmergencia, worktravel.relacaoContatoEmergencia, worktravel.intituicaoEstuda, worktravel.cursoEstuda,
+worktravel.duracaoCurso, worktravel.periodoCurso,worktravel.peirodoEstuda, worktravel.dataMatricula,
+worktravel.dataEstimadaTermino, worktravel.idioma01,worktravel.nivelidioma01,
+worktravel.tempoidioma01,worktravel.idioma02,worktravel.nivelidioma02,worktravel.tempoidioma02,
+worktravel.idioma03,worktravel.nivelidioma03,worktravel.tempoidioma03,worktravel.dataInicioPretendida01,
+worktravel.dataInicioPretendida02,worktravel.dataTerminoPretendida01,worktravel.dataTerminoPretendida02,
+worktravel.camareira,worktravel.cozinha,worktravel.salvavidas,worktravel.recepcao,worktravel.garcon,
+worktravel.trabalhosexternos,worktravel.lavaderia,worktravel.indiferenteOcupacao,worktravel.outraOcupacao,
+worktravel.especificarOutraOcupacao,worktravel.programaIdependente,worktravel.parquetematico,
+worktravel.hotel,worktravel.restaurante,worktravel.lojas,worktravel.cassino,
+worktravel.piscina,worktravel.estacaoesqui,worktravel.indiferentelocal,
+worktravel.outraLocal,worktravel.especificaroutraLocal,worktravel.programaidependente01,
+worktravel.clima,worktravel.adicionais,worktravel.sabernadar,
+worktravel.treinamentosalvavidas,worktravel.sabeesquiar,worktravel.carteiraHabilitacao,
+worktravel.dirigirEua,worktravel.nomePais01,worktravel.motivoEstadia01,worktravel.periodoEstadia01,
+worktravel.nomePais02,worktravel.motivoEstadia02,worktravel.periodoEstadia02,worktravel.nomePais03,
+worktravel.motivoEstadia03,worktravel.peirodoEstadia03,worktravel.campanheiroViagem01,worktravel.companheiroViagem02,
+worktravel.companheiroViagem03,worktravel.trabalhoVistoJ1,worktravel.quantoVistoj1,worktravel.numeroSocialSecurity,
+worktravel.tipoProgramaEua,worktravel.agenciaBrasil,worktravel.posicaoExcercida,worktravel.opcaoIndependente,
+worktravel.possuiOfertaTrabalho,worktravel.nomeEmpregador,worktravel.possicarqueiraExercer,
+worktravel.possuiDeficienciaFisica,worktravel.problemaSaude,worktravel.especifiqueProblemaSaude,
+worktravel.tratamentoMedico,worktravel.especifiqueTratamentoMedico,worktravel.tratamentoUsoDrogas,
+worktravel.especifiqueTratamentoUsoDrogas,worktravel.listaAlergias,worktravel.cartaoVTM,
+worktravel.numeroCartaoVTM,worktravel.moedaCartaoVTM,worktravel.passagemAerea,worktravel.tipoEmissaoPassagem,
+worktravel.observacaoPassagem,worktravel.tipoVisto,worktravel.tipoEmissaoVisto,worktravel.observacaoVisto,
+worktravel.dataEntragaDocumentosVisto,worktravel.fuma,worktravel.dataInscricao,worktravel.vendas_idvendas,
+worktravel.inicioPrevisto,
+unidadeNegocio.razaoSocial, unidadeNegocio.nomeFantasia, unidadeNegocio.tipologradouro as tipologradourounidadeNegocio, unidadeNegocio.logradouro as logradourounidadeNegocio, unidadeNegocio.numero as nuemrounidadeNegocio, unidadeNegocio.complemento as complementounidadeNegocio, unidadeNegocio.bairro as bairrounidadeNegocio, unidadeNegocio.cidade as cidadeunidadeNegocio, unidadeNegocio.estado as estadounidadeNegocio,
+unidadeNegocio.cep as cepunidadeNegocio, unidadeNegocio.cnpj as cnpjunidadeNegocio,
+cliente.nome, cliente.dataNascimento, cliente.paisnascimento, cliente.cidadenascimento, cliente.rg, cliente.sexo, cliente.numeropassaporte, cliente.dataExpedicaoPassaporte,
+cliente.validadePassaporte, cliente.tipologradouro as clientetipologradouro, cliente.logradouro as clientelogradouro, cliente.numero as clientenumero,
+cliente.bairro as clientebairro, cliente.cidade as clientecidade, cliente.estado as clienteestado, cliente.cep as clientecep, cliente.cpf as clientecpf, cliente.pais as clientepais, cliente.foneresidencial,
+cliente.fonecelular, cliente.fonecomercial, cliente.profissao,
+cliente.email,cliente.escolaridade, cliente.nomePai, cliente.profissaopai, cliente.fonepai, cliente.nomemae,
+cliente.profissaomae, cliente.fonemae, cliente.estadoCivil,
+usuario.nome as nomeUsuario,
+unidadeNegocio.nomeFantasia, orcamento.dataCambio, orcamento.valorCambio, orcamento.totalMoedaEstrangeira,
+orcamento.totalmoedanacional, orcamento.TaxaTm, formapagamento.condicao, formapagamento.valortotal,
+formapagamento.condicao, formapagamento.valortotal,
+formapagamento.valorjuros,orcamentoprodutosorcamento.valormoedaestrangeira, orcamentoprodutosorcamento.valormoedanacional,
+produtosorcamento.descricao as descricaoprodutosOrcamento, moedas.descricao as descricaoMoedas, cambio.idcambio, moedas.sigla, parcelamentopagamento.idparcemlamentoPagamento,
+parcelamentopagamento.formaPagamento,
+parcelamentopagamento.tipoParcelmaneto,
+parcelamentopagamento.valorParcelamento,
+parcelamentopagamento.diaVencimento,
+parcelamentopagamento.numeroParcelas,
+parcelamentopagamento.valorParcela,
+parcelamentopagamento.formaPagamento_idformaPagamento
+from
+     vendas join workTravel on vendas.idvendas = workTravel.vendas_idvendas
+     join usuario on vendas.usuario_idusuario = usuario.idusuario
+     join cliente on vendas.cliente_idcliente = cliente.idcliente
+     join unidadeNegocio on vendas.unidadeNegocio_idunidadeNegocio = unidadeNegocio.idunidadeNegocio
+     join orcamento on vendas.idvendas = orcamento.vendas_idvendas
+     join orcamentoprodutosorcamento on orcamento.idorcamento = orcamentoprodutosorcamento.orcamento_idorcamento
+     join produtosorcamento on orcamentoprodutosorcamento.produtosorcamento_idprodutosorcamento = produtosorcamento.idprodutosorcamento
+     join formaPagamento on vendas.idvendas = formapagamento.vendas_idvendas
+     join cambio on orcamento.cambio_idcambio = cambio.idcambio
+     join moedas on cambio.moedas_idmoedas = moedas.idmoedas
+join parcelamentopagamento on formapagamento.idformapagamento = parcelamentopagamento.formapagamento_idformaPagamento
+where
+    vendas.idvendas = $P{idvendas}
+order by orcamentoprodutosorcamento.idorcamentoprodutosorcamento]]>
+	</queryString>
+	<field name="idvendas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataVenda" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorVenda" class="java.lang.Float"/>
+	<field name="idworkTravel" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeContatoEmergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="foneContatoEmergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="emailContatoEmergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="relacaoContatoEmergencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="intituicaoEstuda" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cursoEstuda" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="duracaoCurso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="periodoCurso" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peirodoEstuda" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataMatricula" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataEstimadaTermino" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idioma01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivelidioma01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tempoidioma01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idioma02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivelidioma02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tempoidioma02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idioma03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nivelidioma03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tempoidioma03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataInicioPretendida01" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataInicioPretendida02" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataTerminoPretendida01" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataTerminoPretendida02" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="camareira" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cozinha" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="salvavidas" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="recepcao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="garcon" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="trabalhosexternos" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lavaderia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="indiferenteOcupacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="outraOcupacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="especificarOutraOcupacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="programaIdependente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="parquetematico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hotel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="restaurante" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lojas" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cassino" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="piscina" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estacaoesqui" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="indiferentelocal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="outraLocal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="especificaroutraLocal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="programaidependente01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clima" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="adicionais" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sabernadar" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="treinamentosalvavidas" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sabeesquiar" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="carteiraHabilitacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dirigirEua" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomePais01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="motivoEstadia01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="periodoEstadia01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomePais02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="motivoEstadia02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="periodoEstadia02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomePais03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="motivoEstadia03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="peirodoEstadia03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="campanheiroViagem01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="companheiroViagem02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="companheiroViagem03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="trabalhoVistoJ1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="quantoVistoj1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroSocialSecurity" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoProgramaEua" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="agenciaBrasil" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="posicaoExcercida" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="opcaoIndependente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="possuiOfertaTrabalho" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeEmpregador" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="possicarqueiraExercer" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="possuiDeficienciaFisica" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="problemaSaude" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="especifiqueProblemaSaude" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tratamentoMedico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="especifiqueTratamentoMedico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tratamentoUsoDrogas" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="especifiqueTratamentoUsoDrogas" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="listaAlergias" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cartaoVTM" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroCartaoVTM" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="moedaCartaoVTM" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="passagemAerea" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoEmissaoPassagem" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="observacaoPassagem" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoVisto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoEmissaoVisto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="observacaoVisto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataEntragaDocumentosVisto" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fuma" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataInscricao" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vendas_idvendas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="inicioPrevisto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="razaoSocial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeFantasia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipologradourounidadeNegocio" class="java.lang.String"/>
+	<field name="logradourounidadeNegocio" class="java.lang.String"/>
+	<field name="nuemrounidadeNegocio" class="java.lang.String"/>
+	<field name="complementounidadeNegocio" class="java.lang.String"/>
+	<field name="bairrounidadeNegocio" class="java.lang.String"/>
+	<field name="cidadeunidadeNegocio" class="java.lang.String"/>
+	<field name="estadounidadeNegocio" class="java.lang.String"/>
+	<field name="cepunidadeNegocio" class="java.lang.String"/>
+	<field name="cnpjunidadeNegocio" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataNascimento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="paisnascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cidadenascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeropassaporte" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dataExpedicaoPassaporte" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="validadePassaporte" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clientetipologradouro" class="java.lang.String"/>
+	<field name="clientelogradouro" class="java.lang.String"/>
+	<field name="clientenumero" class="java.lang.String"/>
+	<field name="clientebairro" class="java.lang.String"/>
+	<field name="clientecidade" class="java.lang.String"/>
+	<field name="clienteestado" class="java.lang.String"/>
+	<field name="clientecep" class="java.lang.String"/>
+	<field name="clientecpf" class="java.lang.String"/>
+	<field name="clientepais" class="java.lang.String"/>
+	<field name="foneresidencial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonecelular" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonecomercial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="profissao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="escolaridade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomePai" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="profissaopai" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonepai" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomemae" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="profissaomae" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fonemae" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estadoCivil" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeUsuario" class="java.lang.String"/>
+	<field name="dataCambio" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorCambio" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalMoedaEstrangeira" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="totalmoedanacional" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TaxaTm" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="condicao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valortotal" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorjuros" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valormoedaestrangeira" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valormoedanacional" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descricaoprodutosOrcamento" class="java.lang.String"/>
+	<field name="descricaoMoedas" class="java.lang.String"/>
+	<field name="idcambio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sigla" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idparcemlamentoPagamento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formaPagamento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipoParcelmaneto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorParcelamento" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diaVencimento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroParcelas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorParcela" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="formaPagamento_idformaPagamento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="113" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="81" width="555" height="15" uuid="ed75f004-f9a7-498c-b84f-777a7971fba2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="9" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE PRESTAÇÃO DE SERVIÇOS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="68" width="555" height="8" backcolor="#808080" uuid="411faa41-289b-4da6-ae0b-eddb0ee55234"/>
+			</rectangle>
+			<image>
+				<reportElement x="348" y="6" width="196" height="54" uuid="c5e768cc-340c-4e56-8e55-e963a7337ae8"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="0" y="96" width="555" height="17" uuid="3544246f-6e76-4bd6-aa4c-4bdff88298fc"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Work & Travel  - Independent nº " + $F{idvendas}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="688" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="251" height="25" uuid="f77d7e49-a773-4b26-a342-ca94166582d9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PARTES: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="212" width="251" height="25" uuid="cb2a772a-7730-4e60-9270-91c34289a1b6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1. OBJETO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="265" width="555" height="27" uuid="34566e69-53f2-42e8-a889-4090bf900839"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["no programa Work & Travel Independent com duração variável entre 2 e 4 meses e início previsto para o mês de " +
+$F{inicioPrevisto} + ", incluindo todas as atividades descritas neste instrumento."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="30" width="238" height="14" uuid="c1b41fbe-4763-404e-933f-3ace4c270b97"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{razaoSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="44" width="491" height="64" uuid="f7c35355-5e44-4e05-a03b-d7ff57468e9d"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["jurídica de direito privado com sede social na " + $F{tipologradourounidadeNegocio} + " " + $F{logradourounidadeNegocio} + ", " + $F{nuemrounidadeNegocio} + ", " + $F{complementounidadeNegocio}
++ ", " + $F{bairrounidadeNegocio} + ", " + $F{cidadeunidadeNegocio} + ", " + $F{estadounidadeNegocio} + ", CEP : " + $F{cepunidadeNegocio} + ", inscrita no CNPJ/MF sob nº " + $F{cnpjunidadeNegocio} + ", neste ato representada pelo consultor " +$F{nomeUsuario} + "."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="128" width="491" height="64" uuid="bb0bc003-26b3-4fdf-977b-639bd980e79e"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["do CI/RG de nº " + $F{rg} + " e inscrito no CPF/MF sob o nº " + $F{clientecpf} + ", residente e domiciliado na "+ $F{clientetipologradouro} + " " + $F{clientelogradouro} + ", " + $F{clientenumero} + ", "+$F{clientebairro} + ", " + $F{clientecidade} + ", " + $F{clienteestado} + ", CEP : " +$F{clientecep} + ", têm entre si justos e acertados a celebração de contrato de prestação de serviços de intercâmbio cultural, nos termos e condições estabelecidas neste contrato."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="274" y="114" width="90" height="15" uuid="8bfbf1dd-ceb3-41c0-a051-914b71380ba2"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="30" width="61" height="14" uuid="af563385-c1ea-41bd-8f99-b3c750e423ab"/>
+				<text><![CDATA[pessoa ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="30" width="82" height="14" uuid="840f4e0a-3aed-4a02-b09f-784fb08ff46a"/>
+				<text><![CDATA[, adiante apenas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="30" width="110" height="14" uuid="03ebdeb2-1d36-4659-bee7-f119619b54e0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ TRAVELMATE ou TM,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="364" y="113" width="190" height="16" uuid="78f87b6e-a4a0-410a-afe6-82d95b41d689"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["  , " + $F{paisnascimento}  + ", "  + $F{estadoCivil}+ ", " + $F{profissao} + ","+" portador"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="114" width="211" height="16" uuid="57876442-a2a0-4a6a-9988-63446d72dc47"/>
+				<textElement textAlignment="Justified">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome} + ", adiante apenas"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="237" width="555" height="14" uuid="53842785-a6aa-4af2-8b05-2dd9e2ddd467"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[1.1 Presente contrato tem como objeto a intermediação da prestação de serviços educacionais de intercâmbio cultural pela ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="251" width="158" height="14" uuid="7eccf07a-1c5f-4e7c-8ac7-619a9ee217fd"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRAVELMATE (intermediadora)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="251" width="206" height="14" uuid="ceac76c9-f92c-45f8-bf65-65e776760a5f"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[e seu parceiro internacional, em favor do(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="250" width="90" height="15" uuid="3e5fe449-29c0-4159-88ea-4d31191fc3fc"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  PARTICIPANTE,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="443" y="251" width="111" height="14" uuid="68afd223-29ad-4209-922f-3baa930f0760"/>
+				<text><![CDATA[visando sua inscrição ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="291" width="49" height="14" uuid="74aaa834-7859-4927-9bcf-d63921f6ed1e"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["1.2 O(A)"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="49" y="290" width="90" height="15" uuid="8703d9ec-6cec-45b8-ba01-9bc5754241ed"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  PARTICIPANTE,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="354" width="20" height="15" uuid="3e50e044-436c-43c4-8c38-9980555224b3"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="355" width="32" height="14" uuid="08608bed-05cc-448c-b69c-067839ed0a0c"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["1.3 A"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="274" y="354" width="83" height="15" uuid="06262e12-1fe3-44cd-bd45-1ce88eb1b030"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="383" width="83" height="15" uuid="acd716d5-9e35-4aa8-8a50-804d33e004f2"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="397" width="20" height="14" uuid="38dfad99-1571-4698-ab11-13a52bb03180"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="397" width="83" height="14" uuid="6d959230-9cd9-4dae-9cd6-41b81e113a77"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="443" width="251" height="25" uuid="2ece1cde-a924-4960-b688-c8a81004e162"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2. DO CONTRATO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="494" width="30" height="14" uuid="795053d8-b243-43eb-93c8-04ea456a6eef"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="494" width="83" height="15" uuid="861f906d-f33a-4ee7-b549-08a654065c60"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="513" y="494" width="43" height="14" uuid="cad94281-e74f-48fd-adcb-c01dafe91ab2"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["é"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="304" y="520" width="83" height="15" uuid="572405e0-a2d2-4801-a4da-f1ab4719f901"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="535" width="83" height="14" uuid="67bd2594-2918-4783-ab36-605bb50f1d64"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="613" width="83" height="14" uuid="17693399-a347-49ff-a6e6-aa3aa2dac27c"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="641" width="83" height="14" uuid="bf0a6801-e54c-4f70-a62d-5eafd516803a"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="641" width="30" height="14" uuid="8004780e-e0cc-4ea7-be82-b7ce8cee3fbf"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="655" width="83" height="14" uuid="79b865e8-e1ee-4418-8ccd-f0b59b42051c"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PARTICIPANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="290" width="416" height="14" uuid="7c4b1ca6-2955-4396-a811-b88bae09867f"/>
+				<text><![CDATA[para que possa fazer parte do programa, passará por entrevista pessoal e aplicação de teste]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="304" width="554" height="51" uuid="1c1e56ac-ef4a-4c44-96b1-a5af10b21c29"/>
+				<text><![CDATA[teste de inglês, sendo considerado apto a participar do intercâmbio cultural no exterior, caso aprovado e lhe sendo oferecidas condições legais para que possa exercer trabalho no exterior, no período proposto no item 1.1, podendo permanecer por mais 30 (trinta) dias após término do programa de trabalho com sucesso, dias estes destinados exclusivamente a turismo, somente no referido país, de acordo com a opção de intercâmbio.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="355" width="222" height="14" uuid="93e760db-4067-4160-91d3-bec958494aff"/>
+				<text><![CDATA[poderá realizar constantes entrevistas com o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="355" width="198" height="14" uuid="49804345-ca6c-4b0c-8da1-e3cb086d76d9"/>
+				<text><![CDATA[poderá realizar constantes entrevistas com o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="370" width="554" height="14" uuid="d8c20a48-e727-4f2c-a761-592647f5665b"/>
+				<text><![CDATA[objetivo de avaliar e/ou dirimir dúvidas acerca do seu nível de inglês e do seu perfil,   para que o mesmo não participe do ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="384" width="232" height="14" uuid="26c7d477-253f-44d2-8538-3f6d03e0e874"/>
+				<text><![CDATA[programa sem condições, evitando, assim, que o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="384" width="238" height="14" uuid="be747829-3cea-41ce-8766-dbfb8f0f90f1"/>
+				<text><![CDATA[tenha dificuldades no país de destino e no exercer de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="398" width="301" height="14" uuid="b9ca690e-744a-4921-b934-fed7b8f01766"/>
+				<text><![CDATA[suas funções na empresa em que o mesmo for colocado. Assim, a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="398" width="98" height="14" uuid="aa5807bd-ddc7-40e6-9950-7ab2168eb77a"/>
+				<text><![CDATA[observando que o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="502" y="397" width="53" height="14" uuid="41e528bf-e35d-48a8-b2aa-96f71711bc15"/>
+				<text><![CDATA[não possui]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="411" width="555" height="28" uuid="f2fb0746-4e18-4cf6-98d0-03cf230fdae8"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[o perfil adequado para participar do programa, poderá cancelar o processo de inscrição, reembolsando o valor pago até o momento do cancelamento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="466" width="555" height="28" uuid="f980cb54-cda6-46f5-8d2d-d8ec0112f548"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[2.1  O contrato firmado pelos ora contratantes incluiu dos seguintes itens, os quais deverão ser observados e obedecidos por ambas as partes:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="493" width="301" height="14" uuid="d52eb2f4-f73a-460b-8aa2-63c85a0389fc"/>
+				<text><![CDATA[a) Orientação antes da partida do Brasil, em data determinada pela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="494" width="98" height="14" uuid="1038eb61-cc5e-4385-bfcc-5a7397941921"/>
+				<text><![CDATA[cuja presença do(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="506" width="554" height="14" uuid="db6f4664-ac93-4aec-884f-607c15fbcffc"/>
+				<text><![CDATA[obrigatória, sob pena de rescisão contratual, por culpa deste último;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="521" width="302" height="14" uuid="9ffe968b-3ae4-4aa9-b9da-beccf6ffd8f0"/>
+				<text><![CDATA[b) Documento DS-2019(desde que a Job Offer providenciada pelo ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="520" width="168" height="14" uuid="5fa322b4-1314-4189-bed1-5bdf054136c6"/>
+				<text><![CDATA[seja aprovada pelo parceiro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="535" width="333" height="14" uuid="9133aec2-f330-4603-9c2f-f591ef8243de"/>
+				<text><![CDATA[internacional da TM),   emitido pela organização internacional na qual o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="535" width="138" height="14" uuid="2e392e4c-ef0d-49a5-928a-53e7543e4a75"/>
+				<text><![CDATA[foi inscrito, após o pagamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="549" width="554" height="64" uuid="02559f46-1bdf-4949-ac18-96d3e15c4a93"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[integral do custo do programa, e que comprova e autoriza sua participação no intercâmbio a ser realizado nos Estados Unidos da América, para solicitação do visto, e delimita o período pelo qual o(a) PARTICIPANTE poderá trabalhar nos Estados Unidos da América;
+c) Seguro-saúde e contra acidentes pessoais durante o período estabelecido no documento DS-2019, sujeito a pagamento de franquia;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="613" width="72" height="14" uuid="24a82ef8-3fb9-4ba7-af0d-fdebc45a98d6"/>
+				<text><![CDATA[d) Direito do(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="613" width="397" height="14" uuid="bb014888-d8df-449e-8f19-5e129e175de8"/>
+				<text><![CDATA[de solicitar o cartão de seguridade social (Social Security card). O cartão de seguridade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="627" width="554" height="14" uuid="b5d6d9c5-8170-4e79-9fce-a3e119abae80"/>
+				<text><![CDATA[social  ( Social Security card ).  O cartão de seguridade social é emitido pelo Governo do país de destino e é de inteira ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="641" width="269" height="14" uuid="1ba4b66f-0025-459a-a9b4-aa2fddc5cd78"/>
+				<text><![CDATA[responsabilidade deste a emissão e o envio do cartão ao(à)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="353" y="641" width="124" height="14" uuid="ae40c21c-eaaa-466d-b73f-367238a70297"/>
+				<text><![CDATA[não se responsabilizando a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="503" y="641" width="53" height="14" uuid="9018400b-ca41-485a-b0d7-fe7dc4abc3f9"/>
+				<text><![CDATA[pelo atraso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="655" width="269" height="14" uuid="5b27f599-d340-408d-80e3-e6275fb2092f"/>
+				<text><![CDATA[a sua obtenção ou seu extravio, nem pelos gastos que o(a)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="655" width="200" height="14" uuid="b43b4fbd-118f-49ed-a320-8bed51e62ce0"/>
+				<text><![CDATA[poderá ter para obtê-lo ou custos devido a ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="668" width="553" height="14" uuid="01e5b970-d17b-435e-b208-ed2f21915459"/>
+				<text><![CDATA[eventual demora no recebimento do cartão.
+]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="14">
+			<subreport>
+				<reportElement x="0" y="0" width="100" height="10" uuid="c0aec748-d7bf-4ce4-92a6-f6d12dff0f0e"/>
+				<subreportParameter name="idvendas">
+					<subreportParameterExpression><![CDATA[$P{idvendas}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "contratoWorkIndependentPagina02.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>
