@@ -2635,6 +2635,7 @@ cursosjTabbedPane.addMouseListener(new java.awt.event.MouseAdapter() {
         venda.setValor(Formatacao.formatarStringfloat(valorTotalOrcamentojTextField.getText()));
         venda.setFornecedor(valores.getFornecedorcidade().getFornecedor().getIdfornecedor());
         venda.setFornecedorcidade(valores.getFornecedorcidade());
+        venda.setCambio(cambio.getIdcambio());
         venda = vendasController.salvar(venda);
     }
 
