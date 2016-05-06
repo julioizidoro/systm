@@ -402,9 +402,6 @@ public class FrmConsultaValoresSeguro extends javax.swing.JFrame implements IVal
                 }else if (telaCurso!=null){
                     telaCurso.setValores(listaValor.get(linha));
                     this.dispose();
-                }else if (telaVoluntariado!=null){
-                    telaVoluntariado.setValorSeguro(listaValor.get(linha));
-                    this.dispose();
                 }else if (telaLadies!=null){
                     telaLadies.setValoresSeguro(listaValor.get(linha));
                     this.dispose();

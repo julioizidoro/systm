@@ -8,7 +8,7 @@ package telas.Voluntariado;
 import model.Acesso;
 import model.Cliente;
 import model.Fornecedorcidade;
-import model.Valoresseguro;
+
 
 /**
  *
@@ -21,6 +21,4 @@ public interface IVoluntariado {
     void liberarAltercaoCambio(Acesso acesso);
     void setValorJuros(Float valorJuros);
     void setFornecedor(Fornecedorcidade fornecedorcidade);
-    void setValorSeguro(Valoresseguro valoresSeguro);
-    
 }

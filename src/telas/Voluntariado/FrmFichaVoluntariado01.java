@@ -15,10 +15,8 @@ import controller.OrcamentoController;
 import controller.ParcelamentoPagamentoController;
 import controller.ProdutoOrcamentoController;
 import controller.ProdutoRemessaController;
-import controller.SeguroViagemController;
 import controller.VendasController;
 import controller.VoluntariadoController;
-import controller.ValorSeguroController;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -44,14 +42,12 @@ import model.Parcelamentopagamento;
 import model.Produtoremessa;
 import model.Produtos;
 import model.Produtosorcamento;
-import model.Seguroviagem;
 import model.Valoresseguro;
 import model.Vendas;
 import model.Voluntariado;
 import model.view.Viewprodutosfiltro;
 import telas.Cliente.FrmConsultaCliente;
 import telas.Fornecedor.FrmConsultaFornecedor;
-import telas.SeguroViagem.Valores.FrmConsultaValoresSeguro;
 import telas.Usuarios.UsuarioLogadoBean;
 import telas.cambio.FrmAlterarValorCambio;
 import util.EnviarEmailBean;
@@ -73,8 +69,6 @@ public class FrmFichaVoluntariado01 extends javax.swing.JFrame implements IVolun
     private Formapagamento formaPagamento;
     private Produtos produto;
     private Cliente cliente;
-    private Seguroviagem seguroViagem;
-    private Seguroviagem seguroViagemAlterado;
     private Orcamento orcamento;
     private List<ProdutoOrcamentoBean> listaProdutoOrcamentoBean;
     private Voluntariado voluntariado;
@@ -309,24 +303,6 @@ jLabel45 = new javax.swing.JLabel();
 relacaoEmergenciajTextField = new javax.swing.JTextField();
 telefoneEmergenciajTextField = new javax.swing.JTextField();
 telefoneEmergenciajCheckBox = new javax.swing.JCheckBox();
-jPanel9 = new javax.swing.JPanel();
-jLabel34 = new javax.swing.JLabel();
-selecionarSeguradorajButton = new javax.swing.JButton();
-jLabel37 = new javax.swing.JLabel();
-dataInicioSegurojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
-    maskPattern, placeHolder));
-    numeroSemanaSegurosjTextField = new javax.swing.JTextField();
-    jLabel39 = new javax.swing.JLabel();
-    dataTerminoSegurojDateChooser = new com.toedter.calendar.JDateChooser(null, null, datePattern, new JTextFieldDateEditor(datePattern,
-        maskPattern, placeHolder));
-jLabel38 = new javax.swing.JLabel();
-valorSegurojTextField = new javax.swing.JTextField();
-jLabel65 = new javax.swing.JLabel();
-jLabel36 = new javax.swing.JLabel();
-planosegurojTextField = new javax.swing.JTextField();
-jLabel35 = new javax.swing.JLabel();
-seguradorajTextField = new javax.swing.JTextField();
-seguroViagemjComboBox = new javax.swing.JComboBox();
 jPanel12 = new javax.swing.JPanel();
 jLabel46 = new javax.swing.JLabel();
 produtoOrcaemntojComboBox = new javax.swing.JComboBox();
@@ -444,7 +420,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
     jPanel1Layout.setHorizontalGroup(
         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-            .addContainerGap(126, Short.MAX_VALUE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(149, 149, 149))
     );
@@ -619,7 +595,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
             .addComponent(jLabel21)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(outrasHabilidadejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(53, Short.MAX_VALUE))
+            .addContainerGap(103, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout cursojPanelLayout = new javax.swing.GroupLayout(cursojPanel);
@@ -795,7 +771,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
                                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel23)
                                     .addComponent(dataTerminojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGap(0, 94, Short.MAX_VALUE))
+                    .addGap(0, 30, Short.MAX_VALUE))
                 .addGroup(jPanel26Layout.createSequentialGroup()
                     .addComponent(jLabel22)
                     .addGap(134, 134, 134)
@@ -887,7 +863,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
                             .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel72)
                                 .addComponent(dataTerminoVoluntariadojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addContainerGap(34, Short.MAX_VALUE))))
     );
     jPanel29Layout.setVerticalGroup(
         jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -911,7 +887,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
             .addComponent(jLabel41)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(motivoVoluntariadojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(41, Short.MAX_VALUE))
+            .addContainerGap(38, Short.MAX_VALUE))
     );
 
     jLabel8.setText("Data início");
@@ -923,50 +899,42 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         .addGroup(acomodacaojPanelLayout.createSequentialGroup()
             .addContainerGap()
             .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(adicionaisjTextField)
-                .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(adicionaisjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel16)
+                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(acomodacaojPanelLayout.createSequentialGroup()
                     .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+                        .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(acomodacaojPanelLayout.createSequentialGroup()
+                                .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dataChegadaAcomodacaojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel8))
+                                .addGap(18, 18, 18)
+                                .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(numeroSemanasAcomodacaojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel18)
+                                    .addComponent(dataPartidaAcomodacaojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tipoAcomodacaojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12))
-                            .addGap(430, 430, 430)
-                            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(refeicoesjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel15)))
-                        .addComponent(jLabel16))
-                    .addGap(0, 0, Short.MAX_VALUE))
-                .addGroup(acomodacaojPanelLayout.createSequentialGroup()
-                    .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(acomodacaojPanelLayout.createSequentialGroup()
-                            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(dataChegadaAcomodacaojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel17)
-                                .addComponent(jLabel8))
-                            .addGap(18, 18, 18)
-                            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel13)
-                                .addComponent(numeroSemanasAcomodacaojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel18)
-                                .addComponent(dataPartidaAcomodacaojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(tipoQuartojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel14)
+                                .addComponent(tipoQuartojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tipoAcomodacaojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(familiacriancajComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel19))
                     .addGap(18, 18, 18)
-                    .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(familiaanimaisestimacaojComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(acomodacaojPanelLayout.createSequentialGroup()
-                            .addComponent(jLabel20)
-                            .addGap(0, 0, Short.MAX_VALUE)))))
-            .addContainerGap())
+                    .addGroup(acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel20)
+                        .addComponent(familiaanimaisestimacaojComboBox, 0, 143, Short.MAX_VALUE)
+                        .addComponent(refeicoesjComboBox, 0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel15))))
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     acomodacaojPanelLayout.setVerticalGroup(
         acomodacaojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1013,9 +981,9 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
                             .addComponent(familiaanimaisestimacaojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jLabel16)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(adicionaisjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(adicionaisjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1231,7 +1199,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(jLabel27)
                             .addGap(0, 0, Short.MAX_VALUE))
-                        .addComponent(moedaCartaoVTMjComboBox, 0, 452, Short.MAX_VALUE)))
+                        .addComponent(moedaCartaoVTMjComboBox, 0, 384, Short.MAX_VALUE)))
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addComponent(cartaoVTMjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
@@ -1429,7 +1397,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
                         .addComponent(observacaoVistojTextField)
                         .addGroup(jPanel27Layout.createSequentialGroup()
                             .addComponent(jLabel77)
-                            .addContainerGap(519, Short.MAX_VALUE))))
+                            .addContainerGap(479, Short.MAX_VALUE))))
                 .addGroup(jPanel27Layout.createSequentialGroup()
                     .addComponent(vistojComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE))))
@@ -1534,7 +1502,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
                             .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel45)
                                 .addComponent(telefoneEmergenciajCheckBox))
-                            .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addGap(0, 244, Short.MAX_VALUE)))))
             .addContainerGap())
     );
     jPanel11Layout.setVerticalGroup(
@@ -1558,187 +1526,21 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
             .addContainerGap(20, Short.MAX_VALUE))
     );
 
-    jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Seguro Viagem"));
-
-    jLabel34.setText("Seguro Viagem");
-
-    selecionarSeguradorajButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/botozinhos/selecionar.png"))); // NOI18N
-    selecionarSeguradorajButton.setText("Selecionar");
-    selecionarSeguradorajButton.setEnabled(false);
-    selecionarSeguradorajButton.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            selecionarSeguradorajButtonActionPerformed(evt);
-        }
-    });
-
-    jLabel37.setText("Data do início");
-
-    dataInicioSegurojDateChooser.setEnabled(false);
-    dataInicioSegurojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
-        public void focusGained(java.awt.event.FocusEvent evt) {
-            dataInicioSegurojDateChooserFocusGained(evt);
-        }
-    });
-
-    numeroSemanaSegurosjTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-    numeroSemanaSegurosjTextField.setEnabled(false);
-    numeroSemanaSegurosjTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-        public void focusGained(java.awt.event.FocusEvent evt) {
-            numeroSemanaSegurosjTextFieldFocusGained(evt);
-        }
-        public void focusLost(java.awt.event.FocusEvent evt) {
-            numeroSemanaSegurosjTextFieldFocusLost(evt);
-        }
-    });
-    numeroSemanaSegurosjTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            numeroSemanaSegurosjTextFieldKeyTyped(evt);
-        }
-    });
-
-    jLabel39.setText("Nº Semanas (Somente Números)");
-
-    dataTerminoSegurojDateChooser.setEnabled(false);
-    dataTerminoSegurojDateChooser.addFocusListener(new java.awt.event.FocusAdapter() {
-        public void focusGained(java.awt.event.FocusEvent evt) {
-            dataTerminoSegurojDateChooserFocusGained(evt);
-        }
-    });
-
-    jLabel38.setText("Data do término");
-
-    valorSegurojTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-    valorSegurojTextField.setEnabled(false);
-    valorSegurojTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-        public void focusLost(java.awt.event.FocusEvent evt) {
-            valorSegurojTextFieldFocusLost(evt);
-        }
-    });
-    valorSegurojTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            valorSegurojTextFieldKeyTyped(evt);
-        }
-    });
-
-    jLabel65.setText("Valor do Seguro");
-
-    jLabel36.setText("Plano");
-
-    planosegurojTextField.setEnabled(false);
-
-    jLabel35.setText("Seguradora");
-
-    seguradorajTextField.setEditable(false);
-    seguradorajTextField.setEnabled(false);
-
-    seguroViagemjComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Não", "Sim" }));
-    seguroViagemjComboBox.addItemListener(new java.awt.event.ItemListener() {
-        public void itemStateChanged(java.awt.event.ItemEvent evt) {
-            seguroViagemjComboBoxItemStateChanged(evt);
-        }
-    });
-
-    javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-    jPanel9.setLayout(jPanel9Layout);
-    jPanel9Layout.setHorizontalGroup(
-        jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel9Layout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(planosegurojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel36)
-                .addComponent(seguroViagemjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel34))
-            .addGap(18, 18, 18)
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(seguradorajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel35))
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(valorSegurojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(selecionarSeguradorajButton))
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addGap(13, 13, 13)
-                            .addComponent(jLabel65)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel37)
-                        .addComponent(dataInicioSegurojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel39)
-                        .addComponent(numeroSemanaSegurosjTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addGap(19, 19, 19)
-                            .addComponent(jLabel38))
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(dataTerminoSegurojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(121, 121, 121))))
-    );
-    jPanel9Layout.setVerticalGroup(
-        jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel9Layout.createSequentialGroup()
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel39)
-                        .addComponent(jLabel38))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(numeroSemanaSegurosjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(dataTerminoSegurojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel37))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(dataInicioSegurojDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(seguroViagemjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addGap(12, 12, 12)
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel35)
-                        .addComponent(jLabel65))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(seguradorajTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(valorSegurojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(selecionarSeguradorajButton)))
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addComponent(jLabel36)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(planosegurojTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-    );
-
     javax.swing.GroupLayout segurojPanelLayout = new javax.swing.GroupLayout(segurojPanel);
     segurojPanel.setLayout(segurojPanelLayout);
     segurojPanelLayout.setHorizontalGroup(
         segurojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(segurojPanelLayout.createSequentialGroup()
             .addContainerGap()
-            .addGroup(segurojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addContainerGap(54, Short.MAX_VALUE))
+            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(28, Short.MAX_VALUE))
     );
     segurojPanelLayout.setVerticalGroup(
         segurojPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(segurojPanelLayout.createSequentialGroup()
-            .addGap(16, 16, 16)
-            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addContainerGap()
             .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(220, Short.MAX_VALUE))
+            .addContainerGap(380, Short.MAX_VALUE))
     );
 
     cursosjTabbedPane.addTab("Seguro/Contato", segurojPanel);
@@ -1914,7 +1716,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         .addGroup(jPanel12Layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createSequentialGroup()
                     .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel12Layout.createSequentialGroup()
@@ -2049,7 +1851,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
                         .addComponent(dataVencimentojDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel16Layout.createSequentialGroup()
                             .addComponent(jLabel63)
-                            .addGap(0, 3, Short.MAX_VALUE))))
+                            .addGap(0, 0, Short.MAX_VALUE))))
                 .addGroup(jPanel16Layout.createSequentialGroup()
                     .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel58)
@@ -2215,7 +2017,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
                         .addComponent(totalPagarjTextField)
                         .addGroup(jPanel18Layout.createSequentialGroup()
                             .addComponent(jLabel68)
-                            .addGap(0, 47, Short.MAX_VALUE))))
+                            .addGap(0, 0, Short.MAX_VALUE))))
                 .addGroup(jPanel18Layout.createSequentialGroup()
                     .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel29)
@@ -2380,7 +2182,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         obsjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(obsjPanelLayout.createSequentialGroup()
             .addContainerGap()
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
             .addContainerGap())
     );
     obsjPanelLayout.setVerticalGroup(
@@ -2406,7 +2208,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         .addGroup(obstmjPanelLayout.createSequentialGroup()
             .addContainerGap()
             .addGroup(obstmjPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
                 .addGroup(obstmjPanelLayout.createSequentialGroup()
                     .addComponent(jLabel32)
                     .addGap(0, 0, Short.MAX_VALUE)))
@@ -2428,13 +2230,8 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(layout.createSequentialGroup()
-            .addComponent(cursosjTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))
-        .addGroup(layout.createSequentialGroup()
-            .addGap(62, 62, 62)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addComponent(cursosjTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2656,20 +2453,7 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
                     carregarModelOrcamentoProduto();
                 }else JOptionPane.showMessageDialog(rootPane, "Valor da Taxa TM não pode ser inferior ao valor definido pela Matriz");
             }
-        } else {
-            if (linha >= 0) {
-                listaProdutoOrcamentoBean.get(linha).setApagar(true);
-                if (listaProdutoOrcamentoBean.get(linha).isSeguro()) {
-                    seguroViagemjComboBox.setSelectedItem("Sim");
-                }
-                if (listaProdutoOrcamentoBean.get(linha).isVisto()) {
-                    vistojComboBox.setSelectedItem("Não");
-                }
-                listaProdutoOrcamentoBean.remove(linha);
-                calcularValorTotalOrcamento();
-                carregarModelOrcamentoProduto();
-            }
-        }
+        } 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void condicaoPagamentojComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_condicaoPagamentojComboBoxItemStateChanged
@@ -2711,7 +2495,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
             }
             salvarVendas(nsituacao);
             salvarVoluntariado();
-            salvarSeguroViagem();
             salvarFormaPagamento();
             salvarOrcamento();
             salvarFollowup();
@@ -2887,45 +2670,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
                     listaProdutoOrcamentoBean.remove(i);
                 }
             }
-//            List<ProdutoOrcamentoBean> novaLista = new ArrayList<ProdutoOrcamentoBean>();
-//            for (int i = 0; i < listaProdutoOrcamentoBean.size(); i++) {
-//                if (!listaProdutoOrcamentoBean.get(i).getTipo().equalsIgnoreCase("S")
-//                        && !listaProdutoOrcamentoBean.get(i).getTipo().equalsIgnoreCase("V")) {
-//                    novaLista.add(listaProdutoOrcamentoBean.get(i));
-//                }
-//            }
-//            listaProdutoOrcamentoBean = new ArrayList<ProdutoOrcamentoBean>();
-//            listaProdutoOrcamentoBean = novaLista;
-            float valorEstrangeira = 0.0f;
-            float valorReal = 0.0f;
-            
-            valorEstrangeira = 0.0f;
-            valorReal = 0.0f;
-            if (seguroViagem != null) {
-                ProdutoOrcamentoController produtoOrcamentoController = new ProdutoOrcamentoController();
-                Produtosorcamento produto = produtoOrcamentoController.consultar(usuarioLogadoBean.getParametrosprodutos().getSeguroOrcamento());
-                ProdutoOrcamentoBean pob = new ProdutoOrcamentoBean();
-                pob.setIdOrcamentoProdutoOrcamento(0);
-                pob.setDescricaoProdutoOrcamento(produto.getDescricao());
-                pob.setIdProdutoOrcamento(produto.getIdprodutosOrcamento());
-                if (valorSegurojTextField.getText().length()>0){
-                    pob.setValorMoedaEstrangeira(0.0f);
-                    valorEstrangeira = pob.getValorMoedaEstrangeira();
-                    valorReal = Formatacao.formatarStringfloat(valorSegurojTextField.getText());
-                }else {
-                    pob.setValorMoedaEstrangeira(0.0f);
-                    valorReal =0;
-                    valorEstrangeira=0;
-                }
-                pob.setValorMoedaReal(valorReal);
-                pob.setApagar(false);
-                pob.setVisto(false);
-                pob.setSeguro(false);
-                pob.setTipo("S");
-                pob.setAdicionado(1);
-                pob.setNovo(true);
-                listaProdutoOrcamentoBean.add(pob);
-            }
             carregarModelOrcamentoProduto();
             calcularValorTotalOrcamento();
         }
@@ -3098,100 +2842,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         // TODO add your handling code here:
     }//GEN-LAST:event_dataEstimadaTerminoCursoEstudajDateChooserFocusGained
 
-    private void selecionarSeguradorajButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecionarSeguradorajButtonActionPerformed
-        if (numeroSemanaSegurosjTextField.getText().length()>0){
-            new FrmConsultaValoresSeguro(usuarioLogadoBean, this);
-        }else {
-            JOptionPane.showMessageDialog(cartaojPanel, "Informe o número de semanas para o seguro");
-            dataInicioSegurojDateChooser.requestFocus();
-        }
-    }//GEN-LAST:event_selecionarSeguradorajButtonActionPerformed
-
-    private void dataInicioSegurojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataInicioSegurojDateChooserFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dataInicioSegurojDateChooserFocusGained
-
-    private void numeroSemanaSegurosjTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroSemanaSegurosjTextFieldFocusGained
-        if (numeroSemanaSegurosjTextField.isEnabled()){
-            if (dataInicioSegurojDateChooser.getDate()!=null){
-                if (dataTerminoSegurojDateChooser.getDate()!=null){
-                    Integer dias = Formatacao.calcularNumeroSemanas(dataInicioSegurojDateChooser.getDate(),dataTerminoSegurojDateChooser.getDate());
-                    numeroSemanaSegurosjTextField.setText(dias.toString());
-                }
-            }else {
-                JOptionPane.showMessageDialog(rootPane, "Data Inicio do Seguro Inválida");
-            }
-        }
-    }//GEN-LAST:event_numeroSemanaSegurosjTextFieldFocusGained
-
-    private void numeroSemanaSegurosjTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_numeroSemanaSegurosjTextFieldFocusLost
-        if (dataInicioSegurojDateChooser.getDate()!=null){
-            if (numeroSemanaSegurosjTextField.getText().length()>0){
-                dataTerminoSegurojDateChooser.setDate(Formatacao.calcularDataFinal(dataInicioSegurojDateChooser.getDate(), Integer.parseInt(numeroSemanaSegurosjTextField.getText())));
-            }
-        }
-        if ((dataTerminoSegurojDateChooser.getDate()==null) && (numeroSemanaSegurosjTextField.getText().length()==0)){
-            JOptionPane.showMessageDialog(rootPane, "Preencha numero de Semanas e/ou data término");
-            numeroSemanaSegurosjTextField.requestFocus();
-        }
-    }//GEN-LAST:event_numeroSemanaSegurosjTextFieldFocusLost
-
-    private void numeroSemanaSegurosjTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numeroSemanaSegurosjTextFieldKeyTyped
-
-        String caracteres = "0987654321";
-        if (evt.getKeyChar() != '\b') {
-            if (!caracteres.contains(evt.getKeyChar() + "")) {
-                evt.consume();
-            }
-        }
-    }//GEN-LAST:event_numeroSemanaSegurosjTextFieldKeyTyped
-
-    private void dataTerminoSegurojDateChooserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dataTerminoSegurojDateChooserFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dataTerminoSegurojDateChooserFocusGained
-
-    private void valorSegurojTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_valorSegurojTextFieldFocusLost
-        if (valorSegurojTextField.getText().length()>0){
-            valorSeguro = Formatacao.formatarStringfloat(valorSegurojTextField.getText());
-        }
-    }//GEN-LAST:event_valorSegurojTextFieldFocusLost
-
-    private void valorSegurojTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorSegurojTextFieldKeyTyped
-        if (evt.getKeyChar()=='.'){
-            evt.setKeyChar(',');
-        }
-        String caracteres = "0987654321,";
-        if (evt.getKeyChar() != '\b') {
-            if (!caracteres.contains(evt.getKeyChar() + "")) {
-                evt.consume();
-            }
-        }
-    }//GEN-LAST:event_valorSegurojTextFieldKeyTyped
-
-    private void seguroViagemjComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_seguroViagemjComboBoxItemStateChanged
-        if (seguroViagemjComboBox.getSelectedItem().toString().equalsIgnoreCase("Sim")){
-            if (seguroViagem==null){
-                this.seguroViagem = new Seguroviagem();
-            }
-            selecionarSeguradorajButton.setEnabled(true);
-            dataInicioSegurojDateChooser.setEnabled(true);
-            dataTerminoSegurojDateChooser.setEnabled(true);
-            numeroSemanaSegurosjTextField.setEnabled(true);
-            dataInicioSegurojDateChooser.requestFocus();
-        } else {
-            seguradorajTextField.setEnabled(false);
-            planosegurojTextField.setEnabled(false);
-            dataInicioSegurojDateChooser.setEnabled(false);
-            dataTerminoSegurojDateChooser.setEnabled(false);
-            numeroSemanaSegurosjTextField.setEnabled(false);
-            valorSegurojTextField.setEnabled(false);
-            selecionarSeguradorajButton.setEnabled(false);
-            seguradorajTextField.setText("");
-            seguroViagem = null;
-            valoresSeguro = null;
-        }
-    }//GEN-LAST:event_seguroViagemjComboBoxItemStateChanged
-
     private void tipoQuartojComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoQuartojComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipoQuartojComboBoxActionPerformed
@@ -3237,12 +2887,10 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
     private com.toedter.calendar.JDateChooser dataChegadaAcomodacaojDateChooser;
     private com.toedter.calendar.JDateChooser dataEntregaDocumentosjDateChooser;
     private com.toedter.calendar.JDateChooser dataEstimadaTerminoCursoEstudajDateChooser;
-    private com.toedter.calendar.JDateChooser dataInicioSegurojDateChooser;
     private com.toedter.calendar.JDateChooser dataInicioVoluntariadojDateChooser;
     private com.toedter.calendar.JDateChooser dataIniciojDateChooser;
     private com.toedter.calendar.JDateChooser dataMatriculaCursoEstudajDateChooser;
     private com.toedter.calendar.JDateChooser dataPartidaAcomodacaojDateChooser;
-    private com.toedter.calendar.JDateChooser dataTerminoSegurojDateChooser;
     private com.toedter.calendar.JDateChooser dataTerminoVoluntariadojDateChooser;
     private com.toedter.calendar.JDateChooser dataTerminojDateChooser;
     private com.toedter.calendar.JDateChooser dataVencimentojDateChooser;
@@ -3301,12 +2949,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
@@ -3335,7 +2977,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
@@ -3375,7 +3016,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -3389,7 +3029,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
     private javax.swing.JTextField nomeContatoEmergenciajTextField;
     private javax.swing.JTextField numeroCartaoVTMjTextField;
     private javax.swing.JComboBox numeroParcelasjComboBox;
-    private javax.swing.JTextField numeroSemanaSegurosjTextField;
     private javax.swing.JTextField numeroSemanasAcomodacaojTextField;
     private javax.swing.JTextField numeroSemanasjTextField;
     private javax.swing.JTextArea obsTMjTextArea;
@@ -3403,7 +3042,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
     private javax.swing.ButtonGroup passagemAereabuttonGroup;
     private javax.swing.JComboBox passagemjComboBox;
     private javax.swing.JTextField periodoCursoEstudajTextField;
-    private javax.swing.JTextField planosegurojTextField;
     private javax.swing.JComboBox possuiJurosjComboBox;
     private javax.swing.JComboBox probelamSaudajComboBox;
     private javax.swing.JComboBox produtoOrcaemntojComboBox;
@@ -3416,12 +3054,9 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
     private javax.swing.JTextField relacaoEmergenciajTextField;
     private javax.swing.JTextField saldoParcelarjTextField;
     private javax.swing.JTextField saldoReceberjTextField;
-    private javax.swing.JTextField seguradorajTextField;
     private javax.swing.ButtonGroup seguroGovernamentealbuttonGroup;
     private javax.swing.ButtonGroup seguroPrivadobuttonGroup;
-    private javax.swing.JComboBox seguroViagemjComboBox;
     private javax.swing.JPanel segurojPanel;
-    private javax.swing.JButton selecionarSeguradorajButton;
     private javax.swing.ButtonGroup solicitacaoVistobuttonGroup;
     private javax.swing.JTextField solicitacoesEspeciaisjTextField;
     private javax.swing.JCheckBox telefoneEmergenciajCheckBox;
@@ -3445,7 +3080,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
     private javax.swing.JTextField valorParcelamentojTextField;
     private javax.swing.JTextField valorProdutosMoedaEstrangeirajTextField;
     private javax.swing.JTextField valorProdutosMoedaRealjTextField;
-    private javax.swing.JTextField valorSegurojTextField;
     private javax.swing.JTextField valorTotalOrcamentojTextField;
     private javax.swing.JComboBox vegetarianojComboBox;
     private javax.swing.JComboBox vistojComboBox;
@@ -3646,58 +3280,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         }
     }
     
-    
-    public void salvarSeguroViagem() {
-        if (seguroViagem == null) {
-            seguroViagem = new Seguroviagem();
-        }
-        if (seguroViagemjComboBox.getSelectedItem().toString().equalsIgnoreCase("Sim")) {
-            
-            seguroViagem.setDataInicio(dataInicioSegurojDateChooser.getDate());
-            seguroViagem.setDataTermino(dataTerminoSegurojDateChooser.getDate());
-            Integer numero = Integer.parseInt(numeroSemanaSegurosjTextField.getText());
-            seguroViagem.setNumeroSemanas(numero);
-            seguroViagem.setPlano(planosegurojTextField.getText());
-            seguroViagem.setSeguradora(seguradorajTextField.getText());
-            seguroViagem.setPossuiSeguro("Sim");
-            seguroViagem.setValoresseguro(valoresSeguro);
-            if (valorSegurojTextField.getText().length() > 0) {
-                valorSeguro = Formatacao.formatarStringfloat(valorSegurojTextField.getText());
-            }
-            seguroViagem.setValorSeguro(valorSeguro);
-            seguroViagem.setFoneContatoEmergencia(telefoneEmergenciajTextField.getText());
-            seguroViagem.setNomeContatoEmergencia(nomeContatoEmergenciajTextField.getText());
-            seguroViagem.setValoresseguro(valoresSeguro);
-            seguroViagem.setFornecedor(valoresSeguro.getFornecedorcidade().getFornecedor().getIdfornecedor());
-        } else {
-            seguroViagem.setValorSeguro(0.0f);
-            seguroViagem.setPossuiSeguro("Não");
-            seguroViagem.setVendas(venda.getIdvendas());
-            seguroViagem.setFornecedor(5);
-            seguroViagem.setValorSeguro(valorSeguro);
-            seguroViagem.setDataInicio(null);
-            seguroViagem.setDataTermino(null);
-            seguroViagem.setNumeroSemanas(0);
-            seguroViagem.setPlano(" ");
-            seguroViagem.setSeguradora("");
-            seguroViagem.setPossuiSeguro("Não");
-            seguroViagem.setValorSeguro(0.0f);
-            seguroViagem.setFoneContatoEmergencia("");
-            seguroViagem.setNomeContatoEmergencia("");
-            seguroViagem.setPaisDestino("");
-            ValorSeguroController valorSeguroController = new ValorSeguroController();
-            valoresSeguro = valorSeguroController.consultar(1);
-            seguroViagem.setFornecedor(valoresSeguro.getFornecedorcidade().getFornecedor().getIdfornecedor());
-            seguroViagem.setValoresseguro(valoresSeguro);
-        }
-        
-        seguroViagem.setVendas(venda.getIdvendas());
-        SeguroViagemController seguroViagemController = new SeguroViagemController();
-        seguroViagem = seguroViagemController.salvar(seguroViagem);
-    }
-    
-    
-    
     public void salvarVoluntariado(){
         if (voluntariado==null){
             voluntariado = new Voluntariado();
@@ -3779,14 +3361,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         voluntariado.setVistoConsular(vistojComboBox.getSelectedItem().toString());
         voluntariado.setDataEntregaDocumentoVisto(dataEntregaDocumentosjDateChooser.getDate());
         voluntariado.setObservacaoVistoConsultar(observacaoVistojTextField.getText());
-        voluntariado.setSeguroViagem(seguroViagemjComboBox.getSelectedItem().toString());
-        if (voluntariado.getSeguroViagem().equalsIgnoreCase("Sim")){
-            voluntariado.setSeguradora(seguradorajTextField.getText());
-            voluntariado.setPlanoSeguro(planosegurojTextField.getText());
-            voluntariado.setDataInicioSeguro(dataInicioSegurojDateChooser.getDate());
-            voluntariado.setNumeroSemanasSeguro(Integer.parseInt(numeroSemanaSegurosjTextField.getText()));
-            voluntariado.setDataTerminoSeguro(dataTerminoSegurojDateChooser.getDate());
-        }
         voluntariado.setNomeContatoEmergencia(nomeContatoEmergenciajTextField.getText());
         voluntariado.setFoneContatoEmergencia(telefoneEmergenciajTextField.getText());
         voluntariado.setEmailContatoEmergencia(emailConatoEmergenciajTextField.getText());
@@ -3946,14 +3520,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
             fornecedorAlteradocidade = fornecedorcidade;
             
           
-            SeguroViagemController seguroViagemController = new SeguroViagemController();
-            this.seguroViagem = seguroViagemController.consultar(idVenda);
-            if (seguroViagem!=null) {
-                seguroViagemAlterado = seguroViagem;
-                if (seguroViagem.getPossuiSeguro().equalsIgnoreCase("Sim")){
-                    carregarSeguro();
-                }
-            }
             FormaPagamentoController formaPagamentoController = new FormaPagamentoController();
             this.formaPagamento = formaPagamentoController.consultar(idVenda);
             if (formaPagamento!=null){
@@ -4072,18 +3638,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         carregarModelParcelamento();
     }
     
-    public void carregarSeguro(){
-        seguroViagemjComboBox.setSelectedItem("Sim");
-        seguradorajTextField.setText(seguroViagem.getSeguradora());
-        valorSegurojTextField.setText(Formatacao.formatarFloatString(seguroViagem.getValorSeguro()));
-        valorSeguro = seguroViagem.getValorSeguro();
-        planosegurojTextField.setText(seguroViagem.getPlano());
-        dataInicioSegurojDateChooser.setDate(seguroViagem.getDataInicio());
-        dataTerminoSegurojDateChooser.setDate(seguroViagem.getDataTermino());
-        numeroSemanaSegurosjTextField.setText(String.valueOf(seguroViagem.getNumeroSemanas()));
-    }
-    
-    
     public void carregarOrcamento(){
         valorCambio = orcamento.getValorCambio();
         cambioAlterado = orcamento.getCambioAlterado();
@@ -4141,9 +3695,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         if (nomeClientejTextField.getText().length()==0){
             msg = msg + "Campo cliente não selecionado\r\n";
         }
-        if (cursoEstudajTextField.getText().length()==0){
-            msg = msg + "Curso não informado\r\n";
-        }
         if (dataInicioVoluntariadojDateChooser.getDate()==null){
             msg = msg  + "Data início inválida\r\n";
         }
@@ -4164,29 +3715,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         if (cartaoVTMjComboBox.getSelectedItem().toString().equalsIgnoreCase("Sim")){
             if (numeroCartaoVTMjTextField.getText().length()==0){
                 msg = msg + "Nº Cartão VTM não informado\r\n";
-            }
-        }
-        if (seguroViagemjComboBox.getSelectedItem().toString().equalsIgnoreCase("sim")){
-            if (seguradorajTextField.getText().length()==0){
-                msg = msg + "Seguradora não inforamda\r\n";
-            }
-            if (valorSeguro==0){
-                msg = msg + "Valor do seguro não informado\r\n";
-            }
-            if (planosegurojTextField.getText().length()==0){
-                msg = msg + "Plano do seguro não informado\r\n";
-            }
-            if (dataInicioSegurojDateChooser.getDate()==null){
-                msg = msg + "Data ínicio seguro inválida\r\n";
-            }
-            if (dataTerminoSegurojDateChooser.getDate()==null){
-                msg = msg + "Data término seguro inválida\r\n";
-            }
-            if (this.fornecedorcidade==null){
-                msg = msg + "Escola inválida\r\n";
-            }
-            if (numeroSemanaSegurosjTextField.getText().length() == 0) {
-                msg = msg + "Nº de semanas no seguro é obrigatório\r\n";
             }
         }
         if (nomeContatoEmergenciajTextField.getText().length()==0){
@@ -4377,8 +3905,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         numeroCartaoVTMjTextField.setDocument(new LimiteTextoJedit(45));
         observacaoPassagemjTextField.setDocument(new LimiteTextoJedit(100));
         observacaoVistojTextField.setDocument(new LimiteTextoJedit(200));
-        planosegurojTextField.setDocument(new LimiteTextoJedit(50));
-        seguradorajTextField.setDocument(new LimiteTextoJedit(100));
         nomeContatoEmergenciajTextField.setDocument(new LimiteTextoJedit(100));
         telefoneEmergenciajTextField.setDocument(new LimiteTextoJedit(14));
         emailConatoEmergenciajTextField.setDocument(new LimiteTextoJedit(100));
@@ -4416,17 +3942,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         }
     }
 
-    @Override
-    public void setValorSeguro(Valoresseguro valoresSeguro) {
-        if (valoresSeguro!=null){
-            planosegurojTextField.setText(valoresSeguro.getPlano());
-            seguradorajTextField.setText(valoresSeguro.getFornecedorcidade().getFornecedor().getNome());
-            int numero = Integer.parseInt(numeroSemanaSegurosjTextField.getText());
-            this.valoresSeguro = valoresSeguro;
-            valorSeguro = numero * valoresSeguro.getValorgross();
-            valorSegurojTextField.setText(Formatacao.formatarFloatString(valorSeguro));
-        }
-    }
     
     
      public void carregarVoluntariadoAlteracao(){
@@ -4876,42 +4391,6 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
         if (voluntariado.getVoo()!= null) {
             if (!voluntariado.getVoo().equalsIgnoreCase(voluntariadoAlterado.getVoo())) {
                 dadosAlterado = dadosAlterado + "Vôo : " + voluntariado.getVoo() + " | " + voluntariadoAlterado.getVoo() + "<br></br>";
-            }
-        }
-        if (!seguroViagem.getPossuiSeguro().equalsIgnoreCase("Não")) {
-            if (!seguroViagem.getPossuiSeguro().equalsIgnoreCase(seguroViagemAlterado.getPossuiSeguro())) {
-                dadosAlterado = dadosAlterado + "Seguro Viagem : " + seguroViagem.getPossuiSeguro() + " | " + seguroViagemAlterado.getPossuiSeguro() + "<br></br>";
-            }
-        } else {
-            if (seguroViagem.getSeguradora() != null) {
-                if (!seguroViagem.getSeguradora().equalsIgnoreCase(seguroViagemAlterado.getSeguradora())) {
-                    dadosAlterado = dadosAlterado + "Fornecedor Seguro : " + seguroViagem.getSeguradora() + " | " + seguroViagemAlterado.getSeguradora() + "<br></br>";
-                }
-            }
-            if (seguroViagem.getValorSeguro() != null) {
-                if (seguroViagem.getValorSeguro() != seguroViagemAlterado.getValorSeguro()) {
-                    dadosAlterado = dadosAlterado + "Valor Seguro : " + Formatacao.formatarFloatString(seguroViagem.getValorSeguro()) + Formatacao.formatarFloatString(seguroViagemAlterado.getValorSeguro()) + "<br></br>";
-                }
-            }
-            if (seguroViagem.getPlano() != null) {
-                if (!seguroViagem.getPlano().equalsIgnoreCase(seguroViagemAlterado.getPlano())) {
-                    dadosAlterado = dadosAlterado + "Plano : " + seguroViagem.getPlano() + " | " + seguroViagemAlterado.getPlano() + "<br></br>";
-                }
-            }
-            if (seguroViagem.getDataInicio() != null) {
-                if (!seguroViagem.getDataInicio().equals(seguroViagemAlterado.getDataInicio())) {
-                    dadosAlterado = dadosAlterado + "Data Início : " + seguroViagem.getDataInicio() + " | " + seguroViagemAlterado.getDataInicio() + "<br></br>";
-                }
-            }
-            if (seguroViagem.getNumeroSemanas() != null) {
-                if (seguroViagem.getNumeroSemanas() != seguroViagemAlterado.getNumeroSemanas()) {
-                    dadosAlterado = dadosAlterado + "No. Semanas : " + String.valueOf(seguroViagem.getNumeroSemanas()) + " | " + String.valueOf(seguroViagemAlterado.getNumeroSemanas()) + "<br></br>";
-                }
-            }
-            if (seguroViagem.getDataTermino() != null) {
-                if (!seguroViagem.getDataTermino().equals(seguroViagemAlterado.getDataTermino())) {
-                    dadosAlterado = dadosAlterado + "Data Término : " + Formatacao.ConvercaoDataPadrao(seguroViagem.getDataTermino()) + "| " + Formatacao.ConvercaoDataPadrao(seguroViagemAlterado.getDataTermino()) + "<br></br>";
-                }
             }
         }
         if (voluntariado.getVistoConsular() != null) {
