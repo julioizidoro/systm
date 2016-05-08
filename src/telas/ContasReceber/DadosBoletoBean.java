@@ -3,16 +3,9 @@ package telas.ContasReceber;
 
 
 
-import java.io.File;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
-import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletResponse;
-import util.Formatacao;
 
 
 
