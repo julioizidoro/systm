@@ -490,7 +490,7 @@ public class FrmPrincipal extends javax.swing.JFrame implements ItelaPrincipal{
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(35, 135, 112));
-        jLabel1.setText("Versão 1.70");
+        jLabel1.setText("Versão 1.72");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

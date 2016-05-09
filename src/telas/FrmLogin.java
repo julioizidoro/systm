@@ -178,7 +178,7 @@ public class FrmLogin extends javax.swing.JDialog {
                 Unidadenegocio unidadenegocio = unidadeNegocioController.consultar(usuario.getUnidadenegocio());
                 usuarioLogadoBean.setUnidadeNegocio(unidadenegocio);
                 unidadejLabel.setText("Unidade : " + unidadenegocio.getNomeFantasia());
-                String versao = "1.70";
+                String versao = "1.72";
                 if (!usuarioLogadoBean.getUnidadeNegocio().getVersao().equalsIgnoreCase(versao)){
                     JOptionPane.showMessageDialog(rootPane, "SysTM possui nova versão " + versao + "\b\n"
                     + "Favor Atualizar nova versão");
