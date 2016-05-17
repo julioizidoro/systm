@@ -2453,7 +2453,14 @@ dataVencimentojDateChooser = new com.toedter.calendar.JDateChooser(null, null, d
                     carregarModelOrcamentoProduto();
                 }else JOptionPane.showMessageDialog(rootPane, "Valor da Taxa TM não pode ser inferior ao valor definido pela Matriz");
             }
-        } 
+        } else {
+            if (linha >= 0) {
+                listaProdutoOrcamentoBean.get(linha).setApagar(true);
+                listaProdutoOrcamentoBean.remove(linha);
+                calcularValorTotalOrcamento();
+                carregarModelOrcamentoProduto();
+            }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void condicaoPagamentojComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_condicaoPagamentojComboBoxItemStateChanged

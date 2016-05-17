@@ -24,10 +24,8 @@ public class ValorHighSchoolDao {
     
     public Valoreshighschool salvar(Valoreshighschool valor) throws SQLException{
         manager = ConexaoSingleton.getConexao();
-        //abrindo uma transação
         manager.getTransaction().begin();
         valor = manager.merge(valor);
-        //fechando uma transação
         manager.getTransaction().commit();
         return valor;
     }
